@@ -1,0 +1,12 @@
+<table class="table table-bordered table-striped" style="width:450px; margin-left: 100px;" ng-show="patients.length > 0">
+    <thead>
+    <tr>
+        <th style="text-align: center; width: 25px;">Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="patient in patients">
+        <td>{{patient.firstName}}</td>
+    </tr>
+    </tbody>
+</table>

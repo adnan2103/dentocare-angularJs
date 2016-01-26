@@ -1,0 +1,8 @@
+package com.dk.dento.care.config;
+
+import org.springframework.context.annotation.Import;
+
+@Import({DatabaseConfig.class})
+public class ApplicationConfig {
+
+}
