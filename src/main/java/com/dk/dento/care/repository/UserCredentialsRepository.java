@@ -10,6 +10,4 @@ public interface UserCredentialsRepository extends CrudRepository<UserCredential
 
     UserCredentialsEntity findByEmailAddress(EmailAddress emailAddress);
 
-    Iterable<UserCredentialsEntity> findAll();
-
 }
