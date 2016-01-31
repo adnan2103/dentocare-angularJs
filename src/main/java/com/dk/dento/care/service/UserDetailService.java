@@ -29,7 +29,7 @@ public class UserDetailService {
 
             UserDetailEntity userDetailEntity = userCredentialsEntity.getUserDetailEntity();
             patient = new Patient();
-            patient.setFirstName(userDetailEntity.getFirstName());
+            patient.setFirstName(userDetailEntity.getName().toString());
             patients.add(patient);
         }
 

@@ -29,7 +29,7 @@ public class PatientRepositoryUserDetailsService implements UserDetailsService {
             throws UsernameNotFoundException {
         UserCredentials userCredentials = userCredentialsService.getPrincipal(username);
         if(userCredentials == null) {
-            throw new UsernameNotFoundException("Could not find doctor " + username);
+            throw new UsernameNotFoundException("Could not find user " + username);
         }
         return new CustomDoctorDetails(userCredentials);
     }
