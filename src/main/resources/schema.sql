@@ -74,21 +74,7 @@ DROP TABLE treatment;
 DROP TABLE doctor_patient_mapping;
 DROP TABLE user_detail;
 DROP TABLE user_credentials;
-DROP TABLE role;
 
--- Table: role
-
-CREATE TABLE role
-(
-  role character varying(3) NOT NULL,
-  description character varying(30) NOT NULL,
-  CONSTRAINT role_pkey PRIMARY KEY (role)
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE role
-  OWNER TO dentocar;
 
 
 -- Table: user_credentials
@@ -101,10 +87,7 @@ CREATE TABLE user_credentials
   role character varying(3),
   login_enabled boolean,
   password character varying(100),
-  CONSTRAINT user_credentials_pkey PRIMARY KEY (user_id),
-  CONSTRAINT user_credentials_role_fkey FOREIGN KEY (role)
-      REFERENCES role (role) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
+  CONSTRAINT user_credentials_pkey PRIMARY KEY (user_id)
 )
 WITH (
   OIDS=FALSE
@@ -122,7 +105,7 @@ CREATE TABLE user_detail
   last_name character varying(30),
   gender character varying(6) NOT NULL,
   date_of_birth date,
-  mobile_number integer NOT NULL,
+  phone_number character varying(10) NOT NULL,
   address_line1 character varying(30),
   address_line2 character varying(30),
   city character varying(20),

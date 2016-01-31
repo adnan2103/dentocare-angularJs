@@ -27,7 +27,6 @@ public class UserCredentialsEntity implements Serializable {
     private EmailAddress emailAddress;
 
     /** The {@link RoleType type} of the user */
-    @Id
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private RoleType roleType;

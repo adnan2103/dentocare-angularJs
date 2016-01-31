@@ -15,19 +15,19 @@ public class EmailAddress {
 
     /** The string value of the email address */
     @Column(name = "email")
-    private String value;
+    private String email;
 
     /**
      * Public constructor. It will validate that the passed in string is a valid
      * email address. If it is not, an {@link IllegalArgumentException} will be
      * thrown
      *
-     * @param value
+     * @param email
      *            The string value of the email address
      */
-    public EmailAddress(final String value) {
-        validate(value);
-        this.value = value;
+    public EmailAddress(final String email) {
+        validate(email);
+        this.email = email;
     }
 
     /**
@@ -52,7 +52,7 @@ public class EmailAddress {
             return false;
         }
         EmailAddress rhs = (EmailAddress) obj;
-        return new EqualsBuilder().append(value, rhs.value).isEquals();
+        return new EqualsBuilder().append(email, rhs.email).isEquals();
     }
 
     /**
@@ -60,8 +60,8 @@ public class EmailAddress {
      *
      * @return The string value of the email address
      */
-    public String getValue() {
-        return value;
+    public String getEmail() {
+        return email;
     }
 
     /**
@@ -69,7 +69,7 @@ public class EmailAddress {
      */
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(value).toHashCode();
+        return new HashCodeBuilder().append(email).toHashCode();
     }
 
     /**
@@ -77,7 +77,7 @@ public class EmailAddress {
      */
     @Override
     public String toString() {
-        return value;
+        return email;
     }
 
     /**

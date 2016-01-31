@@ -1,6 +1,7 @@
 package com.dk.dento.care.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -30,22 +31,19 @@ public class UserDetailEntity implements Serializable {
     @Column(name = "date_of_birth")
     private Date dataOfBirth;
 
-    @Column(name = "mobile_number")
-    private Integer mobile;
+    @Embedded
+    private PhoneNumber phoneNumber;
 
-    @Column(name = "address_line1")
-    private String addressLine1;
+    @Embedded
+    private Address address;
 
-    @Column(name = "address_line2")
-    private String addressLine2;
+    public Address getAddress() {
+        return address;
+    }
 
-    private String city;
-
-    private String state;
-
-    private String country;
-
-    private String pincode;
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
@@ -87,60 +85,11 @@ public class UserDetailEntity implements Serializable {
         this.gender = gender;
     }
 
-    public Integer getMobile() {
-        return mobile;
+    public PhoneNumber getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setMobile(Integer mobile) {
-        this.mobile = mobile;
+    public void setPhoneNumber(PhoneNumber phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
-
-    public String getAddressLine1() {
-        return addressLine1;
-    }
-
-    public void setAddressLine1(String addressLine1) {
-        this.addressLine1 = addressLine1;
-    }
-
-    public String getAddressLine2() {
-        return addressLine2;
-    }
-
-    public void setAddressLine2(String addressLine2) {
-        this.addressLine2 = addressLine2;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getPincode() {
-        return pincode;
-    }
-
-    public void setPincode(String pincode) {
-        this.pincode = pincode;
-    }
-
 }

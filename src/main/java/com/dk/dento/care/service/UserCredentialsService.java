@@ -12,16 +12,16 @@ public class UserCredentialsService {
     @Autowired
     private UserCredentialsRepository userCredentialsRepository;
 
-    public UserCredentials getPrincipal(final String emailId) {
+    public UserCredentials getPrincipal(final String email) {
 
         UserCredentials userCredentials = new UserCredentials();
 
-        UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByEmailId(emailId);
+        UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByEmailAddress(email);
 
         userCredentials.setId(userCredentialsEntity.getUserId());
-        userCredentials.setEmailId(userCredentialsEntity.getEmailId());
+        userCredentials.setEmailId(userCredentialsEntity.getEmailAddress().toString());
         userCredentials.setLoginEnable(userCredentialsEntity.isLoginEnable());
-        userCredentials.setRole(userCredentialsEntity.getRole());
+        userCredentials.setRole(userCredentialsEntity.getRoleType().name());
         userCredentials.setPassword(userCredentialsEntity.getPassword());
         return userCredentials;
     }

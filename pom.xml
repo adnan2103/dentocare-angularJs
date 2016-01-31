@@ -101,6 +101,11 @@
             <artifactId>spring-security-config</artifactId>
             <version>4.0.3.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.googlecode.libphonenumber</groupId>
+            <artifactId>libphonenumber</artifactId>
+            <version>7.0.5</version>
+        </dependency>
 
     </dependencies>
     <build>
