@@ -9,6 +9,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -52,7 +53,7 @@ public class UserCredentialsEntity implements Serializable {
     private String password;
 
 
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
     @JoinColumn(name="user_id")
     private UserDetailEntity userDetailEntity;
 

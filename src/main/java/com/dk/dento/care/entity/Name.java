@@ -15,6 +15,13 @@ public class Name {
     @Column(name = "last_name")
     private String lastName;
 
+    public Name(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Name() {
+    }
 
     public String getFirstName() {
         return firstName;

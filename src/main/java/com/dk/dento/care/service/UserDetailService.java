@@ -1,6 +1,8 @@
 package com.dk.dento.care.service;
 
 import com.dk.dento.care.entity.EmailAddress;
+import com.dk.dento.care.entity.Name;
+import com.dk.dento.care.entity.PhoneNumber;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.model.Patient;
@@ -18,10 +20,12 @@ public class UserDetailService {
     @Autowired
     private UserCredentialsRepository userCredentialsRepository;
 
+    @Autowired
+    private UserDetailRepository userDetailRepository;
+
     public List<Patient> getAllPatientForDoctor() {
 
         List<Patient> patients = new ArrayList<Patient>();
-
         Iterable<UserCredentialsEntity> userCredentialsEntities = userCredentialsRepository.findAll();
         Patient patient = null;
 
@@ -33,7 +37,21 @@ public class UserDetailService {
             patients.add(patient);
         }
 
+        saveUser();
+
         return patients;
+    }
+
+    private void saveUser() {
+        UserCredentialsEntity userCredentialsEntity = new UserCredentialsEntity();
+        userCredentialsEntity.setRoleType(UserCredentialsEntity.RoleType.PAT);
+        UserDetailEntity userDetailEntity = new UserDetailEntity();
+        Name name = new Name("Test","Last");
+        userDetailEntity.setName(name);
+        userDetailEntity.setGender("male");
+        userDetailEntity.setPhoneNumber(new PhoneNumber("123456789"));
+        userCredentialsEntity.setUserDetailEntity(userDetailEntity);
+        userCredentialsRepository.save(userCredentialsEntity);
     }
 
 }

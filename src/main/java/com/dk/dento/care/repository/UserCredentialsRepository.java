@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface UserCredentialsRepository extends CrudRepository<UserCredentialsEntity, Long> {
 
     UserCredentialsEntity findByEmailAddress(EmailAddress emailAddress);
-
 }
