@@ -84,7 +84,6 @@ CREATE TABLE user_credentials
 (
   user_id integer NOT NULL,
   email character varying(30),
-  role character varying(3),
   login_enabled boolean,
   password character varying(100),
   CONSTRAINT user_credentials_pkey PRIMARY KEY (user_id)
@@ -103,6 +102,7 @@ CREATE TABLE user_detail
   user_id integer NOT NULL,
   first_name character varying(30) NOT NULL,
   last_name character varying(30),
+  role character varying(3),
   gender character varying(6) NOT NULL,
   date_of_birth date,
   phone_number character varying(10) NOT NULL,

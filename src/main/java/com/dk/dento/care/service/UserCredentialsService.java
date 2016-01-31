@@ -22,7 +22,7 @@ public class UserCredentialsService {
         userCredentials.setId(userCredentialsEntity.getUserId());
         userCredentials.setEmailId(userCredentialsEntity.getEmailAddress().toString());
         userCredentials.setLoginEnable(userCredentialsEntity.isLoginEnable());
-        userCredentials.setRole(userCredentialsEntity.getRoleType().name());
+       // userCredentials.setRole(userCredentialsEntity.getRoleType().name());
         userCredentials.setPassword(userCredentialsEntity.getPassword());
         return userCredentials;
     }

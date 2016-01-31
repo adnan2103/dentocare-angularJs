@@ -26,26 +26,13 @@ public class UserCredentialsEntity implements Serializable {
 
     @Id
     @SequenceGenerator(name = "user_id_sequence", sequenceName = "user_id_sequence")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_sequence")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_id_sequence")
     @Column(name = "user_id")
     private Long userId;
 
     /** The main email address for the user */
     @Embedded
     private EmailAddress emailAddress;
-
-    /** The {@link RoleType type} of the user */
-    @Column(name = "role")
-    @Enumerated(EnumType.STRING)
-    private RoleType roleType;
-
-    public RoleType getRoleType() {
-        return roleType;
-    }
-
-    public void setRoleType(RoleType roleType) {
-        this.roleType = roleType;
-    }
 
     @Column(name = "login_enabled")
     private boolean loginEnable;
@@ -97,12 +84,4 @@ public class UserCredentialsEntity implements Serializable {
         this.loginEnable = loginEnable;
     }
 
-    /**
-     * Enumeration that provides the set of role types that ar supported.
-     */
-    public enum RoleType {
-        DOC,
-        PAT,
-        ADM
-    }
 }

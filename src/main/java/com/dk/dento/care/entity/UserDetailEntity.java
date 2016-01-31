@@ -5,11 +5,17 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -22,6 +28,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "user_detail")
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="role", discriminatorType= DiscriminatorType.STRING,length=10)
 public class UserDetailEntity implements Serializable {
 
     @GenericGenerator(name = "generator", strategy = "foreign",
@@ -33,6 +41,7 @@ public class UserDetailEntity implements Serializable {
 
     @Embedded
     private Name name;
+
 
     private String gender;
 
@@ -105,4 +114,5 @@ public class UserDetailEntity implements Serializable {
     public void setAddress(Address address) {
         this.address = address;
     }
+
 }
