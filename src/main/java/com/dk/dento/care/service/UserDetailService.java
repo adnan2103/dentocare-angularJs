@@ -22,10 +22,8 @@ public class UserDetailService {
 
         List<Patient> patients = new ArrayList<Patient>();
 
-        UserCredentialsEntity userCredentialsEntity2 = userCredentialsRepository.findByEmailAddress(new EmailAddress("adnan@khan.com"));
         Iterable<UserCredentialsEntity> userCredentialsEntities = userCredentialsRepository.findAll();
         Patient patient = null;
-
 
         for(UserCredentialsEntity userCredentialsEntity : userCredentialsEntities) {
 
