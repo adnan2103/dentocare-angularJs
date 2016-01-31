@@ -13,8 +13,8 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil;
 @Embeddable
 public class PhoneNumber {
 
-    @Column(name = "mobile_number")
-    private String mobile;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     /**
      * Instantiates a new Phone number.
@@ -22,7 +22,7 @@ public class PhoneNumber {
      * @param value the value
      */
     public PhoneNumber(final String value) {
-        this.mobile = Long.toString(parse(value).getNationalNumber());
+        this.phoneNumber = Long.toString(parse(value).getNationalNumber());
     }
 
     /**
@@ -37,8 +37,8 @@ public class PhoneNumber {
      *
      * @return the value
      */
-    public String getValue() {
-        return mobile;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.dk.dento.care.service;
 
+import com.dk.dento.care.entity.EmailAddress;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.model.UserCredentials;
 import com.dk.dento.care.repository.UserCredentialsRepository;
@@ -16,7 +17,7 @@ public class UserCredentialsService {
 
         UserCredentials userCredentials = new UserCredentials();
 
-        UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByEmailAddress(email);
+        UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByEmailAddress(new EmailAddress(email));
 
         userCredentials.setId(userCredentialsEntity.getUserId());
         userCredentials.setEmailId(userCredentialsEntity.getEmailAddress().toString());

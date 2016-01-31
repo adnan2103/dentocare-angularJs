@@ -1,7 +1,10 @@
 package com.dk.dento.care.service;
 
+import com.dk.dento.care.entity.EmailAddress;
+import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.model.Patient;
+import com.dk.dento.care.repository.UserCredentialsRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,21 +16,24 @@ import java.util.List;
 public class UserDetailService {
 
     @Autowired
-    private UserDetailRepository userDetailRepository;
+    private UserCredentialsRepository userCredentialsRepository;
 
     public List<Patient> getAllPatientForDoctor() {
 
         List<Patient> patients = new ArrayList<Patient>();
 
-        Patient p = new Patient();
-        p.setFirstName("Adnan");
-        Patient p2 = new Patient();
-        p2.setFirstName("Rohit");
+        UserCredentialsEntity userCredentialsEntity2 = userCredentialsRepository.findByEmailAddress(new EmailAddress("adnan@khan.com"));
+        Iterable<UserCredentialsEntity> userCredentialsEntities = userCredentialsRepository.findAll();
+        Patient patient = null;
 
-        patients.add(p);
-        patients.add(p2);
 
-        //Iterable<UserDetailEntity> userDetailEntities = userDetailRepository.findAll();
+        for(UserCredentialsEntity userCredentialsEntity : userCredentialsEntities) {
+
+            UserDetailEntity userDetailEntity = userCredentialsEntity.getUserDetailEntity();
+            patient = new Patient();
+            patient.setFirstName(userDetailEntity.getFirstName());
+            patients.add(patient);
+        }
 
         return patients;
     }

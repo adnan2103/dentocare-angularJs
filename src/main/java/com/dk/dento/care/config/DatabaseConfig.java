@@ -1,7 +1,12 @@
 package com.dk.dento.care.config;
 
-import org.apache.commons.dbcp.BasicDataSource;
-import org.hibernate.jpa.HibernatePersistenceProvider;
+import java.util.Properties;
+
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,15 +15,20 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.sql.DataSource;
-import java.util.Properties;
+
 
 @Configuration
 @ComponentScan(basePackages = "com.dk.dento.care")
 @EnableJpaRepositories(basePackages = { "com.dk.dento.care.repository"})
-@PropertySources(value = {@PropertySource("classpath:database.properties")})public class DatabaseConfig {
+@PropertySources(value = {@PropertySource("classpath:database.properties")})
+@EnableTransactionManagement
+public class DatabaseConfig {
 
     @Value("${spring.datasource.driver}")
     private String dbDriver;
@@ -35,6 +45,21 @@ import java.util.Properties;
     @Value("${spring.jpa.database-platform}")
     private String dialect;
 
+
+
+    @Value("${jdbc.databaseName}")
+    private String databaseName;
+
+    @Value("${jdbc.datasourceClassName}")
+    private String datasourceClass;
+
+    @Value("${jdbc.maxPoolSize}")
+    private Integer maxPoolSize;
+
+    @Value("${jdbc.serverName}")
+    private String serverName;
+
+
     private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
 
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
@@ -42,25 +67,26 @@ import java.util.Properties;
 
     @Bean(name = "dataSource")
     public DataSource getDataSource() {
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName(dbDriver);
-        dataSource.setUrl(url);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.addDataSourceProperty("databaseName", databaseName);
+        dataSource.addDataSourceProperty("serverName", serverName);
+        dataSource.setMaximumPoolSize(maxPoolSize);
+        dataSource.setDataSourceClassName(datasourceClass);
+        dataSource.addDataSourceProperty("user", username);
+        dataSource.addDataSourceProperty("password", password);
         return dataSource;
     }
 
-    @Bean(name = "entityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean getEntityManagerFactory() {
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+        entityManagerFactoryBean.setDataSource(dataSource);
+        entityManagerFactoryBean.setPackagesToScan("com.dk.dento.care.entity");
+        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
-        LocalContainerEntityManagerFactoryBean  entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactory.setDataSource(getDataSource());
-        entityManagerFactory.setPackagesToScan("com.dk.dento.care.entity");
-        entityManagerFactory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        entityManagerFactory.setJpaProperties(hibProperties());
-        return entityManagerFactory;
+        entityManagerFactoryBean.setJpaProperties(hibProperties());
 
+        return entityManagerFactoryBean;
     }
 
     private Properties hibProperties() {
@@ -73,5 +99,10 @@ import java.util.Properties;
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+        return new JpaTransactionManager(entityManagerFactory);
     }
 }
