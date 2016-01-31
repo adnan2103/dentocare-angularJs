@@ -1,6 +1,6 @@
 insert into role(role,description) values('D', 'Doctor');
 
-insert into user_credentials(user_id,email_id,password,role,login_enabled) values (1,'adnan@khan.com','password','D',true);
+insert into user_credentials(user_id,email,password,role,login_enabled) values (1,'adnan@khan.com','password','D',true);
 
 update user_credentials set password = '$2a$10$FBAKClV1zBIOOC9XMXf3AO8RoGXYVYsfvUdoLxGkd/BnXEn4tqT3u';
 

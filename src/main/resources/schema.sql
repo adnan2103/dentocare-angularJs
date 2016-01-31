@@ -97,7 +97,7 @@ ALTER TABLE role
 CREATE TABLE user_credentials
 (
   user_id integer NOT NULL,
-  email_id character varying(30),
+  email character varying(30),
   role character varying(3),
   login_enabled boolean,
   password character varying(100),

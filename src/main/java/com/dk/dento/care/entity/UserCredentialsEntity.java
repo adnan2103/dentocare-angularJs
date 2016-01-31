@@ -1,7 +1,10 @@
 package com.dk.dento.care.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,15 +22,29 @@ public class UserCredentialsEntity implements Serializable {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "email_id", unique=true, nullable = false)
-    private String emailId;
+    /** The main email address for the user */
+    @Embedded
+    private EmailAddress emailAddress;
 
-    private String password;
+    /** The {@link RoleType type} of the user */
+    @Id
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
 
-    private String role;
+    public RoleType getRoleType() {
+        return roleType;
+    }
+
+    public void setRoleType(RoleType roleType) {
+        this.roleType = roleType;
+    }
 
     @Column(name = "login_enabled")
     private boolean loginEnable;
+
+    private String password;
+
 
     public Long getUserId() {
         return userId;
@@ -37,12 +54,12 @@ public class UserCredentialsEntity implements Serializable {
         this.userId = userId;
     }
 
-    public String getEmailId() {
-        return emailId;
+    public EmailAddress getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
+    public void setEmailAddress(EmailAddress emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public String getPassword() {
@@ -53,19 +70,20 @@ public class UserCredentialsEntity implements Serializable {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public boolean isLoginEnable() {
         return loginEnable;
     }
 
     public void setLoginEnable(boolean loginEnable) {
         this.loginEnable = loginEnable;
+    }
+
+    /**
+     * Enumeration that provides the set of role types that ar supported.
+     */
+    public enum RoleType {
+        DOC,
+        PAT,
+        ADM
     }
 }
