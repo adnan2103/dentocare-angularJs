@@ -40,6 +40,8 @@ public class UserDetailService {
 
         Iterable<TreatmentEntity> treatmentEntities = treatmentRepository.findAll();
 
+        List<TreatmentEntity> treatmentEntitiesforPatient2 = treatmentRepository.findAllTreatmentForPatient(2L);
+
         Iterable<DoctorPatientMappingEntity> doctorPatientMappingEntities = doctorPatientMappingRepository.findAll();
 
 

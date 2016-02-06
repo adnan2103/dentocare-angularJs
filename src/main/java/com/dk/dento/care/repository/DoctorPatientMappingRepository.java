@@ -2,6 +2,7 @@ package com.dk.dento.care.repository;
 
 import com.dk.dento.care.entity.DoctorPatientMappingEntity;
 import com.dk.dento.care.entity.DoctorPatientMappingId;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -11,5 +12,6 @@ import java.util.List;
  */
 public interface DoctorPatientMappingRepository extends CrudRepository<DoctorPatientMappingEntity, DoctorPatientMappingId> {
 
-    //List<DoctorPatientMappingEntity> findByDoctorId(Long doctorId);
+    @Query("select dpm from DoctorPatientMappingEntity dpm where doctor_d = ?1")
+    List<DoctorPatientMappingEntity> findAllPatientsForDoctor(Long doctorId);
 }

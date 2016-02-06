@@ -4,8 +4,6 @@ import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-
-import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -64,6 +62,8 @@ public class DatabaseConfig {
 
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
 
+    private static final String NAMING_STRATEGY = "hibernate.ejb.naming_strategy";
+
 
     @Bean(name = "dataSource")
     public DataSource getDataSource() {
@@ -86,6 +86,7 @@ public class DatabaseConfig {
 
         entityManagerFactoryBean.setJpaProperties(hibProperties());
 
+
         return entityManagerFactoryBean;
     }
 
@@ -93,6 +94,7 @@ public class DatabaseConfig {
         Properties properties = new Properties();
         properties.put(PROPERTY_NAME_HIBERNATE_DIALECT, dialect);
         properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, "true");
+        properties.put(NAMING_STRATEGY, "org.hibernate.cfg.ImprovedNamingStrategy");
         return properties;
     }
 
@@ -105,4 +107,5 @@ public class DatabaseConfig {
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);
     }
+
 }
