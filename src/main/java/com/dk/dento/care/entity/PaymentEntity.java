@@ -2,6 +2,7 @@ package com.dk.dento.care.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,9 +24,9 @@ public class PaymentEntity {
     @Column(name = "payment_id")
     private Long paymentId;
 
-    @ManyToOne
-    @JoinColumn(name = "treatment_id", referencedColumnName = "treatment_id")
-    private TreatmentEntity treatmentEntity;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "treatment_id")
+    private TreatmentEntity treatment;
 
     @Column(name = "payment_date")
     private Date paymentDate;
@@ -45,11 +46,11 @@ public class PaymentEntity {
     }
 
     public TreatmentEntity getTreatmentEntity() {
-        return treatmentEntity;
+        return treatment;
     }
 
     public void setTreatmentEntity(TreatmentEntity treatmentEntity) {
-        this.treatmentEntity = treatmentEntity;
+        this.treatment = treatmentEntity;
     }
 
     public Date getPaymentDate() {

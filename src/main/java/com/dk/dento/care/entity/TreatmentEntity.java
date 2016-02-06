@@ -3,6 +3,7 @@ package com.dk.dento.care.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +39,7 @@ public class TreatmentEntity {
     private String chiefComplaintDescription;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "treatment")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "treatment",fetch = FetchType.EAGER)
     private Set<PaymentEntity> paymentEntitySet = new HashSet<PaymentEntity>(0);
 
     public Long getTreatmentId() {
