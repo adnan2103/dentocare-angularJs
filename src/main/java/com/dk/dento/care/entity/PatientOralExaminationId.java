@@ -7,16 +7,16 @@ import java.io.Serializable;
  */
 public class PatientOralExaminationId implements Serializable {
 
-    private TreatmentEntity treatmentEntity;
+    private TreatmentEntity treatment;
 
     private DefaultOralExaminationEntity defaultOralExaminationEntity;
 
     public TreatmentEntity getTreatmentEntity() {
-        return treatmentEntity;
+        return treatment;
     }
 
     public void setTreatmentEntity(TreatmentEntity treatmentEntity) {
-        this.treatmentEntity = treatmentEntity;
+        this.treatment = treatmentEntity;
     }
 
     public DefaultOralExaminationEntity getDefaultOralExaminationEntity() {

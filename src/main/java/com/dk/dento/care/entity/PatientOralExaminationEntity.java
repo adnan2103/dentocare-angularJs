@@ -17,20 +17,37 @@ public class PatientOralExaminationEntity {
     @Id
     @ManyToOne
     @JoinColumn(name = "treatment_id", referencedColumnName = "treatment_id")
-    private TreatmentEntity treatmentEntity;
+    private TreatmentEntity treatment;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "oral_examination_id", referencedColumnName = "oral_examination_id")
     private DefaultOralExaminationEntity defaultOralExaminationEntity;
 
+    private Long cost;
+
+    public TreatmentEntity getTreatment() {
+        return treatment;
+    }
+
+    public void setTreatment(TreatmentEntity treatment) {
+        this.treatment = treatment;
+    }
+
+    public Long getCost() {
+        return cost;
+    }
+
+    public void setCost(Long cost) {
+        this.cost = cost;
+    }
 
     public TreatmentEntity getTreatmentEntity() {
-        return treatmentEntity;
+        return treatment;
     }
 
     public void setTreatmentEntity(TreatmentEntity treatmentEntity) {
-        this.treatmentEntity = treatmentEntity;
+        this.treatment = treatmentEntity;
     }
 
     public DefaultOralExaminationEntity getDefaultOralExaminationEntity() {

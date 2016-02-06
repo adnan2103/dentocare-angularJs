@@ -40,7 +40,10 @@ public class TreatmentEntity {
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "treatment",fetch = FetchType.EAGER)
-    private Set<PaymentEntity> paymentEntitySet = new HashSet<PaymentEntity>(0);
+    private Set<PaymentEntity> paymentEntities = new HashSet<PaymentEntity>(0);
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "treatment",fetch = FetchType.EAGER)
+    private Set<PatientOralExaminationEntity> patientOralExaminationEntities = new HashSet<PatientOralExaminationEntity>(0);
 
     public Long getTreatmentId() {
         return treatmentId;
@@ -74,11 +77,19 @@ public class TreatmentEntity {
         this.chiefComplaintDescription = chiefComplaintDescription;
     }
 
-    public Set<PaymentEntity> getPaymentEntitySet() {
-        return paymentEntitySet;
+    public Set<PaymentEntity> getPaymentEntities() {
+        return paymentEntities;
     }
 
-    public void setPaymentEntitySet(Set<PaymentEntity> paymentEntitySet) {
-        this.paymentEntitySet = paymentEntitySet;
+    public void setPaymentEntities(Set<PaymentEntity> paymentEntities) {
+        this.paymentEntities = paymentEntities;
+    }
+
+    public Set<PatientOralExaminationEntity> getPatientOralExaminationEntities() {
+        return patientOralExaminationEntities;
+    }
+
+    public void setPatientOralExaminationEntities(Set<PatientOralExaminationEntity> patientOralExaminationEntities) {
+        this.patientOralExaminationEntities = patientOralExaminationEntities;
     }
 }
