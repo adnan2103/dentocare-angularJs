@@ -1,6 +1,7 @@
 package com.dk.dento.care.service;
 
 import com.dk.dento.care.entity.DoctorPatientMappingEntity;
+import com.dk.dento.care.entity.EmailAddress;
 import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
@@ -30,46 +31,29 @@ public class UserDetailService {
     @Autowired
     private TreatmentRepository treatmentRepository;
 
+    public List<Patient> getAllPatientForDoctor(UserCredentialsEntity doctor) {
 
-    public List<Patient> getAllPatientForDoctor() {
-
-        //List<DoctorPatientMappingEntity> patientsNew0 = doctorPatientMappingRepository.findByDoctorId(1L);
         List<Patient> patients = new ArrayList<Patient>();
-        Iterable<UserCredentialsEntity> userCredentialsEntities = userCredentialsRepository.findAll();
         Patient patient = null;
 
-        Iterable<TreatmentEntity> treatmentEntities = treatmentRepository.findAll();
+        Iterable<DoctorPatientMappingEntity> allPatients = doctorPatientMappingRepository.findAllPatientsForDoctor(doctor.getUserId());
 
-        List<TreatmentEntity> treatmentEntitiesforPatient2 = treatmentRepository.findAllTreatmentForPatient(2L);
+        for(DoctorPatientMappingEntity doctorPatientMappingEntity : allPatients) {
 
-        Iterable<DoctorPatientMappingEntity> doctorPatientMappingEntities = doctorPatientMappingRepository.findAll();
-
-
-        for(UserCredentialsEntity userCredentialsEntity : userCredentialsEntities) {
-
-            UserDetailEntity userDetailEntity = userCredentialsEntity.getUserDetailEntity();
+            UserDetailEntity userDetailEntity = doctorPatientMappingEntity.getPatientEntity();
             patient = new Patient();
             patient.setFirstName(userDetailEntity.getName().toString());
             patients.add(patient);
         }
-
-
-
-       // saveUser();
-
         return patients;
     }
 
-    /*private void saveUser() {
-        UserCredentialsEntity userCredentialsEntity = new UserCredentialsEntity();
-        userCredentialsEntity.setRoleType(UserCredentialsEntity.RoleType.PAT);
-        UserDetailEntity userDetailEntity = new UserDetailEntity();
-        Name name = new Name("Test","Last");
-        userDetailEntity.setName(name);
-        userDetailEntity.setGender("male");
-        userDetailEntity.setPhoneNumber(new PhoneNumber("123456789"));
-        userCredentialsEntity.setUserDetailEntity(userDetailEntity);
-        userCredentialsRepository.save(userCredentialsEntity);
-    }*/
-
+    public Patient getPatientDetails(Long patientId) {
+        Patient patient = new Patient();
+        UserDetailEntity userDetailEntity = userDetailRepository.findOne(patientId);
+        List<TreatmentEntity> treatments = treatmentRepository.findAllTreatmentForPatient(patientId);
+        patient.setFirstName(userDetailEntity.getName().toString());
+        patient.setTreatments(treatments);
+        return patient;
+    }
 }

@@ -1,6 +1,9 @@
 package com.dk.dento.care.model;
 
+import com.dk.dento.care.entity.TreatmentEntity;
+
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by khana on 26/01/16.
@@ -19,6 +22,15 @@ public class Patient {
     private String state;
     private String country;
     private String pincode;
+    private List<TreatmentEntity> treatments;
+
+    public List<TreatmentEntity> getTreatments() {
+        return treatments;
+    }
+
+    public void setTreatments(List<TreatmentEntity> treatments) {
+        this.treatments = treatments;
+    }
 
     public Long getId() {
         return id;
