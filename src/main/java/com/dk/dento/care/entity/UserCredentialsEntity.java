@@ -25,8 +25,7 @@ import java.io.Serializable;
 public class UserCredentialsEntity implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "user_id_sequence", sequenceName = "user_id_sequence")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_id_sequence")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     private Long userId;
 
@@ -38,6 +37,10 @@ public class UserCredentialsEntity implements Serializable {
     private boolean loginEnable;
 
     private String password;
+
+    @OneToOne
+    @JoinColumn(name="role_id")
+    private Role role;
 
 
     @OneToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
@@ -84,4 +87,11 @@ public class UserCredentialsEntity implements Serializable {
         this.loginEnable = loginEnable;
     }
 
+    public Role getRoleId() {
+        return role;
+    }
+
+    public void setRoleId(Role roleId) {
+        this.role = roleId;
+    }
 }

@@ -1,92 +1,36 @@
 
-DROP SEQUENCE treatment_id_sequence;
-DROP SEQUENCE user_id_sequence;
-DROP SEQUENCE chief_complaint_id_sequence;
-DROP SEQUENCE oral_examination_id_sequence;
-DROP SEQUENCE payment_id_sequence;
-
--- Sequence: user_id_sequence
-
-CREATE SEQUENCE user_id_sequence
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  START 1000
-  CACHE 1;
-ALTER TABLE user_id_sequence
-  OWNER TO dentocar;
-GRANT ALL ON SEQUENCE user_id_sequence TO dentocar;
-GRANT ALL ON SEQUENCE user_id_sequence TO public;
-
-
--- Sequence: treatment_id_sequence
-
-CREATE SEQUENCE treatment_id_sequence
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  START 1
-  CACHE 1;
-ALTER TABLE treatment_id_sequence
-  OWNER TO dentocar;
-
-
--- Sequence: chief_complaint_id_sequence
-
-CREATE SEQUENCE chief_complaint_id_sequence
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  START 1
-  CACHE 1;
-ALTER TABLE chief_complaint_id_sequence
-  OWNER TO dentocar;
-
--- Sequence: oral_examination_id_sequence
-
-CREATE SEQUENCE oral_examination_id_sequence
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  START 1
-  CACHE 1;
-ALTER TABLE oral_examination_id_sequence
-  OWNER TO dentocar;
-
-
--- Sequence: payment_id_sequence
-
-CREATE SEQUENCE payment_id_sequence
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  START 1
-  CACHE 1;
-ALTER TABLE payment_id_sequence
-  OWNER TO dentocar;
-
-
 DROP TABLE payment;
-DROP TABLE chief_complaint;
 DROP TABLE patient_oral_examination;
 DROP TABLE default_oral_examination;
 DROP TABLE treatment;
+DROP TABLE status;
 DROP TABLE doctor_patient_mapping;
 DROP TABLE user_detail;
 DROP TABLE user_credentials;
-
+DROP TABLE role;
 
 
 -- Table: user_credentials
 
+CREATE TABLE role
+(
+role_id SERIAL NOT NULL,
+role character varying(30),
+CONSTRAINT role_pkey PRIMARY KEY (role_id)
+);
+
 
 CREATE TABLE user_credentials
 (
-  user_id integer NOT NULL,
+  user_id SERIAL NOT NULL,
   email character varying(30),
   login_enabled boolean,
   password character varying(100),
-  CONSTRAINT user_credentials_pkey PRIMARY KEY (user_id)
+  role_id INTEGER NOT NULL ,
+  CONSTRAINT user_credentials_pkey PRIMARY KEY (user_id),
+  CONSTRAINT user_credentials_role_id_fkey FOREIGN KEY (role_id)
+      REFERENCES role (role_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
   OIDS=FALSE
@@ -102,7 +46,6 @@ CREATE TABLE user_detail
   user_id integer NOT NULL,
   first_name character varying(30) NOT NULL,
   last_name character varying(30),
-  role character varying(3),
   gender character varying(6) NOT NULL,
   date_of_birth date,
   phone_number character varying(10) NOT NULL,
@@ -146,33 +89,43 @@ ALTER TABLE doctor_patient_mapping
 
 
 
+
+CREATE TABLE status
+(
+status_id SERIAL NOT NULL,
+status character varying(50),
+CONSTRAINT status_pkey PRIMARY KEY (status_id)
+
+);
 -- Table: treatment
 
 
 CREATE TABLE treatment
 (
-  treatment_id integer NOT NULL,
+  treatment_id SERIAL NOT NULL,
   user_id integer NOT NULL,
-  status character varying(3) NOT NULL, -- PEN,COM,INP
-  total_treatment_cost integer NOT NULL,
+  status_id integer NOT NULL,
+  chief_complaint_description character varying(100) NOT NULL,
   CONSTRAINT treatment_pkey PRIMARY KEY (treatment_id),
   CONSTRAINT treatment_treatment_id_fkey FOREIGN KEY (treatment_id)
       REFERENCES user_detail (user_id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT treatment_status_id_fkey FOREIGN KEY (status_id)
+     REFERENCES status (status_id) MATCH SIMPLE
+     ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
   OIDS=FALSE
 );
 ALTER TABLE treatment
   OWNER TO dentocar;
-COMMENT ON COLUMN treatment.status IS 'PEN,COM,INP';
 
 
 -- Table: default_oral_examination
 
 CREATE TABLE default_oral_examination
 (
-  oral_examination_id integer NOT NULL,
+  oral_examination_id SERIAL NOT NULL,
   description character varying(100),
   cost integer,
   CONSTRAINT default_oral_examination_pkey PRIMARY KEY (oral_examination_id)
@@ -199,31 +152,11 @@ ALTER TABLE patient_oral_examination
   OWNER TO dentocar;
 
 
--- Table: chief_complaint
-
-
-CREATE TABLE chief_complaint
-(
-  chief_complaint_id integer NOT NULL,
-  treatment_id integer NOT NULL,
-  description character varying(100) NOT NULL,
-  CONSTRAINT chief_complaint_pkey PRIMARY KEY (chief_complaint_id),
-  CONSTRAINT chief_complaint_treatment_id_fkey FOREIGN KEY (treatment_id)
-      REFERENCES treatment (treatment_id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE chief_complaint
-  OWNER TO dentocar;
-
 -- Table: payment
-
 
 CREATE TABLE payment
 (
-  payment_id integer NOT NULL,
+  payment_id SERIAL NOT NULL,
   treatment_id integer NOT NULL,
   payment_date date,
   payment_amount integer,

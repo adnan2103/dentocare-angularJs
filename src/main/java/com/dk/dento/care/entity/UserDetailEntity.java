@@ -13,6 +13,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -28,9 +29,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "user_detail")
-@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="role", discriminatorType= DiscriminatorType.STRING,length=10)
-public class UserDetailEntity implements Serializable {
+public class UserDetailEntity {
 
     @GenericGenerator(name = "generator", strategy = "foreign",
             parameters = @Parameter(name = "property", value = "user_id"))

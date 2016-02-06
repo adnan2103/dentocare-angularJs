@@ -7,23 +7,23 @@ import java.io.Serializable;
  */
 public class DoctorPatientMappingId implements Serializable {
 
-    private DoctorEntity doctorEntity;
+    private UserDetailEntity doctorEntity;
 
-    private PatientEntity patientEntity;
+    private UserDetailEntity patientEntity;
 
-    public DoctorEntity getDoctorEntity() {
+    public UserDetailEntity getDoctorEntity() {
         return doctorEntity;
     }
 
-    public void setDoctorEntity(DoctorEntity doctorEntity) {
+    public void setDoctorEntity(UserDetailEntity doctorEntity) {
         this.doctorEntity = doctorEntity;
     }
 
-    public PatientEntity getPatientEntity() {
+    public UserDetailEntity getPatientEntity() {
         return patientEntity;
     }
 
-    public void setPatientEntity(PatientEntity patientEntity) {
+    public void setPatientEntity(UserDetailEntity patientEntity) {
         this.patientEntity = patientEntity;
     }
 }

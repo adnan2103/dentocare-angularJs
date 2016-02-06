@@ -19,50 +19,28 @@ public class DoctorPatientMappingEntity implements Serializable {
 
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "doctor_id", referencedColumnName = "user_id")
-    private DoctorEntity doctorEntity;
+    private UserDetailEntity doctorEntity;
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "patient_id", referencedColumnName = "user_id")
-    private PatientEntity patientEntity;
+    private UserDetailEntity patientEntity;
 
-    @Column(name = "doctor_id", insertable = false, updatable = false)
-    private Long doctorId;
-
-    @Column(name = "patient_id", insertable = false, updatable = false)
-    private Long patientId;
-
-    public DoctorEntity getDoctorEntity() {
+    public UserDetailEntity getDoctorEntity() {
         return doctorEntity;
     }
 
-    public void setDoctorEntity(DoctorEntity doctorEntity) {
+    public void setDoctorEntity(UserDetailEntity doctorEntity) {
         this.doctorEntity = doctorEntity;
     }
 
-    public PatientEntity getPatientEntity() {
+    public UserDetailEntity getPatientEntity() {
         return patientEntity;
     }
 
-    public void setPatientEntity(PatientEntity patientEntity) {
+    public void setPatientEntity(UserDetailEntity patientEntity) {
         this.patientEntity = patientEntity;
-    }
-
-    public Long getDoctorId() {
-        return doctorId;
-    }
-
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
-    }
-
-    public Long getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(Long patientId) {
-        this.patientId = patientId;
     }
 }

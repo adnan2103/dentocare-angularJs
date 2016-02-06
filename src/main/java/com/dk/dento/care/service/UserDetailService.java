@@ -1,17 +1,10 @@
 package com.dk.dento.care.service;
 
-import com.dk.dento.care.entity.DoctorEntity;
 import com.dk.dento.care.entity.DoctorPatientMappingEntity;
-import com.dk.dento.care.entity.EmailAddress;
-import com.dk.dento.care.entity.Name;
-import com.dk.dento.care.entity.PatientEntity;
-import com.dk.dento.care.entity.PhoneNumber;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.repository.DoctorPatientMappingRepository;
-import com.dk.dento.care.repository.DoctorRepository;
-import com.dk.dento.care.repository.PatientRepository;
 import com.dk.dento.care.repository.UserCredentialsRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +23,6 @@ public class UserDetailService {
     private UserDetailRepository userDetailRepository;
 
     @Autowired
-    private DoctorRepository doctorRepository;
-
-    @Autowired
-    private PatientRepository patientRepository;
-
-
-    @Autowired
     private DoctorPatientMappingRepository doctorPatientMappingRepository;
 
     public List<Patient> getAllPatientForDoctor() {
@@ -48,8 +34,6 @@ public class UserDetailService {
 
         Iterable<DoctorPatientMappingEntity> doctorPatientMappingEntities = doctorPatientMappingRepository.findAll();
 
-        Iterable<DoctorEntity> doctorEntities = doctorRepository.findAll();
-        Iterable<PatientEntity> patientEntities = patientRepository.findAll();
 
         for(UserCredentialsEntity userCredentialsEntity : userCredentialsEntities) {
 
