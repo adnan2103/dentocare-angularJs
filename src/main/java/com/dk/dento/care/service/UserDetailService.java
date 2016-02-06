@@ -27,7 +27,7 @@ public class UserDetailService {
 
     public List<Patient> getAllPatientForDoctor() {
 
-
+        List<DoctorPatientMappingEntity> patientsNew0 = doctorPatientMappingRepository.findByDoctorId(1L);
         List<Patient> patients = new ArrayList<Patient>();
         Iterable<UserCredentialsEntity> userCredentialsEntities = userCredentialsRepository.findAll();
         Patient patient = null;
