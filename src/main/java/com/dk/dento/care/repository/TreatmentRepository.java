@@ -1,0 +1,14 @@
+package com.dk.dento.care.repository;
+
+import com.dk.dento.care.entity.TreatmentEntity;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
+
+/**
+ * Created by khana on 06/02/16.
+ */
+public interface TreatmentRepository extends CrudRepository<TreatmentEntity, Long> {
+
+    //List<TreatmentEntity> findByUserId(Long userId);
+}

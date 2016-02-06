@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface DoctorPatientMappingRepository extends CrudRepository<DoctorPatientMappingEntity, DoctorPatientMappingId> {
 
-    List<DoctorPatientMappingEntity> findByDoctorId(Long doctorId);
+    //List<DoctorPatientMappingEntity> findByDoctorId(Long doctorId);
 }

@@ -37,3 +37,28 @@ insert into doctor_patient_mapping(doctor_id,patient_id) values(1,3);
 insert into doctor_patient_mapping(doctor_id,patient_id) values(4,5);
 insert into doctor_patient_mapping(doctor_id,patient_id) values(4,6);
 
+insert into status(status) values('In-Progress');
+insert into status(status) values('Closed');
+
+
+insert into treatment(user_id,status_id,chief_complaint_description) values(2,1,'Tooth ache|gum sweling|redness');
+insert into treatment(user_id,status_id,chief_complaint_description) values(2,1,'Tooth ache2|gum sweling2|redness2');
+insert into treatment(user_id,status_id,chief_complaint_description) values(3,2,'Teeth bug');
+
+insert into default_oral_examination(description,cost) values('Scaling',3000);
+insert into default_oral_examination(description,cost) values('root canal',6000);
+
+insert into patient_oral_examination(treatment_id,oral_examination_id,cost) values(1,1,3000);
+insert into patient_oral_examination(treatment_id,oral_examination_id,cost) values(1,2,6000);
+
+insert into patient_oral_examination(treatment_id,oral_examination_id,cost) values(2,2,5000);
+
+insert into patient_oral_examination(treatment_id,oral_examination_id,cost) values(3,1,3000);
+
+insert into payment(treatment_id,payment_date,payment_amount,notes) values(1,now(),4000,'first payment');
+insert into payment(treatment_id,payment_date,payment_amount,notes) values(1,now(),1000,'second visit');
+insert into payment(treatment_id,payment_date,payment_amount,notes) values(2,now(),3000,'first visit');
+insert into payment(treatment_id,payment_date,payment_amount,notes) values(3,now(),2000,'first visit');
+insert into payment(treatment_id,payment_date,payment_amount,notes) values(3,now(),1000,'complet payment');
+
+
