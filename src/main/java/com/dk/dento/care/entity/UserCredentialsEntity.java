@@ -1,22 +1,16 @@
 package com.dk.dento.care.entity;
 
 
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 
@@ -40,7 +34,7 @@ public class UserCredentialsEntity implements Serializable {
 
     @OneToOne
     @JoinColumn(name="role_id")
-    private Role role;
+    private RoleEntity roleEntity;
 
 
     @OneToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
@@ -87,11 +81,11 @@ public class UserCredentialsEntity implements Serializable {
         this.loginEnable = loginEnable;
     }
 
-    public Role getRoleId() {
-        return role;
+    public RoleEntity getRoleEntity() {
+        return roleEntity;
     }
 
-    public void setRoleId(Role roleId) {
-        this.role = roleId;
+    public void setRoleEntity(RoleEntity roleEntity) {
+        this.roleEntity = roleEntity;
     }
 }
