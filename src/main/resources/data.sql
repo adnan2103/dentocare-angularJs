@@ -1,4 +1,7 @@
 
+delete from user_detail;
+delete from user_credentials;
+
 insert into user_credentials(user_id,email,login_enabled,password) values (1,'adnan@khan.com',true,'password');
 insert into user_credentials(user_id,email,login_enabled,password) values (2,null,false,null);
 insert into user_credentials(user_id,email,login_enabled,password) values (3,null,false,null);
@@ -16,7 +19,7 @@ insert into user_detail(user_id,first_name,last_name,role,gender,date_of_birth,p
 (2,'Rohit','Tihor','PAT','Male',now(),'123456789','Address line1','Address line2','Hyderabad','TS','India',800086);
 
 insert into user_detail(user_id,first_name,last_name,role,gender,date_of_birth,phone_number,address_line1,address_line2,city,state,country,pincode) values
-(3,'Rupam','Boul','PAT','Male',now(),'123456789','Address line1','Address line2','Hyderabad','TS','India',800086);
+(3,'Rupam','Boul','DOC','Male',now(),'123456789','Address line1','Address line2','Hyderabad','TS','India',800086);
 
 insert into user_detail(user_id,first_name,last_name,role,gender,date_of_birth,phone_number,address_line1,address_line2,city,state,country,pincode) values
 (4,'Sree','Vidya','PAT','Female',now(),'123456789','Address line1','Address line2','Hyderabad','TS','India',800086);
@@ -26,3 +29,10 @@ insert into user_detail(user_id,first_name,last_name,role,gender,date_of_birth,p
 
 insert into user_detail(user_id,first_name,last_name,role,gender,date_of_birth,phone_number,address_line1,address_line2,city,state,country,pincode) values
 (6,'Phani','Hero','PAT','Male',now(),'123456789','Address line1','Address line2','Hyderabad','TS','India',800086);
+
+
+insert into doctor_patient_mapping(doctor_id,patient_id) values(1,2);
+insert into doctor_patient_mapping(doctor_id,patient_id) values(1,4);
+insert into doctor_patient_mapping(doctor_id,patient_id) values(3,5);
+insert into doctor_patient_mapping(doctor_id,patient_id) values(3,6);
+

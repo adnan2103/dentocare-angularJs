@@ -1,6 +1,7 @@
 package com.dk.dento.care.service;
 
 import com.dk.dento.care.entity.DoctorEntity;
+import com.dk.dento.care.entity.DoctorPatientMappingEntity;
 import com.dk.dento.care.entity.EmailAddress;
 import com.dk.dento.care.entity.Name;
 import com.dk.dento.care.entity.PatientEntity;
@@ -8,6 +9,7 @@ import com.dk.dento.care.entity.PhoneNumber;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.model.Patient;
+import com.dk.dento.care.repository.DoctorPatientMappingRepository;
 import com.dk.dento.care.repository.DoctorRepository;
 import com.dk.dento.care.repository.PatientRepository;
 import com.dk.dento.care.repository.UserCredentialsRepository;
@@ -33,11 +35,18 @@ public class UserDetailService {
     @Autowired
     private PatientRepository patientRepository;
 
+
+    @Autowired
+    private DoctorPatientMappingRepository doctorPatientMappingRepository;
+
     public List<Patient> getAllPatientForDoctor() {
+
 
         List<Patient> patients = new ArrayList<Patient>();
         Iterable<UserCredentialsEntity> userCredentialsEntities = userCredentialsRepository.findAll();
         Patient patient = null;
+
+        Iterable<DoctorPatientMappingEntity> doctorPatientMappingEntities = doctorPatientMappingRepository.findAll();
 
         Iterable<DoctorEntity> doctorEntities = doctorRepository.findAll();
         Iterable<PatientEntity> patientEntities = patientRepository.findAll();
