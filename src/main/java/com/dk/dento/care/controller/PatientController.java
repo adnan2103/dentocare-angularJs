@@ -6,7 +6,9 @@ import com.dk.dento.care.service.AuthenticationService;
 import com.dk.dento.care.service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
@@ -30,10 +32,10 @@ public class PatientController {
         return userDetailService.getAllPatientForDoctor(doctor);
     }
 
-    @RequestMapping("/one")
-    public @ResponseBody
-    Patient getPatientDetails() {
-        return userDetailService.getPatientDetails(2L);
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Patient getPatientDetails(@PathVariable final Long id) {
+        return userDetailService.getPatientDetails(id);
     }
 
     @RequestMapping("/layout")
