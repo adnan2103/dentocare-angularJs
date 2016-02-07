@@ -37,7 +37,6 @@ public class UserDetailService {
         Patient patient = null;
 
         Iterable<DoctorPatientMappingEntity> allPatients = doctorPatientMappingRepository.findAllPatientsForDoctor(doctor.getUserId());
-
         for(DoctorPatientMappingEntity doctorPatientMappingEntity : allPatients) {
 
             UserDetailEntity userDetailEntity = doctorPatientMappingEntity.getPatientEntity();

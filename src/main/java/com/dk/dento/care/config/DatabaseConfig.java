@@ -4,7 +4,7 @@ import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import com.zaxxer.hikari.HikariDataSource;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,13 +13,12 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-
 
 @Configuration
 @ComponentScan(basePackages = "com.dk.dento.care")
@@ -43,8 +42,6 @@ public class DatabaseConfig {
     @Value("${spring.jpa.database-platform}")
     private String dialect;
 
-
-
     @Value("${jdbc.databaseName}")
     private String databaseName;
 
@@ -57,23 +54,19 @@ public class DatabaseConfig {
     @Value("${jdbc.serverName}")
     private String serverName;
 
-
     private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
 
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
 
     private static final String NAMING_STRATEGY = "hibernate.ejb.naming_strategy";
 
-
     @Bean(name = "dataSource")
     public DataSource getDataSource() {
-        HikariDataSource dataSource = new HikariDataSource();
-        dataSource.addDataSourceProperty("databaseName", databaseName);
-        dataSource.addDataSourceProperty("serverName", serverName);
-        dataSource.setMaximumPoolSize(maxPoolSize);
-        dataSource.setDataSourceClassName(datasourceClass);
-        dataSource.addDataSourceProperty("user", username);
-        dataSource.addDataSourceProperty("password", password);
+        DriverManagerDataSource dataSource = new DriverManagerDataSource(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+        dataSource.setDriverClassName(dbDriver);
+
         return dataSource;
     }
 
@@ -83,9 +76,7 @@ public class DatabaseConfig {
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setPackagesToScan("com.dk.dento.care.entity");
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-
         entityManagerFactoryBean.setJpaProperties(hibProperties());
-
 
         return entityManagerFactoryBean;
     }
@@ -95,6 +86,7 @@ public class DatabaseConfig {
         properties.put(PROPERTY_NAME_HIBERNATE_DIALECT, dialect);
         properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, "true");
         properties.put(NAMING_STRATEGY, "org.hibernate.cfg.ImprovedNamingStrategy");
+
         return properties;
     }
 
@@ -107,5 +99,4 @@ public class DatabaseConfig {
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);
     }
-
 }

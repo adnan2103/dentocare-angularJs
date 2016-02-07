@@ -19,6 +19,8 @@ role_id SERIAL NOT NULL,
 role character varying(30),
 CONSTRAINT role_pkey PRIMARY KEY (role_id)
 );
+ALTER TABLE role
+  OWNER TO dentocar;
 
 
 CREATE TABLE user_credentials
@@ -89,14 +91,15 @@ ALTER TABLE doctor_patient_mapping
   OWNER TO dentocar;
 
 
-
-
 CREATE TABLE status
 (
 status_id SERIAL NOT NULL,
 status character varying(50),
 CONSTRAINT status_pkey PRIMARY KEY (status_id)
 );
+ALTER TABLE status
+  OWNER TO dentocar;
+
 -- Table: treatment
 
 
