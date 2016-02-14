@@ -5,7 +5,6 @@ import com.dk.dento.care.entity.EmailAddress;
 import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
-import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.repository.DoctorPatientMappingRepository;
 import com.dk.dento.care.repository.TreatmentRepository;
 import com.dk.dento.care.repository.UserCredentialsRepository;
@@ -44,12 +43,8 @@ public class UserDetailService {
         return patients;
     }
 
-    public Patient getPatientDetails(Long patientId) {
-        Patient patient = new Patient();
+    public UserDetailEntity getPatientDetails(Long patientId) {
         UserDetailEntity userDetailEntity = userDetailRepository.findOne(patientId);
-        List<TreatmentEntity> treatments = treatmentRepository.findAllTreatmentForPatient(patientId);
-        patient.setFirstName(userDetailEntity.getName().toString());
-        patient.setTreatments(treatments);
-        return patient;
+        return userDetailEntity;
     }
 }

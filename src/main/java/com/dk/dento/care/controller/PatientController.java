@@ -2,7 +2,6 @@ package com.dk.dento.care.controller;
 
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
-import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.service.AuthenticationService;
 import com.dk.dento.care.service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public class PatientController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Patient getPatientDetails(@PathVariable final Long id) {
+    public UserDetailEntity getPatientDetails(@PathVariable final Long id) {
         return userDetailService.getPatientDetails(id);
     }
 
