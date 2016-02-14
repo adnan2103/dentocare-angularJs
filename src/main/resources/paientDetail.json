@@ -1,0 +1,49 @@
+{
+  "patient":{
+    "id":123,
+    "firstName":"Adnan",
+    "lastName":"Khan",
+    "gender":"M",
+    "dateOfBirth":"1987-06-07",
+    "phoneNumber":123456789,
+    "addressLine1":"6-4-302/2",
+    "addressLine2":"line2",
+    "city":"Hyderabad",
+    "state":"AP",
+    "country":"AP",
+    "pinCode":"500086",
+    "treatment":[
+      {
+        "id":123,
+        "statusId":1,
+        "chiefComplaintDescription":"problem 1|problem 2|problem 3",
+        "oralExamination":[
+          {
+            "id":12,
+            "oralExaminationId":1,
+            "cost":500
+          },
+          {
+            "id":11,
+            "oralExaminationId":2,
+            "cost":300
+          }
+        ],
+        "payment":[
+          {
+            "id":45,
+            "paymentDate":"22012016",
+            "paymentAmount":300,
+            "notes":"Second Visit"
+          },
+          {
+            "id":25,
+            "paymentDate":"20012016",
+            "paymentAmount":200,
+            "notes":"First Visit"
+          }
+        ]
+      }
+    ]
+  }
+}
