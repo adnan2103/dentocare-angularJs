@@ -1,15 +1,4 @@
 
-DROP TABLE payment;
-DROP TABLE patient_oral_examination;
-DROP TABLE default_oral_examination;
-DROP TABLE treatment;
-DROP TABLE status;
-DROP TABLE doctor_patient_mapping;
-DROP TABLE user_detail;
-DROP TABLE user_credentials;
-DROP TABLE role;
-
-
 -- Table: user_credentials
 
 CREATE TABLE role
@@ -123,29 +112,18 @@ ALTER TABLE treatment
   OWNER TO dentocar;
 
 
--- Table: default_oral_examination
-
-CREATE TABLE default_oral_examination
-(
-  oral_examination_id SERIAL NOT NULL,
-  description character varying(100),
-  cost integer,
-  CONSTRAINT default_oral_examination_pkey PRIMARY KEY (oral_examination_id)
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE default_oral_examination
-  OWNER TO dentocar;
-
 -- Table: patient_oral_examination
 
 CREATE TABLE patient_oral_examination
 (
+  oral_examination_id SERIAL NOT NULL,
   treatment_id integer NOT NULL,
-  oral_examination_id integer NOT NULL,
+  description character varying(100),
   cost integer,
-  CONSTRAINT patient_oral_examination_pkey PRIMARY KEY (treatment_id, oral_examination_id)
+  CONSTRAINT default_oral_examination_pkey PRIMARY KEY (oral_examination_id),
+  CONSTRAINT patient_oral_examination_fkey FOREIGN KEY (treatment_id)
+      REFERENCES treatment (treatment_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
   OIDS=FALSE

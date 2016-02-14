@@ -1,6 +1,9 @@
 package com.dk.dento.care.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
@@ -10,28 +13,33 @@ import javax.persistence.Table;
 /**
  * Created by khana on 06/02/16.
  */
-@Entity @IdClass(PatientOralExaminationId.class)
+@Entity
 @Table(name = "patient_oral_examination")
 public class PatientOralExaminationEntity {
 
     @Id
-    @ManyToOne
-    @JoinColumn(name = "treatment_id", referencedColumnName = "treatment_id")
-    private TreatmentEntity treatment;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "oral_examination_id")
+    private Long oralExaminationId;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "oral_examination_id", referencedColumnName = "oral_examination_id")
-    private DefaultOralExaminationEntity defaultOralExaminationEntity;
+    private String description;
 
     private Long cost;
 
-    public TreatmentEntity getTreatment() {
-        return treatment;
+    public Long getOralExaminationId() {
+        return oralExaminationId;
     }
 
-    public void setTreatment(TreatmentEntity treatment) {
-        this.treatment = treatment;
+    public void setOralExaminationId(Long oralExaminationId) {
+        this.oralExaminationId = oralExaminationId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getCost() {
@@ -40,21 +48,5 @@ public class PatientOralExaminationEntity {
 
     public void setCost(Long cost) {
         this.cost = cost;
-    }
-
-    public TreatmentEntity getTreatmentEntity() {
-        return treatment;
-    }
-
-    public void setTreatmentEntity(TreatmentEntity treatmentEntity) {
-        this.treatment = treatmentEntity;
-    }
-
-    public DefaultOralExaminationEntity getDefaultOralExaminationEntity() {
-        return defaultOralExaminationEntity;
-    }
-
-    public void setDefaultOralExaminationEntity(DefaultOralExaminationEntity defaultOralExaminationEntity) {
-        this.defaultOralExaminationEntity = defaultOralExaminationEntity;
     }
 }
