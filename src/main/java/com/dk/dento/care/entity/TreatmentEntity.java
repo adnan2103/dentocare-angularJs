@@ -35,7 +35,7 @@ public class TreatmentEntity {
     private String chiefComplaintDescription;
 
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "payment_id")
     private Set<PaymentEntity> paymentEntities = new HashSet<PaymentEntity>(0);
 

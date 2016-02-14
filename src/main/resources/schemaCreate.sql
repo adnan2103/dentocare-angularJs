@@ -19,7 +19,7 @@ CREATE TABLE user_credentials
   password character varying(100),
   role_id INTEGER NOT NULL ,
   CONSTRAINT user_credentials_pkey PRIMARY KEY (user_id),
-  CONSTRAINT user_credentials_role_id_fkey FOREIGN KEY (role_id)
+  CONSTRAINT user_credentials_role_fkey FOREIGN KEY (role_id)
       REFERENCES role (role_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
@@ -47,7 +47,7 @@ CREATE TABLE user_detail
   country character varying(20),
   pincode integer,
   CONSTRAINT user_detail_pkey PRIMARY KEY (user_id),
-  CONSTRAINT user_detail_user_id_fkey FOREIGN KEY (user_id)
+  CONSTRAINT user_detail_user_fkey FOREIGN KEY (user_id)
       REFERENCES user_credentials (user_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
@@ -98,10 +98,10 @@ CREATE TABLE treatment
   status_id integer NOT NULL,
   chief_complaint_description character varying(100) NOT NULL,
   CONSTRAINT treatment_pkey PRIMARY KEY (treatment_id),
-  CONSTRAINT treatment_treatment_id_fkey FOREIGN KEY (treatment_id)
+  CONSTRAINT treatment_fkey FOREIGN KEY (user_id)
       REFERENCES user_detail (user_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT treatment_status_id_fkey FOREIGN KEY (status_id)
+  CONSTRAINT treatment_status_fkey FOREIGN KEY (status_id)
      REFERENCES status (status_id) MATCH SIMPLE
      ON UPDATE NO ACTION ON DELETE NO ACTION
 )
@@ -120,7 +120,7 @@ CREATE TABLE patient_oral_examination
   treatment_id integer NOT NULL,
   description character varying(100),
   cost integer,
-  CONSTRAINT default_oral_examination_pkey PRIMARY KEY (oral_examination_id),
+  CONSTRAINT patient_oral_examination_pkey PRIMARY KEY (oral_examination_id),
   CONSTRAINT patient_oral_examination_fkey FOREIGN KEY (treatment_id)
       REFERENCES treatment (treatment_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
@@ -142,7 +142,7 @@ CREATE TABLE payment
   payment_amount integer,
   notes character varying(100),
   CONSTRAINT payment_pkey PRIMARY KEY (payment_id),
-  CONSTRAINT payment_treatment_id_fkey FOREIGN KEY (treatment_id)
+  CONSTRAINT payment_treatment_fkey FOREIGN KEY (treatment_id)
       REFERENCES treatment (treatment_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
