@@ -1,6 +1,5 @@
 
 DROP TABLE payment;
-
 DROP TABLE patient_oral_examination;
 DROP TABLE default_oral_examination;
 DROP TABLE treatment;
