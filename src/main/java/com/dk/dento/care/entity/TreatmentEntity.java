@@ -28,10 +28,6 @@ public class TreatmentEntity {
     private Long treatmentId;
 
     @OneToOne
-    @JoinColumn(name="user_id")
-    private UserDetailEntity userDetailEntity;
-
-    @OneToOne
     @JoinColumn(name="status_id")
     private StatusEntity statusEntity;
 
@@ -39,11 +35,9 @@ public class TreatmentEntity {
     private String chiefComplaintDescription;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "treatment",fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "payment_id")
     private Set<PaymentEntity> paymentEntities = new HashSet<PaymentEntity>(0);
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "treatment",fetch = FetchType.EAGER)
-    private Set<PatientOralExaminationEntity> patientOralExaminationEntities = new HashSet<PatientOralExaminationEntity>(0);
 
     public Long getTreatmentId() {
         return treatmentId;
@@ -51,14 +45,6 @@ public class TreatmentEntity {
 
     public void setTreatmentId(Long treatmentId) {
         this.treatmentId = treatmentId;
-    }
-
-    public UserDetailEntity getUserDetailEntity() {
-        return userDetailEntity;
-    }
-
-    public void setUserDetailEntity(UserDetailEntity userDetailEntity) {
-        this.userDetailEntity = userDetailEntity;
     }
 
     public StatusEntity getStatusEntity() {
@@ -85,11 +71,4 @@ public class TreatmentEntity {
         this.paymentEntities = paymentEntities;
     }
 
-    public Set<PatientOralExaminationEntity> getPatientOralExaminationEntities() {
-        return patientOralExaminationEntities;
-    }
-
-    public void setPatientOralExaminationEntities(Set<PatientOralExaminationEntity> patientOralExaminationEntities) {
-        this.patientOralExaminationEntities = patientOralExaminationEntities;
-    }
 }

@@ -4,6 +4,7 @@ import com.dk.dento.care.model.UserCredentials;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -17,11 +18,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by khana on 26/01/16.
@@ -57,6 +62,17 @@ public class UserDetailEntity {
     @PrimaryKeyJoinColumn
     private UserCredentialsEntity userCredentialsEntity;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="treatment_id")
+    private Set<TreatmentEntity> treatmentEntities = new HashSet<TreatmentEntity>(0);
+
+    public Set<TreatmentEntity> getTreatmentEntities() {
+        return treatmentEntities;
+    }
+
+    public void setTreatmentEntities(Set<TreatmentEntity> treatmentEntities) {
+        this.treatmentEntities = treatmentEntities;
+    }
 
     public UserCredentialsEntity getUserCredentialsEntity() {
         return userCredentialsEntity;

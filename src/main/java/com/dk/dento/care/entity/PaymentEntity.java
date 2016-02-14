@@ -24,10 +24,6 @@ public class PaymentEntity {
     @Column(name = "payment_id")
     private Long paymentId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "treatment_id")
-    private TreatmentEntity treatment;
-
     @Column(name = "payment_date")
     private Date paymentDate;
 
@@ -43,14 +39,6 @@ public class PaymentEntity {
 
     public void setPaymentId(Long paymentId) {
         this.paymentId = paymentId;
-    }
-
-    public TreatmentEntity getTreatmentEntity() {
-        return treatment;
-    }
-
-    public void setTreatmentEntity(TreatmentEntity treatmentEntity) {
-        this.treatment = treatmentEntity;
     }
 
     public Date getPaymentDate() {
