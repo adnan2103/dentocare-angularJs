@@ -6,7 +6,7 @@ insert into role(role) values('DOCTOR');
 insert into user_credentials(email,login_enabled,password,role_id) values ('adnan@khan.com',true,'password',2);
 insert into user_credentials(email,login_enabled,password,role_id) values (null,false,null,1);
 insert into user_credentials(email,login_enabled,password,role_id) values (null,false,null,1);
-insert into user_credentials(email,login_enabled,password,role_id) values (null,false,null,2);
+insert into user_credentials(email,login_enabled,password,role_id) values ('info@adnan.com',false,null,2);
 insert into user_credentials(email,login_enabled,password,role_id) values (null,false,null,1);
 insert into user_credentials(email,login_enabled,password,role_id) values (null,false,null,1);
 
@@ -36,6 +36,8 @@ insert into doctor_patient_mapping(doctor_id,patient_id) values(1,2);
 insert into doctor_patient_mapping(doctor_id,patient_id) values(1,3);
 insert into doctor_patient_mapping(doctor_id,patient_id) values(4,5);
 insert into doctor_patient_mapping(doctor_id,patient_id) values(4,6);
+insert into doctor_patient_mapping(doctor_id,patient_id) values(4,2);
+insert into doctor_patient_mapping(doctor_id,patient_id) values(4,3);
 
 insert into status(status) values('In-Progress');
 insert into status(status) values('Closed');

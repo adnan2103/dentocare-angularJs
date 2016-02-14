@@ -31,18 +31,15 @@ public class UserDetailService {
     @Autowired
     private TreatmentRepository treatmentRepository;
 
-    public List<Patient> getAllPatientForDoctor(UserCredentialsEntity doctor) {
+    public List<UserDetailEntity> getAllPatientForDoctor(UserCredentialsEntity doctor) {
 
-        List<Patient> patients = new ArrayList<Patient>();
-        Patient patient = null;
+        List<UserDetailEntity> patients = new ArrayList<UserDetailEntity>();
 
         Iterable<DoctorPatientMappingEntity> allPatients = doctorPatientMappingRepository.findAllPatientsForDoctor(doctor.getUserId());
         for(DoctorPatientMappingEntity doctorPatientMappingEntity : allPatients) {
 
             UserDetailEntity userDetailEntity = doctorPatientMappingEntity.getPatientEntity();
-            patient = new Patient();
-            patient.setFirstName(userDetailEntity.getName().toString());
-            patients.add(patient);
+            patients.add(userDetailEntity);
         }
         return patients;
     }

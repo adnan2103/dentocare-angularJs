@@ -1,7 +1,7 @@
 
 -- Table: user_credentials
 
-CREATE TABLE role
+CREATE TABLE IF NOT EXISTS role
 (
 role_id SERIAL NOT NULL,
 role character varying(30),
@@ -11,7 +11,7 @@ ALTER TABLE role
   OWNER TO dentocar;
 
 
-CREATE TABLE user_credentials
+CREATE TABLE IF NOT EXISTS user_credentials
 (
   user_id SERIAL NOT NULL,
   email character varying(30),
@@ -32,7 +32,7 @@ ALTER TABLE user_credentials
 -- Table: user_detail
 
 
-CREATE TABLE user_detail
+CREATE TABLE IF NOT EXISTS user_detail
 (
   user_id integer NOT NULL,
   first_name character varying(30) NOT NULL,
@@ -60,7 +60,7 @@ ALTER TABLE user_detail
 
 -- Table: doctor_patient_mapping
 
-CREATE TABLE doctor_patient_mapping
+CREATE TABLE IF NOT EXISTS doctor_patient_mapping
 (
   doctor_id integer NOT NULL,
   patient_id integer NOT NULL,
@@ -79,7 +79,7 @@ ALTER TABLE doctor_patient_mapping
   OWNER TO dentocar;
 
 
-CREATE TABLE status
+CREATE TABLE IF NOT EXISTS status
 (
 status_id SERIAL NOT NULL,
 status character varying(50),
@@ -91,7 +91,7 @@ ALTER TABLE status
 -- Table: treatment
 
 
-CREATE TABLE treatment
+CREATE TABLE IF NOT EXISTS treatment
 (
   treatment_id SERIAL NOT NULL,
   user_id integer NOT NULL,
@@ -114,7 +114,7 @@ ALTER TABLE treatment
 
 -- Table: patient_oral_examination
 
-CREATE TABLE patient_oral_examination
+CREATE TABLE IF NOT EXISTS patient_oral_examination
 (
   oral_examination_id SERIAL NOT NULL,
   treatment_id integer NOT NULL,
@@ -134,7 +134,7 @@ ALTER TABLE patient_oral_examination
 
 -- Table: payment
 
-CREATE TABLE payment
+CREATE TABLE IF NOT EXISTS payment
 (
   payment_id SERIAL NOT NULL,
   treatment_id integer NOT NULL,

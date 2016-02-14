@@ -12,20 +12,20 @@
     "state":"AP",
     "country":"AP",
     "pinCode":"500086",
-    "treatment":[
+    "treatments":[
       {
         "id":123,
         "statusId":1,
         "chiefComplaintDescription":"problem 1|problem 2|problem 3",
-        "oralExamination":[
+        "oralExaminations":[
           {
             "id":12,
-            "oralExaminationId":1,
+            "description":"root canal",
             "cost":500
           },
           {
             "id":11,
-            "oralExaminationId":2,
+            "description":"extraction",
             "cost":300
           }
         ],

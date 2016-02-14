@@ -1,6 +1,7 @@
 package com.dk.dento.care.controller;
 
 import com.dk.dento.care.entity.UserCredentialsEntity;
+import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.service.AuthenticationService;
 import com.dk.dento.care.service.UserDetailService;
@@ -26,7 +27,7 @@ public class PatientController {
 
     @RequestMapping("/all")
     public @ResponseBody
-    List<Patient> getAllPatients() {
+    List<UserDetailEntity> getAllPatientsForLogedInDoctor() {
 
         UserCredentialsEntity doctor = authenticationService.getAuthenticatedUser();
         return userDetailService.getAllPatientForDoctor(doctor);

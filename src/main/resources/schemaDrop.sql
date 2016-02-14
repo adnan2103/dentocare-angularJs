@@ -1,9 +1,9 @@
-DROP TABLE payment;
-DROP TABLE patient_oral_examination;
-DROP TABLE default_oral_examination;
-DROP TABLE treatment;
-DROP TABLE status;
-DROP TABLE doctor_patient_mapping;
-DROP TABLE user_detail;
-DROP TABLE user_credentials;
-DROP TABLE role;
+DROP TABLE IF EXISTS  payment;
+DROP TABLE IF EXISTS  patient_oral_examination;
+DROP TABLE IF EXISTS  default_oral_examination;
+DROP TABLE IF EXISTS  treatment;
+DROP TABLE IF EXISTS  status;
+DROP TABLE IF EXISTS  doctor_patient_mapping;
+DROP TABLE IF EXISTS  user_detail;
+DROP TABLE IF EXISTS  user_credentials;
+DROP TABLE IF EXISTS  role;

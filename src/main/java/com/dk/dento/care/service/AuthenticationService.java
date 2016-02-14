@@ -16,7 +16,7 @@ public class AuthenticationService {
     UserCredentialsRepository userCredentialsRepository;
 
     public UserCredentialsEntity getAuthenticatedUser() {
-        return userCredentialsRepository.findByEmailAddress(new EmailAddress("adnan@khan.com"));
+        return userCredentialsRepository.findByEmailAddress(new EmailAddress("info@adnan.com"));
     }
 
 }
