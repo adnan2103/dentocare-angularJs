@@ -11,6 +11,4 @@ import java.util.List;
  */
 public interface TreatmentRepository extends CrudRepository<TreatmentEntity, Long> {
 
-    @Query("select treatment from TreatmentEntity treatment where user_id = ?1")
-    List<TreatmentEntity> findAllTreatmentForPatient(Long userId);
 }

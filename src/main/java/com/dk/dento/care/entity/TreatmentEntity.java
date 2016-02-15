@@ -39,7 +39,7 @@ public class TreatmentEntity {
     @JoinColumn(name = "payment_id")
     private Set<PaymentEntity> paymentEntities = new HashSet<PaymentEntity>(0);
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "oral_examination_id")
     private Set<PatientOralExaminationEntity> patientOralExaminationEntities = new HashSet<PatientOralExaminationEntity>(0);
 

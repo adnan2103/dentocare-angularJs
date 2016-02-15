@@ -58,10 +58,6 @@ public class UserDetailEntity {
     @Embedded
     private Address address;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn
-    private UserCredentialsEntity userCredentialsEntity;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="treatment_id")
     private Set<TreatmentEntity> treatmentEntities = new HashSet<TreatmentEntity>(0);
@@ -72,14 +68,6 @@ public class UserDetailEntity {
 
     public void setTreatmentEntities(Set<TreatmentEntity> treatmentEntities) {
         this.treatmentEntities = treatmentEntities;
-    }
-
-    public UserCredentialsEntity getUserCredentialsEntity() {
-        return userCredentialsEntity;
-    }
-
-    public void setUserCredentialsEntity(UserCredentialsEntity userCredentialsEntity) {
-        this.userCredentialsEntity = userCredentialsEntity;
     }
 
     public Long getId() {
