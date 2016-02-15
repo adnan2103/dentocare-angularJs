@@ -17,16 +17,16 @@ public class StatusEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "status_id")
-    private Long statusId;
+    private Long id;
 
     private String status;
 
-    public Long getStatusId() {
-        return statusId;
+    public Long getId() {
+        return id;
     }
 
-    public void setStatusId(Long statusId) {
-        this.statusId = statusId;
+    public void setId(Long statusId) {
+        this.id = id;
     }
 
     public String getStatus() {

@@ -19,7 +19,7 @@ public class UserCredentialsService {
 
         UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByEmailAddress(new EmailAddress(email));
 
-        userCredentials.setId(userCredentialsEntity.getUserId());
+        userCredentials.setId(userCredentialsEntity.getId());
         userCredentials.setEmailId(userCredentialsEntity.getEmailAddress().toString());
         userCredentials.setLoginEnable(userCredentialsEntity.isLoginEnable());
        // userCredentials.setRole(userCredentialsEntity.getRoleType().name());

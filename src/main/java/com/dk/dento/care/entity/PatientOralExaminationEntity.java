@@ -20,18 +20,18 @@ public class PatientOralExaminationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "oral_examination_id")
-    private Long oralExaminationId;
+    private Long id;
 
     private String description;
 
     private Long cost;
 
-    public Long getOralExaminationId() {
-        return oralExaminationId;
+    public Long getId() {
+        return id;
     }
 
-    public void setOralExaminationId(Long oralExaminationId) {
-        this.oralExaminationId = oralExaminationId;
+    public void setnId(Long oralExaminationId) {
+        this.id = id;
     }
 
     public String getDescription() {

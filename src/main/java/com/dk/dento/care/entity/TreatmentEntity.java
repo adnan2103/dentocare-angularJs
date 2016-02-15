@@ -25,7 +25,7 @@ public class TreatmentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "treatment_id")
-    private Long treatmentId;
+    private Long id;
 
     @OneToOne
     @JoinColumn(name="status_id")
@@ -43,12 +43,12 @@ public class TreatmentEntity {
     @JoinColumn(name = "treatment_id")
     private Set<PatientOralExaminationEntity> patientOralExaminationEntities = new HashSet<PatientOralExaminationEntity>(0);
 
-    public Long getTreatmentId() {
-        return treatmentId;
+    public Long getId() {
+        return id;
     }
 
-    public void setTreatmentId(Long treatmentId) {
-        this.treatmentId = treatmentId;
+    public void setId(Long treatmentId) {
+        this.id = id;
     }
 
     public StatusEntity getStatusEntity() {

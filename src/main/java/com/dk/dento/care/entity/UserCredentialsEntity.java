@@ -21,7 +21,7 @@ public class UserCredentialsEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private Long userId;
+    private Long id;
 
     /** The main email address for the user */
     @Embedded
@@ -49,12 +49,12 @@ public class UserCredentialsEntity implements Serializable {
         this.userDetailEntity = userDetailEntity;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long userId) {
+        this.id = id;
     }
 
     public EmailAddress getEmailAddress() {

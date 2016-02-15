@@ -22,7 +22,7 @@ public class PaymentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "payment_id")
-    private Long paymentId;
+    private Long id;
 
     @Column(name = "payment_date")
     private Date paymentDate;
@@ -33,12 +33,12 @@ public class PaymentEntity {
     @Column(name = "notes")
     private String notes;
 
-    public Long getPaymentId() {
-        return paymentId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPaymentId(Long paymentId) {
-        this.paymentId = paymentId;
+    public void setId(Long paymentId) {
+        this.id = id;
     }
 
     public Date getPaymentDate() {
