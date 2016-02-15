@@ -59,7 +59,7 @@ public class UserDetailEntity {
     private Address address;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="treatment_id")
+    @JoinColumn(name="user_id")
     private Set<TreatmentEntity> treatmentEntities = new HashSet<TreatmentEntity>(0);
 
     public Set<TreatmentEntity> getTreatmentEntities() {

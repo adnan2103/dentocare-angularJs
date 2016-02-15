@@ -36,11 +36,11 @@ public class TreatmentEntity {
 
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "payment_id")
+    @JoinColumn(name = "treatment_id")
     private Set<PaymentEntity> paymentEntities = new HashSet<PaymentEntity>(0);
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "oral_examination_id")
+    @JoinColumn(name = "treatment_id")
     private Set<PatientOralExaminationEntity> patientOralExaminationEntities = new HashSet<PatientOralExaminationEntity>(0);
 
     public Long getTreatmentId() {
