@@ -17,6 +17,6 @@
 
 ## 5. AngularJs front end UI.
 
-## 6. Photo upload Functionality.
+## 6. Photo upload Functionality. : 1. For Patient 2. For pre and post treatment.
 
 ## 7. Spring security.
