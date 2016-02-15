@@ -70,6 +70,8 @@ public class UserDetailEntity {
         this.treatmentEntities = treatmentEntities;
     }
 
+
+
     public Long getId() {
         return id;
     }

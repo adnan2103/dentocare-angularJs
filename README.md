@@ -2,7 +2,12 @@
 
 # Existing issue and further development plan
 
-## 1. There is a serious problem in hibernate mappings.
+
+## How are you going to create/update patient.
+## How are you going to add/update treatments to patient.
+## How are you going to add/update oral examinations to treatment.
+## How are you going to add/update payment to treatment.
+
 
 ## 2. Model Object design
 
