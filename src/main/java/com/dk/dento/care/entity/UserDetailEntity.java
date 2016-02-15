@@ -1,6 +1,7 @@
 package com.dk.dento.care.entity;
 
 import com.dk.dento.care.model.UserCredentials;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -58,7 +59,8 @@ public class UserDetailEntity {
     @Embedded
     private Address address;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private Set<TreatmentEntity> treatmentEntities = new HashSet<TreatmentEntity>(0);
 
