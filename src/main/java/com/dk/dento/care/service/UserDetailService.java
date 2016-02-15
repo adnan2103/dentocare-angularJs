@@ -1,6 +1,7 @@
 package com.dk.dento.care.service;
 
 import com.dk.dento.care.entity.DoctorPatientMappingEntity;
+import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.repository.DoctorPatientMappingRepository;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserDetailService {
@@ -44,6 +46,10 @@ public class UserDetailService {
     public UserDetailEntity getPatientDetails(Long patientId) {
         UserDetailEntity userDetailEntity = userDetailRepository.findOne(patientId);
         return userDetailEntity;
+    }
+
+    public Set<TreatmentEntity> getPatientTreatments(Long patientId) {
+        return userDetailRepository.findOne(patientId).getTreatmentEntities();
     }
 
     public void savePatient(UserDetailEntity userDetailEntity) {

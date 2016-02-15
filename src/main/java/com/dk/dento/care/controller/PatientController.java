@@ -1,5 +1,6 @@
 package com.dk.dento.care.controller;
 
+import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.service.AuthenticationService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/patient")
@@ -38,6 +40,12 @@ public class PatientController {
     @ResponseBody
     public UserDetailEntity getPatientDetails(@PathVariable final Long id) {
         return userDetailService.getPatientDetails(id);
+    }
+
+    @RequestMapping(value = "/{id}/treatment", method = RequestMethod.GET)
+    @ResponseBody
+    public Set<TreatmentEntity> getPatientTreatment(@PathVariable final Long id) {
+        return userDetailService.getPatientTreatments(id);
     }
 
     @RequestMapping(

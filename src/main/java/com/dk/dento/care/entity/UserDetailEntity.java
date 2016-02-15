@@ -35,7 +35,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user_detail")
-public class UserDetailEntity {
+public class UserDetailEntity implements Serializable {
 
     @GenericGenerator(name = "generator", strategy = "foreign",
             parameters = @Parameter(name = "property", value = "user_id"))
@@ -59,8 +59,8 @@ public class UserDetailEntity {
     @Embedded
     private Address address;
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
     private Set<TreatmentEntity> treatmentEntities = new HashSet<TreatmentEntity>(0);
 
