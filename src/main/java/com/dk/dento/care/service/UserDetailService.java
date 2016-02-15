@@ -48,18 +48,22 @@ public class UserDetailService {
 
     public void savePatient(UserDetailEntity userDetailEntity) {
 
-        UserDetailEntity userDetailEntity1 = new UserDetailEntity();
 
+        UserDetailEntity userDetailEntity1 = new UserDetailEntity();
         userDetailEntity1.setName(userDetailEntity.getName());
         userDetailEntity1.setPhoneNumber(userDetailEntity.getPhoneNumber());
         userDetailEntity1.setGender(userDetailEntity.getGender());
         userDetailEntity1.setAddress(userDetailEntity.getAddress());
         userDetailEntity1.setDataOfBirth(userDetailEntity.getDataOfBirth());
 
-        UserCredentialsEntity userCredentialsEntity = new UserCredentialsEntity();
-        userCredentialsEntity.setUserDetailEntity(userDetailEntity1);
-        userCredentialsEntity.setRoleEntity(roleRepository.findOne(1L));
 
-        userCredentialsRepository.save(userCredentialsEntity);
+        UserCredentialsEntity userCredentialsEntity = new UserCredentialsEntity();
+        userCredentialsEntity.setRoleId(1L);
+        userCredentialsEntity = userCredentialsRepository.save(userCredentialsEntity);
+
+        /*userCredentialsEntity.setUserDetailEntity(userDetailEntity1);
+        userDetailEntity1.setId(userCredentialsEntity.getId());
+        userDetailRepository.save(userDetailEntity1);*/
+
     }
 }

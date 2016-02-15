@@ -32,8 +32,19 @@ public class UserCredentialsEntity implements Serializable {
 
     private String password;
 
+    @Column(name = "role_id")
+    private Long roleId;
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
+
     @OneToOne
-    @JoinColumn(name="role_id")
+    @JoinColumn(name="role_id", insertable = false, updatable = false)
     private RoleEntity roleEntity;
 
 
