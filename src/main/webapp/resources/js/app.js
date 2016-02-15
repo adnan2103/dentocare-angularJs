@@ -7,10 +7,10 @@ var App = angular.module('DentoCareApp', ['DentoCareApp.filters', 'DentoCareApp.
 // Declare app level module which depends on filters, and services
 App.config(['$routeProvider', function ($routeProvider) {
 
-    $routeProvider.when('/patients', {
-        templateUrl: 'patients/layout',
+    $routeProvider.when('/patient', {
+        templateUrl: 'patient/layout',
         controller: PatientController
     });
 
-    $routeProvider.otherwise({redirectTo: '/patients'});
+    $routeProvider.otherwise({redirectTo: '/patient'});
 }]);

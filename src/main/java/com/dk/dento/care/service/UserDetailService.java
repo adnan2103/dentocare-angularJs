@@ -10,8 +10,15 @@ import com.dk.dento.care.repository.TreatmentRepository;
 import com.dk.dento.care.repository.UserCredentialsRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,5 +50,11 @@ public class UserDetailService {
     public UserDetailEntity getPatientDetails(Long patientId) {
         UserDetailEntity userDetailEntity = userDetailRepository.findOne(patientId);
         return userDetailEntity;
+    }
+
+    public void savePatient(UserDetailEntity userDetailEntity) {
+        UserDetailEntity userDetailEntity1 = new UserDetailEntity();
+
+        userDetailRepository.save(userDetailEntity);
     }
 }
