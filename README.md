@@ -1,22 +1,22 @@
 #Dento care application
 
-# Existing issue and further development plan
+
+### List of Patients Page :
+
+## How to to create/update patient along with user credentials and patient doctor mapping.
+## How to get list of all patients basic details without treatment details for a logged in doctor.
+## How to search a patient based on various search parameters.
 
 
-## How are you going to create/update patient.
-## How are you going to add/update treatments to patient.
-## How are you going to add/update oral examinations to treatment.
-## How are you going to add/update payment to treatment.
+### Patient and Treatment Details Page :
 
-
-## 2. Model Object design
-
-## 3. Model to Entity mapper and Services to Save update Entities.
-
-## 4. Rest end points.
+## How to get Treatment details for a selected patient.
+## How to add/update treatments to patient.
+## How to add/update oral examinations to treatment.
+## How to add/update payment to treatment.
 
 ## 5. AngularJs front end UI.
 
-## 6. Photo upload Functionality
+## 6. Photo upload Functionality.
 
-## 7. Spring security
+## 7. Spring security.
