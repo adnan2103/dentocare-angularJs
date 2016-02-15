@@ -1,49 +1,79 @@
 {
-  "patient":{
-    "id":123,
-    "firstName":"Adnan",
-    "lastName":"Khan",
-    "gender":"M",
-    "dateOfBirth":"1987-06-07",
-    "phoneNumber":123456789,
-    "addressLine1":"6-4-302/2",
-    "addressLine2":"line2",
+  "id":2,
+  "name":{
+    "firstName":"Rohit",
+    "lastName":"Tihor"
+  },
+  "gender":"Male",
+  "dataOfBirth":1455474600000,
+  "phoneNumber":{
+    "phoneNumber":"123456789"
+  },
+  "address":{
+    "addressLine1":"Address line1",
+    "addressLine2":"Address line2",
     "city":"Hyderabad",
-    "state":"AP",
-    "country":"AP",
-    "pinCode":"500086",
-    "treatments":[
-      {
-        "id":123,
-        "statusId":1,
-        "chiefComplaintDescription":"problem 1|problem 2|problem 3",
-        "oralExaminations":[
-          {
-            "id":12,
-            "description":"root canal",
-            "cost":500
-          },
-          {
-            "id":11,
-            "description":"extraction",
-            "cost":300
-          }
-        ],
-        "payment":[
-          {
-            "id":45,
-            "paymentDate":"22012016",
-            "paymentAmount":300,
-            "notes":"Second Visit"
-          },
-          {
-            "id":25,
-            "paymentDate":"20012016",
-            "paymentAmount":200,
-            "notes":"First Visit"
-          }
-        ]
-      }
-    ]
-  }
+    "state":"TS",
+    "country":"India",
+    "pincode":"800086"
+  },
+  "treatmentEntities":[
+    {
+      "id":2,
+      "statusEntity":{
+        "id":1,
+        "status":"In-Progress"
+      },
+      "chiefComplaintDescription":"Tooth ache2|gum sweling2|redness2",
+      "paymentEntities":[
+        {
+          "id":3,
+          "paymentDate":1455474600000,
+          "paymentAmount":3000,
+          "notes":"first visit"
+        }
+      ],
+      "patientOralExaminationEntities":[
+        {
+          "id":3,
+          "description":"Scaling",
+          "cost":2000
+        }
+      ]
+    },
+    {
+      "id":1,
+      "statusEntity":{
+        "id":1,
+        "status":"In-Progress"
+      },
+      "chiefComplaintDescription":"Tooth ache|gum sweling|redness",
+      "paymentEntities":[
+        {
+          "id":1,
+          "paymentDate":1455474600000,
+          "paymentAmount":4000,
+          "notes":"first payment"
+        },
+        {
+          "id":2,
+          "paymentDate":1455474600000,
+          "paymentAmount":1000,
+          "notes":"second visit"
+        }
+      ],
+      "patientOralExaminationEntities":[
+        {
+          "id":1,
+          "description":"Scaling",
+          "cost":3000
+        },
+        {
+          "id":2,
+          "description":"root canal",
+          "cost":6000
+        }
+      ]
+    }
+  ]
 }

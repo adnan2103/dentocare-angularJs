@@ -1,16 +1,20 @@
 {
-  "patient":{
-    "id":123,
-    "firstName":"Adnan",
-    "lastName":"Khan",
-    "gender":"M",
-    "dateOfBirth":"1987-06-07",
-    "phoneNumber":123456789,
-    "addressLine1":"6-4-302/2",
-    "addressLine2":"line2",
-    "city":"Hyderabad",
-    "state":"AP",
-    "country":"AP",
-    "pinCode":"500086"
+  "id": 2,
+  "name": {
+    "firstName": "Rohit",
+    "lastName": "Tihor"
+  },
+  "gender": "Male",
+  "dataOfBirth": 1455474600000,
+  "phoneNumber": {
+    "phoneNumber": "123456789"
+  },
+  "address": {
+    "addressLine1": "Address line1",
+    "addressLine2": "Address line2",
+    "city": "Hyderabad",
+    "state": "TS",
+    "country": "India",
+    "pincode": "800086"
   }
 }

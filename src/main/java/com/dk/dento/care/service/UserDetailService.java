@@ -27,9 +27,6 @@ public class UserDetailService {
     @Autowired
     private DoctorPatientMappingRepository doctorPatientMappingRepository;
 
-    @Autowired
-    private TreatmentRepository treatmentRepository;
-
     public List<UserDetailEntity> getAllPatientForDoctor(UserCredentialsEntity doctor) {
 
         List<UserDetailEntity> patients = new ArrayList<UserDetailEntity>();
