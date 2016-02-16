@@ -25,7 +25,7 @@ public class RoleEntity {
         return id;
     }
 
-    public void setId(Long roleId) {
+    public void setId(Long id) {
         this.id = id;
     }
 

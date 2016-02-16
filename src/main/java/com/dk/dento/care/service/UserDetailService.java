@@ -5,7 +5,7 @@ import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.repository.DoctorPatientMappingRepository;
-import com.dk.dento.care.repository.RoleRepository;
+import com.dk.dento.care.repository.TreatmentRepository;
 import com.dk.dento.care.repository.UserCredentialsRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +22,13 @@ public class UserDetailService {
     private UserCredentialsRepository userCredentialsRepository;
 
     @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
     private UserDetailRepository userDetailRepository;
 
     @Autowired
     private DoctorPatientMappingRepository doctorPatientMappingRepository;
+
+    @Autowired
+    private TreatmentRepository treatmentRepository;
 
     public List<UserDetailEntity> getAllPatientForDoctor(UserCredentialsEntity doctor) {
 
@@ -71,5 +71,10 @@ public class UserDetailService {
         userDetailEntity1.setId(userCredentialsEntity.getId());
         userDetailRepository.save(userDetailEntity1);*/
 
+    }
+
+    public Iterable<TreatmentEntity> savePatientTreatments(List<TreatmentEntity> treatmentEntities) {
+        Iterable<TreatmentEntity> treatmentEntities2 = treatmentRepository.save(treatmentEntities);
+        return treatmentEntities2;
     }
 }

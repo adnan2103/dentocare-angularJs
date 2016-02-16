@@ -25,7 +25,7 @@ public class StatusEntity {
         return id;
     }
 
-    public void setId(Long statusId) {
+    public void setId(Long id) {
         this.id = id;
     }
 

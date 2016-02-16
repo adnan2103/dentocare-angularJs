@@ -37,7 +37,7 @@ public class PaymentEntity {
         return id;
     }
 
-    public void setId(Long paymentId) {
+    public void setId(Long id) {
         this.id = id;
     }
 

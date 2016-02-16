@@ -28,26 +28,40 @@ public class PatientController {
     @Autowired
     UserDetailService userDetailService;
 
-    @RequestMapping("/all")
+    /**
+     * End point to get all patients of logged in Doctor.
+     * @return
+     */
+    @RequestMapping(
+            value = "/all",
+            method = RequestMethod.GET
+    )
     public @ResponseBody
-    List<UserDetailEntity> getAllPatientsForLogedInDoctor() {
+    List<UserDetailEntity> getAllPatientsForLoggedInDoctor() {
 
         UserCredentialsEntity doctor = authenticationService.getAuthenticatedUser();
         return userDetailService.getAllPatientForDoctor(doctor);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    /**
+     * End point to get patient detail for given patient id.
+     * @param id
+     * @return
+     */
+    @RequestMapping(
+            value = "/{id}",
+            method = RequestMethod.GET
+    )
     @ResponseBody
     public UserDetailEntity getPatientDetails(@PathVariable final Long id) {
         return userDetailService.getPatientDetails(id);
     }
 
-    @RequestMapping(value = "/{id}/treatment", method = RequestMethod.GET)
-    @ResponseBody
-    public Set<TreatmentEntity> getPatientTreatment(@PathVariable final Long id) {
-        return userDetailService.getPatientTreatments(id);
-    }
-
+    /**
+     * End point to create or update a patient.
+     * @param userDetailEntity
+     * @return
+     */
     @RequestMapping(
             method = RequestMethod.PUT,
             produces = "application/json"
@@ -55,8 +69,39 @@ public class PatientController {
     @ResponseBody
     public ResponseEntity savePatient(@RequestBody final UserDetailEntity userDetailEntity) {
         userDetailService.savePatient(userDetailEntity);
-
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    /**
+     * End point to get all treatment for given patient id.
+     * @param id
+     * @return
+     */
+    @RequestMapping(
+            value = "/{id}/treatment",
+            method = RequestMethod.GET,
+            produces = "application/json"
+    )
+    @ResponseBody
+    public Set<TreatmentEntity> getPatientTreatment(@PathVariable final Long id) {
+        return userDetailService.getPatientTreatments(id);
+    }
+
+    /**
+     * End point to create/update treatment for given patient id.
+     * @param id
+     * @param treatmentEntities
+     * @return
+     */
+    @RequestMapping(
+            value = "/{id}/treatment",
+            method = RequestMethod.PUT,
+            produces = "application/json"
+    )
+    @ResponseBody
+    public Iterable<TreatmentEntity> savePatientTreatment(@PathVariable final Long id,
+                                                      @RequestBody final List<TreatmentEntity> treatmentEntities) {
+        return userDetailService.savePatientTreatments(treatmentEntities);
     }
 
     @RequestMapping("/layout")

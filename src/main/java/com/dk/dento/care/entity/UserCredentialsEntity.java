@@ -64,7 +64,7 @@ public class UserCredentialsEntity implements Serializable {
         return id;
     }
 
-    public void setId(Long userId) {
+    public void setId(Long id) {
         this.id = id;
     }
 

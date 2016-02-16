@@ -30,7 +30,7 @@ public class PatientOralExaminationEntity {
         return id;
     }
 
-    public void setnId(Long oralExaminationId) {
+    public void setId(Long id) {
         this.id = id;
     }
 
