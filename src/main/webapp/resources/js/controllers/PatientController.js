@@ -4,12 +4,15 @@
  * PatientController
  * @constructor
  */
-var PatientController = function($scope, $http) {
-    $scope.fetchAllPatients = function() {
+var PatientController = function($scope, $http, Post) {
+    /*$scope.fetchAllPatients = function() {
         $http.get('patient/all').success(function(allpatients){
             $scope.patients = allpatients;
         });
-    };
+    };*/
 
-    $scope.fetchAllPatients();
+    Post.query(function(data) {
+        $scope.patients = data;
+    });
+    //$scope.fetchAllPatients();
 };
