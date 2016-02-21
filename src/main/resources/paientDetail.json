@@ -1,9 +1,6 @@
 {
   "id":2,
-  "name":{
-    "firstName":"Rohit",
-    "lastName":"Tihor"
-  },
+  "name":"Rohit Tihor",
   "gender":"Male",
   "dataOfBirth":1455474600000,
   "phoneNumber":{
