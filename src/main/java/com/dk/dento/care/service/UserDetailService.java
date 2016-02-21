@@ -1,9 +1,6 @@
 package com.dk.dento.care.service;
 
-import com.dk.dento.care.entity.DoctorPatientMappingEntity;
-import com.dk.dento.care.entity.TreatmentEntity;
-import com.dk.dento.care.entity.UserCredentialsEntity;
-import com.dk.dento.care.entity.UserDetailEntity;
+import com.dk.dento.care.entity.*;
 import com.dk.dento.care.repository.DoctorPatientMappingRepository;
 import com.dk.dento.care.repository.TreatmentRepository;
 import com.dk.dento.care.repository.UserCredentialsRepository;
@@ -56,7 +53,7 @@ public class UserDetailService {
 
 
         UserDetailEntity userDetailEntity1 = new UserDetailEntity();
-        userDetailEntity1.setName(userDetailEntity.getName());
+//        userDetailEntity1.setName(userDetailEntity.getName());
         userDetailEntity1.setPhoneNumber(userDetailEntity.getPhoneNumber());
         userDetailEntity1.setGender(userDetailEntity.getGender());
         userDetailEntity1.setAddress(userDetailEntity.getAddress());
@@ -76,5 +73,9 @@ public class UserDetailService {
     public Iterable<TreatmentEntity> savePatientTreatments(List<TreatmentEntity> treatmentEntities) {
         Iterable<TreatmentEntity> treatmentEntities2 = treatmentRepository.save(treatmentEntities);
         return treatmentEntities2;
+    }
+
+    public List<UserDetailEntity> getPatientsByName(String patientName) {
+        return userDetailRepository.findByNameContaining(patientName);
     }
 }

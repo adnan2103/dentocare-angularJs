@@ -35,8 +35,7 @@ ALTER TABLE user_credentials
 CREATE TABLE IF NOT EXISTS user_detail
 (
   user_id integer NOT NULL,
-  first_name character varying(30) NOT NULL,
-  last_name character varying(30),
+  name character varying(100) NOT NULL,
   gender character varying(6) NOT NULL,
   date_of_birth date,
   phone_number character varying(10) NOT NULL,

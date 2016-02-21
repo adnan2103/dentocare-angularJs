@@ -33,6 +33,19 @@ public class PatientController {
      * @return
      */
     @RequestMapping(
+            value = "/search/{patientName}",
+            method = RequestMethod.GET
+    )
+    public @ResponseBody
+    List<UserDetailEntity> searchByName(@PathVariable final String patientName) {
+        return userDetailService.getPatientsByName(patientName);
+    }
+
+    /**
+     * End point to get all patients of logged in Doctor.
+     * @return
+     */
+    @RequestMapping(
             value = "/all",
             method = RequestMethod.GET
     )
