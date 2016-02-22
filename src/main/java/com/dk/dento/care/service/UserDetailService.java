@@ -82,8 +82,17 @@ public class UserDetailService {
         return treatmentEntities2;
     }
 
-    public List<Patient> getPatientsByName(String patientName) {
-        List<UserDetailEntity> userDetailEntities = userDetailRepository.findByNameContaining(patientName);
+    public List<Patient> getPatientsByNameOrPhoneNumber(String patientName, String phoneNumber) {
+
+        List<UserDetailEntity> userDetailEntities = new ArrayList<UserDetailEntity>(0);
+        if(null != patientName && !patientName.equals("")) {
+            userDetailEntities.addAll(userDetailRepository.findByNameContaining(patientName));
+        }
+
+        if(null != phoneNumber && !phoneNumber.equals("")) {
+            userDetailEntities.addAll(userDetailRepository.findByPhoneNumberContaining(phoneNumber));
+        }
+
         return modelEntityConversion.userDetailsEntityToPatientList(userDetailEntities);
     }
 }

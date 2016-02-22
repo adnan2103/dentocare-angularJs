@@ -32,6 +32,8 @@ public class PatientController {
 
     /**
      * End point to get all patients of logged in Doctor.
+     * End point would be {search?phoneNumber=123456789&name=Rohit} or {search?phoneNumber=123456789}
+     * or {search?name=Rohit}
      * @return
      */
     @RequestMapping(
@@ -39,8 +41,11 @@ public class PatientController {
             method = RequestMethod.GET
     )
     public @ResponseBody
-    List<Patient> searchByName(@RequestParam(value = "name") final String patientName) {
-        return userDetailService.getPatientsByName(patientName);
+    List<Patient> searchByName(
+            @RequestParam(value = "name", required = false) final String patientName,
+            @RequestParam(value = "phoneNumber", required = false) final String phoneNumber
+    ) {
+        return userDetailService.getPatientsByNameOrPhoneNumber(patientName, phoneNumber);
     }
 
     /**
@@ -73,21 +78,6 @@ public class PatientController {
     }
 
     /**
-     * End point to create or update a patient.
-     * @param userDetailEntity
-     * @return
-     */
-    @RequestMapping(
-            method = RequestMethod.PUT,
-            produces = "application/json"
-    )
-    @ResponseBody
-    public ResponseEntity savePatient(@RequestBody final UserDetailEntity userDetailEntity) {
-        userDetailService.savePatient(userDetailEntity);
-        return new ResponseEntity(HttpStatus.OK);
-    }
-
-    /**
      * End point to get all treatment for given patient id.
      * @param id
      * @return
@@ -117,6 +107,21 @@ public class PatientController {
     public Iterable<TreatmentEntity> savePatientTreatment(@PathVariable final Long id,
                                                       @RequestBody final List<TreatmentEntity> treatmentEntities) {
         return userDetailService.savePatientTreatments(treatmentEntities);
+    }
+
+    /**
+     * End point to create or update a patient.
+     * @param userDetailEntity
+     * @return
+     */
+    @RequestMapping(
+            method = RequestMethod.PUT,
+            produces = "application/json"
+    )
+    @ResponseBody
+    public ResponseEntity savePatient(@RequestBody final UserDetailEntity userDetailEntity) {
+        userDetailService.savePatient(userDetailEntity);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @RequestMapping("/layout")
