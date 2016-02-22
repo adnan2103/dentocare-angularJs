@@ -32,22 +32,24 @@ public class UserDetailService {
     private ModelEntityConversion modelEntityConversion;
 
 
-    public List<UserDetailEntity> getAllPatientForDoctor(UserCredentialsEntity doctor) {
+    public List<Patient> getAllPatientForDoctor(UserCredentialsEntity doctor) {
 
-        List<UserDetailEntity> patients = new ArrayList<UserDetailEntity>();
+        List<UserDetailEntity> userDetailEntities = new ArrayList<UserDetailEntity>();
 
         Iterable<DoctorPatientMappingEntity> allPatients = doctorPatientMappingRepository.findAllPatientsForDoctor(doctor.getId());
         for(DoctorPatientMappingEntity doctorPatientMappingEntity : allPatients) {
 
             UserDetailEntity userDetailEntity = doctorPatientMappingEntity.getPatientEntity();
-            patients.add(userDetailEntity);
+            userDetailEntities.add(userDetailEntity);
         }
-        return patients;
+
+        return modelEntityConversion.userDetailsEntityToPatientList(userDetailEntities);
     }
 
-    public UserDetailEntity getPatientDetails(Long patientId) {
+    public Patient getPatientDetails(Long patientId) {
         UserDetailEntity userDetailEntity = userDetailRepository.findOne(patientId);
-        return userDetailEntity;
+
+        return modelEntityConversion.userDetailsEntityToPatient(userDetailEntity);
     }
 
     public Set<TreatmentEntity> getPatientTreatments(Long patientId) {

@@ -52,7 +52,7 @@ public class PatientController {
             method = RequestMethod.GET
     )
     public @ResponseBody
-    List<UserDetailEntity> getAllPatientsForLoggedInDoctor() {
+    List<Patient> getAllPatientsForLoggedInDoctor() {
 
         UserCredentialsEntity doctor = authenticationService.getAuthenticatedUser();
         return userDetailService.getAllPatientForDoctor(doctor);
@@ -68,7 +68,7 @@ public class PatientController {
             method = RequestMethod.GET
     )
     @ResponseBody
-    public UserDetailEntity getPatientDetails(@PathVariable final Long id) {
+    public Patient getPatientDetails(@PathVariable final Long id) {
         return userDetailService.getPatientDetails(id);
     }
 
