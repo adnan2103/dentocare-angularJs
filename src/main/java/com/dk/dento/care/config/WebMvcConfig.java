@@ -16,7 +16,7 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.dk.dento.care")
-@Import({TemplateConfig.class})
+@Import({TemplateConfig.class, ApplicationConfig.class})
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override

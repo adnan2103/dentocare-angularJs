@@ -1,6 +1,7 @@
 package com.dk.dento.care.service;
 
 import com.dk.dento.care.entity.*;
+import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.repository.DoctorPatientMappingRepository;
 import com.dk.dento.care.repository.TreatmentRepository;
 import com.dk.dento.care.repository.UserCredentialsRepository;
@@ -26,6 +27,10 @@ public class UserDetailService {
 
     @Autowired
     private TreatmentRepository treatmentRepository;
+
+    @Autowired
+    private ModelEntityConversion modelEntityConversion;
+
 
     public List<UserDetailEntity> getAllPatientForDoctor(UserCredentialsEntity doctor) {
 
@@ -75,7 +80,8 @@ public class UserDetailService {
         return treatmentEntities2;
     }
 
-    public List<UserDetailEntity> getPatientsByName(String patientName) {
-        return userDetailRepository.findByNameContaining(patientName);
+    public List<Patient> getPatientsByName(String patientName) {
+        List<UserDetailEntity> userDetailEntities = userDetailRepository.findByNameContaining(patientName);
+        return modelEntityConversion.userDetailsEntityToPatientList(userDetailEntities);
     }
 }

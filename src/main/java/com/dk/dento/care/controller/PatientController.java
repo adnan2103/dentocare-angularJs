@@ -3,6 +3,7 @@ package com.dk.dento.care.controller;
 import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
+import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.service.AuthenticationService;
 import com.dk.dento.care.service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class PatientController {
             method = RequestMethod.GET
     )
     public @ResponseBody
-    List<UserDetailEntity> searchByName(@RequestParam(value = "name") final String patientName) {
+    List<Patient> searchByName(@RequestParam(value = "name") final String patientName) {
         return userDetailService.getPatientsByName(patientName);
     }
 
