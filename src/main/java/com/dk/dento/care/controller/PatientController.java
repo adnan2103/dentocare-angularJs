@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -33,11 +34,11 @@ public class PatientController {
      * @return
      */
     @RequestMapping(
-            value = "/search/{patientName}",
+            value = "/search",
             method = RequestMethod.GET
     )
     public @ResponseBody
-    List<UserDetailEntity> searchByName(@PathVariable final String patientName) {
+    List<UserDetailEntity> searchByName(@RequestParam(value = "name") final String patientName) {
         return userDetailService.getPatientsByName(patientName);
     }
 
