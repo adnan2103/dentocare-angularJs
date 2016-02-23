@@ -36,6 +36,7 @@ public class TreatmentEntity {
     @Column(name = "chief_complaint_description")
     private String chiefComplaintDescription;
 
+    //TODO add note column.
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "treatment_id")
