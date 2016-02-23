@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS user_detail
   city character varying(20),
   state character varying(30),
   country character varying(20),
-  pincode integer,
+  pincode character varying(8),
   CONSTRAINT user_detail_pkey PRIMARY KEY (user_id),
   CONSTRAINT user_detail_user_fkey FOREIGN KEY (user_id)
       REFERENCES user_credentials (user_id) MATCH SIMPLE

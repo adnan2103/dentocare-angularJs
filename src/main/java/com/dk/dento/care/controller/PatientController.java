@@ -111,7 +111,7 @@ public class PatientController {
 
     /**
      * End point to create or update a patient.
-     * @param userDetailEntity
+     * @param patient
      * @return
      */
     @RequestMapping(
@@ -119,9 +119,9 @@ public class PatientController {
             produces = "application/json"
     )
     @ResponseBody
-    public ResponseEntity savePatient(@RequestBody final UserDetailEntity userDetailEntity) {
-        userDetailService.savePatient(userDetailEntity);
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity savePatient(@RequestBody final Patient patient) {
+        Patient patient1 = userDetailService.savePatient(patient);
+        return new ResponseEntity(patient1, HttpStatus.OK);
     }
 
     @RequestMapping("/layout")

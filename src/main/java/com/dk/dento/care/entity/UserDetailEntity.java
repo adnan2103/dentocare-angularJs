@@ -26,10 +26,8 @@ import java.util.Set;
 @Table(name = "user_detail")
 public class UserDetailEntity implements Serializable {
 
-    @GenericGenerator(name = "generator", strategy = "foreign",
-            parameters = @Parameter(name = "property", value = "user_id"))
+
     @Id
-    @GeneratedValue(generator = "generator")
     @Column(name = "user_id", unique = true, nullable = false)
     private Long id;
 
@@ -58,7 +56,7 @@ public class UserDetailEntity implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
-    private Set<TreatmentEntity> treatmentEntities = new HashSet<TreatmentEntity>(0);
+    private Set<TreatmentEntity> treatmentEntities;
 
     public Set<TreatmentEntity> getTreatmentEntities() {
         return treatmentEntities;

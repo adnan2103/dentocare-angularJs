@@ -14,22 +14,22 @@ update user_credentials set password = '$2a$10$FBAKClV1zBIOOC9XMXf3AO8RoGXYVYsfv
 
 
 insert into user_detail(user_id,name,gender,date_of_birth,phone_number,address_line1,address_line2,city,state,country,pincode) values
-(1,'Adnan Khan','Male',now(),'123444444','Address line1','Address line2','Hyderabad','TS','India',800086);
+(1,'Adnan Khan','Male',now(),'123444444','Address line1','Address line2','Hyderabad','TS','India','800086');
 
 insert into user_detail(user_id,name,gender,date_of_birth,phone_number,address_line1,address_line2,city,state,country,pincode) values
-(2,'Rohit Tihor','Male',now(),'123455555','Address line1','Address line2','Hyderabad','TS','India',800086);
+(2,'Rohit Tihor','Male',now(),'123455555','Address line1','Address line2','Hyderabad','TS','India','800086');
 
 insert into user_detail(user_id,name,gender,date_of_birth,phone_number,address_line1,address_line2,city,state,country,pincode) values
-(3,'Rupam Baaul','Male',now(),'123456666','Address line1','Address line2','Hyderabad','TS','India',800086);
+(3,'Rupam Baaul','Male',now(),'123456666','Address line1','Address line2','Hyderabad','TS','India','800086');
 
 insert into user_detail(user_id,name,gender,date_of_birth,phone_number,address_line1,address_line2,city,state,country,pincode) values
-(4,'Sree Vidya','Female',now(),'123456777','Address line1','Address line2','Hyderabad','TS','India',800086);
+(4,'Sree Vidya','Female',now(),'123456777','Address line1','Address line2','Hyderabad','TS','India','800086');
 
 insert into user_detail(user_id,name,gender,date_of_birth,phone_number,address_line1,address_line2,city,state,country,pincode) values
-(5,'Pallavi Nalluri','Female',now(),'123456788','Address line1','Address line2','Hyderabad','TS','India',800086);
+(5,'Pallavi Nalluri','Female',now(),'123456788','Address line1','Address line2','Hyderabad','TS','India','800086');
 
 insert into user_detail(user_id,name,gender,date_of_birth,phone_number,address_line1,address_line2,city,state,country,pincode) values
-(6,'Phani Hero','Male',now(),'123456789','Address line1','Address line2','Hyderabad','TS','India',800086);
+(6,'Phani Hero','Male',now(),'123456789','Address line1','Address line2','Hyderabad','TS','India','800086');
 
 
 insert into doctor_patient_mapping(doctor_id,patient_id) values(1,2);

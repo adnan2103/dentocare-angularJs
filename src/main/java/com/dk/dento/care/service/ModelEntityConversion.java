@@ -31,4 +31,8 @@ public class ModelEntityConversion {
     public Patient userDetailsEntityToPatient(UserDetailEntity userDetailEntity) {
         return modelMapper.map(userDetailEntity, Patient.class);
     }
+
+    public UserDetailEntity patientToUserDetailEntity(Patient patient) {
+        return modelMapper.map(patient, UserDetailEntity.class);
+    }
 }
