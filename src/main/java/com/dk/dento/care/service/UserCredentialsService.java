@@ -19,6 +19,7 @@ public class UserCredentialsService {
 
         UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByEmailAddress(new EmailAddress(email));
 
+        //TODO use TDO mapper for this.
         userCredentials.setId(userCredentialsEntity.getId());
         userCredentials.setEmailId(userCredentialsEntity.getEmailAddress().toString());
         userCredentials.setLoginEnable(userCredentialsEntity.isLoginEnable());

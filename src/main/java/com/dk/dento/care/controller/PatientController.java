@@ -29,6 +29,8 @@ public class PatientController {
     @Autowired
     UserDetailService userDetailService;
 
+    //TODO none of the end point is sending proper http response code and response body
+    //TODO need to implement HATEOAS for all DTO.
     /**
      * End point to get all patients of logged in Doctor.
      * End point would be {search?phoneNumber=123456789&name=Rohit} or {search?phoneNumber=123456789}

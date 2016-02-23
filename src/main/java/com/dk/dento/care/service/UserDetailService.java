@@ -35,7 +35,7 @@ public class UserDetailService {
     @Autowired
     private RoleRepository roleRepository;
 
-
+    //TODO service should throw appropriate exception to controller, like not found for null pointer.
     public List<Patient> getAllPatientForDoctor(UserCredentialsEntity doctor) {
 
         List<UserDetailEntity> userDetailEntities = new ArrayList<UserDetailEntity>();
@@ -73,16 +73,17 @@ public class UserDetailService {
             userDetailEntity.setId(userCredentialsEntity.getId());
             userDetailEntity = userDetailRepository.save(userDetailEntity);
         }
-
+        //TODO need to map this patient to logged in doctor.
         return modelEntityConversion.userDetailsEntityToPatient(userDetailEntity);
     }
 
-    //TODO Not done. Create DTO mapper too.
+    //TODO Not done. Need to complete this with DTO mapping.
     public Iterable<TreatmentEntity> savePatientTreatments(List<TreatmentEntity> treatmentEntities) {
         Iterable<TreatmentEntity> treatmentEntities2 = treatmentRepository.save(treatmentEntities);
         return treatmentEntities2;
     }
 
+    //TODO need return patients mapped to logged in doctor only.
     public List<Patient> getPatientsByNameOrPhoneNumber(String patientName, String phoneNumber) {
 
         List<UserDetailEntity> userDetailEntities = new ArrayList<UserDetailEntity>(0);
