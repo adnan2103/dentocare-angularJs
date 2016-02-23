@@ -77,6 +77,7 @@ public class UserDetailService {
         return modelEntityConversion.userDetailsEntityToPatient(userDetailEntity);
     }
 
+    //TODO Not done. Create DTO mapper too.
     public Iterable<TreatmentEntity> savePatientTreatments(List<TreatmentEntity> treatmentEntities) {
         Iterable<TreatmentEntity> treatmentEntities2 = treatmentRepository.save(treatmentEntities);
         return treatmentEntities2;

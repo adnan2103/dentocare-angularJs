@@ -2,7 +2,6 @@ package com.dk.dento.care.controller;
 
 import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
-import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.service.AuthenticationService;
 import com.dk.dento.care.service.UserDetailService;
@@ -92,6 +91,7 @@ public class PatientController {
         return userDetailService.getPatientTreatments(id);
     }
 
+    //TODO need to complete this with DTO mapping.
     /**
      * End point to create/update treatment for given patient id.
      * @param id
