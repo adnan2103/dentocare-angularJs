@@ -46,4 +46,14 @@ public class Payment {
     public void setTreatmentDone(String treatmentDone) {
         this.treatmentDone = treatmentDone;
     }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "id=" + id +
+                ", paymentDate=" + paymentDate +
+                ", paymentAmount=" + paymentAmount +
+                ", treatmentDone='" + treatmentDone + '\'' +
+                '}';
+    }
 }

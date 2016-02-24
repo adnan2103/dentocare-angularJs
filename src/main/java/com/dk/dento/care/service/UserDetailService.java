@@ -95,11 +95,11 @@ public class UserDetailService {
         return modelEntityConversion.userDetailsEntityToPatient(patientEntity);
     }
 
-    //TODO Not done. Need to complete this with DTO mapping.
+    //TODO Not working as expected.
     @Transactional(propagation = Propagation.REQUIRED)
-    public Iterable<TreatmentEntity> savePatientTreatments(List<TreatmentEntity> treatmentEntities) {
-        Iterable<TreatmentEntity> treatmentEntities2 = treatmentRepository.save(treatmentEntities);
-        return treatmentEntities2;
+    public void savePatientTreatments(List<Treatment> treatments, Long patinetId) {
+            Set<TreatmentEntity> treatmentEntities = modelEntityConversion.treatmentModelListToTreatmentEntityList(treatments);
+            treatmentRepository.save(treatmentEntities);
     }
 
     //TODO need return patients mapped to logged in doctor only.

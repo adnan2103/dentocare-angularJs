@@ -35,4 +35,13 @@ public class PatientOralExamination {
     public void setCost(Long cost) {
         this.cost = cost;
     }
+
+    @Override
+    public String toString() {
+        return "PatientOralExamination{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", cost=" + cost +
+                '}';
+    }
 }

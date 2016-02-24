@@ -6,12 +6,14 @@ import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.model.UserCredentials;
+import com.dk.dento.care.repository.StatusRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -22,7 +24,10 @@ import java.util.Set;
 public class ModelEntityConversion {
 
     @Autowired
-    ModelMapper modelMapper;
+    private ModelMapper modelMapper;
+
+    @Autowired
+    private StatusRepository statusRepository;
 
     public List<Patient> userDetailsEntityToPatientList(List<UserDetailEntity> userDetailEntities) {
         List<Patient> patients = new ArrayList<Patient>(0);
@@ -57,5 +62,17 @@ public class ModelEntityConversion {
         }
 
         return treatments;
+    }
+
+    public Set<TreatmentEntity> treatmentModelListToTreatmentEntityList(Iterable<Treatment> treatments) {
+        Set<TreatmentEntity> treatmentEntities = new HashSet<TreatmentEntity>(0);
+        TreatmentEntity treatmentEntity;
+        for(Treatment treatment : treatments) {
+            treatmentEntity = modelMapper.map(treatment, TreatmentEntity.class);
+            treatmentEntity.setStatusEntity(statusRepository.findByStatus(treatment.getStatus()));
+            treatmentEntities.add(treatmentEntity);
+        }
+
+        return treatmentEntities;
     }
 }

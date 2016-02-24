@@ -97,19 +97,20 @@ public class PatientController {
     //TODO need to complete this with DTO mapping.
     /**
      * End point to create/update treatment for given patient id.
-     * @param id
-     * @param treatmentEntities
+     * @param patinetId
+     * @param treatments
      * @return
      */
     @RequestMapping(
-            value = "/{id}/treatment",
+            value = "/{patinetId}/treatment",
             method = RequestMethod.PUT,
             produces = "application/json"
     )
     @ResponseBody
-    public Iterable<TreatmentEntity> savePatientTreatment(@PathVariable final Long id,
-                                                      @RequestBody final List<TreatmentEntity> treatmentEntities) {
-        return userDetailService.savePatientTreatments(treatmentEntities);
+    public ResponseEntity savePatientTreatment(@PathVariable final Long patinetId,
+                                                      @RequestBody final List<Treatment> treatments) {
+         userDetailService.savePatientTreatments(treatments, patinetId);
+        return new ResponseEntity("Updated.", HttpStatus.OK);
     }
 
     /**

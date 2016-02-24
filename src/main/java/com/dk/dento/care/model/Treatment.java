@@ -69,4 +69,16 @@ public class Treatment {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    @Override
+    public String toString() {
+        return "Treatment{" +
+                "id=" + id +
+                ", chiefComplaintDescription='" + chiefComplaintDescription + '\'' +
+                ", notes='" + notes + '\'' +
+                ", status='" + status + '\'' +
+                ", payment=" + payment +
+                ", patientOralExamination=" + patientOralExamination +
+                '}';
+    }
 }

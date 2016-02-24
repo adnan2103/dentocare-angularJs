@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -42,11 +43,23 @@ public class TreatmentEntity {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "treatment_id")
-    private Set<PaymentEntity> paymentEntities = new HashSet<PaymentEntity>(0);
+    private Set<PaymentEntity> paymentEntities;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "treatment_id")
-    private Set<PatientOralExaminationEntity> patientOralExaminationEntities = new HashSet<PatientOralExaminationEntity>(0);
+    private Set<PatientOralExaminationEntity> patientOralExaminationEntities;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserDetailEntity userDetailEntity;
+
+    public UserDetailEntity getUserDetailEntity() {
+        return userDetailEntity;
+    }
+
+    public void setUserDetailEntity(UserDetailEntity userDetailEntity) {
+        this.userDetailEntity = userDetailEntity;
+    }
 
     public Long getId() {
         return id;
