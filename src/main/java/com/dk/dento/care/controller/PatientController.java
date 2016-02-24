@@ -3,6 +3,7 @@ package com.dk.dento.care.controller;
 import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.model.Patient;
+import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.service.AuthenticationService;
 import com.dk.dento.care.service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,7 +90,7 @@ public class PatientController {
             produces = "application/json"
     )
     @ResponseBody
-    public Set<TreatmentEntity> getPatientTreatment(@PathVariable final Long id) {
+    public Set<Treatment> getPatientTreatment(@PathVariable final Long id) {
         return userDetailService.getPatientTreatments(id);
     }
 
@@ -122,8 +123,12 @@ public class PatientController {
     )
     @ResponseBody
     public ResponseEntity savePatient(@RequestBody final Patient patient) {
-        Patient patient1 = userDetailService.savePatient(patient);
-        return new ResponseEntity(patient1, HttpStatus.OK);
+       //try{
+           Patient patient1 = userDetailService.savePatient(patient);
+           return new ResponseEntity(patient1, HttpStatus.OK);
+       /*} catch (Exception e) {
+           return new ResponseEntity("Error Occurred while saving or updating patient.", HttpStatus.INTERNAL_SERVER_ERROR);
+       }*/
     }
 
     @RequestMapping("/layout")

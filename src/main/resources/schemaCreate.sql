@@ -95,7 +95,8 @@ CREATE TABLE IF NOT EXISTS treatment
   treatment_id SERIAL NOT NULL,
   user_id integer NOT NULL,
   status_id integer NOT NULL,
-  chief_complaint_description character varying(100) NOT NULL,
+  chief_complaint_description character varying(100),
+  notes character varying(100),
   CONSTRAINT treatment_pkey PRIMARY KEY (treatment_id),
   CONSTRAINT treatment_fkey FOREIGN KEY (user_id)
       REFERENCES user_detail (user_id) MATCH SIMPLE
@@ -139,7 +140,7 @@ CREATE TABLE IF NOT EXISTS payment
   treatment_id integer NOT NULL,
   payment_date date,
   payment_amount integer,
-  notes character varying(100),
+  treatment_done character varying(100),
   CONSTRAINT payment_pkey PRIMARY KEY (payment_id),
   CONSTRAINT payment_treatment_fkey FOREIGN KEY (treatment_id)
       REFERENCES treatment (treatment_id) MATCH SIMPLE

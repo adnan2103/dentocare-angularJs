@@ -13,18 +13,14 @@ public class UserCredentialsService {
     @Autowired
     private UserCredentialsRepository userCredentialsRepository;
 
+    @Autowired
+    private ModelEntityConversion modelEntityConversion;
+
+
     public UserCredentials getPrincipal(final String email) {
 
-        UserCredentials userCredentials = new UserCredentials();
-
         UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByEmailAddress(new EmailAddress(email));
+        return modelEntityConversion.userCredentialsEntityToModel(userCredentialsEntity);
 
-        //TODO use TDO mapper for this.
-        userCredentials.setId(userCredentialsEntity.getId());
-        userCredentials.setEmailId(userCredentialsEntity.getEmailAddress().toString());
-        userCredentials.setLoginEnable(userCredentialsEntity.isLoginEnable());
-       // userCredentials.setRole(userCredentialsEntity.getRoleType().name());
-        userCredentials.setPassword(userCredentialsEntity.getPassword());
-        return userCredentials;
     }
 }

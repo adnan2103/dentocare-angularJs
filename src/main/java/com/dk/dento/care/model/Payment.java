@@ -1,36 +1,18 @@
-package com.dk.dento.care.entity;
+package com.dk.dento.care.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import java.util.Date;
 
-
 /**
- * Created by khana on 06/02/16.
+ * Created by khana on 24/02/16.
  */
-@Entity
-@Table(name = "payment")
-public class PaymentEntity {
+public class Payment {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "payment_id")
     private Long id;
 
-    @Column(name = "payment_date")
     private Date paymentDate;
 
-    @Column(name = "payment_amount")
     private Long paymentAmount;
 
-    @Column(name = "treatment_done")
     private String treatmentDone;
 
     public Long getId() {

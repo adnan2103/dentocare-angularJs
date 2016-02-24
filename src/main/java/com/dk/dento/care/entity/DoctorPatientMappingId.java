@@ -11,6 +11,14 @@ public class DoctorPatientMappingId implements Serializable {
 
     private UserDetailEntity patientEntity;
 
+    public DoctorPatientMappingId() {
+    }
+
+    public DoctorPatientMappingId(UserDetailEntity doctorEntity, UserDetailEntity patientEntity) {
+        this.doctorEntity = doctorEntity;
+        this.patientEntity = patientEntity;
+    }
+
     public UserDetailEntity getDoctorEntity() {
         return doctorEntity;
     }

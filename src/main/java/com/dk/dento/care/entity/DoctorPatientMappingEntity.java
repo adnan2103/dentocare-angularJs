@@ -17,6 +17,14 @@ import java.io.Serializable;
 public class DoctorPatientMappingEntity implements Serializable {
 
 
+    public DoctorPatientMappingEntity() {
+    }
+
+    public DoctorPatientMappingEntity(DoctorPatientMappingId doctorPatientMappingId) {
+        this.doctorEntity = doctorPatientMappingId.getDoctorEntity();
+        this.patientEntity = doctorPatientMappingId.getPatientEntity();
+    }
+
     @Id
     @ManyToOne
     @JoinColumn(name = "doctor_id", referencedColumnName = "user_id")

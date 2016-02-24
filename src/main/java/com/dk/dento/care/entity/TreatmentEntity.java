@@ -36,7 +36,9 @@ public class TreatmentEntity {
     @Column(name = "chief_complaint_description")
     private String chiefComplaintDescription;
 
-    //TODO add note column.
+    @Column(name = "notes")
+    private String notes;
+
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "treatment_id")
@@ -84,5 +86,13 @@ public class TreatmentEntity {
 
     public void setPatientOralExaminationEntities(Set<PatientOralExaminationEntity> patientOralExaminationEntities) {
         this.patientOralExaminationEntities = patientOralExaminationEntities;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

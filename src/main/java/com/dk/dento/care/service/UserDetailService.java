@@ -2,6 +2,7 @@ package com.dk.dento.care.service;
 
 import com.dk.dento.care.entity.*;
 import com.dk.dento.care.model.Patient;
+import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.repository.DoctorPatientMappingRepository;
 import com.dk.dento.care.repository.RoleRepository;
 import com.dk.dento.care.repository.TreatmentRepository;
@@ -9,6 +10,8 @@ import com.dk.dento.care.repository.UserCredentialsRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,9 @@ public class UserDetailService {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Autowired
+    private AuthenticationService authenticationService;
+
     //TODO service should throw appropriate exception to controller, like not found for null pointer.
     public List<Patient> getAllPatientForDoctor(UserCredentialsEntity doctor) {
 
@@ -56,28 +62,41 @@ public class UserDetailService {
         return modelEntityConversion.userDetailsEntityToPatient(userDetailEntity);
     }
 
-    public Set<TreatmentEntity> getPatientTreatments(Long patientId) {
-        return userDetailRepository.findOne(patientId).getTreatmentEntities();
+    public Set<Treatment> getPatientTreatments(Long patientId) {
+
+        return modelEntityConversion.treatmentEntityToTreatmentList(userDetailRepository.findOne(patientId).getTreatmentEntities());
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public Patient savePatient(Patient patient) {
-        UserDetailEntity userDetailEntity = modelEntityConversion.patientToUserDetailEntity(patient);
+        UserDetailEntity patientEntity = modelEntityConversion.patientToUserDetailEntity(patient);
 
-        if(userDetailEntity.getId() != null) {
-            userDetailEntity = userDetailRepository.save(userDetailEntity);
+        if(patientEntity.getId() != null) {
+            patientEntity = userDetailRepository.save(patientEntity);
         } else {
             UserCredentialsEntity userCredentialsEntity = new UserCredentialsEntity();
             userCredentialsEntity.setRoleId(roleRepository.findByRole("PATIENT").getId());
             userCredentialsEntity = userCredentialsRepository.save(userCredentialsEntity);
 
-            userDetailEntity.setId(userCredentialsEntity.getId());
-            userDetailEntity = userDetailRepository.save(userDetailEntity);
+            patientEntity.setId(userCredentialsEntity.getId());
+            patientEntity = userDetailRepository.save(patientEntity);
+
+
+            //TODO failing to create an entry in DoctorPatientMappingEntity.
+            /*
+            UserDetailEntity doctor = userDetailRepository.findOne(authenticationService.getAuthenticatedUser().getId());
+            DoctorPatientMappingId doctorPatientMappingId = new DoctorPatientMappingId(doctor, patientEntity);
+            DoctorPatientMappingEntity doctorPatientMappingEntity = new DoctorPatientMappingEntity(doctorPatientMappingId);
+
+            doctorPatientMappingRepository.save(doctorPatientMappingEntity);
+            */
         }
-        //TODO need to map this patient to logged in doctor.
-        return modelEntityConversion.userDetailsEntityToPatient(userDetailEntity);
+
+        return modelEntityConversion.userDetailsEntityToPatient(patientEntity);
     }
 
     //TODO Not done. Need to complete this with DTO mapping.
+    @Transactional(propagation = Propagation.REQUIRED)
     public Iterable<TreatmentEntity> savePatientTreatments(List<TreatmentEntity> treatmentEntities) {
         Iterable<TreatmentEntity> treatmentEntities2 = treatmentRepository.save(treatmentEntities);
         return treatmentEntities2;
