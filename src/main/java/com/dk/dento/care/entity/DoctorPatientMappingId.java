@@ -1,37 +1,43 @@
 package com.dk.dento.care.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 /**
  * Created by khana on 02/02/16.
  */
+@Embeddable
 public class DoctorPatientMappingId implements Serializable {
 
-    private UserDetailEntity doctorEntity;
 
-    private UserDetailEntity patientEntity;
+    @Column(name = "doctor_id")
+    private Long doctorId;
+
+    @Column(name = "patient_id")
+    private Long patientId;
 
     public DoctorPatientMappingId() {
     }
 
-    public DoctorPatientMappingId(UserDetailEntity doctorEntity, UserDetailEntity patientEntity) {
-        this.doctorEntity = doctorEntity;
-        this.patientEntity = patientEntity;
+    public DoctorPatientMappingId(Long doctorId, Long patientId) {
+        this.doctorId = doctorId;
+        this.patientId = patientId;
     }
 
-    public UserDetailEntity getDoctorEntity() {
-        return doctorEntity;
+    public Long getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctorEntity(UserDetailEntity doctorEntity) {
-        this.doctorEntity = doctorEntity;
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 
-    public UserDetailEntity getPatientEntity() {
-        return patientEntity;
+    public Long getPatientId() {
+        return patientId;
     }
 
-    public void setPatientEntity(UserDetailEntity patientEntity) {
-        this.patientEntity = patientEntity;
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
     }
 }

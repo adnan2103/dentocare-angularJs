@@ -1,18 +1,15 @@
 package com.dk.dento.care.entity;
 
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
  * Created by khana on 02/02/16.
  */
-@Entity @IdClass(DoctorPatientMappingId.class)
+@Entity
 @Table(name ="doctor_patient_mapping")
 public class DoctorPatientMappingEntity implements Serializable {
 
@@ -21,33 +18,18 @@ public class DoctorPatientMappingEntity implements Serializable {
     }
 
     public DoctorPatientMappingEntity(DoctorPatientMappingId doctorPatientMappingId) {
-        this.doctorEntity = doctorPatientMappingId.getDoctorEntity();
-        this.patientEntity = doctorPatientMappingId.getPatientEntity();
+        this.doctorPatientMappingId = doctorPatientMappingId;
     }
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "doctor_id", referencedColumnName = "user_id")
-    private UserDetailEntity doctorEntity;
+    @EmbeddedId
+    private DoctorPatientMappingId doctorPatientMappingId;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "patient_id", referencedColumnName = "user_id")
-    private UserDetailEntity patientEntity;
-
-    public UserDetailEntity getDoctorEntity() {
-        return doctorEntity;
+    public DoctorPatientMappingId getDoctorPatientMappingId() {
+        return doctorPatientMappingId;
     }
 
-    public void setDoctorEntity(UserDetailEntity doctorEntity) {
-        this.doctorEntity = doctorEntity;
+    public void setDoctorPatientMappingId(DoctorPatientMappingId doctorPatientMappingId) {
+        this.doctorPatientMappingId = doctorPatientMappingId;
     }
 
-    public UserDetailEntity getPatientEntity() {
-        return patientEntity;
-    }
-
-    public void setPatientEntity(UserDetailEntity patientEntity) {
-        this.patientEntity = patientEntity;
-    }
 }

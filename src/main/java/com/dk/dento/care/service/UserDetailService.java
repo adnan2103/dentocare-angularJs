@@ -49,7 +49,7 @@ public class UserDetailService {
         Iterable<DoctorPatientMappingEntity> allPatients = doctorPatientMappingRepository.findAllPatientsForDoctor(doctor.getId());
         for(DoctorPatientMappingEntity doctorPatientMappingEntity : allPatients) {
 
-            UserDetailEntity userDetailEntity = doctorPatientMappingEntity.getPatientEntity();
+            UserDetailEntity userDetailEntity = userDetailRepository.findOne(doctorPatientMappingEntity.getDoctorPatientMappingId().getPatientId());
             userDetailEntities.add(userDetailEntity);
         }
 
@@ -81,15 +81,12 @@ public class UserDetailService {
             patientEntity.setId(userCredentialsEntity.getId());
             patientEntity = userDetailRepository.save(patientEntity);
 
-
-            //TODO failing to create an entry in DoctorPatientMappingEntity.
-            /*
             UserDetailEntity doctor = userDetailRepository.findOne(authenticationService.getAuthenticatedUser().getId());
-            DoctorPatientMappingId doctorPatientMappingId = new DoctorPatientMappingId(doctor, patientEntity);
+            DoctorPatientMappingId doctorPatientMappingId = new DoctorPatientMappingId(doctor.getId(), patientEntity.getId());
             DoctorPatientMappingEntity doctorPatientMappingEntity = new DoctorPatientMappingEntity(doctorPatientMappingId);
 
             doctorPatientMappingRepository.save(doctorPatientMappingEntity);
-            */
+
         }
 
         return modelEntityConversion.userDetailsEntityToPatient(patientEntity);
@@ -103,7 +100,7 @@ public class UserDetailService {
     }
 
     //TODO need return patients mapped to logged in doctor only.
-    public List<Patient> getPatientsByNameOrPhoneNumber(String patientName, String phoneNumber) {
+        public List<Patient> getPatientsByNameOrPhoneNumber(String patientName, String phoneNumber) {
 
         List<UserDetailEntity> userDetailEntities = new ArrayList<UserDetailEntity>(0);
         if(null != patientName && !patientName.equals("")) {

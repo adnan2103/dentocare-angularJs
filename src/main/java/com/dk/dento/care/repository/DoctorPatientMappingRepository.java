@@ -14,4 +14,5 @@ public interface DoctorPatientMappingRepository extends CrudRepository<DoctorPat
 
     @Query("select dpm from DoctorPatientMappingEntity dpm where doctor_id = ?1")
     List<DoctorPatientMappingEntity> findAllPatientsForDoctor(Long doctorId);
+
 }
