@@ -52,6 +52,8 @@ public class TreatmentEntity {
     @JoinColumn(name = "treatment_id")
     private Set<PatientOralExaminationEntity> patientOralExaminationEntities;
 
+
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserDetailEntity userDetailEntity;

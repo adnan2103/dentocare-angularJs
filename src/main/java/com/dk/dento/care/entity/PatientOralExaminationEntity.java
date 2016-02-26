@@ -29,6 +29,18 @@ public class PatientOralExaminationEntity {
 
     private Long cost;
 
+    @ManyToOne
+    @JoinColumn(name = "treatment_id")
+    private TreatmentEntity treatmentEntity;
+
+    public TreatmentEntity getTreatmentEntity() {
+        return treatmentEntity;
+    }
+
+    public void setTreatmentEntity(TreatmentEntity treatmentEntity) {
+        this.treatmentEntity = treatmentEntity;
+    }
+
     public Long getId() {
         return id;
     }

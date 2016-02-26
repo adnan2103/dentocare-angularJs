@@ -36,6 +36,18 @@ public class PaymentEntity {
     @Column(name = "treatment_done")
     private String treatmentDone;
 
+    @ManyToOne
+    @JoinColumn(name = "treatment_id")
+    private TreatmentEntity treatmentEntity;
+
+    public TreatmentEntity getTreatmentEntity() {
+        return treatmentEntity;
+    }
+
+    public void setTreatmentEntity(TreatmentEntity treatmentEntity) {
+        this.treatmentEntity = treatmentEntity;
+    }
+
     public Long getId() {
         return id;
     }

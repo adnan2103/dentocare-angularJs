@@ -129,12 +129,12 @@ public class PatientController {
     @ResponseBody
     public ResponseEntity savePatientTreatment(@PathVariable final Long patinetId,
                                                       @RequestBody final List<Treatment> treatments) {
-        try {
+       // try {
             userDetailService.savePatientTreatments(treatments, patinetId);
             return new ResponseEntity("Updated.", HttpStatus.OK);
-        } catch (Exception e) {
+        /*} catch (Exception e) {
             return new ResponseEntity("Error Occurred while saving or updating treatment.", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        }*/
 
     }
 
