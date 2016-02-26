@@ -70,7 +70,11 @@ public class PatientOralExaminationEntity {
      */
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(id).toHashCode();
+        return new HashCodeBuilder()
+                .append(id)
+                .append(description)
+                .append(cost)
+                .toHashCode();
     }
 
     /**
@@ -88,7 +92,10 @@ public class PatientOralExaminationEntity {
             return false;
         }
         PatientOralExaminationEntity rhs = (PatientOralExaminationEntity) obj;
-        return new EqualsBuilder().append(id, rhs.id)
+        return new EqualsBuilder()
+                .append(id, rhs.id)
+                .append(description, rhs.description)
+                .append(cost, rhs.cost)
                 .isEquals();
     }
 }

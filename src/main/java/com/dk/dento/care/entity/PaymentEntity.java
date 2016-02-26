@@ -85,7 +85,12 @@ public class PaymentEntity {
      */
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(id).toHashCode();
+        return new HashCodeBuilder()
+                .append(id)
+                .append(paymentDate)
+                .append(paymentAmount)
+                .append(treatmentDone)
+                .toHashCode();
     }
 
     /**
@@ -103,7 +108,11 @@ public class PaymentEntity {
             return false;
         }
         PaymentEntity rhs = (PaymentEntity) obj;
-        return new EqualsBuilder().append(id, rhs.id)
+        return new EqualsBuilder()
+                .append(id, rhs.id)
+                .append(paymentDate, rhs.paymentDate)
+                .append(paymentAmount, rhs.paymentAmount)
+                .append(treatmentDone, rhs.treatmentDone)
                 .isEquals();
     }
 }
