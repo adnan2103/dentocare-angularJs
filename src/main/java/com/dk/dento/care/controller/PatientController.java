@@ -67,8 +67,7 @@ public class PatientController {
     ResponseEntity getAllPatientsForLoggedInDoctor() {
 
         try {
-            UserCredentialsEntity doctor = authenticationService.getAuthenticatedUser();
-            List<Patient> patients = userDetailService.getAllPatientForDoctor(doctor);
+            List<Patient> patients = userDetailService.getAllPatient();
             return new ResponseEntity(patients, HttpStatus.OK);
 
         } catch(Exception e) {

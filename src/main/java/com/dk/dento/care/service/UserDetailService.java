@@ -1,7 +1,10 @@
 package com.dk.dento.care.service;
 
-import com.dk.dento.care.entity.*;
-import com.dk.dento.care.exception.ResourceNotFoundException;
+import com.dk.dento.care.entity.DoctorPatientMappingEntity;
+import com.dk.dento.care.entity.DoctorPatientMappingId;
+import com.dk.dento.care.entity.TreatmentEntity;
+import com.dk.dento.care.entity.UserCredentialsEntity;
+import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.repository.DoctorPatientMappingRepository;
@@ -14,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,18 +46,23 @@ public class UserDetailService {
     private AuthenticationService authenticationService;
 
     //TODO service should throw appropriate exception to controller, like not found for null pointer.
-    public List<Patient> getAllPatientForDoctor(UserCredentialsEntity doctor) {
+    public List<Patient> getAllPatient() {
+        Set<UserDetailEntity> userDetailEntities = getAllPatientForDoctor();
+        return modelEntityConversion.userDetailsEntityToPatientList(userDetailEntities);
+    }
 
+    private Set<UserDetailEntity> getAllPatientForDoctor() {
         Set<UserDetailEntity> userDetailEntities = new HashSet<UserDetailEntity>(0);
 
+        UserCredentialsEntity doctor = authenticationService.getAuthenticatedUser();
         Iterable<DoctorPatientMappingEntity> allPatients = doctorPatientMappingRepository.findAllPatientsForDoctor(doctor.getId());
-        for(DoctorPatientMappingEntity doctorPatientMappingEntity : allPatients) {
+        for (DoctorPatientMappingEntity doctorPatientMappingEntity : allPatients) {
 
             UserDetailEntity userDetailEntity = userDetailRepository.findOne(doctorPatientMappingEntity.getDoctorPatientMappingId().getPatientId());
             userDetailEntities.add(userDetailEntity);
         }
 
-        return modelEntityConversion.userDetailsEntityToPatientList(userDetailEntities);
+        return userDetailEntities;
     }
 
     public Patient getPatientDetails(Long patientId) {
@@ -73,7 +80,7 @@ public class UserDetailService {
     public Patient savePatient(Patient patient) {
         UserDetailEntity patientEntity = modelEntityConversion.patientToUserDetailEntity(patient);
 
-        if(patientEntity.getId() != null) {
+        if (patientEntity.getId() != null) {
             patientEntity = userDetailRepository.save(patientEntity);
         } else {
             UserCredentialsEntity userCredentialsEntity = new UserCredentialsEntity();
@@ -97,21 +104,21 @@ public class UserDetailService {
     //TODO Not working as expected.
     @Transactional(propagation = Propagation.REQUIRED)
     public void savePatientTreatments(List<Treatment> treatments, Long patinetId) {
-            Set<TreatmentEntity> treatmentEntities = modelEntityConversion.treatmentModelListToTreatmentEntityList(treatments);
-            treatmentRepository.save(treatmentEntities);
+        Set<TreatmentEntity> treatmentEntities = modelEntityConversion.treatmentModelListToTreatmentEntityList(treatments);
+        treatmentRepository.save(treatmentEntities);
     }
 
-    //TODO need return patients mapped to logged in doctor only.
-        public List<Patient> getPatientsByNameOrPhoneNumber(String patientName, String phoneNumber) {
+    public List<Patient> getPatientsByNameOrPhoneNumber(String patientName, String phoneNumber) {
 
         Set<UserDetailEntity> userDetailEntities = new HashSet<UserDetailEntity>(0);
-        if(null != patientName && !patientName.equals("")) {
+        if (null != patientName && !patientName.equals("")) {
             userDetailEntities.addAll(userDetailRepository.findByNameContaining(patientName));
         }
 
-        if(null != phoneNumber && !phoneNumber.equals("")) {
+        if (null != phoneNumber && !phoneNumber.equals("")) {
             userDetailEntities.addAll(userDetailRepository.findByPhoneNumberContaining(phoneNumber));
         }
+        userDetailEntities.retainAll(getAllPatientForDoctor());
 
         return modelEntityConversion.userDetailsEntityToPatientList(userDetailEntities);
     }
