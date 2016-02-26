@@ -1,6 +1,7 @@
 package com.dk.dento.care.service;
 
 import com.dk.dento.care.entity.*;
+import com.dk.dento.care.exception.ResourceNotFoundException;
 import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.repository.DoctorPatientMappingRepository;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -44,7 +46,7 @@ public class UserDetailService {
     //TODO service should throw appropriate exception to controller, like not found for null pointer.
     public List<Patient> getAllPatientForDoctor(UserCredentialsEntity doctor) {
 
-        List<UserDetailEntity> userDetailEntities = new ArrayList<UserDetailEntity>();
+        Set<UserDetailEntity> userDetailEntities = new HashSet<UserDetailEntity>(0);
 
         Iterable<DoctorPatientMappingEntity> allPatients = doctorPatientMappingRepository.findAllPatientsForDoctor(doctor.getId());
         for(DoctorPatientMappingEntity doctorPatientMappingEntity : allPatients) {
@@ -102,7 +104,7 @@ public class UserDetailService {
     //TODO need return patients mapped to logged in doctor only.
         public List<Patient> getPatientsByNameOrPhoneNumber(String patientName, String phoneNumber) {
 
-        List<UserDetailEntity> userDetailEntities = new ArrayList<UserDetailEntity>(0);
+        Set<UserDetailEntity> userDetailEntities = new HashSet<UserDetailEntity>(0);
         if(null != patientName && !patientName.equals("")) {
             userDetailEntities.addAll(userDetailRepository.findByNameContaining(patientName));
         }

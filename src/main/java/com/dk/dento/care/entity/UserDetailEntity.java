@@ -1,5 +1,7 @@
 package com.dk.dento.care.entity;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -105,5 +107,30 @@ public class UserDetailEntity implements Serializable {
     public void setAddress(Address address) {
         this.address = address;
     }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(id).toHashCode();
+    }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        UserDetailEntity rhs = (UserDetailEntity) obj;
+        return new EqualsBuilder().append(id, rhs.id)
+                .isEquals();
+    }
 }

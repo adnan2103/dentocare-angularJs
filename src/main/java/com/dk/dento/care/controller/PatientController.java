@@ -1,6 +1,5 @@
 package com.dk.dento.care.controller;
 
-import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.model.Treatment;
@@ -43,11 +42,17 @@ public class PatientController {
             method = RequestMethod.GET
     )
     public @ResponseBody
-    List<Patient> searchByName(
+    ResponseEntity searchByName(
             @RequestParam(value = "name", required = false) final String patientName,
             @RequestParam(value = "phoneNumber", required = false) final String phoneNumber
     ) {
-        return userDetailService.getPatientsByNameOrPhoneNumber(patientName, phoneNumber);
+        try{
+            List<Patient> patients = userDetailService.getPatientsByNameOrPhoneNumber(patientName, phoneNumber);
+            return new ResponseEntity(patients, HttpStatus.OK);
+        } catch(Exception e) {
+            return new ResponseEntity("No patient found", HttpStatus.NOT_FOUND);
+        }
+
     }
 
     /**
@@ -59,10 +64,16 @@ public class PatientController {
             method = RequestMethod.GET
     )
     public @ResponseBody
-    List<Patient> getAllPatientsForLoggedInDoctor() {
+    ResponseEntity getAllPatientsForLoggedInDoctor() {
 
-        UserCredentialsEntity doctor = authenticationService.getAuthenticatedUser();
-        return userDetailService.getAllPatientForDoctor(doctor);
+        try {
+            UserCredentialsEntity doctor = authenticationService.getAuthenticatedUser();
+            List<Patient> patients = userDetailService.getAllPatientForDoctor(doctor);
+            return new ResponseEntity(patients, HttpStatus.OK);
+
+        } catch(Exception e) {
+            return new ResponseEntity("No patient found", HttpStatus.NOT_FOUND);
+        }
     }
 
     /**
@@ -75,8 +86,13 @@ public class PatientController {
             method = RequestMethod.GET
     )
     @ResponseBody
-    public Patient getPatientDetails(@PathVariable final Long id) {
-        return userDetailService.getPatientDetails(id);
+    public ResponseEntity getPatientDetails(@PathVariable final Long id) {
+        try {
+            Patient patient = userDetailService.getPatientDetails(id);
+            return new ResponseEntity(patient, HttpStatus.OK);
+        } catch(Exception e) {
+            return new ResponseEntity("No patient Detail found", HttpStatus.NOT_FOUND);
+        }
     }
 
     /**
@@ -90,8 +106,14 @@ public class PatientController {
             produces = "application/json"
     )
     @ResponseBody
-    public Set<Treatment> getPatientTreatment(@PathVariable final Long id) {
-        return userDetailService.getPatientTreatments(id);
+    public ResponseEntity getPatientTreatment(@PathVariable final Long id) {
+        try {
+            Set<Treatment> treatments = userDetailService.getPatientTreatments(id);
+            return new ResponseEntity(treatments, HttpStatus.OK);
+        } catch(Exception e) {
+            return new ResponseEntity("No treatments found", HttpStatus.NOT_FOUND);
+        }
+
     }
 
     //TODO need to complete this with DTO mapping.
@@ -109,8 +131,13 @@ public class PatientController {
     @ResponseBody
     public ResponseEntity savePatientTreatment(@PathVariable final Long patinetId,
                                                       @RequestBody final List<Treatment> treatments) {
-         userDetailService.savePatientTreatments(treatments, patinetId);
-        return new ResponseEntity("Updated.", HttpStatus.OK);
+        try {
+            userDetailService.savePatientTreatments(treatments, patinetId);
+            return new ResponseEntity("Updated.", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity("Error Occurred while saving or updating treatment.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     /**
@@ -124,12 +151,12 @@ public class PatientController {
     )
     @ResponseBody
     public ResponseEntity savePatient(@RequestBody final Patient patient) {
-       //try{
+       try{
            Patient patient1 = userDetailService.savePatient(patient);
            return new ResponseEntity(patient1, HttpStatus.OK);
-       /*} catch (Exception e) {
+       } catch (Exception e) {
            return new ResponseEntity("Error Occurred while saving or updating patient.", HttpStatus.INTERNAL_SERVER_ERROR);
-       }*/
+       }
     }
 
     @RequestMapping("/layout")

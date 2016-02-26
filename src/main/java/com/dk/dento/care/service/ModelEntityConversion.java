@@ -29,7 +29,7 @@ public class ModelEntityConversion {
     @Autowired
     private StatusRepository statusRepository;
 
-    public List<Patient> userDetailsEntityToPatientList(List<UserDetailEntity> userDetailEntities) {
+    public List<Patient> userDetailsEntityToPatientList(Set<UserDetailEntity> userDetailEntities) {
         List<Patient> patients = new ArrayList<Patient>(0);
 
         for(UserDetailEntity userDetailEntity : userDetailEntities) {

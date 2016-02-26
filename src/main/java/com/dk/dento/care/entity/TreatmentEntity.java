@@ -1,5 +1,8 @@
 package com.dk.dento.care.entity;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -107,5 +110,32 @@ public class TreatmentEntity {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(id).toHashCode();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        TreatmentEntity rhs = (TreatmentEntity) obj;
+        return new EqualsBuilder().append(id, rhs.id)
+                .isEquals();
     }
 }
