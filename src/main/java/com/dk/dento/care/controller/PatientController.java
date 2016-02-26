@@ -115,7 +115,6 @@ public class PatientController {
 
     }
 
-    //TODO need to complete this with DTO mapping.
     /**
      * End point to create/update treatment for given patient id.
      * @param patinetId

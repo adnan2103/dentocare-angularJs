@@ -15,7 +15,7 @@ public class AuthenticationService {
     @Autowired
     UserCredentialsRepository userCredentialsRepository;
 
-    //TODO spring security not working for end points.
+    //TODO spring security not working for end points.*****
 
     public UserCredentialsEntity getAuthenticatedUser() {
         return userCredentialsRepository.findByEmailAddress(new EmailAddress("adnan@khan.com"));
