@@ -101,7 +101,6 @@ public class UserDetailService {
         return modelEntityConversion.userDetailsEntityToPatient(patientEntity);
     }
 
-    //TODO Not working as expected.*****
     @Transactional(propagation = Propagation.REQUIRED)
     public void savePatientTreatments(List<Treatment> treatments, Long patinetId) {
         Set<TreatmentEntity> treatmentEntities = modelEntityConversion.treatmentModelListToTreatmentEntityList(treatments, patinetId);

@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -44,7 +43,7 @@ public class ModelEntityConversion {
     public List<Patient> userDetailsEntityToPatientList(Set<UserDetailEntity> userDetailEntities) {
         List<Patient> patients = new ArrayList<Patient>(0);
 
-        for(UserDetailEntity userDetailEntity : userDetailEntities) {
+        for (UserDetailEntity userDetailEntity : userDetailEntities) {
             patients.add(modelMapper.map(userDetailEntity, Patient.class));
         }
 
@@ -67,7 +66,7 @@ public class ModelEntityConversion {
         Set<Treatment> treatments = new HashSet<Treatment>(0);
         Treatment treatment;
 
-        for(TreatmentEntity treatmentEntity : treatmentEntities) {
+        for (TreatmentEntity treatmentEntity : treatmentEntities) {
             treatment = modelMapper.map(treatmentEntity, Treatment.class);
             treatment.setStatus(treatmentEntity.getStatusEntity().getStatus());
             treatments.add(treatment);
@@ -81,9 +80,9 @@ public class ModelEntityConversion {
         UserDetailEntity userDetailEntity = userDetailRepository.findOne(patientId);
 
         TreatmentEntity treatmentEntity;
-        for(Treatment treatment : treatments) {
+        for (Treatment treatment : treatments) {
             treatmentEntity = modelMapper.map(treatment, TreatmentEntity.class);
-            if(treatmentEntity.getId() == null) {
+            if (treatmentEntity.getId() == null) {
                 treatmentEntity.setId(treatmentIdGenerator.getNextId());
             }
             treatmentEntity.setUserDetailEntity(userDetailEntity);
@@ -106,7 +105,7 @@ public class ModelEntityConversion {
     public Set<PaymentEntity> paymentModelToEntityList(Set<Payment> payments, TreatmentEntity treatmentEntity) {
         Set<PaymentEntity> paymentEntities = new HashSet<PaymentEntity>(0);
         PaymentEntity paymentEntity;
-        for(Payment payment : payments) {
+        for (Payment payment : payments) {
 
             paymentEntity = modelMapper.map(payment, PaymentEntity.class);
             paymentEntity.setTreatmentEntity(treatmentEntity);
@@ -121,7 +120,7 @@ public class ModelEntityConversion {
         Set<PatientOralExaminationEntity> patientOralExaminationEntities = new HashSet<PatientOralExaminationEntity>(0);
         PatientOralExaminationEntity patientOralExaminationEntity;
 
-        for(PatientOralExamination patientOralExamination : patientOralExaminations) {
+        for (PatientOralExamination patientOralExamination : patientOralExaminations) {
 
             patientOralExaminationEntity = modelMapper.map(patientOralExamination, PatientOralExaminationEntity.class);
             patientOralExaminationEntity.setTreatmentEntity(treatmentEntity);
