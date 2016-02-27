@@ -45,3 +45,7 @@ footer {
     outline: none;
     text-indent: 40px;
 }
+
+.navbar-inverse {
+    height: 60px;
+}
