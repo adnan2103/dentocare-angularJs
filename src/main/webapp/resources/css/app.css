@@ -1,37 +1,12 @@
-/* app css stylesheet */
 
-#wrapper {
-    margin: 0 auto;
-    width: 650px;
-    margin-top: 50px;
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
-.menu {
-    text-align: center;
-    list-style: none;
-    padding: 0 0 0.5em;
-    font-size: 40px;
-    font-weight: bolder;
+.portfolio-item {
+    margin-bottom: 25px;
 }
 
-.menu:before {
-    content: "[";
-}
-
-.menu:after {
-    content: "]";
-}
-
-.menu > li {
-    display: inline;
-}
-
-.menu > li:before {
-    content: "|";
-    padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-    content: "";
-    padding: 0;
+footer {
+    margin: 50px 0;
 }

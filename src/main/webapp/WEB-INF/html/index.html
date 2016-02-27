@@ -7,16 +7,17 @@
     <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
-<div id="wrapper">
-    <ul class="menu">
-        <li><a href="#/patient">Patient</a></li>
-    </ul>
-    <hr class="" />
+<div class="view-container">
     <div ng-view=""></div>
 </div>
 
 <script src="resources/js/lib/angular/angular.js"></script>
 <script src="resources/js/lib/angular/angular-resource.js"></script>
+
+<script src="resources/bootstrap/js/jquery.js"></script>
+<script src="resources/bootstrap/js/bootstrap.js"></script>
+
+
 <script src="resources/js/app.js"></script>
 <script src="resources/js/services.js"></script>
 <script src="resources/js/controllers/PatientController.js"></script>
