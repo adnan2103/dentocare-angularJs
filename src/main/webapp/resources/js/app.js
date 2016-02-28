@@ -2,17 +2,21 @@
 
 var DentoCareApp = {};
 
-var App = angular.module('DentoCareApp', ['DentoCareApp.filters', 'DentoCareApp.services', 'DentoCareApp.directives', 'DentoCareApp.factory']);
+var App = angular.module('DentoCareApp', ['ngRoute','auth','navigation','DentoCareApp.filters', 'DentoCareApp.services', 'DentoCareApp.directives', 'DentoCareApp.factory']);
 
 // Declare app level module which depends on filters, and services
-App.config(['$routeProvider', function ($routeProvider) {
+App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpProvider) {
 
     $routeProvider.when('/patient', {
         templateUrl: 'patient/layout',
         controller: PatientController
-    });
+    }).when('/login', {
+        templateUrl : 'login/layout',
+        controller : 'navigation'
+    }).otherwise('/');
 
-    $routeProvider.otherwise({redirectTo: '/patient'});
+    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 }]).filter('searchForName', function(){
 
     // All filters must return a function. The first parameter
@@ -69,6 +73,13 @@ App.config(['$routeProvider', function ($routeProvider) {
         return result;
     };
 
+}).run(function(auth) {
+
+    // Initialize auth module with the home page and login/logout path
+    // respectively
+    auth.init('/', '/login', '/logout');
+
 });
+
 
 

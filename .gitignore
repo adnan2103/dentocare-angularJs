@@ -10,5 +10,5 @@
 target
 .DS_Store
 */**/.DS_Store
-
+/src/main/webapp/resources/bower_components/**
 
