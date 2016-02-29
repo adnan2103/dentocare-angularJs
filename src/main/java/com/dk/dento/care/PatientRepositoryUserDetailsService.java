@@ -1,4 +1,4 @@
-package com.dk.dento.care.security;
+package com.dk.dento.care;
 
 
 import com.dk.dento.care.model.UserCredentials;

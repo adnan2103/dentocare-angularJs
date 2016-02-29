@@ -1,6 +1,6 @@
 package com.dk.dento.care.config;
 
-import com.dk.dento.care.security.PatientRepositoryUserDetailsService;
+import com.dk.dento.care.PatientRepositoryUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -45,18 +45,18 @@ public class WebSecurityConfig
 
         http
             .authorizeRequests()
-                .antMatchers("/resources/**", "/index.html", "/", "/login").permitAll()
+                .antMatchers("/resources*//**", "/index.html", "/", "/login/layout").permitAll()
                 .anyRequest().authenticated()
-                .and().csrf().disable()
-                /*.csrfTokenRepository(csrfTokenRepository())
-                .and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)*/
+                .and().csrf().disable();}/*
+                *//*.csrfTokenRepository(csrfTokenRepository())
+                .and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)*//*
             .formLogin()
                 .loginPage("/login")
                 .permitAll()
                 .and()
             .logout()
-                .permitAll();
-    }
+                .permitAll().and().rememberMe();
+    }*/
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

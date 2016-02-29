@@ -14,4 +14,8 @@ public class LoginController {
 		return "login/layout";
 	}
 
+	@RequestMapping("login/layout")
+	public String getPatientPartialPage() {
+		return "login/layout";
+	}
 }

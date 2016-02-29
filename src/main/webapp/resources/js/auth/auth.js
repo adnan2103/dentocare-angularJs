@@ -52,7 +52,7 @@ angular.module('auth', []).factory(
 					$http.post(auth.logoutPath, {}).success(function() {
 						console.log("Logout succeeded");
 					}).error(function(data) {
-						console.log("Logout failed");
+						console.log("Logout failed : " + data);
 					});
 				},
 
