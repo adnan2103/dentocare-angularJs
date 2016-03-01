@@ -44,19 +44,21 @@ public class WebSecurityConfig
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-            .authorizeRequests()
+                .httpBasic()
+                .and()
+                .authorizeRequests()
                 .antMatchers("/resources*//**", "/index.html", "/", "/login/layout").permitAll()
                 .anyRequest().authenticated()
-                .and().csrf().disable();}/*
-                *//*.csrfTokenRepository(csrfTokenRepository())
-                .and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)*//*
+                .and().csrf()
+                .csrfTokenRepository(csrfTokenRepository())
+                .and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)
             .formLogin()
                 .loginPage("/login")
                 .permitAll()
                 .and()
             .logout()
                 .permitAll().and().rememberMe();
-    }*/
+    }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -68,7 +70,7 @@ public class WebSecurityConfig
                 .passwordEncoder(new BCryptPasswordEncoder());*/
     }
 
-   /* private Filter csrfHeaderFilter() {
+    private Filter csrfHeaderFilter() {
         return new OncePerRequestFilter() {
             @Override
             protected void doFilterInternal(HttpServletRequest request,
@@ -95,6 +97,6 @@ public class WebSecurityConfig
         HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
         repository.setHeaderName("X-XSRF-TOKEN");
         return repository;
-    }*/
+    }
 
 }

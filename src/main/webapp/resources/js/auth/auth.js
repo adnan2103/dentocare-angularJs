@@ -32,7 +32,8 @@ angular.module('auth', []).factory(
 					$http.get('patient/all', {
 						headers : headers
 					}).success(function(data) {
-						if (data.name) {
+						console.log('Adnan data : '+data);
+						if (data) {
 							auth.authenticated = true;
 						} else {
 							auth.authenticated = false;
