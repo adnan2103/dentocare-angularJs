@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/patient")
-public class PatientController {
+@RequestMapping("/patients")
+public class PatientsController {
 
     @Autowired
     AuthenticationService authenticationService;
@@ -158,6 +158,6 @@ public class PatientController {
 
     @RequestMapping("/layout")
     public String getPatientPartialPage() {
-        return "patient/layout";
+        return "patients/layout";
     }
 }

@@ -4,7 +4,7 @@
  * PatientController
  * @constructor
  */
-var PatientController = function($scope, $http, Post) {
+var PatientsController = function($scope, $http, Post) {
     /*$scope.fetchAllPatients = function() {
         $http.get('patient/all').success(function(allpatients){
             $scope.patients = allpatients;

@@ -18,7 +18,7 @@ angular.module('auth', []).factory(
 
 				loginPath : '/login',
 				logoutPath : '/logout',
-				homePath : '/patient',
+				homePath : '/patients',
 				path : $location.path(),
 
 				authenticate : function(credentials, callback) {
@@ -29,7 +29,7 @@ angular.module('auth', []).factory(
 										+ credentials.password)
 					} : {};
 
-					$http.get('patient/all', {
+					$http.get('patients/all', {
 						headers : headers
 					}).success(function(data) {
 						console.log('Adnan data : '+data);

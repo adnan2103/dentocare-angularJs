@@ -7,9 +7,9 @@ var App = angular.module('DentoCareApp', ['ngRoute','auth','navigation','DentoCa
 // Declare app level module which depends on filters, and services
 App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpProvider) {
 
-    $routeProvider.when('/patient', {
-        templateUrl: 'patient/layout',
-        controller: PatientController
+    $routeProvider.when('/patients', {
+        templateUrl: 'patients/layout',
+        controller: PatientsController
     }).when('/login', {
         templateUrl : 'login/layout',
         controller : 'navigation'
@@ -77,7 +77,7 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
 
     // Initialize auth module with the home page and login/logout path
     // respectively
-    auth.init('/patient', '/login', '/logout');
+    auth.init('/patients', '/login', '/logout');
 
 });
 
