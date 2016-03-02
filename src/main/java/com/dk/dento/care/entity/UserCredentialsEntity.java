@@ -23,9 +23,8 @@ public class UserCredentialsEntity implements Serializable {
     @Column(name = "user_id")
     private Long id;
 
-    /** The main email address for the user */
-    @Embedded
-    private EmailAddress emailAddress;
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "login_enabled")
     private boolean loginEnable;
@@ -68,12 +67,12 @@ public class UserCredentialsEntity implements Serializable {
         this.id = id;
     }
 
-    public EmailAddress getEmailAddress() {
-        return emailAddress;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailAddress(EmailAddress emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

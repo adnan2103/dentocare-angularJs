@@ -12,7 +12,7 @@ public class UserCredentials implements Serializable {
 
     @Email(message = "Please provide a valid email address.")
     @NotEmpty(message = "Email is required.")
-    private String emailId;
+    private String email;
 
     private String password;
 
@@ -27,7 +27,7 @@ public class UserCredentials implements Serializable {
     public UserCredentials(UserCredentials userCredentials) {
 
         this.id = userCredentials.id;
-        this.emailId = userCredentials.emailId;
+        this.email = userCredentials.email;
         this.password = userCredentials.password;
         this.role = userCredentials.role;
         this.loginEnable = userCredentials.loginEnable;
@@ -41,12 +41,12 @@ public class UserCredentials implements Serializable {
         this.id = id;
     }
 
-    public String getEmailId() {
-        return emailId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

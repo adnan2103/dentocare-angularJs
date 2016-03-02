@@ -10,6 +10,7 @@ insert into user_credentials(email,login_enabled,password,role_id) values ('info
 insert into user_credentials(email,login_enabled,password,role_id) values (null,false,null,1);
 insert into user_credentials(email,login_enabled,password,role_id) values (null,false,null,1);
 insert into user_credentials(email,login_enabled,password,role_id) values ('test',false,null,1);
+insert into user_credentials(email,login_enabled,password,role_id) values ('danish@khan.com',true,'password',2);
 
 
 update user_credentials set password = '$2a$10$FBAKClV1zBIOOC9XMXf3AO8RoGXYVYsfvUdoLxGkd/BnXEn4tqT3u';
@@ -36,6 +37,9 @@ insert into user_detail(user_id,name,gender,date_of_birth,phone_number,address_l
 insert into user_detail(user_id,name,gender,date_of_birth,phone_number,address_line1,address_line2,city,state,country,pincode) values
 (7,'One More Hero','Male',now(),'123456789','Address line1','Address line2','Hyderabad','TS','India','800086');
 
+insert into user_detail(user_id,name,gender,date_of_birth,phone_number,address_line1,address_line2,city,state,country,pincode) values
+(8,'Danish Khan','Male',now(),'123444444','Address line1','Address line2','Hyderabad','TS','India','800086');
+
 
 insert into doctor_patient_mapping(doctor_id,patient_id) values(1,2);
 insert into doctor_patient_mapping(doctor_id,patient_id) values(1,3);
@@ -44,6 +48,8 @@ insert into doctor_patient_mapping(doctor_id,patient_id) values(4,6);
 insert into doctor_patient_mapping(doctor_id,patient_id) values(4,2);
 insert into doctor_patient_mapping(doctor_id,patient_id) values(4,3);
 insert into doctor_patient_mapping(doctor_id,patient_id) values(4,7);
+insert into doctor_patient_mapping(doctor_id,patient_id) values(8,2);
+insert into doctor_patient_mapping(doctor_id,patient_id) values(8,6);
 
 insert into status(status) values('In-Progress');
 insert into status(status) values('Closed');
