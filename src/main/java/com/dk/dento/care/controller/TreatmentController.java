@@ -1,6 +1,5 @@
 package com.dk.dento.care.controller;
 
-import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.service.AuthenticationService;
 import com.dk.dento.care.service.UserDetailService;
@@ -18,8 +17,8 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/patients")
-public class PatientsController {
+@RequestMapping("/treatment")
+public class TreatmentController {
 
     @Autowired
     AuthenticationService authenticationService;
@@ -31,23 +30,22 @@ public class PatientsController {
     //TODO need to implement HATEOAS for all DTO.
 
     /**
-     * End point to get all patients of logged in Doctor.
+     * End point to get all treatment for hard coded patient id.
      * @return
      */
     @RequestMapping(
-            value = "/all",
-            method = RequestMethod.GET
+            method = RequestMethod.GET,
+            produces = "application/json"
     )
-    public @ResponseBody
-    ResponseEntity getAllPatientsForLoggedInDoctor() {
-
+    @ResponseBody
+    public ResponseEntity getTreatment() {
         try {
-            List<Patient> patients = userDetailService.getAllPatient();
-            return new ResponseEntity(patients, HttpStatus.OK);
-
+            Set<Treatment> treatments = userDetailService.getPatientTreatments(2L);
+            return new ResponseEntity(treatments, HttpStatus.OK);
         } catch(Exception e) {
-            return new ResponseEntity("No patient found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity("No treatments found", HttpStatus.NOT_FOUND);
         }
+
     }
 
     /**
@@ -96,6 +94,6 @@ public class PatientsController {
 
     @RequestMapping("/layout")
     public String getPatientPartialPage() {
-        return "patients/layout";
+        return "treatment/layout";
     }
 }

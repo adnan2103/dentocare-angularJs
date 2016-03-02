@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * PatientController
+ * PatientsController
  * @constructor
  */
 var PatientsController = function($scope, $http, Post) {

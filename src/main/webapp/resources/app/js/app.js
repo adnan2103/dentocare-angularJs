@@ -10,6 +10,12 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
     $routeProvider.when('/patients', {
         templateUrl: 'patients/layout',
         controller: PatientsController
+    }).when('/patient/detail', {
+        templateUrl : 'patient/layout',
+        controller : PatientController
+    }).when('/treatment', {
+        templateUrl : 'treatment/layout',
+        controller : TreatmentController
     }).when('/login', {
         templateUrl : 'login/layout',
         controller : 'navigation'
