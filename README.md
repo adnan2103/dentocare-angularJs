@@ -1,5 +1,11 @@
 #Dento care application
 
+## Login page is not mobile friendly.
+## Default logged in page does not show list of patients.
+## Add or update patient UI work is pending.
+## Add or update Treatment UI work is pending.
+## Photo upload part is pending.
+
 
 ### List of Patients Page :
 
