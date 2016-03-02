@@ -30,7 +30,7 @@ public class PatientController {
     //TODO need to implement HATEOAS for all DTO.
     /**
      * End point to get all patients of logged in Doctor.
-     * End point would be {search?phoneNumber=123456789&name=Rohit} or {search?phoneNumber=123456789}
+     * End point would be {search?phoneNumber=123456789&name=Adnan} or {search?phoneNumber=123456789}
      * or {search?name=Rohit}
      * @return
      */

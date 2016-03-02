@@ -40,4 +40,6 @@ public class DoctorPatientMappingId implements Serializable {
     public void setPatientId(Long patientId) {
         this.patientId = patientId;
     }
+
+    //TODO write equals and hoshcode methods.
 }
