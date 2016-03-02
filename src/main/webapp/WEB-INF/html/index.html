@@ -9,7 +9,7 @@
 <body>
 <div ng-controller="navigation" class="container">
     <ul class="nav nav-pills" role="tablist">
-        <li ng-hide="authenticated()"><a href="#/login">login</a></li>
+        <!--<li ng-hide="authenticated()"><a href="#/login">login</a></li>-->
         <li ng-show="authenticated()"><a href="#/patient">All Patient</a></li>
         <li ng-show="authenticated()"><a href="" ng-click="logout()">logout</a></li>
     </ul>

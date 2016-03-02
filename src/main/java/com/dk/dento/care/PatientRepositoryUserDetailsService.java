@@ -64,10 +64,6 @@ public class PatientRepositoryUserDetailsService implements UserDetailsService {
             return true;
         }
 
-        public String getPassword() {
-            return getPassword();
-        }
-
         private static final long serialVersionUID = 5639683223516504866L;
     }
 }

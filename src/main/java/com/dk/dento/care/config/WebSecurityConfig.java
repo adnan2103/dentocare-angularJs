@@ -62,12 +62,12 @@ public class WebSecurityConfig
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER");
         /*auth
+                .inMemoryAuthentication()
+                .withUser("user").password("password").roles("USER");*/
+        auth
             .userDetailsService(patientRepositoryUserDetailsService)
-                .passwordEncoder(new BCryptPasswordEncoder());*/
+                .passwordEncoder(new BCryptPasswordEncoder());
     }
 
     private Filter csrfHeaderFilter() {

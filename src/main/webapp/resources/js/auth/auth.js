@@ -18,7 +18,7 @@ angular.module('auth', []).factory(
 
 				loginPath : '/login',
 				logoutPath : '/logout',
-				homePath : '/',
+				homePath : '/patient',
 				path : $location.path(),
 
 				authenticate : function(credentials, callback) {
