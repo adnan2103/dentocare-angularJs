@@ -83,7 +83,7 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
 
     // Initialize auth module with the home page and login/logout path
     // respectively
-    auth.init('/patients', '/login', '/logout');
+    auth.init('/', '/login', '/logout');
 
 });
 

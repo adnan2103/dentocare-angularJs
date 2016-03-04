@@ -18,7 +18,7 @@ angular.module('auth', []).factory(
 
 				loginPath : '/login',
 				logoutPath : '/logout',
-				homePath : '/patients',
+				homePath : '/',
 				path : $location.path(),
 
 				authenticate : function(credentials, callback) {
@@ -32,7 +32,6 @@ angular.module('auth', []).factory(
 					$http.get('patients/all', {
 						headers : headers
 					}).success(function(data) {
-						console.log('Adnan data : '+data);
 						if (data) {
 							auth.authenticated = true;
 						} else {

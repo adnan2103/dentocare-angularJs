@@ -3,8 +3,8 @@
 #Major issues before go live.
 
 ## Default logged in page does not show list of patients.
-## Add or update patient UI work and controller update is pending.
-## Add or update Treatment UI work and controller update is pending.
+## Add or update patient UI modification work and controller update is pending.
+## Add or update Treatment UI modification work and controller update is pending.
 ## Photo upload for patient and treatment part is pending.
 
 
