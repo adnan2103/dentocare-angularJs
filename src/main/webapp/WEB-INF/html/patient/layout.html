@@ -1,6 +1,68 @@
 <!-- Page Content -->
 <div class="container">
     <div class="row">
+        <div class="col-lg-3">Name: </div>
+        <div class="col-lg-9">
+            <input type="text" ng-model="patient.name" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">Gender: </div>
+        <div class="col-lg-9">
+            <input type="text" ng-model="patient.gender" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">Phone Number: </div>
+        <div class="col-lg-9">
+            <input type="text" ng-model="patient.phoneNumber" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">DOB: </div>
+        <div class="col-lg-9">
+            <input type="text" ng-model="patient.dateOfBirth" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">Address L1: </div>
+        <div class="col-lg-9">
+            <input type="text" ng-model="patient.address.addressLine1" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">Line 2: </div>
+        <div class="col-lg-9">
+            <input type="text" ng-model="patient.address.addressLine2" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">City: </div>
+        <div class="col-lg-9">
+            <input type="text" ng-model="patient.address.city" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">State: </div>
+        <div class="col-lg-9">
+            <input type="text" ng-model="patient.address.state" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">Country: </div>
+        <div class="col-lg-9">
+            <input type="text" ng-model="patient.address.country" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">PinCode: </div>
+        <div class="col-lg-9">
+            <input type="text" ng-model="patient.address.pincode" />
+        </div>
+    </div>
+
+    <!-- Below code has to be removed when we are done with the full add/edit html-->
+    <div class="row">
         <div class="col-md-3 portfolio-item">
             <a href="#">
                 <img class="img-responsive" src="resources/app/images/patients/patient.png" alt="" />
