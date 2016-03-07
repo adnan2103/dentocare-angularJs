@@ -56,7 +56,7 @@ public class UserDetailEntity implements Serializable {
     private Address address;
 
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+/*    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
     private Set<TreatmentEntity> treatmentEntities;
 
@@ -66,7 +66,7 @@ public class UserDetailEntity implements Serializable {
 
     public void setTreatmentEntities(Set<TreatmentEntity> treatmentEntities) {
         this.treatmentEntities = treatmentEntities;
-    }
+    }*/
 
     public Long getId() {
         return id;

@@ -34,7 +34,7 @@ public class PatientController {
      * or {search?name=Rohit}
      * @return
      */
-    @RequestMapping(
+    /*@RequestMapping(
             value = "/search",
             method = RequestMethod.GET
     )
@@ -50,7 +50,7 @@ public class PatientController {
             return new ResponseEntity("No patient found", HttpStatus.NOT_FOUND);
         }
 
-    }
+    }*/
 
     /**
      * End point to get patient detail for given patient id.
@@ -72,42 +72,25 @@ public class PatientController {
     }
 
     /**
-     * End point to create or update a patient.
+     * End point to create / update a patient.
      * @param patient
      * @return
      */
     @RequestMapping(
+            value = "/save",
             method = RequestMethod.PUT,
             produces = "application/json"
     )
     @ResponseBody
     public ResponseEntity savePatient(@RequestBody final Patient patient) {
-       try{
-           Patient patient1 = userDetailService.savePatient(patient);
-           return new ResponseEntity(patient1, HttpStatus.OK);
-       } catch (Exception e) {
-           return new ResponseEntity("Error Occurred while saving or updating patient.", HttpStatus.INTERNAL_SERVER_ERROR);
-       }
-    }
-
-
-    /**
-     * End point to get hard coded patient detail for now
-     * @return
-     */
-    @RequestMapping(
-            value = "/detail",
-            method = RequestMethod.GET
-    )
-    @ResponseBody
-    public ResponseEntity getDetail() {
-        try {
-            Patient patient = userDetailService.getPatientDetails(2L);
-            return new ResponseEntity(patient, HttpStatus.OK);
-        } catch(Exception e) {
-            return new ResponseEntity("No patient Detail found", HttpStatus.NOT_FOUND);
+        try{
+            Patient patient1 = userDetailService.savePatient(patient);
+            return new ResponseEntity(patient1, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity("Error Occurred while saving or updating patient.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 
     @RequestMapping("/layout")
     public String getPatientPartialPage() {

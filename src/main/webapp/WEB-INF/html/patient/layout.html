@@ -1,68 +1,13 @@
 <!-- Page Content -->
 <div class="container">
-    <div class="row">
-        <div class="col-lg-3">Name: </div>
-        <div class="col-lg-9">
-            <input type="text" ng-model="patient.name" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">Gender: </div>
-        <div class="col-lg-9">
-            <input type="text" ng-model="patient.gender" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">Phone Number: </div>
-        <div class="col-lg-9">
-            <input type="text" ng-model="patient.phoneNumber" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">DOB: </div>
-        <div class="col-lg-9">
-            <input type="text" ng-model="patient.dateOfBirth" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">Address L1: </div>
-        <div class="col-lg-9">
-            <input type="text" ng-model="patient.address.addressLine1" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">Line 2: </div>
-        <div class="col-lg-9">
-            <input type="text" ng-model="patient.address.addressLine2" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">City: </div>
-        <div class="col-lg-9">
-            <input type="text" ng-model="patient.address.city" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">State: </div>
-        <div class="col-lg-9">
-            <input type="text" ng-model="patient.address.state" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">Country: </div>
-        <div class="col-lg-9">
-            <input type="text" ng-model="patient.address.country" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">PinCode: </div>
-        <div class="col-lg-9">
-            <input type="text" ng-model="patient.address.pincode" />
-        </div>
-    </div>
-
     <!-- Below code has to be removed when we are done with the full add/edit html-->
     <div class="row">
+        <div class="alert alert-danger" ng-show="message">
+            Patient Created / Updated Successfully.
+        </div>
+        <div class="alert alert-danger" ng-show="error">
+            Could not create / update the patient.
+        </div>
         <div class="col-md-3 portfolio-item">
             <a href="#">
                 <img class="img-responsive" src="resources/app/images/patients/patient.png" alt="" />
@@ -70,23 +15,30 @@
         </div>
         <div class="col-md-5 portfolio-item">
             <div class="row">
-            <b> Name : </b> {{patient.name}} <b> Gender : </b> {{patient.gender}}
+            <b> Name : </b> <input type="text" ng-model="patient.name" /> <b> Gender : </b> <input type="text" ng-model="patient.gender" />
             </div>
             <div class="row">
-            <b> Mobile : </b> {{patient.phoneNumber}} <b> Date of Birth : </b> {{patient.dateOfBirth}}
+            <b> Mobile : </b> <input type="text" ng-model="patient.phoneNumber" /> <b> Date of Birth : </b> <input type="text" ng-model="patient.dateOfBirth" />
             </div>
         <div class="row">
             <b> Address : </b>
         </div>
         <div class="row">
-            {{patient.address.addressLine1}} {{patient.address.addressLine2}}
+            <input type="text" ng-model="patient.address.addressLine1" />  <input type="text" ng-model="patient.address.addressLine2" />
         </div>
         <div class="row">
-            {{patient.address.city}} {{patient.address.state}}
+            <input type="text" ng-model="patient.address.city" /> <input type="text" ng-model="patient.address.state" />
         </div>
         <div class="row">
-            {{patient.address.country}} {{patient.address.pincode}}
+            <input type="text" ng-model="patient.address.country" /> <input type="text" ng-model="patient.address.pincode" />
         </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-primary"
+                        ng-click="savePatient(patient)">Update</button>
+            </div>
         </div>
     </div>
 </div>

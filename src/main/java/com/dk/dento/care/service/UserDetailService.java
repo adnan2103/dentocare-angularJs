@@ -73,7 +73,7 @@ public class UserDetailService {
 
     public Set<Treatment> getPatientTreatments(Long patientId) {
 
-        return modelEntityConversion.treatmentEntityToTreatmentList(userDetailRepository.findOne(patientId).getTreatmentEntities());
+        return modelEntityConversion.treatmentEntityToTreatmentList(treatmentRepository.findByUserDetailEntity(userDetailRepository.findOne(patientId)));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
