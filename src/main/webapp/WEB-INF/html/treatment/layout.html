@@ -1,14 +1,54 @@
 <!-- Page Content -->
 <div class="container">
-    <div ng-repeat="treatment in treatments" >
     <div class="row">
-
+        <div class="alert alert-danger" ng-show="message">
+            Treatment Updated Successfully.
+        </div>
+        <div class="alert alert-danger" ng-show="error">
+            Could not update the treatment.
+        </div>
+        <div class="col-md-3 portfolio-item">
+            <a href="#">
+                <img class="img-responsive" src="resources/app/images/patients/patient.png" alt="" />
+            </a>
+        </div>
         <div class="col-md-5 portfolio-item">
             <div class="row">
-                {{treatment}}
+                <b> Name : </b> {{patient.name}} <b> Gender : </b> {{patient.gender}}
             </div>
+            <div class="row">
+                <b> Mobile : </b> {{patient.phoneNumber}} <b> Date of Birth : </b> {{patient.dateOfBirth}}
+            </div>
+            <div class="row">
+                <b> Address : </b>
+            </div>
+            <div class="row">
+                {{patient.address.addressLine1}}  {{patient.address.addressLine2}}
+            </div>
+            <div class="row">
+                {{patient.address.city}} {{patient.address.state}}
+            </div>
+            <div class="row">
+                {{patient.address.country}} {{patient.address.pincode}}
+            </div>
+        </div>
 
+        <div ng-repeat="treatment in treatments" >
+            <div class="row">
+
+                <div class="col-md-5 portfolio-item">
+                    <div class="row">
+                        {{treatment}}
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <button type="button" class="btn btn-primary"
+                            ng-click="saveTreatment(treatment)">Update</button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </div>
