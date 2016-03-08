@@ -16,10 +16,10 @@ var TreatmentController = function($scope, $http, $routeParams) {
         });
     };
 
-    $scope.saveTreatment = function(treatment) {
+    $scope.saveTreatment = function(treatments) {
         $scope.resetError();
 
-        $http.put('patient/' + $routeParams.id + '/treatment', treatment).success(function() {
+        $http.put('patient/' + $routeParams.id + '/treatment', treatments).success(function() {
             $scope.message = 'Treatment Updated.';
         }).error(function() {
             $scope.setError('Could not update the treatment.');
