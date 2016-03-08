@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/treatment")
 public class TreatmentController {
 
     @Autowired
@@ -30,31 +29,12 @@ public class TreatmentController {
     //TODO need to implement HATEOAS for all DTO.
 
     /**
-     * End point to get all treatment for hard coded patient id.
-     * @return
-     */
-    @RequestMapping(
-            method = RequestMethod.GET,
-            produces = "application/json"
-    )
-    @ResponseBody
-    public ResponseEntity getTreatment() {
-        try {
-            Set<Treatment> treatments = userDetailService.getPatientTreatments(2L);
-            return new ResponseEntity(treatments, HttpStatus.OK);
-        } catch(Exception e) {
-            return new ResponseEntity("No treatments found", HttpStatus.NOT_FOUND);
-        }
-
-    }
-
-    /**
      * End point to get all treatment for given patient id.
      * @param id
      * @return
      */
     @RequestMapping(
-            value = "/{id}/treatment",
+            value = "patient/{id}/treatment",
             method = RequestMethod.GET,
             produces = "application/json"
     )
@@ -71,20 +51,20 @@ public class TreatmentController {
 
     /**
      * End point to create/update treatment for given patient id.
-     * @param patinetId
+     * @param id
      * @param treatments
      * @return
      */
     @RequestMapping(
-            value = "/{patinetId}/treatment",
+            value = "patient/{id}/treatment",
             method = RequestMethod.PUT,
             produces = "application/json"
     )
     @ResponseBody
-    public ResponseEntity savePatientTreatment(@PathVariable final Long patinetId,
+    public ResponseEntity savePatientTreatment(@PathVariable final Long id,
                                                       @RequestBody final List<Treatment> treatments) {
         try {
-            userDetailService.savePatientTreatments(treatments, patinetId);
+            userDetailService.savePatientTreatments(treatments, id);
             return new ResponseEntity("Updated.", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity("Error Occurred while saving or updating treatment.", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -92,7 +72,7 @@ public class TreatmentController {
 
     }
 
-    @RequestMapping("/layout")
+    @RequestMapping("treatment/layout")
     public String getPatientPartialPage() {
         return "treatment/layout";
     }

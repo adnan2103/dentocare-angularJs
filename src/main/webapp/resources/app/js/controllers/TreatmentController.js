@@ -4,9 +4,9 @@
  * TreatmentController
  * @constructor
  */
-var TreatmentController = function($scope, $http) {
+var TreatmentController = function($scope, $http, $routeParams) {
     $scope.fetchTreatment = function() {
-        $http.get('treatment').success(function(treatments){
+        $http.get('patient/' + $routeParams.id + '/treatment').success(function(treatments){
             $scope.treatments = treatments;
         });
     };
