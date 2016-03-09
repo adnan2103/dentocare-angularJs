@@ -19,7 +19,8 @@ var PatientController = function($scope, $http, $routeParams) {
     $scope.savePatient = function(patient) {
         $scope.resetError();
 
-        $http.put('patient/save', patient).success(function() {
+        $http.put('patient/save', patient).success(function(patient) {
+            $scope.patient = patient;
             $scope.message = 'Patient Created / Updated.';
         }).error(function() {
             $scope.setError('Could not create / update the patient.');
