@@ -17,7 +17,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,18 +47,40 @@ public class ModelEntityConversion {
         List<Patient> patients = new ArrayList<Patient>(0);
 
         for (UserDetailEntity userDetailEntity : userDetailEntities) {
-            patients.add(modelMapper.map(userDetailEntity, Patient.class));
+            Patient patient = modelMapper.map(userDetailEntity, Patient.class);
+            patient.setDateOfBirth("");
+            if(userDetailEntity.getDataOfBirth() != null) {
+                patient.setDateOfBirth(new SimpleDateFormat("dd-MM-yyyy").format(userDetailEntity.getDataOfBirth()));
+            }
+            patients.add(patient);
         }
 
         return patients;
     }
 
     public Patient userDetailsEntityToPatient(UserDetailEntity userDetailEntity) {
-        return modelMapper.map(userDetailEntity, Patient.class);
+        Patient patient = modelMapper.map(userDetailEntity, Patient.class);
+        patient.setDateOfBirth("");
+        if(userDetailEntity.getDataOfBirth() != null) {
+            patient.setDateOfBirth(new SimpleDateFormat("dd-MM-yyyy").format(userDetailEntity.getDataOfBirth()));
+        }
+        return patient;
     }
 
-    public UserDetailEntity patientToUserDetailEntity(Patient patient) {
-        return modelMapper.map(patient, UserDetailEntity.class);
+    public UserDetailEntity patientToUserDetailEntity(Patient patient) throws ParseException {
+
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        UserDetailEntity userDetailEntity = modelMapper.map(patient, UserDetailEntity.class);
+
+        //TODO add isValid date and format kind of validations.
+        if(patient.getDateOfBirth() !=null) {
+            Date dob = simpleDateFormat.parse(patient.getDateOfBirth());
+            userDetailEntity.setDataOfBirth(dob);
+        }
+
+        return userDetailEntity;
+
     }
 
     public UserCredentials userCredentialsEntityToModel(UserCredentialsEntity userCredentialsEntity) {

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -77,7 +78,7 @@ public class UserDetailService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Patient savePatient(Patient patient) {
+    public Patient savePatient(Patient patient) throws ParseException {
         UserDetailEntity patientEntity = modelEntityConversion.patientToUserDetailEntity(patient);
 
         if (patientEntity.getId() != null) {

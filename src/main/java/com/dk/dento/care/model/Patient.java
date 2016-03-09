@@ -15,7 +15,7 @@ public class Patient {
 
     private String gender;
 
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
     private String phoneNumber;
 
@@ -45,11 +45,11 @@ public class Patient {
         this.gender = gender;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
