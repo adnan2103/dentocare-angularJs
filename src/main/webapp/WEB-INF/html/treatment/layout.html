@@ -35,10 +35,38 @@
 
         <div ng-repeat="treatment in treatments" >
             <div class="row">
-
                 <div class="col-md-5 portfolio-item">
+
                     <div class="row">
-                        {{treatment}}
+                        <b> Status : </b> <input type="text" ng-model="treatment.status" />
+                    </div>
+                    <div class="row">
+                        <b> Chief Complaint : </b> <input type="text" ng-model="treatment.chiefComplaintDescription" />
+                    </div>
+                    <div class="row">
+                        <b> Notes : </b> <input type="text" ng-model="treatment.notes" />
+                    </div>
+
+
+                    <br /><div class="row"> <b>Patient Oral Examinations</b> </div>
+                    <div class="row">
+                        <b> Description : </b> <b> Cost : </b>
+                    </div>
+                    <div ng-repeat="oralExamination in treatment.patientOralExamination" >
+                        <div class="row">
+                             <input type="text" ng-model="oralExamination.description" /> <input type="text" ng-model="oralExamination.cost" />
+                        </div>
+                    </div>
+
+
+                    <br /><div class="row"> <b>Payments Detail</b></div>
+                    <div class="row">
+                        <b> Payment Date : </b> <b> Payment Amount : </b>  <b> Treatment Done : </b>
+                    </div>
+                    <div ng-repeat="payment in treatment.payment" >
+                        <div class="row">
+                            <input type="text" ng-model="payment.paymentDate" /> <input type="text" ng-model="payment.paymentAmount" /> <input type="text" ng-model="payment.treatmentDone" />
+                        </div>
                     </div>
 
                 </div>
