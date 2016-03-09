@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 
 @Controller
 @RequestMapping("/patient")
@@ -28,30 +26,6 @@ public class PatientController {
 
     //TODO none of the end point is sending proper http response code and response body
     //TODO need to implement HATEOAS for all DTO.
-    /**
-     * End point to get all patients of logged in Doctor.
-     * End point would be {search?phoneNumber=123456789&name=Adnan} or {search?phoneNumber=123456789}
-     * or {search?name=Rohit}
-     * @return
-     */
-    /*@RequestMapping(
-            value = "/search",
-            method = RequestMethod.GET
-    )
-    public @ResponseBody
-    ResponseEntity searchByName(
-            @RequestParam(value = "name", required = false) final String patientName,
-            @RequestParam(value = "phoneNumber", required = false) final String phoneNumber
-    ) {
-        try{
-            List<Patient> patients = userDetailService.getPatientsByNameOrPhoneNumber(patientName, phoneNumber);
-            return new ResponseEntity(patients, HttpStatus.OK);
-        } catch(Exception e) {
-            return new ResponseEntity("No patient found", HttpStatus.NOT_FOUND);
-        }
-
-    }*/
-
     /**
      * End point to get patient detail for given patient id.
      * @param id
@@ -90,7 +64,6 @@ public class PatientController {
             return new ResponseEntity("Error Occurred while saving or updating patient.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
     @RequestMapping("/layout")
     public String getPatientPartialPage() {
