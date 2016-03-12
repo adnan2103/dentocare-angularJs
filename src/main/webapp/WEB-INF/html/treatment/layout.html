@@ -60,7 +60,7 @@
                     <div ng-repeat="oralExamination in treatment.patientOralExamination" >
                         <div class="row">
                              <input type="text" ng-model="oralExamination.description" placeholder="Description" />
-                             <input type="text" ng-model="oralExamination.cost" placeholder="Cost" />
+                             <input type="number" ng-model="oralExamination.cost" placeholder="Cost" />
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
                     <div ng-repeat="payment in treatment.payment">
                         <div class="row">
                             <input type="text" ng-model="payment.paymentDate" placeholder="Date" />
-                            <input type="text" ng-model="payment.paymentAmount" placeholder="Amount" />
+                            <input type="number" ng-model="payment.paymentAmount" placeholder="Amount" />
                             <input type="text" ng-model="payment.treatmentDone" placeholder="Notes" />
                         </div>
                     </div>
