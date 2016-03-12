@@ -6,30 +6,6 @@
  */
 var TreatmentController = function($scope, $http, $routeParams) {
 
-    $scope.treatments = [
-        {
-            "id":null,
-            "chiefComplaintDescription":"",
-            "notes":"",
-            "status":"In-Progress",
-            "payment":[
-                {
-                    "id":null,
-                    "paymentDate":"",
-                    "paymentAmount":"",
-                    "treatmentDone":""
-                }
-            ],
-            "patientOralExamination":[
-                {
-                    "id":null,
-                    "description":"",
-                    "cost":""
-                }
-            ]
-        }
-    ];
-
     $scope.status = [
         {'status': 'In-Progress'},
         {'status': 'Closed'}
@@ -43,8 +19,39 @@ var TreatmentController = function($scope, $http, $routeParams) {
         $http.get('patient/' + $routeParams.id + '/treatment').success(function(treatments){
             $scope.treatments = treatments;
 
-            $scope.payment = treatments[0].payment;
-            $scope.patientOralExamination = treatments[0].patientOralExamination;
+            if(!treatments[0]) {
+
+                $scope.treatments = [
+                    {
+                        "id":null,
+                        "chiefComplaintDescription":"",
+                        "notes":"",
+                        "status":"In-Progress",
+                        "payment":[
+                            {
+                                "id":null,
+                                "paymentDate":"",
+                                "paymentAmount":"",
+                                "treatmentDone":""
+                            }
+                        ],
+                        "patientOralExamination":[
+                            {
+                                "id":null,
+                                "description":"",
+                                "cost":""
+                            }
+                        ]
+                    }
+                ];
+                $scope.payment = $scope.treatments[0].payment;
+                $scope.patientOralExamination = $scope.treatments[0].patientOralExamination;
+            } else {
+                $scope.payment = treatments[0].payment;
+                $scope.patientOralExamination = treatments[0].patientOralExamination;
+            }
+
+
         });
     };
 

@@ -83,31 +83,7 @@
             </div>
 
         </div>
-        <div class="row" ng-if="treatments[0]">
-            <div class="col-lg-12">
-                <button type="button" class="btn btn-primary"
-                        ng-click="saveTreatment(treatments)">Add/Update</button>
-            </div>
-        </div>
-
-        <div class="row" ng-hide="treatments[0]">
-            <div class="row">
-                <div class="col-md-5 portfolio-item">
-
-                    <div class="row">
-                        <b> Status : </b>
-                        <input type="text" ng-model="treatments[0].status" />
-                    </div>
-                    <div class="row">
-                        <b> Chief Complaint : </b>
-                        <input type="text" ng-model="treatments[0].chiefComplaintDescription" placeholder="Chief Complaint" />
-                    </div>
-                    <div class="row">
-                        <b> Notes : </b>
-                        <input type="text" ng-model="treatments[0].notes" placeholder="Notes" />
-                    </div>
-                </div>
-            </div>
+        <div class="row">
             <div class="col-lg-12">
                 <button type="button" class="btn btn-primary"
                         ng-click="saveTreatment(treatments)">Add/Update</button>
