@@ -53,7 +53,11 @@
                     </div>
 
 
-                    <br /><div class="row"> <b>Patient Oral Examinations</b> </div>
+                    <br />
+                    <div class="row">
+                        <b>Patient Oral Examinations</b>
+                        <button ng-click="addPatientOralExamination()" style="background-color: red"><b>+</b></button>
+                    </div>
                     <div class="row">
                         <b> Description : </b> <b> Cost : </b>
                     </div>
@@ -64,9 +68,13 @@
                         </div>
                     </div>
 
-                    <button ng-click="addPatientOralExamination()"><b>+</b></button>
 
-                    <br /><div class="row"> <b>Payments Detail</b></div>
+
+                    <br />
+                    <div class="row">
+                        <b>Payments Detail</b>
+                        <button ng-click="addPayment()" style="background-color: red"><b>+</b></button>
+                    </div>
                     <div class="row">
                         <b> Payment Date : </b> <b> Payment Amount : </b>  <b> Treatment Done : </b>
                     </div>
@@ -77,8 +85,6 @@
                             <input type="text" ng-model="payment.treatmentDone" placeholder="Notes" />
                         </div>
                     </div>
-
-                    <button ng-click="addPayment()"><b>+</b></button>
                 </div>
             </div>
 
