@@ -5,13 +5,14 @@
         </li>
         <li>
             <div class="search">
-                <input type="text" ng-model="searchName" placeholder="Enter patient name" />
+                <input type="text" ng-model="searchName" placeholder="Enter patient name"/>
             </div>
         </li>
 
-        <li><div class="search">
-            <input type="text" ng-model="searchNumber" placeholder="Enter patient mobile number" />
-        </div>
+        <li>
+            <div class="search">
+                <input type="text" ng-model="searchNumber" placeholder="Enter patient mobile number"/>
+            </div>
         </li>
     </ul>
 </div>
@@ -20,47 +21,53 @@
 <div class="container">
 
     <!-- Page Heading -->
-<!--    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Registered Patients
-            </h1>
-        </div>
-    </div>-->
+    <!--    <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Registered Patients
+                </h1>
+            </div>
+        </div>-->
     <!-- /.row -->
 
     <!-- Projects Row -->
     <div ng-repeat="patient in patients | searchForName:searchName | searchForNumber:searchNumber">
-    <div class="row">
-        <div class="col-md-3 portfolio-item">
-            <a href="#">
-                <img class="img-responsive" src="resources/app/images/patients/patient.png" alt="" />
-            </a>
-        </div>
-        <div class="col-md-5 portfolio-item">
-            <div class="row">
-            <a href="#/patient/{{patient.id}}">Update Patient</a>
-            <a href="#/patient/{{patient.id}}/treatment">Add Treatment</a>
+        <div class="row">
+            <div class="col-md-3 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="resources/app/images/patients/patient.png" alt=""/>
+                </a>
             </div>
-            <div class="row">
-            <b> Name : </b> {{patient.name}} <b> Gender : </b> {{patient.gender}}
+            <div class="col-md-5 portfolio-item">
+                <div class="row">
+                    <a href="#/patient/{{patient.id}}">Update Patient</a>
+                    <a href="#/patient/{{patient.id}}/treatment">Add Treatment</a>
+                </div>
+                <div class="row">
+                    <b> Name : </b> {{patient.name}}
+                </div>
+                <div class="row">
+                    <b> Gender : </b> {{patient.gender}}
+                </div>
+                <div class="row">
+                    <b> Mobile : </b> {{patient.phoneNumber}}
+                </div>
+                <div class="row">
+                    <b> Date of Birth : </b> {{patient.dateOfBirth}}
+                </div>
+                <div class="row">
+                    <b> Address : </b>
+                </div>
+                <div class="row">
+                    {{patient.address.addressLine1}} {{patient.address.addressLine2}}
+                </div>
+                <div class="row">
+                    {{patient.address.city}} {{patient.address.state}}
+                </div>
+                <div class="row">
+                    {{patient.address.country}} {{patient.address.pincode}}
+                </div>
             </div>
-            <div class="row">
-            <b> Mobile : </b> {{patient.phoneNumber}} <b> Date of Birth : </b> {{patient.dateOfBirth}}
-            </div>
-        <div class="row">
-            <b> Address : </b>
         </div>
-        <div class="row">
-            {{patient.address.addressLine1}} {{patient.address.addressLine2}}
-        </div>
-        <div class="row">
-            {{patient.address.city}} {{patient.address.state}}
-        </div>
-        <div class="row">
-            {{patient.address.country}} {{patient.address.pincode}}
-        </div>
-        </div>
-    </div>
     </div>
     <!-- /.row -->
 
@@ -94,7 +101,7 @@
     </div>-->
     <!-- /.row -->
 
-    <hr />
+    <hr/>
 
     <!-- Footer -->
     <footer>

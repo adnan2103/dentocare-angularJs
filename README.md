@@ -2,29 +2,30 @@
 
 #Major issues before go live.
 
-## Date of birth and Payment date format issue.
-## Mobile number validation issue.
-## default gender selection for new patient.
-## order by issues.
-## Total treatment cost.
-## Total pending amount.
 ## Research on where to host this site.
 
-## Add Payment and Orala examination + button css.
+## Date of birth and Payment date format and validation issue.
+## Mobile number validation issue.
+## default gender as Male selection for new patient.
+## order by issues.(by id, use filter)
+## Total treatment cost.
+## Total pending amount.
+
+
+## Add Payment and Oral examination + button css.
 ## UI styling and CSS.
+
 ## Patient photo upload and edit.
 ## Pre and post treatment photos upload.
+
+## Default logged in page does not show list of patients.
 ## Adding multiple treatments, low priority.
 ## Adding one more role to manage patients only, low priority.
+## Code clean up and refactoring.
 
 
-
-
-## Add or update patient UI modification work and controller update is pending.
-## Add or update Treatment UI modification work and controller update is pending.
-## Photo upload for patient and treatment part is pending.
-## Default logged in page does not show list of patients.
-
+##DONE## Add or update patient UI modification work and controller update is pending.
+##DONE## Add or update Treatment UI modification work and controller update is pending.
 
 ##DONE## Login page is not mobile friendly.
 ##DONE## List of Patients Page :

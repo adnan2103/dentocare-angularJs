@@ -9,21 +9,30 @@
         </div>
         <div class="col-md-3 portfolio-item">
             <a href="#">
-                <img class="img-responsive" src="resources/app/images/patients/patient.png" alt="" />
+                <img class="img-responsive" src="resources/app/images/patients/patient.png" alt=""/>
             </a>
         </div>
         <div class="col-md-5 portfolio-item">
             <div class="row">
-                <b> Name : </b> {{patient.name}} <b> Gender : </b> {{patient.gender}}
+                <h1>Patient Detail</h1>
             </div>
             <div class="row">
-                <b> Mobile : </b> {{patient.phoneNumber}} <b> Date of Birth : </b> {{patient.dateOfBirth}}
+                <b> Name : </b> {{patient.name}}
+            </div>
+            <div class="row">
+                <b> Gender : </b> {{patient.gender}}
+            </div>
+            <div class="row">
+                <b> Mobile : </b> {{patient.phoneNumber}}
+            </div>
+            <div class="row">
+                <b> Date of Birth : </b> {{patient.dateOfBirth}}
             </div>
             <div class="row">
                 <b> Address : </b>
             </div>
             <div class="row">
-                {{patient.address.addressLine1}}  {{patient.address.addressLine2}}
+                {{patient.address.addressLine1}} {{patient.address.addressLine2}}
             </div>
             <div class="row">
                 {{patient.address.city}} {{patient.address.state}}
@@ -33,27 +42,33 @@
             </div>
         </div>
 
-        <div ng-repeat="treatment in treatments" >
-            <div class="row">
-                <div class="col-md-5 portfolio-item">
+        <div ng-repeat="treatment in treatments">
+                <div class="col-md-8 portfolio-item">
 
+                    <div class="row">
+                    <h1>Treatment ID : {{treatment.id}}</h1>
+                    </div>
                     <div class="row">
                         <b> Status : </b>
                         <select ng-model="treatment.status">
-                            <option ng-repeat="status in status" value="{{status.status}}" ng-selected="treatment.status === status.status">{{status.status}}</option>
+                            <option ng-repeat="status in status" value="{{status.status}}"
+                                    ng-selected="treatment.status === status.status">{{status.status}}
+                            </option>
                         </select>
                     </div>
                     <div class="row">
                         <b> Chief Complaint : </b>
-                        <input type="text" ng-model="treatment.chiefComplaintDescription" placeholder="Chief Complaint" />
+                        <input type="text" ng-model="treatment.chiefComplaintDescription"
+                               placeholder="Chief Complaint"/>
                     </div>
                     <div class="row">
                         <b> Notes : </b>
-                        <input type="text" ng-model="treatment.notes" placeholder="Notes" />
+                        <input type="text" ng-model="treatment.notes" placeholder="Notes"/>
                     </div>
 
 
-                    <br />
+                    <br/>
+
                     <div class="row">
                         <b>Patient Oral Examinations</b>
                         <button ng-click="addPatientOralExamination()" style="background-color: red"><b>+</b></button>
@@ -61,38 +76,37 @@
                     <div class="row">
                         <b> Description : </b> <b> Cost : </b>
                     </div>
-                    <div ng-repeat="oralExamination in treatment.patientOralExamination" >
+                    <div ng-repeat="oralExamination in treatment.patientOralExamination">
                         <div class="row">
-                             <input type="text" ng-model="oralExamination.description" placeholder="Description" />
-                             <input type="number" ng-model="oralExamination.cost" placeholder="Cost" />
+                            <input type="text" ng-model="oralExamination.description" placeholder="Description"/>
+                            <input type="number" ng-model="oralExamination.cost" placeholder="Cost"/>
                         </div>
                     </div>
 
 
+                    <br/>
 
-                    <br />
                     <div class="row">
                         <b>Payments Detail</b>
                         <button ng-click="addPayment()" style="background-color: red"><b>+</b></button>
                     </div>
                     <div class="row">
-                        <b> Payment Date : </b> <b> Payment Amount : </b>  <b> Treatment Done : </b>
+                        <b> Payment Date : </b> <b> Payment Amount : </b> <b> Treatment Done : </b>
                     </div>
                     <div ng-repeat="payment in treatment.payment">
                         <div class="row">
-                            <input type="text" ng-model="payment.paymentDate" placeholder="Date" />
-                            <input type="number" ng-model="payment.paymentAmount" placeholder="Amount" />
-                            <input type="text" ng-model="payment.treatmentDone" placeholder="Notes" />
+                            <input type="text" ng-model="payment.paymentDate" placeholder="Date"/>
+                            <input type="number" ng-model="payment.paymentAmount" placeholder="Amount"/>
+                            <input type="text" ng-model="payment.treatmentDone" placeholder="Notes"/>
                         </div>
                     </div>
                 </div>
-            </div>
-
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <button type="button" class="btn btn-primary"
-                        ng-click="saveTreatment(treatments)">Add/Update</button>
+                        ng-click="saveTreatment(treatments)">Add/Update
+                </button>
             </div>
         </div>
 
