@@ -16,6 +16,11 @@ var PatientController = function($scope, $http, $routeParams) {
 
     };
 
+    $scope.gender = [
+        {'gender': 'Male'},
+        {'gender': 'Female'}
+    ];
+
     $scope.savePatient = function(patient) {
         $scope.resetError();
 

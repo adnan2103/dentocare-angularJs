@@ -103,9 +103,9 @@ public class UserDetailService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void savePatientTreatments(List<Treatment> treatments, Long patinetId) {
+    public Set<Treatment> savePatientTreatments(List<Treatment> treatments, Long patinetId) {
         Set<TreatmentEntity> treatmentEntities = modelEntityConversion.treatmentModelListToTreatmentEntityList(treatments, patinetId);
-        treatmentRepository.save(treatmentEntities);
+        return modelEntityConversion.treatmentEntityToTreatmentList(treatmentRepository.save(treatmentEntities));
     }
 
     public List<Patient> getPatientsByNameOrPhoneNumber(String patientName, String phoneNumber) {

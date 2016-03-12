@@ -14,22 +14,29 @@
         </div>
         <div class="col-md-5 portfolio-item">
             <div class="row">
-            <b> Name : </b> <input type="text" ng-model="patient.name" /> <b> Gender : </b> <input type="text" ng-model="patient.gender" />
+            <b> Name : </b> <input type="text" ng-model="patient.name" placeholder="Patient Name" />
+            <select ng-model="patient.gender">
+                <option ng-repeat="gender in gender" value="{{gender.gender}}" ng-selected="patient.gender === gender.gender">{{gender.gender}}</option>
+            </select>
             </div>
             <div class="row">
-            <b> Mobile : </b> <input type="text" ng-model="patient.phoneNumber" /> <b> Date of Birth : </b> <input type="text" ng-model="patient.dateOfBirth" />
+            <b> Mobile : </b> <input type="text" ng-model="patient.phoneNumber" placeholder="Mobile Number" />
+             <b> Date of Birth : </b> <input type="text" ng-model="patient.dateOfBirth" placeholder="Date of birth dd-mm-yyyy" />
             </div>
         <div class="row">
             <b> Address : </b>
         </div>
         <div class="row">
-            <input type="text" ng-model="patient.address.addressLine1" />  <input type="text" ng-model="patient.address.addressLine2" />
+            <input type="text" ng-model="patient.address.addressLine1" placeholder="Address line 1" />
+            <input type="text" ng-model="patient.address.addressLine2" placeholder="Address line 2" />
         </div>
         <div class="row">
-            <input type="text" ng-model="patient.address.city" /> <input type="text" ng-model="patient.address.state" />
+            <input type="text" ng-model="patient.address.city" placeholder="City" ng-init="patient.address.city='Bhopal'" />
+            <input type="text" ng-model="patient.address.state" placeholder="State" ng-init="patient.address.state='MP'" />
         </div>
         <div class="row">
-            <input type="text" ng-model="patient.address.country" /> <input type="text" ng-model="patient.address.pincode" />
+            <input type="text" ng-model="patient.address.country" placeholder="Country" ng-init="patient.address.country='India'" />
+            <input type="text" ng-model="patient.address.pincode" placeholder="Pin code" ng-init="patient.address.pincode='462001'" />
         </div>
         </div>
 

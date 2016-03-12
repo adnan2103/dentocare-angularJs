@@ -1,5 +1,6 @@
 package com.dk.dento.care.controller;
 
+import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.service.AuthenticationService;
 import com.dk.dento.care.service.UserDetailService;
@@ -64,8 +65,8 @@ public class TreatmentController {
     public ResponseEntity savePatientTreatment(@PathVariable final Long id,
                                                       @RequestBody final List<Treatment> treatments) {
         try {
-            userDetailService.savePatientTreatments(treatments, id);
-            return new ResponseEntity("Updated.", HttpStatus.OK);
+        Set<Treatment> updatedTreatments = userDetailService.savePatientTreatments(treatments, id);
+            return new ResponseEntity(updatedTreatments, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity("Error Occurred while saving or updating treatment.", HttpStatus.INTERNAL_SERVER_ERROR);
         }

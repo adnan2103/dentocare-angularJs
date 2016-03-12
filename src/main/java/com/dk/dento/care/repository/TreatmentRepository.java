@@ -13,5 +13,6 @@ import java.util.Set;
  */
 public interface TreatmentRepository extends CrudRepository<TreatmentEntity, Long> {
 
-     Set<TreatmentEntity> findByUserDetailEntity(UserDetailEntity userDetailEntity);
+     Iterable<TreatmentEntity> findByUserDetailEntity(UserDetailEntity userDetailEntity);
+
 }

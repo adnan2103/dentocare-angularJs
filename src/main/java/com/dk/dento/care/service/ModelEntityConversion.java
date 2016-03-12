@@ -87,7 +87,7 @@ public class ModelEntityConversion {
         return modelMapper.map(userCredentialsEntity, UserCredentials.class);
     }
 
-    public Set<Treatment> treatmentEntityToTreatmentList(Set<TreatmentEntity> treatmentEntities) {
+    public Set<Treatment> treatmentEntityToTreatmentList(Iterable<TreatmentEntity> treatmentEntities) {
         Set<Treatment> treatments = new HashSet<Treatment>(0);
         Treatment treatment;
 
@@ -134,7 +134,6 @@ public class ModelEntityConversion {
 
             paymentEntity = modelMapper.map(payment, PaymentEntity.class);
             paymentEntity.setTreatmentEntity(treatmentEntity);
-
             paymentEntities.add(paymentEntity);
         }
 
