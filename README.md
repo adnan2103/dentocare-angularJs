@@ -2,6 +2,22 @@
 
 #Major issues before go live.
 
+## Date of birth and Payment date format issue.
+## Mobile number validation issue.
+## default gender selection for new patient.
+## order by issues.
+## Total treatment cost.
+## Total pending amount.
+
+## Add Payment and Orala examination + button css.
+## UI styling and CSS.
+## Patient photo upload and edit.
+## Pre and post treatment photos upload.
+## Adding multiple treatments, low priority.
+## Adding one more role to manage patients only, low priority.
+
+
+
 
 ## Add or update patient UI modification work and controller update is pending.
 ## Add or update Treatment UI modification work and controller update is pending.
