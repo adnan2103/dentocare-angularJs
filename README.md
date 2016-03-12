@@ -8,6 +8,7 @@
 ## order by issues.
 ## Total treatment cost.
 ## Total pending amount.
+## Research on where to host this site.
 
 ## Add Payment and Orala examination + button css.
 ## UI styling and CSS.
