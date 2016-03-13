@@ -6,18 +6,18 @@
 
 ## Date of birth and Payment date format and validation issue.
 ## Mobile number validation issue.
-## default gender as Male selection for new patient.
-## order by issues.(by id, use filter)
 ## Total treatment cost.
 ## Total pending amount.
 
-
-## Add Payment and Oral examination + button css.
-## UI styling and CSS.
-
 ## Patient photo upload and edit.
 ## Pre and post treatment photos upload.
+## UI styling and CSS.
 
+
+# Low priority
+## default gender as Male selection for new patient.
+## order by issues.(by id, use filter)
+## Add Payment and Oral examination + button css.
 ## Default logged in page does not show list of patients.
 ## Adding multiple treatments, low priority.
 ## Adding one more role to manage patients only, low priority.
