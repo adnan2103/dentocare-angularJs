@@ -1,6 +1,6 @@
 <!-- Page Content -->
 <div class="container">
-    <div class="row">
+    <div class="col-md-12 portfolio-item" style="border: solid;border-color: black">
         <div class="alert alert-danger" ng-show="message">
             Treatment Updated Successfully.
         </div>
@@ -41,9 +41,11 @@
                 {{patient.address.country}} {{patient.address.pincode}}
             </div>
         </div>
-
+        </div>
+</div>
+<div class="container">
         <div ng-repeat="treatment in treatments">
-                <div class="col-md-8 portfolio-item">
+                <div class="col-md-12 portfolio-item" style="border: solid;border-color: black">
 
                     <div class="row">
                     <h1>Treatment ID : {{treatment.id}}</h1>
@@ -109,6 +111,4 @@
                 </button>
             </div>
         </div>
-
-    </div>
 </div>

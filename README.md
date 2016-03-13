@@ -17,7 +17,7 @@
 # Low priority
 ## default gender as Male selection for new patient.
 ## order by issues.(by id, use filter)
-## Add Payment and Oral examination + button css.
+## Add Payment and Oral examination + button styling.
 ## Default logged in page does not show list of patients.
 ## Adding multiple treatments, low priority.
 ## Adding one more role to manage patients only, low priority.

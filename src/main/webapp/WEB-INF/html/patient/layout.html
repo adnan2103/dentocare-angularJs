@@ -1,5 +1,5 @@
 <!-- Page Content -->
-<div class="container">
+<div class="container" style="border: solid;color: black">
     <div class="row">
         <div class="alert alert-danger" ng-show="message">
             Patient Created / Updated Successfully.
@@ -25,11 +25,11 @@
                 </select>
             </div>
             <div class="row">
-                <b> Mobile : </b> <input type="number" ng-model="patient.phoneNumber" placeholder="Mobile Number"/>
+                <b> Mobile : </b> <input type="number" ng-model="patient.phoneNumber" placeholder="10 digit Mobile No"/>
             </div>
             <div class="row">
                 <b> Date of Birth : </b> <input type="text" ng-model="patient.dateOfBirth"
-                                                placeholder="Date of birth dd-mm-yyyy"/>
+                                                placeholder="dd-mm-yyyy"/>
             </div>
             <div class="row">
                 <b> Address : </b>
@@ -52,10 +52,10 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-12">
+        <div class="row" style="align-content: center">
+            <div class="col-lg-12" style="alignment: center">
                 <button type="button" class="btn btn-primary"
-                        ng-click="savePatient(patient)">Update
+                        ng-click="savePatient(patient)">Add/Update Patient
                 </button>
             </div>
         </div>
