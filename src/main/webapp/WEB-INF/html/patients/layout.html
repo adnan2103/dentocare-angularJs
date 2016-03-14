@@ -30,17 +30,19 @@
     <!-- /.row -->
 
     <!-- Projects Row -->
-    <div ng-repeat="patient in patients | searchForName:searchName | searchForNumber:searchNumber" style="border: solid;border-color: black; margin-bottom: 10px">
+    <div ng-repeat="patient in patients | searchForName:searchName | searchForNumber:searchNumber" class="col-md-12 portfolio-item" style="border: solid;border-color: black; margin-bottom: 10px">
+
+
         <div class="row">
             <div class="col-md-3 portfolio-item">
                 <a href="#">
-                    <img class="img-responsive" src="resources/app/images/patients/patient.png" alt=""/>
+                    <img class="img-responsive" src="resources/app/images/patients/patient.png" alt="" style="margin-left: 5px; margin-right: 5px"/>
                 </a>
             </div>
-            <div class="col-md-5 portfolio-item">
+            <div class="col-md-5 portfolio-item" style="margin-left: 10px;">
                 <div class="row">
-                    <a href="#/patient/{{patient.id}}">Update Patient</a>
-                    <a href="#/patient/{{patient.id}}/treatment">Add Treatment</a>
+                    <a href="#/patient/{{patient.id}}" style="background-color: #00b3ee;font-size: large; color: black;padding: 5px">Update Patient</a>
+                    <a href="#/patient/{{patient.id}}/treatment" style="background-color: #00b3ee;font-size: large; color: black;padding: 5px">Add Treatment</a>
                 </div>
                 <div class="row">
                     <b> Name : </b> {{patient.name}}
@@ -56,18 +58,15 @@
                 </div>
                 <div class="row">
                     <b> Address : </b>
-                </div>
-                <div class="row">
                     {{patient.address.addressLine1}} {{patient.address.addressLine2}}
-                </div>
-                <div class="row">
                     {{patient.address.city}} {{patient.address.state}}
-                </div>
-                <div class="row">
                     {{patient.address.country}} {{patient.address.pincode}}
                 </div>
             </div>
         </div>
+
+
+
     </div>
     <!-- /.row -->
 

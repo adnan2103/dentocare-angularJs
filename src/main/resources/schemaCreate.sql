@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS user_detail
   name character varying(100) NOT NULL,
   gender character varying(6) NOT NULL,
   date_of_birth date,
-  phone_number character varying(10) NOT NULL,
+  phone_number INTEGER NOT NULL,
   address_line1 character varying(30),
   address_line2 character varying(30),
   city character varying(20),

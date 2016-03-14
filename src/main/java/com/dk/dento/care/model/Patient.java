@@ -17,7 +17,7 @@ public class Patient {
 
     private String dateOfBirth;
 
-    private String phoneNumber;
+    private Integer phoneNumber;
 
     private Address address;
 
@@ -53,11 +53,11 @@ public class Patient {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getPhoneNumber() {
+    public Integer getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

@@ -22,6 +22,7 @@
 ## Adding multiple treatments, low priority.
 ## Adding one more role to manage patients only, low priority.
 ## Code clean up and refactoring.
+## Auto move focus to validation message.
 
 
 ##DONE## Add or update patient UI modification work and controller update is pending.
