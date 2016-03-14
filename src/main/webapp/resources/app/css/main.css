@@ -55,3 +55,8 @@ footer {
     padding: 5px;
     margin: 5px;
 }
+
+.portfolio-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
