@@ -1,4 +1,4 @@
-package com.dk.dento.care.service;
+package com.dk.dento.care.service.conversion;
 
 import com.dk.dento.care.entity.PatientOralExaminationEntity;
 import com.dk.dento.care.entity.PaymentEntity;

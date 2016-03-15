@@ -2,23 +2,14 @@ package com.dk.dento.care.entity;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by khana on 26/01/16.
@@ -54,19 +45,6 @@ public class UserDetailEntity implements Serializable {
 
     @Embedded
     private Address address;
-
-
-/*    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name="user_id")
-    private Set<TreatmentEntity> treatmentEntities;
-
-    public Set<TreatmentEntity> getTreatmentEntities() {
-        return treatmentEntities;
-    }
-
-    public void setTreatmentEntities(Set<TreatmentEntity> treatmentEntities) {
-        this.treatmentEntities = treatmentEntities;
-    }*/
 
     public Long getId() {
         return id;

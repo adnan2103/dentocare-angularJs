@@ -1,9 +1,8 @@
 package com.dk.dento.care.controller;
 
-import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.service.AuthenticationService;
-import com.dk.dento.care.service.UserDetailService;
+import com.dk.dento.care.service.TreatmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +23,7 @@ public class TreatmentController {
     AuthenticationService authenticationService;
 
     @Autowired
-    UserDetailService userDetailService;
-
-    //TODO none of the end point is sending proper http response code and response body
-    //TODO need to implement HATEOAS for all DTO.
+    TreatmentService treatmentService;
 
     /**
      * End point to get all treatment for given patient id.
@@ -42,7 +38,7 @@ public class TreatmentController {
     @ResponseBody
     public ResponseEntity getPatientTreatment(@PathVariable final Long id) {
         try {
-            Set<Treatment> treatments = userDetailService.getPatientTreatments(id);
+            Set<Treatment> treatments = treatmentService.getTreatmentsForPatient(id);
             return new ResponseEntity(treatments, HttpStatus.OK);
         } catch(Exception e) {
             return new ResponseEntity("No treatments found", HttpStatus.NOT_FOUND);
@@ -65,7 +61,7 @@ public class TreatmentController {
     public ResponseEntity savePatientTreatment(@PathVariable final Long id,
                                                       @RequestBody final List<Treatment> treatments) {
         try {
-        Set<Treatment> updatedTreatments = userDetailService.savePatientTreatments(treatments, id);
+        Set<Treatment> updatedTreatments = treatmentService.saveTreatmentsForPatient(treatments, id);
             return new ResponseEntity(updatedTreatments, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity("Error Occurred while saving or updating treatment.", HttpStatus.INTERNAL_SERVER_ERROR);

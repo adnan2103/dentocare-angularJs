@@ -2,8 +2,6 @@ package com.dk.dento.care.model;
 
 import com.dk.dento.care.entity.Address;
 
-import java.util.Date;
-
 /**
  * Created by khana on 22/02/16.
  */

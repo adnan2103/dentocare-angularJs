@@ -23,9 +23,6 @@ public class PatientsController {
     @Autowired
     UserDetailService userDetailService;
 
-    //TODO none of the end point is sending proper http response code and response body
-    //TODO need to implement HATEOAS for all DTO.
-
     /**
      * End point to get all patients of logged in Doctor.
      * @return
