@@ -41,11 +41,7 @@
             </div>
             <div class="col-md-5 portfolio-item" style="margin-left: 10px;">
                 <div class="row">
-                    <a href="#/patient/{{patient.id}}" style="background-color: #00b3ee;font-size: large; color: black;padding: 5px">Update Patient</a>
-                    <a href="#/patient/{{patient.id}}/treatment" style="background-color: #00b3ee;font-size: large; color: black;padding: 5px">Add Treatment</a>
-                </div>
-                <div class="row">
-                    <b> Name : </b> {{patient.name}}
+                    <b> Name : {{patient.name | uppercase}} </b>
                 </div>
                 <div class="row">
                     <b> Gender : </b> {{patient.gender}}
@@ -61,6 +57,10 @@
                     {{patient.address.addressLine1}} {{patient.address.addressLine2}}
                     {{patient.address.city}} {{patient.address.state}}
                     {{patient.address.country}} {{patient.address.pincode}}
+                </div>
+                <div class="row">
+                    <a href="#/patient/{{patient.id}}" style="background-color: #00b3ee;font-size: large; color: black;padding: 5px">Update Patient</a>
+                    <a href="#/patient/{{patient.id}}/treatment" style="background-color: #00b3ee;font-size: large; color: black;padding: 5px">Add Treatment</a>
                 </div>
             </div>
         </div>

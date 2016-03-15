@@ -4,6 +4,7 @@
 
 ## Research on where to host this site.
 
+## Required fields validations.
 ## Date of birth and Payment date format and validation issue.
 ## Mobile number validation issue.
 ## Total treatment cost.
