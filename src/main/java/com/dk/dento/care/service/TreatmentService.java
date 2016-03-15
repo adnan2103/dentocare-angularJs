@@ -4,7 +4,7 @@ import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.repository.TreatmentRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
-import com.dk.dento.care.service.conversion.ModelEntityConversion;
+import com.dk.dento.care.service.mapper.TreatmentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -23,10 +23,10 @@ public class TreatmentService {
     private TreatmentRepository treatmentRepository;
 
     @Autowired
-    private ModelEntityConversion modelEntityConversion;
+    private TreatmentMapper treatmentMapper;
 
     public Set<Treatment> getTreatmentsForPatient(Long patientId) {
-        return modelEntityConversion.treatmentEntityToTreatmentList(
+        return treatmentMapper.treatmentEntitiesToTreatments(
                 treatmentRepository.findByUserDetailEntity(userDetailRepository.findOne(patientId))
         );
     }
@@ -34,7 +34,7 @@ public class TreatmentService {
     @Transactional(propagation = Propagation.REQUIRED)
     public Set<Treatment> saveTreatmentsForPatient(List<Treatment> treatments, Long patientId) {
         Set<TreatmentEntity> treatmentEntities =
-                modelEntityConversion.treatmentModelListToTreatmentEntityList(treatments, patientId);
-        return modelEntityConversion.treatmentEntityToTreatmentList(treatmentRepository.save(treatmentEntities));
+                treatmentMapper.treatmentsToTreatmentEntities(treatments, patientId);
+        return treatmentMapper.treatmentEntitiesToTreatments(treatmentRepository.save(treatmentEntities));
     }
 }

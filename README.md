@@ -2,28 +2,27 @@
 
 #Major issues before go live.
 
+## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
+## Date of birth and Payment date format(dd-MM-yyyy) and validation issue.
+## Mobile number validation issue.(should be 10 digit number.)
+## Total treatment cost display.
+## Total pending amount display.
+
+## Patient photo upload and edit and display.
+## Pre and post treatment photos upload and display.
+## Auto move focus to validation message.
+
 ## Research on where to host this site.
 
-## Required fields validations.
-## Date of birth and Payment date format and validation issue.
-## Mobile number validation issue.
-## Total treatment cost.
-## Total pending amount.
-
-## Patient photo upload and edit.
-## Pre and post treatment photos upload.
-## UI styling and CSS.
-
-
 # Low priority
-## default gender as Male selection for new patient.
-## order by issues.(by id, use filter)
+
+## order by issues.(by id on home page)
 ## Add Payment and Oral examination + button styling.
 ## Default logged in page does not show list of patients.
 ## Adding multiple treatments, low priority.
 ## Adding one more role to manage patients only, low priority.
 ## Code clean up and refactoring.
-## Auto move focus to validation message.
+
 
 
 ##DONE## Add or update patient UI modification work and controller update is pending.

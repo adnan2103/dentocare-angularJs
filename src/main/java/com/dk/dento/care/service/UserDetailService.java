@@ -9,7 +9,7 @@ import com.dk.dento.care.repository.DoctorPatientMappingRepository;
 import com.dk.dento.care.repository.RoleRepository;
 import com.dk.dento.care.repository.UserCredentialsRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
-import com.dk.dento.care.service.conversion.ModelEntityConversion;
+import com.dk.dento.care.service.mapper.UserDetailMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -33,7 +33,7 @@ public class UserDetailService {
     private DoctorPatientMappingRepository doctorPatientMappingRepository;
 
     @Autowired
-    private ModelEntityConversion modelEntityConversion;
+    private UserDetailMapper userDetailMapper;
 
     @Autowired
     private RoleRepository roleRepository;
@@ -44,7 +44,7 @@ public class UserDetailService {
     //TODO service should throw appropriate exception to controller, like not found for null pointer.
     public List<Patient> getAllPatient() {
         Set<UserDetailEntity> userDetailEntities = getAllPatientForDoctor();
-        return modelEntityConversion.userDetailsEntityToPatientList(userDetailEntities);
+        return userDetailMapper.userDetailEntitiesToPatients(userDetailEntities);
     }
 
     private Set<UserDetailEntity> getAllPatientForDoctor() {
@@ -64,12 +64,12 @@ public class UserDetailService {
     public Patient getPatientDetails(Long patientId) {
         UserDetailEntity userDetailEntity = userDetailRepository.findOne(patientId);
 
-        return modelEntityConversion.userDetailsEntityToPatient(userDetailEntity);
+        return userDetailMapper.userDetailEntityToPatient(userDetailEntity);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     public Patient savePatient(Patient patient) throws ParseException {
-        UserDetailEntity patientEntity = modelEntityConversion.patientToUserDetailEntity(patient);
+        UserDetailEntity patientEntity = userDetailMapper.patientToUserDetailEntity(patient);
 
         if (patientEntity.getId() != null) {
             patientEntity = userDetailRepository.save(patientEntity);
@@ -89,7 +89,7 @@ public class UserDetailService {
 
         }
 
-        return modelEntityConversion.userDetailsEntityToPatient(patientEntity);
+        return userDetailMapper.userDetailEntityToPatient(patientEntity);
     }
 
 }

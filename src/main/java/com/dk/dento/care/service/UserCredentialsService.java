@@ -4,7 +4,7 @@ package com.dk.dento.care.service;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.model.UserCredentials;
 import com.dk.dento.care.repository.UserCredentialsRepository;
-import com.dk.dento.care.service.conversion.ModelEntityConversion;
+import com.dk.dento.care.service.mapper.UserDetailMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +15,13 @@ public class UserCredentialsService {
     private UserCredentialsRepository userCredentialsRepository;
 
     @Autowired
-    private ModelEntityConversion modelEntityConversion;
+    private UserDetailMapper userDetailMapper;
 
 
     public UserCredentials getPrincipal(final String email) {
 
         UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByEmail(email);
-        return modelEntityConversion.userCredentialsEntityToModel(userCredentialsEntity);
+        return userDetailMapper.userCredentialsEntityToUserCredentials(userCredentialsEntity);
 
     }
 }
