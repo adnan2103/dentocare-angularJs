@@ -7,7 +7,7 @@
         <div class="alert alert-danger" ng-show="error">
             Could not create / update the patient.
         </div>
-        <div class="col-md-3 portfolio-item">
+        <div class="col-md-3 portfolio-item" ng-if='patient.id'>
             <img class="img-responsive" ng-src="resources/app/images/patients/Patient_{{patient.id}}.jpg" onerror="this.src='resources/app/images/patients/patient.png'"/>
         </div>
         <div class="col-md-5 portfolio-item">
