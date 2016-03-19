@@ -10,11 +10,21 @@ import com.dk.dento.care.repository.RoleRepository;
 import com.dk.dento.care.repository.UserCredentialsRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
 import com.dk.dento.care.service.mapper.UserDetailMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +32,11 @@ import java.util.Set;
 
 @Service
 public class UserDetailService {
+
+    /**
+     * Logger for this class.
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserDetailService.class);
 
     @Autowired
     private UserCredentialsRepository userCredentialsRepository;
@@ -40,6 +55,9 @@ public class UserDetailService {
 
     @Autowired
     private AuthenticationService authenticationService;
+
+    @Autowired
+    ServletContext context;
 
     //TODO service should throw appropriate exception to controller, like not found for null pointer.
     public List<Patient> getAllPatient() {
@@ -92,4 +110,38 @@ public class UserDetailService {
         return userDetailMapper.userDetailEntityToPatient(patientEntity);
     }
 
+    public void uploadPhoto(MultipartFile photo, String photoName) throws IOException {
+        byte[] bytes = photo.getBytes();
+
+        String path = "/Users/khana/Desktop/Adnan/temp/patients";
+        String uploadPath = context.getRealPath("") + path;
+
+        File dir = new File(uploadPath + File.separator);
+        if (!dir.exists()) {
+            LOGGER.error("Directory Not Found. {}", dir);
+            throw new IOException("Directory Not Found");
+        }
+
+        File serverFile = new File(path + File.separator + photoName);
+
+        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+        stream.write(bytes);
+        stream.flush();
+        stream.close();
+    }
+
+    public byte[] getPhoto(String patientPhotoName) throws IOException {
+
+        String path = "/Users/khana/Desktop/Adnan/temp/patients";
+        String uploadPath = context.getRealPath("")  + path;
+
+        File file = new File(uploadPath + File.separator);
+
+        if (!file.exists()) {
+            LOGGER.error("File Not Found. {}", file);
+            throw new IOException(" Logo Does not exists. ");
+        }
+        byte[] data = Files.readAllBytes(Paths.get(file.getPath()));
+        return data;
+    }
 }

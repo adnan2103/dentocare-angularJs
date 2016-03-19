@@ -60,3 +60,9 @@ footer {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.img-responsive {
+    vertical-align: middle;
+    border: solid;
+    border-color: cadetblue;
+}
