@@ -74,6 +74,7 @@ public class PatientController {
             Patient patient1 = userDetailService.savePatient(patient);
             return new ResponseEntity(patient1, HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity("Error Occurred while saving or updating patient.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

@@ -41,7 +41,7 @@ public class UserDetailEntity implements Serializable {
     private Date dataOfBirth;
 
     @Column(name = "phone_number")
-    private Integer phoneNumber;
+    private Long phoneNumber;
 
     @Embedded
     private Address address;
@@ -70,11 +70,11 @@ public class UserDetailEntity implements Serializable {
         this.dataOfBirth = dataOfBirth;
     }
 
-    public Integer getPhoneNumber() {
+    public Long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

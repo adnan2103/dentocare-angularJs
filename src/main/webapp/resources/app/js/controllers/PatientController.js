@@ -63,4 +63,10 @@ var PatientController = function($scope, $http, $routeParams, fileUpload) {
     });
 
     $scope.fetchPatient();
+
+    $scope.dateOptions = {
+        changeYear: true,
+        changeMonth: true,
+        yearRange: '1900:-0'
+    };
 };

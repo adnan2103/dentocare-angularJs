@@ -15,7 +15,7 @@ public class Patient {
 
     private String dateOfBirth;
 
-    private Integer phoneNumber;
+    private Long phoneNumber;
 
     private Address address;
 
@@ -51,11 +51,11 @@ public class Patient {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Integer getPhoneNumber() {
+    public Long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

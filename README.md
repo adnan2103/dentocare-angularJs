@@ -25,6 +25,9 @@
 ## internationalization for validation messages.
 
 
+##DONE## Mobile number validation issue.(should be 10 digit number.)
+##DONE## Date of birth and Payment date format(dd-MM-yyyy) and validation issue.
+
 ##DONE## Add or update patient UI modification work and controller update is pending.
 ##DONE## Add or update Treatment UI modification work and controller update is pending.
 
