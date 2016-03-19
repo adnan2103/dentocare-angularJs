@@ -4,7 +4,6 @@
 
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 ## Date of birth and Payment date format(dd-MM-yyyy) and validation issue.
-## Mobile number validation issue.(should be 10 digit number.)
 ## Total treatment cost display.
 ## Total pending amount display.
 
@@ -23,7 +22,7 @@
 ## Adding one more role to manage patients only, low priority.
 ## Code clean up and refactoring.
 
-
+##DONE## Mobile number validation issue.(should be 10 digit number.)
 
 ##DONE## Add or update patient UI modification work and controller update is pending.
 ##DONE## Add or update Treatment UI modification work and controller update is pending.
