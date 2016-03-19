@@ -3,7 +3,6 @@
 #Major issues before go live.
 
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
-## Date of birth and Payment date format(dd-MM-yyyy) and validation issue.
 ## Total treatment cost display.
 ## Total pending amount display.
 
@@ -23,6 +22,7 @@
 ## Code clean up and refactoring.
 
 ##DONE## Mobile number validation issue.(should be 10 digit number.)
+##DONE## Date of birth and Payment date format(dd-MM-yyyy) and validation issue.
 
 ##DONE## Add or update patient UI modification work and controller update is pending.
 ##DONE## Add or update Treatment UI modification work and controller update is pending.

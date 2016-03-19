@@ -102,4 +102,10 @@ var TreatmentController = function($scope, $http, $routeParams) {
     };
 
     $scope.fetchTreatment();
+
+    $scope.dateOptions = {
+        changeYear: true,
+        changeMonth: true,
+        yearRange: '1900:-0'
+    };
 };

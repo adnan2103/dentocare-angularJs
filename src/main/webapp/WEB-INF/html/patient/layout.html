@@ -28,8 +28,7 @@
                 <span class="error" ng-show="myForm.phoneNumber.$error.pattern">Invalid phone number entered.</span>
             </div>
             <div class="row">
-                <b> Date of Birth : </b> <input type="text" ng-model="patient.dateOfBirth"
-                                                placeholder="dd-mm-yyyy"/>
+                <b> Date of Birth : </b> <input type="text" ui-date="dateOptions" name="dob" ng-model="patient.dateOfBirth" placeholder="dd-mm-yyyy"/>
             </div>
             <div class="row">
                 <b> Address : </b>
