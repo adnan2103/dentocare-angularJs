@@ -3,8 +3,6 @@
 #Major issues before go live.
 
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
-## Date of birth and Payment date format(dd-MM-yyyy) and validation issue.
-## Mobile number validation issue.(should be 10 digit number.)
 ## Total treatment cost display.
 ## Total pending amount display.
 
