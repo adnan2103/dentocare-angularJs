@@ -15,4 +15,5 @@ var PatientsController = function($scope, $http, Post) {
         $scope.patients = data;
     });
     //$scope.fetchAllPatients();
+
 };

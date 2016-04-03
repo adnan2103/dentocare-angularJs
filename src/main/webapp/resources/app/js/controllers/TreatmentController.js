@@ -14,6 +14,7 @@ var TreatmentController = function($scope, $http, $routeParams) {
     $scope.fetchTreatment = function() {
         $http.get('patient/' + $routeParams.id).success(function(patient){
             $scope.patient = patient;
+            $scope.photo = 'patient/'+patient.id+'/photo';
         });
 
         $http.get('patient/' + $routeParams.id + '/treatment').success(function(treatments){

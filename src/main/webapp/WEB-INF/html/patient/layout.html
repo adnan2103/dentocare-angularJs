@@ -8,7 +8,7 @@
             Could not create / update the patient.
         </div>
         <div class="col-md-3 portfolio-item" ng-if='patient.id'>
-            <img class="img-responsive" ng-src="{{photoURL}}" onerror="this.src='resources/app/images/patients/patient.png'"/>
+            <img class="img-responsive" ng-src="{{photo}}" onerror="this.src='resources/app/images/patients/patient.png'"/>
             <input type="file" file-model="myFile"/>
             <button ng-click="uploadPhoto(patient)">Upload Photo</button>
         </div>
