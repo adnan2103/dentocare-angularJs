@@ -2,6 +2,7 @@
 
 #Major issues before go live.
 
+## Add Enough loging in controller, service, exceptions.
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 ## Total treatment cost display.
 ## Total pending amount display.
