@@ -54,6 +54,7 @@ public class PatientController {
             Patient patient = userDetailService.getPatientDetails(id);
             return new ResponseEntity(patient, HttpStatus.OK);
         } catch(Exception e) {
+            LOGGER.error(" Error occurred while fetching patient id {} : {} ",id, e.getMessage());
             return new ResponseEntity("No patient Detail found", HttpStatus.NOT_FOUND);
         }
     }
@@ -74,7 +75,7 @@ public class PatientController {
             Patient patient1 = userDetailService.savePatient(patient);
             return new ResponseEntity(patient1, HttpStatus.OK);
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(" Error occurred while saving patient : {} ", e.getMessage());
             return new ResponseEntity("Error Occurred while saving or updating patient.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -104,10 +105,13 @@ public class PatientController {
 
         try {
             userDetailService.uploadPhoto(file, "Patient_" + patientId +".png");
+            LOGGER.info("Patient Image Uploaded Successfully.");
             return new ResponseEntity("Uploaded Successfully", HttpStatus.OK);
         } catch (IOException exception) {
+            LOGGER.error(" IOException for patient image upload ", exception.getMessage());
             return new ResponseEntity(exception.getMessage(), HttpStatus.NOT_FOUND);
         } catch (Exception exception) {
+            LOGGER.error(" Exception for patient image upload ", exception.getMessage());
             return new ResponseEntity("Upload Failed", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -134,8 +138,10 @@ public class PatientController {
             return new ResponseEntity(data, HttpStatus.OK);
 
         } catch (IOException exception) {
+            LOGGER.error(" IOException for patient image retrieve ", exception.getMessage());
             return new ResponseEntity(exception.getMessage(), HttpStatus.NOT_FOUND);
         } catch (Exception exception) {
+            LOGGER.error(" Exception for patient image retrieve ", exception.getMessage());
             return new ResponseEntity("An Error Occurred", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

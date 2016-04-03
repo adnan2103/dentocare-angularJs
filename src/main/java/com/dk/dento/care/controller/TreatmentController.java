@@ -3,6 +3,8 @@ package com.dk.dento.care.controller;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.service.AuthenticationService;
 import com.dk.dento.care.service.TreatmentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,11 @@ import java.util.Set;
 
 @Controller
 public class TreatmentController {
+
+    /**
+     * Logger for this class.
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(TreatmentController.class);
 
     @Autowired
     AuthenticationService authenticationService;
@@ -41,6 +48,7 @@ public class TreatmentController {
             Set<Treatment> treatments = treatmentService.getTreatmentsForPatient(id);
             return new ResponseEntity(treatments, HttpStatus.OK);
         } catch(Exception e) {
+            LOGGER.error("Error occurred while geting treatments for patient {} ",e.getMessage());
             return new ResponseEntity("No treatments found", HttpStatus.NOT_FOUND);
         }
 
@@ -64,6 +72,7 @@ public class TreatmentController {
         Set<Treatment> updatedTreatments = treatmentService.saveTreatmentsForPatient(treatments, id);
             return new ResponseEntity(updatedTreatments, HttpStatus.OK);
         } catch (Exception e) {
+            LOGGER.error("Error occurred while saving treatments for patient {} ",e.getMessage());
             return new ResponseEntity("Error Occurred while saving or updating treatment.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 

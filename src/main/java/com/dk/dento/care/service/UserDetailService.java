@@ -113,18 +113,16 @@ public class UserDetailService {
     public void uploadPhoto(MultipartFile photo, String photoName) throws IOException {
         byte[] bytes = photo.getBytes();
 
-        String path = "/resources/app/images/patients/";
+        //String path = "/resources/app/images/patients/";
         //String uploadPath = context.getRealPath("") + path;
-        String uploadPath = "/home/dentocam/images/patients/";
-        LOGGER.info("Path to upload image is : "+uploadPath);
-        System.out.println("Path to upload image is : "+uploadPath);
-        File dir = new File(uploadPath);
+        String path = "/home/dentocam/images/patients/";
+        File dir = new File(path);
         if (!dir.exists()) {
             LOGGER.error("Directory Not Found. {}", dir);
             throw new IOException("Directory Not Found");
         }
 
-        File serverFile = new File(uploadPath + photoName);
+        File serverFile = new File(path + photoName);
 
         BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
         stream.write(bytes);
@@ -134,12 +132,10 @@ public class UserDetailService {
 
     public byte[] getPhoto(String patientPhotoName) throws IOException {
 
-        String path = "/resources/app/images/patients/";
+        //String path = "/resources/app/images/patients/";
         //String uploadPath = context.getRealPath("")  + path;
-        String uploadPath = "/home/dentocam/images/patients/";
-        LOGGER.info("Path to upload image is : "+uploadPath);
-        System.out.println("Path to GET image is : "+uploadPath);
-        File file = new File(uploadPath + patientPhotoName);
+        String path = "/home/dentocam/images/patients/";
+        File file = new File(path + patientPhotoName);
 
         if (!file.exists()) {
             LOGGER.error("File Not Found. {}", file);

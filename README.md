@@ -2,16 +2,19 @@
 
 #Major issues before go live.
 
-## Add Enough loging in controller, service, exceptions.
+## After creating patient if I try to upload photo, patient id is undefined.
+## After uploading photo it does not referesh automatically.
+## CSS and alignments on create and update patient.
+## CSS and alignment on patient photo upload.
+## Date of birth format issue in all pages.
+## Payment date is being saved with proper value and it always shows current date.
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 ## Total treatment cost display.
 ## Total pending amount display.
 
-## Patient photo upload and edit and display.
 ## Pre and post treatment photos upload and display.
 ## Auto move focus to validation message.
 
-## Research on where to host this site.
 
 # Low priority
 
@@ -23,6 +26,7 @@
 ## Code clean up and refactoring.
 ## internationalization for validation messages.
 
+########DONE########
 
 ##DONE## Mobile number validation issue.(should be 10 digit number.)
 ##DONE## Date of birth and Payment date format(dd-MM-yyyy) and validation issue.
