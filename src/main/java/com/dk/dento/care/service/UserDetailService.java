@@ -115,7 +115,7 @@ public class UserDetailService {
 
         //String path = "/resources/app/images/patients/";
         //String uploadPath = context.getRealPath("") + path;
-        String path = "/home/dentocam/images/patients/";
+        String path = "/home/dentocaa/images/patients/";
         File dir = new File(path);
         if (!dir.exists()) {
             LOGGER.error("Directory Not Found. {}", dir);
@@ -134,7 +134,7 @@ public class UserDetailService {
 
         //String path = "/resources/app/images/patients/";
         //String uploadPath = context.getRealPath("")  + path;
-        String path = "/home/dentocam/images/patients/";
+        String path = "/home/dentocaa/images/patients/";
         File file = new File(path + patientPhotoName);
 
         if (!file.exists()) {

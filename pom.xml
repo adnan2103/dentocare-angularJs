@@ -148,7 +148,7 @@
 
     </dependencies>
     <build>
-        <finalName>dento-care</finalName>
+        <finalName>ROOT</finalName>
 
         <plugins>
             <plugin>
