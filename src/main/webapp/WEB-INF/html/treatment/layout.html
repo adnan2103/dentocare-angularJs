@@ -13,27 +13,32 @@
 
 
         <div class="row">
-            <div class="col-md-3 portfolio-item">
+            <div class="col-md-6 portfolio-item">
                 <img class="img-responsive" ng-src="{{photo}}" onerror="this.src='resources/app/images/patients/patient.png'"/>
             </div>
-            <div class="col-md-5 portfolio-item" style="margin-left: 10px;">
+            <div class="col-md-12 portfolio-item" style="margin-left: 10px;">
                 <div class="row">
-                    <b> Name : </b> {{patient.name}}
+                    <div class="col-md-2"><b> Name : </b></div>
+                    <div class="col-md-2">{{patient.name}}</div>
                 </div>
                 <div class="row">
-                    <b> Gender : </b> {{patient.gender}}
+                    <div class="col-md-2"><b> Gender : </b></div>
+                    <div class="col-md-2">{{patient.gender}}</div>
                 </div>
                 <div class="row">
-                    <b> Mobile : </b> {{patient.phoneNumber}}
+                    <div class="col-md-2"><b> Mobile : </b></div>
+                    <div class="col-md-2">{{patient.phoneNumber}}</div>
                 </div>
                 <div class="row">
-                    <b> Date of Birth : </b> {{patient.dateOfBirth}}
+                    <div class="col-md-2"><b> Date of Birth : </b></div>
+                    <div class="col-md-2">{{patient.dateOfBirth}}</div>
                 </div>
                 <div class="row">
-                    <b> Address : </b>
+                    <div class="col-md-2"><b> Address : </b></div>
+                    <div class="col-md-3">
                     {{patient.address.addressLine1}} {{patient.address.addressLine2}}
                     {{patient.address.city}} {{patient.address.state}}
-                    {{patient.address.country}} {{patient.address.pincode}}
+                    {{patient.address.country}} {{patient.address.pincode}}</div>
                 </div>
             </div>
         </div>
@@ -49,55 +54,59 @@
                     <h2 style="background-color: #00b3ee">Treatment ID : {{treatment.id}}</h2>
                     </div>
                     <div class="row">
-                        <b> Status : </b>
-                        <select ng-model="treatment.status">
+                        <div class="col-md-2"><b> Status : </b></div>
+                        <div class="col-md-2"><select ng-model="treatment.status">
                             <option ng-repeat="status in status" value="{{status.status}}"
                                     ng-selected="treatment.status === status.status">{{status.status}}
                             </option>
-                        </select>
+                        </select></div>
                     </div>
                     <div class="row">
-                        <b> Chief Complaint : </b>
-                        <input type="text" ng-model="treatment.chiefComplaintDescription"
-                               placeholder="Chief Complaint"/>
+                        <div class="col-md-2"><b> Chief Complaint : </b></div>
+                        <div class="col-md-2"><input type="text" size="90" ng-model="treatment.chiefComplaintDescription"
+                               placeholder="Chief Complaint"/></div>
                     </div>
                     <div class="row">
-                        <b> Notes : </b>
-                        <input type="text" ng-model="treatment.notes" placeholder="Notes"/>
+                        <div class="col-md-2"><b> Notes : </b></div>
+                        <div class="col-md-2"><input type="text" size="90" ng-model="treatment.notes" placeholder="Notes"/></div>
                     </div>
 
 
                     <br/>
 
-                    <div class="row">
+                    <div class="row col-md-12">
                         <b>Patient Oral Examinations</b>
                         <button ng-click="addPatientOralExamination()" style="background-color: red"><b>+</b></button>
                     </div>
+                    <br />
                     <div class="row">
-                        <b> Description : </b> <b> Cost : </b>
+                        <div class="col-md-2"><b> Description : </b>  </div>
+                        <div class="col-md-2"><b> Cost : </b> </div>
                     </div>
                     <div ng-repeat="oralExamination in treatment.patientOralExamination">
                         <div class="row">
-                            <input type="text" ng-model="oralExamination.description" placeholder="Description"/>
-                            <input type="number" ng-model="oralExamination.cost" placeholder="Cost"/>
+                            <div class="col-md-2"><input type="text" ng-model="oralExamination.description" placeholder="Description"/></div>
+                            <div class="col-md-2"><input type="number" ng-model="oralExamination.cost" placeholder="Cost"/></div>
                         </div>
                     </div>
 
-
                     <br/>
 
-                    <div class="row">
+                    <div class="row col-md-12">
                         <b>Payments Detail</b>
                         <button ng-click="addPayment()" style="background-color: red"><b>+</b></button>
                     </div>
+                    <br />
                     <div class="row">
-                        <b> Payment Date : </b> <b> Payment Amount : </b> <b> Treatment Done : </b>
+                        <div class="col-md-2"><b> Payment Date : </b></div>
+                        <div class="col-md-2"><b> Payment Amount : </b></div>
+                        <div class="col-md-2"><b> Treatment Done : </b></div>
                     </div>
                     <div ng-repeat="payment in treatment.payment">
                         <div class="row">
-                            <input type="text" ui-date="dateOptions" name="paymentDate" ng-model="payment.paymentDate" placeholder="Date"/>
-                            <input type="number" ng-model="payment.paymentAmount" placeholder="Amount"/>
-                            <input type="text" ng-model="payment.treatmentDone" placeholder="Notes"/>
+                            <div class="col-md-2"><input type="text" ui-date="dateOptions" name="paymentDate" ng-model="payment.paymentDate" placeholder="Date"/></div>
+                            <div class="col-md-2"><input type="number" ng-model="payment.paymentAmount" placeholder="Amount"/></div>
+                            <div class="col-md-2"><input type="text" ng-model="payment.treatmentDone" placeholder="Notes"/></div>
                         </div>
                     </div>
                 </div>
