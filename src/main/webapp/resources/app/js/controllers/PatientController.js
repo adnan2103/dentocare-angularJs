@@ -10,7 +10,6 @@ var PatientController = function($scope, $http, $routeParams, fileUpload) {
         if ($routeParams.id !== 'new') {
             $http.get('patient/' + $routeParams.id).success(function(patient){
                 $scope.patient = patient;
-                $scope.photo = 'patient/'+patient.id+'/image';
             });
         } else {
             $scope.patient = {};
@@ -29,7 +28,6 @@ var PatientController = function($scope, $http, $routeParams, fileUpload) {
         $http.put('patient/save', patient).success(function(patient) {
             $scope.patient = patient;
             $scope.message = 'Patient Created / Updated.';
-            $scope.photo = 'patient/'+patient.id+'/image';
         }).error(function() {
             $scope.setError('Could not create / update the patient.');
         });
@@ -50,8 +48,8 @@ var PatientController = function($scope, $http, $routeParams, fileUpload) {
         console.log('file is ' );
         console.dir(file);
         var uploadUrl = 'patient/' + patient.id + '/image'
-        $scope.photo = uploadUrl;
         fileUpload.uploadFileToUrl(file, uploadUrl);
+        $scope.patient.imagePath = uploadUrl;
         $scope.message = 'Photo Uploaded Successfully.';
 
     };
