@@ -39,22 +39,22 @@
             </div>
             <div class="col-md-5 portfolio-item" style="margin-left: 10px;">
                 <div class="row">
-                    <b> Name : {{patient.name | uppercase}} </b>
+                    <b> Name : <span ng-bind="patient.name | uppercase"></span></b>
                 </div>
                 <div class="row">
-                    <b> Gender : </b> {{patient.gender}}
+                    <b> Gender : </b> <span ng-bind="patient.gender"></span>
                 </div>
                 <div class="row">
-                    <b> Mobile : </b> {{patient.phoneNumber}}
+                    <b> Mobile : </b><span ng-bind="patient.phoneNumber"></span>
                 </div>
                 <div class="row">
-                    <b> Date of Birth : </b> {{patient.dateOfBirth}}
+                    <b> Date of Birth : </b> <span ng-bind="patient.dateOfBirth"></span>
                 </div>
                 <div class="row">
                     <b> Address : </b>
-                    {{patient.address.addressLine1}} {{patient.address.addressLine2}}
-                    {{patient.address.city}} {{patient.address.state}}
-                    {{patient.address.country}} {{patient.address.pincode}}
+                    <span ng-bind="patient.address.addressLine1"></span><span ng-bind="patient.address.addressLine2"></span>
+                    <span ng-bind="patient.address.city"></span><span ng-bind="patient.address.state"></span>
+                    <span ng-bind="patient.address.country"></span><span ng-bind="patient.address.pincode"></span>
                 </div>
                 <div class="row">
                     <a href="#/patient/{{patient.id}}" style="background-color: #00b3ee;font-size: large; color: black;padding: 5px">Update Patient</a>
