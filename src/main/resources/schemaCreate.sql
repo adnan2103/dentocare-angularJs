@@ -8,7 +8,7 @@ role character varying(30),
 CONSTRAINT role_pkey PRIMARY KEY (role_id)
 );
 ALTER TABLE role
-  OWNER TO dentocaa;
+  OWNER TO dentocar_user;
 
 
 CREATE TABLE IF NOT EXISTS user_credentials
@@ -27,7 +27,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE user_credentials
-  OWNER TO dentocaa;
+  OWNER TO dentocar_user;
 
 -- Table: user_detail
 
@@ -54,7 +54,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE user_detail
-  OWNER TO dentocaa;
+  OWNER TO dentocar_user;
 
 
 -- Table: doctor_patient_mapping
@@ -75,7 +75,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE doctor_patient_mapping
-  OWNER TO dentocaa;
+  OWNER TO dentocar_user;
 
 
 CREATE TABLE IF NOT EXISTS status
@@ -85,7 +85,7 @@ status character varying(50),
 CONSTRAINT status_pkey PRIMARY KEY (status_id)
 );
 ALTER TABLE status
-  OWNER TO dentocaa;
+  OWNER TO dentocar_user;
 
 -- Table: treatment
 
@@ -109,7 +109,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE treatment
-  OWNER TO dentocaa;
+  OWNER TO dentocar_user;
 
 
 -- Table: patient_oral_examination
@@ -129,7 +129,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE patient_oral_examination
-  OWNER TO dentocaa;
+  OWNER TO dentocar_user;
 
 
 -- Table: payment
@@ -150,5 +150,5 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE payment
-  OWNER TO dentocaa;
+  OWNER TO dentocar_user;
 

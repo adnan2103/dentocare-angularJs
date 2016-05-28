@@ -16,15 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.HashSet;
 import java.util.List;
@@ -55,9 +48,6 @@ public class UserDetailService {
 
     @Autowired
     private AuthenticationService authenticationService;
-
-    @Autowired
-    ServletContext context;
 
     //TODO service should throw appropriate exception to controller, like not found for null pointer.
     public List<Patient> getAllPatient() {
@@ -104,44 +94,7 @@ public class UserDetailService {
             DoctorPatientMappingEntity doctorPatientMappingEntity = new DoctorPatientMappingEntity(doctorPatientMappingId);
 
             doctorPatientMappingRepository.save(doctorPatientMappingEntity);
-
         }
-
         return userDetailMapper.userDetailEntityToPatient(patientEntity);
-    }
-
-    public void uploadPhoto(MultipartFile photo, String photoName) throws IOException {
-        byte[] bytes = photo.getBytes();
-
-        //String path = "/resources/app/images/patients/";
-        //String uploadPath = context.getRealPath("") + path;
-        String path = "/home/dentocaa/images/patients/";
-        File dir = new File(path);
-        if (!dir.exists()) {
-            LOGGER.error("Directory Not Found. {}", dir);
-            throw new IOException("Directory Not Found");
-        }
-
-        File serverFile = new File(path + photoName);
-
-        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-        stream.write(bytes);
-        stream.flush();
-        stream.close();
-    }
-
-    public byte[] getPhoto(String patientPhotoName) throws IOException {
-
-        //String path = "/resources/app/images/patients/";
-        //String uploadPath = context.getRealPath("")  + path;
-        String path = "/home/dentocaa/images/patients/";
-        File file = new File(path + patientPhotoName);
-
-        if (!file.exists()) {
-            LOGGER.error("File Not Found. {}", file);
-            throw new IOException(" Logo Does not exists. ");
-        }
-        byte[] data = Files.readAllBytes(Paths.get(file.getPath()));
-        return data;
     }
 }

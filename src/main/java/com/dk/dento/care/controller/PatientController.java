@@ -2,13 +2,12 @@ package com.dk.dento.care.controller;
 
 import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.service.AuthenticationService;
+import com.dk.dento.care.service.ImageService;
 import com.dk.dento.care.service.UserDetailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +35,12 @@ public class PatientController {
 
     @Autowired
     UserDetailService userDetailService;
+
+    @Autowired
+    String home;
+
+    @Autowired
+    ImageService imageService;
 
     //TODO none of the end point is sending proper http response code and response body
     //TODO need to implement HATEOAS for all DTO.
@@ -80,31 +85,33 @@ public class PatientController {
         }
     }
 
+    //@TODO extract all image related stuff to new ImageController.
 
     @RequestMapping(
-            value = "/{patientId}/photo",
+            value = "/{patientId}/image",
             headers = "content-type=multipart/*",
             method = RequestMethod.POST,
             produces = "application/json"
     )
     @ResponseBody
-    public ResponseEntity uploadPhoto(
-            @RequestParam("file") final MultipartFile file,
+    public ResponseEntity uploadPatientImage(
+            @RequestParam("file") final MultipartFile patientImage,
             @PathVariable final Long patientId
     ) {
 
 
-        if (file.isEmpty()) {
+        if (patientImage.isEmpty()) {
             return new ResponseEntity("You failed to upload because the file was empty.", HttpStatus.NOT_FOUND);
         }
 
-        String fileExtension = getFileExtension(file);
+        String fileExtension = getFileExtension(patientImage);
         if (!isInEnum(fileExtension, SupportedExtension.class)) {
             return new ResponseEntity("Not a supported file type!", HttpStatus.UNSUPPORTED_MEDIA_TYPE);
         }
 
         try {
-            userDetailService.uploadPhoto(file, "Patient_" + patientId +".png");
+            String path =  home + "/images/patients/";
+            imageService.uploadImage(patientImage, "Patient_" + patientId + ".png", path);
             LOGGER.info("Patient Image Uploaded Successfully.");
             return new ResponseEntity("Uploaded Successfully", HttpStatus.OK);
         } catch (IOException exception) {
@@ -124,16 +131,16 @@ public class PatientController {
      * @return MultipartFile patient Photo.
      */
     @RequestMapping(
-            value = "/{patientId}/photo",
+            value = "/{patientId}/image",
             method = RequestMethod.GET,
             produces = "image/png"
     )
     @ResponseBody
-    public ResponseEntity getPatientPhoto(@PathVariable final String patientId) {
+    public ResponseEntity getPatientImage(@PathVariable final String patientId) {
 
         try {
-
-            byte[] data = userDetailService.getPhoto("Patient_" + patientId + ".png");
+            String path =  home + "/images/patients/";
+            byte[] data = imageService.getImage("Patient_" + patientId + ".png", path);
 
             return new ResponseEntity(data, HttpStatus.OK);
 
