@@ -33,6 +33,7 @@ public class UserDetailMapper {
             if(userDetailEntity.getDataOfBirth() != null) {
                 patient.setDateOfBirth(new SimpleDateFormat("dd-MM-yyyy").format(userDetailEntity.getDataOfBirth()));
             }
+            patient.setImagePath("patient/"+patient.getId()+"/image");
             patients.add(patient);
         }
 
@@ -45,6 +46,7 @@ public class UserDetailMapper {
         if(userDetailEntity.getDataOfBirth() != null) {
             patient.setDateOfBirth(new SimpleDateFormat("dd-MM-yyyy").format(userDetailEntity.getDataOfBirth()));
         }
+        patient.setImagePath("patient/"+patient.getId()+"/image");
         return patient;
     }
 
