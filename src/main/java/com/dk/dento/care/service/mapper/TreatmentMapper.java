@@ -5,6 +5,7 @@ import com.dk.dento.care.entity.PaymentEntity;
 import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.TreatmentIdGenerator;
 import com.dk.dento.care.entity.UserDetailEntity;
+import com.dk.dento.care.model.ImagePath;
 import com.dk.dento.care.model.PatientOralExamination;
 import com.dk.dento.care.model.Payment;
 import com.dk.dento.care.model.Treatment;
@@ -14,7 +15,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -41,6 +44,17 @@ public class TreatmentMapper {
 
         for (TreatmentEntity treatmentEntity : treatmentEntities) {
             treatment = modelMapper.map(treatmentEntity, Treatment.class);
+            Set<ImagePath> preTreatmentImages = new HashSet<ImagePath>(0);
+            Set<ImagePath> postTreatmentImages = new HashSet<ImagePath>(0);
+
+            preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/pre-treatment/"+1));
+            preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/pre-treatment/"+2));
+            preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/pre-treatment/"+1));
+            postTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/post-treatment/"+2));
+
+            treatment.setPreTreatmentImages(preTreatmentImages);
+            treatment.setPostTreatmentImages(postTreatmentImages);
+
             treatment.setStatus(treatmentEntity.getStatusEntity().getStatus());
             treatments.add(treatment);
         }

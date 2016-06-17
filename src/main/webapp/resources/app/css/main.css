@@ -1,68 +1,81 @@
-
 body {
     padding-top: 70px;
+    background: lightgrey;
 }
-
-.portfolio-item {
-    margin-bottom: 25px;
-}
-
 footer {
-    margin: 50px 0;
+    background-color: gray;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    text-align: center;
 }
-
+.patient {
+    border:ridge;
+    border-color: darkgray;
+    margin: 0px 10px 40px 10px;
+    padding-bottom: 5px;
+}
+.view {
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+}
 .search{
     margin-top: 5px;
     margin-left: 5px;
     margin-right: 5px;
     background-color:#5c9bb7;
     box-shadow: 0 1px 1px #ccc;
-    border-radius: 2px;
+    border-radius: 22px;
     width: 200px;
-    padding: 5px;
+    padding: 1px;
     position:relative;
 }
-
 .search input{
-
     border: none;
     width: 100%;
     line-height: 15px;
     padding: 11px 0;
-
-    border-radius: 2px;
+    border-radius: 22px;
     box-shadow: 0 2px 8px #c4c4c4 inset;
     text-align: left;
     font-size: 10px;
     font-family: inherit;
-    color: #738289;
+    color: #231789;
     font-weight: bold;
     outline: none;
     text-indent: 40px;
 }
-
 .navbar-inverse {
-    height: 60px;
+    height: 50px;
 }
-
 .row {
-    margin-top: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
+    margin: 5px;
 }
 .alert {
     padding: 5px;
     margin: 5px;
 }
-
 .portfolio-item {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
 .img-responsive {
-    vertical-align: middle;
-    border: solid;
-    border-color: cadetblue;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    height: 150px;
+    width: 250px;
+}
+.label {
+    background-color: rgba(30, 96, 247, 0.17);
+    font-size: small;
+    color: #231789;
+    padding: 5px
+}
+.red-big-text {
+    margin-top: 15px;
+    font-size: large;
+    color: red
 }

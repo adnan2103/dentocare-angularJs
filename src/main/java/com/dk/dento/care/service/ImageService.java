@@ -23,6 +23,7 @@ public class ImageService {
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageService.class);
 
+
     public void uploadImage(MultipartFile image, String imageName, String path) throws IOException {
         byte[] bytes = image.getBytes();
         File dir = new File(path);
@@ -39,7 +40,7 @@ public class ImageService {
         stream.close();
     }
 
-    public byte[] getImage(String imageName, String path) throws IOException {
+    public byte[] getImage(String path, String imageName) throws IOException {
 
         File file = new File(path + imageName);
         if (!file.exists()) {

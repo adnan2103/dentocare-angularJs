@@ -140,7 +140,7 @@ public class PatientController {
 
         try {
             String path =  home + "/images/patients/";
-            byte[] data = imageService.getImage("Patient_" + patientId + ".png", path);
+            byte[] data = imageService.getImage(path, "Patient_" + patientId + ".png");
 
             return new ResponseEntity(data, HttpStatus.OK);
 

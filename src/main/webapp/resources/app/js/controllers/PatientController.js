@@ -4,7 +4,7 @@
  * PatientController
  * @constructor
  */
-var PatientController = function($scope, $http, $routeParams, fileUpload) {
+var PatientController = function($scope, $http, $routeParams, fileUpload, patientService) {
 
     $scope.fetchPatient = function() {
         if ($routeParams.id !== 'new') {
@@ -23,14 +23,7 @@ var PatientController = function($scope, $http, $routeParams, fileUpload) {
     ];
 
     $scope.savePatient = function(patient) {
-        $scope.resetError();
-
-        $http.put('patient/save', patient).success(function(patient) {
-            $scope.patient = patient;
-            $scope.message = 'Patient Created / Updated.';
-        }).error(function() {
-            $scope.setError('Could not create / update the patient.');
-        });
+        $scope.patient = patientService.update({}, patient);
     };
 
     $scope.resetError = function() {
@@ -43,8 +36,8 @@ var PatientController = function($scope, $http, $routeParams, fileUpload) {
         $scope.errorMessage = message;
     };
 
-    $scope.uploadPhoto = function(patient){
-        var file = $scope.myFile;
+    $scope.saveImage = function(patient){
+        var file = $scope.image;
         console.log('file is ' );
         console.dir(file);
         var uploadUrl = 'patient/' + patient.id + '/image'

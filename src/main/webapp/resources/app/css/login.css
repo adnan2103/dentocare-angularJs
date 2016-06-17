@@ -1,39 +1,80 @@
 .btn-outline {
-    background:0 0;border-color:transparent;font-weight:400
+    background:0 0;
+    border-color:transparent;
+    font-weight:400
 }
-
 .btn-outline:hover {
-    background:0 0;border-color:transparent
+    background:0 0;
+    border-color:transparent
 }
-
 .btn-outline.btn-white {
-    box-shadow:0 0 0 2px rgba(255,255,255,.8)inset;color:rgba(255,255,255,.8)
+    box-shadow:0 0 0 2px rgba(255,255,255,.8)inset;
+    color:rgba(255,255,255,.8)
 }
-
 .btn-outline.btn-white:hover {
-    box-shadow:0 0 0 2px #fff inset;color:#fff
+    box-shadow:0 0 0 2px #fff inset;
+    color:#fff
 }
-
-.btn-outline.btn-primary{box-shadow:0 0 0 2px #2089c9 inset;color:#2089c9}
-
-.btn-outline.btn-primary:hover{box-shadow:0 0 0 2px #3ca2e0 inset;color:#3ca2e0}
-.btn-outline.btn-success{box-shadow:0 0 0 2px #449d44 inset;color:#449d44}
-.btn-outline.btn-success:hover{box-shadow:0 0 0 2px #5cb85c inset;color:#5cb85c}
-.btn-outline.btn-info{box-shadow:0 0 0 2px #31b0d5 inset;color:#31b0d5}
-.btn-outline.btn-info:hover{box-shadow:0 0 0 2px #5bc0de inset;color:#5bc0de}
-.btn-outline.btn-warning{box-shadow:0 0 0 2px #ec971f inset;color:#ec971f}
-.btn-outline.btn-warning:hover{box-shadow:0 0 0 2px #f0ad4e inset;color:#f0ad4e}
-.btn-outline.btn-danger{box-shadow:0 0 0 2px #c9302c inset;color:#c9302c}
-.btn-outline.btn-danger:hover{box-shadow:0 0 0 2px #d9534f inset;color:#d9534f}
-.btn-rounded{border-radius:50px}
-
+.btn-outline.btn-primary {
+    box-shadow:0 0 0 2px #2089c9 inset;
+    color:#2089c9
+}
+.btn-outline.btn-primary:hover {
+    box-shadow:0 0 0 2px #3ca2e0 inset;
+    color:#3ca2e0
+}
+.btn-outline.btn-success {
+    box-shadow:0 0 0 2px #449d44 inset;
+    color:#449d44
+}
+.btn-outline.btn-success:hover {
+    box-shadow:0 0 0 2px #5cb85c inset;
+    color:#5cb85c
+}
+.btn-outline.btn-info {
+    box-shadow:0 0 0 2px #31b0d5 inset;
+    color:#31b0d5
+}
+.btn-outline.btn-info:hover {
+    box-shadow:0 0 0 2px #5bc0de inset;
+    color:#5bc0de
+}
+.btn-outline.btn-warning {
+    box-shadow:0 0 0 2px #ec971f inset;
+    color:#ec971f
+}
+.btn-outline.btn-warning:hover {
+    box-shadow:0 0 0 2px #f0ad4e inset;
+    color:#f0ad4e
+}
+.btn-outline.btn-danger {
+    box-shadow:0 0 0 2px #c9302c inset;
+    color:#c9302c
+}
+.btn-outline.btn-danger:hover {
+    box-shadow:0 0 0 2px #d9534f inset;
+    color:#d9534f
+}
+.btn-rounded {
+    border-radius:50px
+}
 .btn-lg,.btn-group-lg>.btn {
-    padding:10px 16px;font-size:18px;line-height:1.3333333;border-radius:6px
+    padding:10px 16px;
+    font-size:18px;
+    line-height:1.3333333;
+    border-radius:6px
 }
-
-
 .login-page{
-    position:absolute;top:0;left:0;right:0;bottom:0;overflow:auto;background:#3ca2e0;text-align:center;color:#fff;padding:3em
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    overflow:auto;
+    background:#3ca2e0;
+    text-align:center;
+    color:#fff;
+    padding:3em
 }
 .login-page h1 {
     font-weight:300

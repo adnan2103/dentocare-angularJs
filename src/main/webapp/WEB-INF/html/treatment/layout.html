@@ -52,6 +52,9 @@
 
                     <div class="row">
                     <h2 style="background-color: #00b3ee">Treatment ID : {{treatment.id}}</h2>
+                        <div ng-repeat="images in treatment.preTreatmentImages">
+                            <img class="img-responsive" ng-src="{{images.path}}"/>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-2"><b> Status : </b></div>
@@ -110,6 +113,9 @@
                         </div>
                     </div>
                 </div>
+            <div ng-repeat="images in treatment.postTreatmentImages">
+                <img class="img-responsive" ng-src="{{images.path}}"/>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-12">

@@ -2,7 +2,7 @@
 
 var DentoCareApp = {};
 
-var App = angular.module('DentoCareApp', ['ui.date', 'ngRoute','auth','navigation','DentoCareApp.filters', 'DentoCareApp.services', 'DentoCareApp.directives', 'DentoCareApp.factory']);
+var App = angular.module('DentoCareApp', ['ui.date', 'ngRoute','auth','navigation','DentoCareApp.filters', 'DentoCareApp.services', 'DentoCareApp.directives', 'DentoCareApp.factory', 'ngResource']);
 
 // Declare app level module which depends on filters, and services
 App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpProvider) {
@@ -107,6 +107,13 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
             .error(function(){
             });
     }
+}]).service('patientService', ['$resource', function ($resource) {
+
+    return $resource('patient/save', {}, {
+        'update': { method:'PUT' }
+    });
+
+
 }]).run(function(auth) {
 
     // Initialize auth module with the home page and login/logout path

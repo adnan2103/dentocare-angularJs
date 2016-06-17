@@ -1,6 +1,7 @@
 package com.dk.dento.care.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -19,6 +20,26 @@ public class Treatment {
     private Set<Payment> payment = new HashSet<Payment>(0);
 
     private Set<PatientOralExamination> patientOralExamination = new HashSet<PatientOralExamination>(0);
+
+    private Set<ImagePath> preTreatmentImages = new HashSet<ImagePath>(0);
+
+    private Set<ImagePath> postTreatmentImages = new HashSet<ImagePath>(0);
+
+    public Set<ImagePath> getPreTreatmentImages() {
+        return preTreatmentImages;
+    }
+
+    public void setPreTreatmentImages(Set<ImagePath> preTreatmentImages) {
+        this.preTreatmentImages = preTreatmentImages;
+    }
+
+    public Set<ImagePath> getPostTreatmentImages() {
+        return postTreatmentImages;
+    }
+
+    public void setPostTreatmentImages(Set<ImagePath> postTreatmentImages) {
+        this.postTreatmentImages = postTreatmentImages;
+    }
 
     public Long getId() {
         return id;

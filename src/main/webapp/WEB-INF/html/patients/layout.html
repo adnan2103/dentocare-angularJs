@@ -1,6 +1,6 @@
-<div class="container" style="margin-bottom: 10px">
-    <ul class="nav navbar-nav">
-        <li style="margin-top: 15px; font-size: large; color: red">
+<div class="container" style="margin-bottom: 10px;">
+    <ul class="nav navbar-nav col-md-12">
+        <li class="red-big-text">
             <b> Search Patient </b>
         </li>
         <li>
@@ -8,7 +8,6 @@
                 <input type="text" ng-model="searchName" placeholder="Enter patient name"/>
             </div>
         </li>
-
         <li>
             <div class="search">
                 <input type="text" ng-model="searchNumber" placeholder="Enter patient mobile number"/>
@@ -19,96 +18,30 @@
 
 <!-- Page Content -->
 <div class="container">
-
-    <!-- Page Heading -->
-    <!--    <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Registered Patients
-                </h1>
-            </div>
-        </div>-->
-    <!-- /.row -->
-
-    <!-- Projects Row -->
-    <div ng-repeat="patient in patients | searchForName:searchName | searchForNumber:searchNumber" class="col-md-12 portfolio-item" style="border: solid;border-color: black; margin-bottom: 10px">
-
-
+    <div ng-repeat="patient in patients | searchForName:searchName | searchForNumber:searchNumber"
+         class="col-md-3 patient">
         <div class="row">
-            <div class="col-md-3 portfolio-item">
-                <img class="img-responsive" ng-src="{{patient.imagePath}}" onerror="this.src='resources/app/images/patients/patient.png'"/>
+            <div class="col-md-12">
+                <img class="img-responsive" ng-src="{{patient.imagePath}}"
+                     onerror="this.src='resources/app/images/patients/patient.png'"/>
             </div>
-            <div class="col-md-5 portfolio-item" style="margin-left: 10px;">
+            <div class="col-md-12">
+                <div>
+                    <a href="#/patient/{{patient.id}}">
+                        <span class="label" ng-bind="patient.name | uppercase"></span>
+                    </a>
+                 </div>
                 <div class="row">
-                    <b> Name : <span ng-bind="patient.name | uppercase"></span></b>
-                </div>
-                <div class="row">
-                    <b> Gender : </b> <span ng-bind="patient.gender"></span>
+                    <span ng-bind="patient.gender"></span><span> (55Y 3M) </span>
                 </div>
                 <div class="row">
                     <b> Mobile : </b><span ng-bind="patient.phoneNumber"></span>
                 </div>
-                <div class="row">
-                    <b> Date of Birth : </b> <span ng-bind="patient.dateOfBirth"></span>
-                </div>
-                <div class="row">
-                    <b> Address : </b>
-                    <span ng-bind="patient.address.addressLine1"></span><span ng-bind="patient.address.addressLine2"></span>
-                    <span ng-bind="patient.address.city"></span><span ng-bind="patient.address.state"></span>
-                    <span ng-bind="patient.address.country"></span><span ng-bind="patient.address.pincode"></span>
-                </div>
-                <div class="row">
-                    <a href="#/patient/{{patient.id}}" style="background-color: #00b3ee;font-size: large; color: black;padding: 5px">Update Patient</a>
-                    <a href="#/patient/{{patient.id}}/treatment" style="background-color: #00b3ee;font-size: large; color: black;padding: 5px">Add Treatment</a>
+                <div>
+                    <a href="#/patient/{{patient.id}}/treatment">
+                        <span class="label">UPDATE TREATMENT</span></a>
                 </div>
             </div>
         </div>
-
-
-
     </div>
-    <!-- /.row -->
-
-    <!-- Pagination -->
-    <!--<div class="row text-center">
-        <div class="col-lg-12">
-            <ul class="pagination">
-                <li>
-                    <a href="#">&laquo;</a>
-                </li>
-                <li class="active">
-                    <a href="#">1</a>
-                </li>
-                <li>
-                    <a href="#">2</a>
-                </li>
-                <li>
-                    <a href="#">3</a>
-                </li>
-                <li>
-                    <a href="#">4</a>
-                </li>
-                <li>
-                    <a href="#">5</a>
-                </li>
-                <li>
-                    <a href="#">&raquo;</a>
-                </li>
-            </ul>
-        </div>
-    </div>-->
-    <!-- /.row -->
-
-    <hr/>
-
-    <!-- Footer -->
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; Dento care 2016</p>
-            </div>
-        </div>
-        <!-- /.row -->
-    </footer>
-
 </div>
-<!-- /.container -->

@@ -1,18 +1,16 @@
 <!-- Page Content -->
 <div class="container" style="border: solid;color: black">
     <div class="row">
-        <div class="alert alert-danger" ng-show="message">
-            Patient Created / Updated Successfully.
-        </div>
-        <div class="alert alert-danger" ng-show="error">
-            Could not create / update the patient.
-        </div>
-        <div class="col-md-3 portfolio-item" ng-if='patient.id'>
-            <img class="img-responsive" ng-src="{{patient.imagePath}}" onerror="this.src='resources/app/images/patients/patient.png'"/>
-            <input type="file" file-model="myFile"/>
-            <button ng-click="uploadPhoto(patient)">Upload Photo</button>
-        </div>
+        <div class="alert alert-danger" ng-show="message" />
+
+        <div class="alert alert-danger" ng-show="error" />
+
         <form name="myForm" class="col-md-5 portfolio-item">
+            <div class="col-md-3 portfolio-item" ng-if='patient.id'>
+                <img class="img-responsive" ng-src="{{patient.imagePath}}" onerror="this.src='resources/app/images/patients/patient.png'"/>
+                <input type="file" file-model="image"/>
+                <button class="btn btn-primary" ng-click="saveImage(patient)">Save Photo</button>
+            </div>
             <div class="row">
                 <b> Name : </b> <input type="text" name="name" ng-model="patient.name" placeholder="Patient Name" required="required"/>
                 <span ng-show="myForm.$submitted || myForm.name.$touched">
