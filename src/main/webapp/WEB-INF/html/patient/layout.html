@@ -34,9 +34,9 @@
             </div>
             <div class="row col-md-9 row">
                 <span style="margin-left: 15px">DOB :</span>
-                <input ui-date="dateOptions" style="float:right;margin-right: 40px"
-                                               ng-model="patient.dateOfBirth" placeholder="mm/dd/yyyy"/>
+                <ng-datepicker format="MM-DD-YYYY" view-format="Do MMMM YYYY" style="float:right;margin-right: 40px" ng-model="patient.dateOfBirth"></ng-datepicker>
             </div>
+
             <div class="row col-md-12 row">
                 <b> Address : </b>
             </div>

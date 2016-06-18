@@ -44,7 +44,7 @@ public class UserDetailMapper {
         Patient patient = modelMapper.map(userDetailEntity, Patient.class);
         patient.setDateOfBirth("");
         if(userDetailEntity.getDataOfBirth() != null) {
-            patient.setDateOfBirth(new SimpleDateFormat("dd-MM-yyyy").format(userDetailEntity.getDataOfBirth()));
+            patient.setDateOfBirth(new SimpleDateFormat("MM-dd-yyyy").format(userDetailEntity.getDataOfBirth()));
         }
         patient.setImagePath("patient/"+patient.getId()+"/image");
         return patient;
@@ -53,7 +53,7 @@ public class UserDetailMapper {
     public UserDetailEntity patientToUserDetailEntity(Patient patient) throws ParseException {
 
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
         UserDetailEntity userDetailEntity = modelMapper.map(patient, UserDetailEntity.class);
 
         //TODO add isValid date and format kind of validations.
