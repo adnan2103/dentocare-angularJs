@@ -2,7 +2,7 @@
 
 var DentoCareApp = {};
 
-var App = angular.module('DentoCareApp', ['jkuri.datepicker', 'ngRoute','auth','navigation','DentoCareApp.filters', 'DentoCareApp.services', 'DentoCareApp.directives', 'DentoCareApp.factory', 'ngResource']);
+var App = angular.module('DentoCareApp', ['srph.age-filter','jkuri.datepicker', 'ngRoute','auth','navigation','DentoCareApp.filters', 'DentoCareApp.services', 'DentoCareApp.directives', 'DentoCareApp.factory', 'ngResource']);
 
 // Declare app level module which depends on filters, and services
 App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpProvider) {

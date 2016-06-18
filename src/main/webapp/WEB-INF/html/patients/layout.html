@@ -32,8 +32,8 @@
                     </a>
                  </div>
                 <div class="row">
-                    <b><span ng-bind="patient.gender"></span></b>
-                    <span> DOB:</span><span ng-bind="patient.dateOfBirth"></span><span><b>(45Y11M)</b></span>
+                    <b><span ng-bind="patient.gender"></span><span>({{patient.dateOfBirth | age}}Y)</span></b>
+                    <span> DOB:</span><span ng-bind="patient.dateOfBirth"></span>
                 </div>
                 <div class="row">
                     <b> Mobile : </b><span ng-bind="patient.phoneNumber"></span>

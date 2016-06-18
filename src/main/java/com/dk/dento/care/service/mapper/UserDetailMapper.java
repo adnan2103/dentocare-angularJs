@@ -31,7 +31,7 @@ public class UserDetailMapper {
             Patient patient = modelMapper.map(userDetailEntity, Patient.class);
             patient.setDateOfBirth("");
             if(userDetailEntity.getDataOfBirth() != null) {
-                patient.setDateOfBirth(new SimpleDateFormat("dd-MM-yyyy").format(userDetailEntity.getDataOfBirth()));
+                patient.setDateOfBirth(new SimpleDateFormat("MM/dd/yyyy").format(userDetailEntity.getDataOfBirth()));
             }
             patient.setImagePath("patient/"+patient.getId()+"/image");
             patients.add(patient);
