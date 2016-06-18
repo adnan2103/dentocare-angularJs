@@ -1,9 +1,11 @@
 #Dento care application
 
 #Major issues before go live.
+Validation messages.
+Success/Failure Messages
+Patient Photo upload immediately
+immediately refreshing uploaded photo
 
-## Date of birth format issue in all pages.
-## Payment date is being saved with proper value and it always shows current date.
 
 ## Total treatment cost display.
 ## Total pending amount display.
@@ -30,6 +32,9 @@
 ## internationalization for validation messages.
 
 ########DONE########
+
+##DONE## Date of birth format issue in all pages.
+##DONE## Payment date is being saved with proper value and it always shows current date.
 
 ##DONE## Mobile number validation issue.(should be 10 digit number.)
 ##DONE## Date of birth and Payment date format(dd-MM-yyyy) and validation issue.
