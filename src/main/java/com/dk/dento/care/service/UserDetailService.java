@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.ServletContext;
 import java.text.ParseException;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -56,7 +57,7 @@ public class UserDetailService {
     }
 
     private Set<UserDetailEntity> getAllPatientForDoctor() {
-        Set<UserDetailEntity> userDetailEntities = new HashSet<UserDetailEntity>(0);
+        Set<UserDetailEntity> userDetailEntities = new LinkedHashSet<UserDetailEntity>();
 
         UserCredentialsEntity doctor = authenticationService.getAuthenticatedUser();
         Iterable<DoctorPatientMappingEntity> allPatients = doctorPatientMappingRepository.findAllPatientsForDoctor(doctor.getId());

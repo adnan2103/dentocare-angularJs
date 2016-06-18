@@ -1,32 +1,50 @@
-#Dento care application
 
-#Major issues before go live.
-Validation messages.
-Success/Failure Messages
-Patient Photo upload immediately
-immediately refreshing uploaded photo
-## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
+#############################################Dento care application###############################################################
 
-##DONE## CSS and alignment on treatment page.
+################################Major issues before go live.########################################
 ## Total treatment cost display.
 ## Total pending amount display.
+## Pre and post treatment photos upload and display library.
 
-## Pre and post treatment photos upload and display.
-## Auto move focus to validation message.
+UI Validation messages.
+Service Success/Failure Messages.
+## Auto move focus to validation messages and success messages.
+## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 
+Patient Photo upload immediately
+immediately refreshing uploaded photo each time.
 
-# Low priority
+## CSS and alignment on treatment page.
 
-## order by issues.(by id on home page)
+###################### Low priority ######################################################################
+
 ## Add Payment and Oral examination + button styling.
 ## Default logged in page does not show list of patients.
 ## Adding multiple treatments, low priority.
-## Adding one more role to manage patients only, low priority.
-## Code clean up and refactoring.
-## internationalization for validation messages.
 
-########DONE########
 
+########FUTURE ITEMS TO COME ###########################################################################
+Saving and Showing Patient E-mail Id.
+
+Doctor can refer patient to other doctor, don't show treatment costs & payments of one doc to other.
+Access management & ROLE based access
+User Maintenance
+
+Doctor can configure & print the patient report card.
+
+Creating Patient login credentials.
+Sending Patient login credentials via email & sms.
+Asking Patient to change password after first use.
+
+Appointment Diary, Day/Week/Month schedule, reminders to doctor and patient.
+
+Letting Doctor to call patient from application and sending emails.
+
+Got the excellent case, share it on FB or to other doctor, get the patient feedback and comments and rating.
+
+################################### DONE #####################################################################
+
+##DONE## order by issues.(by id on home page)
 ##DONE## CSS and alignments on create and update patient.
 ##DONE## CSS and alignment on patient photo upload.
 

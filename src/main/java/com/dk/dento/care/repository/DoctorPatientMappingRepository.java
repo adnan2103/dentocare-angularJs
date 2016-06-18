@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface DoctorPatientMappingRepository extends CrudRepository<DoctorPatientMappingEntity, DoctorPatientMappingId> {
 
-    @Query("select dpm from DoctorPatientMappingEntity dpm where doctor_id = ?1")
+    @Query("select dpm from DoctorPatientMappingEntity dpm where doctor_id = ?1 order by patient_id desc")
     List<DoctorPatientMappingEntity> findAllPatientsForDoctor(Long doctorId);
 
 }

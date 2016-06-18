@@ -5,7 +5,7 @@
     <form name="myForm" class="col-md-8 portfolio-item">
         <div class="col-md-4 portfolio-item" ng-if='patient.id'>
             <img class="img-responsive" ng-src="{{patient.imagePath}}"
-                 onerror="this.src='resources/app/images/patients/patient.png'"/>
+                 onerror="this.src='resources/app/images/patients/patient.svg'"/>
             <div class="row"><input type="file" file-model="image"/></div>
             <div class="row"><button class="btn btn-primary" style="float:left;margin-right: 20px" ng-click="saveImage(patient)">Update Photo</button></div>
         </div>
