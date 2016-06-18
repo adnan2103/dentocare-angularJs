@@ -5,17 +5,11 @@ Validation messages.
 Success/Failure Messages
 Patient Photo upload immediately
 immediately refreshing uploaded photo
+## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 
-
+##DONE## CSS and alignment on treatment page.
 ## Total treatment cost display.
 ## Total pending amount display.
-
-## After creating patient if I try to upload photo, patient id is undefined.
-## After uploading photo it does not referesh automatically.
-## Photo upload success message.
-## CSS and alignments on create and update patient.
-## CSS and alignment on patient photo upload.
-## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 
 ## Pre and post treatment photos upload and display.
 ## Auto move focus to validation message.
@@ -32,6 +26,9 @@ immediately refreshing uploaded photo
 ## internationalization for validation messages.
 
 ########DONE########
+
+##DONE## CSS and alignments on create and update patient.
+##DONE## CSS and alignment on patient photo upload.
 
 ##DONE## Date of birth format issue in all pages.
 ##DONE## Payment date is being saved with proper value and it always shows current date.
