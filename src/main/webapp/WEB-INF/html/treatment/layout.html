@@ -107,7 +107,7 @@
                     </div>
                     <div ng-repeat="payment in treatment.payment">
                         <div class="row">
-                            <div class="col-md-2"><input type="text" ui-date="dateOptions" name="paymentDate" ng-model="payment.paymentDate" placeholder="Date"/></div>
+                            <div class="col-md-2"><ng-datepicker format="MM-DD-YYYY" view-format="Do MMMM YYYY" ng-model="payment.paymentDate"></ng-datepicker></div>
                             <div class="col-md-2"><input type="number" ng-model="payment.paymentAmount" placeholder="Amount"/></div>
                             <div class="col-md-2"><input type="text" ng-model="payment.treatmentDone" placeholder="Notes"/></div>
                         </div>
