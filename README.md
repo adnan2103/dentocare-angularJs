@@ -2,18 +2,24 @@
 #############################################Dento care application###############################################################
 
 ################################Major issues before go live.########################################
+##1
 ## Total treatment cost display.
-## Total pending amount display.
+## Total amount paid and pending amount display.
+
+##2
 ## Pre and post treatment photos upload and display library.
 
-UI Validation messages.
-Service Success/Failure Messages.
+##3
+##UI Validation messages.
+##Service Success/Failure Messages.
 ## Auto move focus to validation messages and success messages.
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 
-Patient Photo upload immediately
-immediately refreshing uploaded photo each time.
+##4
+##Patient Photo upload immediately
+##immediately refreshing uploaded photo each time.
 
+##5
 ## CSS and alignment on treatment page.
 
 ###################### Low priority ######################################################################
