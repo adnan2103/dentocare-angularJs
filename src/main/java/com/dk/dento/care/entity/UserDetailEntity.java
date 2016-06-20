@@ -38,7 +38,7 @@ public class UserDetailEntity implements Serializable {
     private String gender;
 
     @Column(name = "date_of_birth")
-    private Date dataOfBirth;
+    private Date dateOfBirth;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -62,12 +62,12 @@ public class UserDetailEntity implements Serializable {
         this.gender = gender;
     }
 
-    public Date getDataOfBirth() {
-        return dataOfBirth;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDataOfBirth(Date dataOfBirth) {
-        this.dataOfBirth = dataOfBirth;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getPhoneNumber() {

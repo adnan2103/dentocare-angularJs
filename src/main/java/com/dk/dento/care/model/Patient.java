@@ -1,6 +1,9 @@
 package com.dk.dento.care.model;
 
 import com.dk.dento.care.entity.Address;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 
 /**
  * Created by khana on 22/02/16.
@@ -13,7 +16,8 @@ public class Patient {
 
     private String gender;
 
-    private String dateOfBirth;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "IST")
+    private Date dateOfBirth;
 
     private String phoneNumber;
 
@@ -53,11 +57,11 @@ public class Patient {
         this.gender = gender;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

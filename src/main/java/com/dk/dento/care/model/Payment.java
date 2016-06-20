@@ -1,5 +1,7 @@
 package com.dk.dento.care.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
@@ -9,6 +11,7 @@ public class Payment {
 
     private Long id;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "IST")
     private Date paymentDate;
 
     private Long paymentAmount;

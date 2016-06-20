@@ -1,54 +1,31 @@
 <!-- Page Content -->
 <div class="container">
-    <div class="col-md-12 portfolio-item" style="border: solid;border-color: black">
-        <div class="alert alert-danger" ng-show="message">
-            Treatment Updated Successfully.
-        </div>
-        <div class="alert alert-danger" ng-show="error">
-            Could not update the treatment.
-        </div>
+    <div class="col-md-3 patient">
+        <h2 style="background-color: #00b3ee">Patient Detail</h2>
         <div class="row">
-            <h2 style="background-color: #00b3ee">Patient Detail</h2>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-6 portfolio-item">
-                <img class="img-responsive" ng-src="{{patient.imagePath}}" onerror="this.src='resources/app/images/patients/patient.svg'"/>
+            <div class="col-md-12">
+                <img class="img-responsive" ng-src="{{patient.imagePath}}"
+                     onerror="this.src='resources/app/images/patients/patient.svg'"/>
             </div>
-            <div class="col-md-12 portfolio-item" style="margin-left: 10px;">
-                <div class="row">
-                    <div class="col-md-2"><b> Name : </b></div>
-                    <div class="col-md-2">{{patient.name}}</div>
+            <div class="col-md-12">
+                <div>
+                    <span class="label" ng-bind="patient.name | uppercase"></span>
                 </div>
                 <div class="row">
-                    <div class="col-md-2"><b> Gender : </b></div>
-                    <div class="col-md-2">{{patient.gender}}</div>
+                    <b><span ng-bind="patient.gender"></span></b>
+                    <span> Age :</span> <b><span> {{patient.dateOfBirth | age}} Years</span></b>
                 </div>
                 <div class="row">
-                    <div class="col-md-2"><b> Mobile : </b></div>
-                    <div class="col-md-2">{{patient.phoneNumber}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2"><b> Date of Birth : </b></div>
-                    <div class="col-md-2">{{patient.dateOfBirth}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2"><b> Address : </b></div>
-                    <div class="col-md-3">
-                    {{patient.address.addressLine1}} {{patient.address.addressLine2}}
-                    {{patient.address.city}} {{patient.address.state}}
-                    {{patient.address.country}} {{patient.address.pincode}}</div>
+                    <b> Mobile : </b><span ng-bind="patient.phoneNumber"></span>
                 </div>
             </div>
         </div>
-
-
-        </div>
+    </div>
 </div>
+
 <div class="container">
         <div ng-repeat="treatment in treatments">
-                <div class="col-md-12 portfolio-item" style="border: solid;border-color: black">
+                <div class="col-md-9 portfolio-item" style="border: solid;border-color: black">
 
                     <div class="row">
                     <h2 style="background-color: #00b3ee">Treatment ID : {{treatment.id}}</h2>
@@ -83,13 +60,13 @@
                     </div>
                     <br />
                     <div class="row">
-                        <div class="col-md-2"><b> Description : </b>  </div>
-                        <div class="col-md-2"><b> Cost : </b> </div>
+                        <div class="col-md-4"><b> Description : </b>  </div>
+                        <div class="col-md-4"><b> Cost : </b> </div>
                     </div>
                     <div ng-repeat="oralExamination in treatment.patientOralExamination">
                         <div class="row">
-                            <div class="col-md-2"><input type="text" ng-model="oralExamination.description" placeholder="Description"/></div>
-                            <div class="col-md-2"><input type="number" ng-model="oralExamination.cost" placeholder="Cost"/></div>
+                            <div class="col-md-4"><input type="text" ng-model="oralExamination.description" placeholder="Description"/></div>
+                            <div class="col-md-4"><input type="number" ng-model="oralExamination.cost" placeholder="Cost"/></div>
                         </div>
                     </div>
 
@@ -101,15 +78,15 @@
                     </div>
                     <br />
                     <div class="row">
-                        <div class="col-md-2"><b> Payment Date : </b></div>
-                        <div class="col-md-2"><b> Payment Amount : </b></div>
-                        <div class="col-md-2"><b> Treatment Done : </b></div>
+                        <div class="col-md-3"><b> Payment Date : </b></div>
+                        <div class="col-md-3"><b> Payment Amount : </b></div>
+                        <div class="col-md-3"><b> Treatment Done : </b></div>
                     </div>
                     <div ng-repeat="payment in treatment.payment">
                         <div class="row">
-                            <div class="col-md-2"><ng-datepicker format="MM-DD-YYYY" view-format="Do MMMM YYYY" ng-model="payment.paymentDate"></ng-datepicker></div>
-                            <div class="col-md-2"><input type="number" ng-model="payment.paymentAmount" placeholder="Amount"/></div>
-                            <div class="col-md-2"><input type="text" ng-model="payment.treatmentDone" placeholder="Notes"/></div>
+                            <div class="col-md-3"><ng-datepicker format="YYYY-MM-DD" view-format="Do MMMM YYYY" ng-model="payment.paymentDate"></ng-datepicker></div>
+                            <div class="col-md-3"><input type="number" ng-model="payment.paymentAmount" placeholder="Amount"/></div>
+                            <div class="col-md-3"><input type="text" ng-model="payment.treatmentDone" placeholder="Notes"/></div>
                         </div>
                     </div>
                 </div>
@@ -117,7 +94,7 @@
                 <img class="img-responsive" ng-src="{{images.path}}"/>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-bottom: 60px">
             <div class="col-lg-12">
                 <button type="button" class="btn btn-primary"
                         ng-click="saveTreatment(treatments)">Add/Update Treatment

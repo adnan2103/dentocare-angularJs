@@ -29,10 +29,6 @@ public class UserDetailMapper {
 
         for (UserDetailEntity userDetailEntity : userDetailEntities) {
             Patient patient = modelMapper.map(userDetailEntity, Patient.class);
-            patient.setDateOfBirth("");
-            if(userDetailEntity.getDataOfBirth() != null) {
-                patient.setDateOfBirth(new SimpleDateFormat("MM/dd/yyyy").format(userDetailEntity.getDataOfBirth()));
-            }
             patient.setImagePath("patient/"+patient.getId()+"/image");
             patients.add(patient);
         }
@@ -42,28 +38,12 @@ public class UserDetailMapper {
 
     public Patient userDetailEntityToPatient(UserDetailEntity userDetailEntity) {
         Patient patient = modelMapper.map(userDetailEntity, Patient.class);
-        patient.setDateOfBirth("");
-        if(userDetailEntity.getDataOfBirth() != null) {
-            patient.setDateOfBirth(new SimpleDateFormat("MM-dd-yyyy").format(userDetailEntity.getDataOfBirth()));
-        }
         patient.setImagePath("patient/"+patient.getId()+"/image");
         return patient;
     }
 
     public UserDetailEntity patientToUserDetailEntity(Patient patient) throws ParseException {
-
-
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
-        UserDetailEntity userDetailEntity = modelMapper.map(patient, UserDetailEntity.class);
-
-        //TODO add isValid date and format kind of validations.
-        if(patient.getDateOfBirth() !=null) {
-            Date dob = simpleDateFormat.parse(patient.getDateOfBirth());
-            userDetailEntity.setDataOfBirth(dob);
-        }
-
-        return userDetailEntity;
-
+        return modelMapper.map(patient, UserDetailEntity.class);
     }
 
     public UserCredentials userCredentialsEntityToUserCredentials(UserCredentialsEntity userCredentialsEntity) {
