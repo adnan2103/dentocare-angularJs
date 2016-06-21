@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Set;
+
 
 @Controller
 public class TreatmentController {
@@ -53,7 +53,7 @@ public class TreatmentController {
     @ResponseBody
     public ResponseEntity getPatientTreatment(@PathVariable final Long id) {
         try {
-            Set<Treatment> treatments = treatmentService.getTreatmentsForPatient(id);
+            List<Treatment> treatments = treatmentService.getTreatmentsForPatient(id);
             return new ResponseEntity(treatments, HttpStatus.OK);
         } catch(Exception e) {
             LOGGER.error("Error occurred while geting treatments for patient {} ",e.getMessage());
@@ -77,7 +77,7 @@ public class TreatmentController {
     public ResponseEntity savePatientTreatment(@PathVariable final Long id,
                                                       @RequestBody final List<Treatment> treatments) {
         try {
-        Set<Treatment> updatedTreatments = treatmentService.saveTreatmentsForPatient(treatments, id);
+            List<Treatment> updatedTreatments = treatmentService.saveTreatmentsForPatient(treatments, id);
             return new ResponseEntity(updatedTreatments, HttpStatus.OK);
         } catch (Exception e) {
             LOGGER.error("Error occurred while saving treatments for patient {} ",e.getMessage());

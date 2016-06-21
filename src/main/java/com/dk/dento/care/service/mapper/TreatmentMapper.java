@@ -16,9 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 /**
  * Created by khana on 22/02/16.
@@ -38,14 +37,14 @@ public class TreatmentMapper {
     @Autowired
     private TreatmentIdGenerator treatmentIdGenerator;
 
-    public Set<Treatment> treatmentEntitiesToTreatments(Iterable<TreatmentEntity> treatmentEntities) {
-        Set<Treatment> treatments = new HashSet<Treatment>(0);
+    public List<Treatment> treatmentEntitiesToTreatments(Iterable<TreatmentEntity> treatmentEntities) {
+        List<Treatment> treatments = new ArrayList<Treatment>(0);
         Treatment treatment;
 
         for (TreatmentEntity treatmentEntity : treatmentEntities) {
             treatment = modelMapper.map(treatmentEntity, Treatment.class);
-            Set<ImagePath> preTreatmentImages = new HashSet<ImagePath>(0);
-            Set<ImagePath> postTreatmentImages = new HashSet<ImagePath>(0);
+            List<ImagePath> preTreatmentImages = new ArrayList<ImagePath>(0);
+            List<ImagePath> postTreatmentImages = new ArrayList<ImagePath>(0);
 
             preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/pre-treatment/"+1));
             preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/pre-treatment/"+2));
@@ -62,8 +61,8 @@ public class TreatmentMapper {
         return treatments;
     }
 
-    public Set<TreatmentEntity> treatmentsToTreatmentEntities(Iterable<Treatment> treatments, Long patientId) {
-        Set<TreatmentEntity> treatmentEntities = new HashSet<TreatmentEntity>(0);
+    public List<TreatmentEntity> treatmentsToTreatmentEntities(Iterable<Treatment> treatments, Long patientId) {
+        List<TreatmentEntity> treatmentEntities = new ArrayList<TreatmentEntity>(0);
         UserDetailEntity userDetailEntity = userDetailRepository.findOne(patientId);
 
         TreatmentEntity treatmentEntity;
@@ -75,12 +74,12 @@ public class TreatmentMapper {
             treatmentEntity.setUserDetailEntity(userDetailEntity);
             treatmentEntity.setStatusEntity(statusRepository.findByStatus(treatment.getStatus()));
 
-            Set<PatientOralExamination> patientOralExaminations = treatment.getPatientOralExamination();
-            Set<PatientOralExaminationEntity> patientOralExaminationEntities = this.patientOralExaminationToPatientOralExaminationEntities(patientOralExaminations, treatmentEntity);
+            List<PatientOralExamination> patientOralExaminations = treatment.getPatientOralExamination();
+            List<PatientOralExaminationEntity> patientOralExaminationEntities = this.patientOralExaminationToPatientOralExaminationEntities(patientOralExaminations, treatmentEntity);
             treatmentEntity.setPatientOralExaminationEntities(patientOralExaminationEntities);
 
-            Set<Payment> payments = treatment.getPayment();
-            Set<PaymentEntity> paymentEntities = this.paymentsToPaymentEntities(payments, treatmentEntity);
+            List<Payment> payments = treatment.getPayment();
+            List<PaymentEntity> paymentEntities = this.paymentsToPaymentEntities(payments, treatmentEntity);
             treatmentEntity.setPaymentEntities(paymentEntities);
 
             treatmentEntities.add(treatmentEntity);
@@ -89,8 +88,8 @@ public class TreatmentMapper {
         return treatmentEntities;
     }
 
-    private Set<PaymentEntity> paymentsToPaymentEntities(Set<Payment> payments, TreatmentEntity treatmentEntity) {
-        Set<PaymentEntity> paymentEntities = new HashSet<PaymentEntity>(0);
+    private List<PaymentEntity> paymentsToPaymentEntities(List<Payment> payments, TreatmentEntity treatmentEntity) {
+        List<PaymentEntity> paymentEntities = new ArrayList<PaymentEntity>(0);
         PaymentEntity paymentEntity;
         for (Payment payment : payments) {
 
@@ -102,11 +101,11 @@ public class TreatmentMapper {
         return paymentEntities;
     }
 
-    private Set<PatientOralExaminationEntity> patientOralExaminationToPatientOralExaminationEntities
+    private List<PatientOralExaminationEntity> patientOralExaminationToPatientOralExaminationEntities
             (
-                Set<PatientOralExamination> patientOralExaminations, TreatmentEntity treatmentEntity
+                    List<PatientOralExamination> patientOralExaminations, TreatmentEntity treatmentEntity
             ) {
-        Set<PatientOralExaminationEntity> patientOralExaminationEntities = new HashSet<PatientOralExaminationEntity>(0);
+        List<PatientOralExaminationEntity> patientOralExaminationEntities = new ArrayList<PatientOralExaminationEntity>(0);
         PatientOralExaminationEntity patientOralExaminationEntity;
 
         for (PatientOralExamination patientOralExamination : patientOralExaminations) {

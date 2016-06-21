@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Set;
+
 
 @Service
 public class TreatmentService {
@@ -25,15 +25,15 @@ public class TreatmentService {
     @Autowired
     private TreatmentMapper treatmentMapper;
 
-    public Set<Treatment> getTreatmentsForPatient(Long patientId) {
+    public List<Treatment> getTreatmentsForPatient(Long patientId) {
         return treatmentMapper.treatmentEntitiesToTreatments(
                 treatmentRepository.findByUserDetailEntity(userDetailRepository.findOne(patientId))
         );
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Set<Treatment> saveTreatmentsForPatient(List<Treatment> treatments, Long patientId) {
-        Set<TreatmentEntity> treatmentEntities =
+    public List<Treatment> saveTreatmentsForPatient(List<Treatment> treatments, Long patientId) {
+        List<TreatmentEntity> treatmentEntities =
                 treatmentMapper.treatmentsToTreatmentEntities(treatments, patientId);
         return treatmentMapper.treatmentEntitiesToTreatments(treatmentRepository.save(treatmentEntities));
     }

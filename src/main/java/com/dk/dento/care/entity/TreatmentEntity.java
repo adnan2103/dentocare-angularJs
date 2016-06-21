@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by khana on 06/02/16.
@@ -42,11 +42,11 @@ public class TreatmentEntity {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "treatment_id")
-    private Set<PaymentEntity> paymentEntities;
+    private List<PaymentEntity> paymentEntities;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "treatment_id")
-    private Set<PatientOralExaminationEntity> patientOralExaminationEntities;
+    private List<PatientOralExaminationEntity> patientOralExaminationEntities;
 
 
 
@@ -86,19 +86,19 @@ public class TreatmentEntity {
         this.chiefComplaintDescription = chiefComplaintDescription;
     }
 
-    public Set<PaymentEntity> getPaymentEntities() {
+    public List<PaymentEntity> getPaymentEntities() {
         return paymentEntities;
     }
 
-    public void setPaymentEntities(Set<PaymentEntity> paymentEntities) {
+    public void setPaymentEntities(List<PaymentEntity> paymentEntities) {
         this.paymentEntities = paymentEntities;
     }
 
-    public Set<PatientOralExaminationEntity> getPatientOralExaminationEntities() {
+    public List<PatientOralExaminationEntity> getPatientOralExaminationEntities() {
         return patientOralExaminationEntities;
     }
 
-    public void setPatientOralExaminationEntities(Set<PatientOralExaminationEntity> patientOralExaminationEntities) {
+    public void setPatientOralExaminationEntities(List<PatientOralExaminationEntity> patientOralExaminationEntities) {
         this.patientOralExaminationEntities = patientOralExaminationEntities;
     }
 

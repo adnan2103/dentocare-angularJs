@@ -1,8 +1,8 @@
 package com.dk.dento.care.model;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
 
 /**
  * Created by khana on 24/02/16.
@@ -17,27 +17,27 @@ public class Treatment {
 
     private String status;
 
-    private Set<Payment> payment = new HashSet<Payment>(0);
+    private List<Payment> payment = new ArrayList<Payment>(0);
 
-    private Set<PatientOralExamination> patientOralExamination = new HashSet<PatientOralExamination>(0);
+    private List<PatientOralExamination> patientOralExamination = new ArrayList<PatientOralExamination>(0);
 
-    private Set<ImagePath> preTreatmentImages = new HashSet<ImagePath>(0);
+    private List<ImagePath> preTreatmentImages = new ArrayList<ImagePath>(0);
 
-    private Set<ImagePath> postTreatmentImages = new HashSet<ImagePath>(0);
+    private List<ImagePath> postTreatmentImages = new ArrayList<ImagePath>(0);
 
-    public Set<ImagePath> getPreTreatmentImages() {
+    public List<ImagePath> getPreTreatmentImages() {
         return preTreatmentImages;
     }
 
-    public void setPreTreatmentImages(Set<ImagePath> preTreatmentImages) {
+    public void setPreTreatmentImages(List<ImagePath> preTreatmentImages) {
         this.preTreatmentImages = preTreatmentImages;
     }
 
-    public Set<ImagePath> getPostTreatmentImages() {
+    public List<ImagePath> getPostTreatmentImages() {
         return postTreatmentImages;
     }
 
-    public void setPostTreatmentImages(Set<ImagePath> postTreatmentImages) {
+    public void setPostTreatmentImages(List<ImagePath> postTreatmentImages) {
         this.postTreatmentImages = postTreatmentImages;
     }
 
@@ -59,11 +59,11 @@ public class Treatment {
     }
 
 
-    public Set<Payment> getPayment() {
+    public List<Payment> getPayment() {
         return payment;
     }
 
-    public void setPayment(Set<Payment> payment) {
+    public void setPayment(List<Payment> payment) {
         this.payment = payment;
     }
 
@@ -75,11 +75,11 @@ public class Treatment {
         this.status = status;
     }
 
-    public Set<PatientOralExamination> getPatientOralExamination() {
+    public List<PatientOralExamination> getPatientOralExamination() {
         return patientOralExamination;
     }
 
-    public void setPatientOralExamination(Set<PatientOralExamination> patientOralExamination) {
+    public void setPatientOralExamination(List<PatientOralExamination> patientOralExamination) {
         this.patientOralExamination = patientOralExamination;
     }
 
