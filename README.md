@@ -2,9 +2,6 @@
 #############################################Dento care application###############################################################
 
 ################################Major issues before go live.########################################
-##1
-## Total treatment cost display.
-## Total amount paid and pending amount display.
 
 ##2
 ## Pre and post treatment photos upload and display library.
@@ -20,7 +17,7 @@
 ##immediately refreshing uploaded photo each time.
 
 ##5
-## CSS and alignment on treatment page.
+## CSS and alignment, theme entire application.
 
 ###################### Low priority ######################################################################
 
@@ -51,6 +48,9 @@ Letting Doctor to call patient from application and sending emails.
 Got the excellent case, share it on FB or to other doctor, get the patient feedback and comments and rating.
 
 ################################### DONE #####################################################################
+
+##DONE## Total treatment cost display.
+##DONE## Total amount paid and pending amount display.
 
 ##DONE## order by issues.(by id on home page)
 ##DONE## CSS and alignments on create and update patient.
