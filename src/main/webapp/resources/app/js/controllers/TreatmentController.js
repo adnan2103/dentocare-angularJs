@@ -19,6 +19,11 @@ var TreatmentController = function($scope, $http, $routeParams) {
         $http.get('patient/' + $routeParams.id + '/treatment').success(function(treatments){
             $scope.treatments = treatments;
 
+
+            $scope.totalCost = 100;
+            $scope.paymentMade = 100;
+            $scope.pendingPayment = $scope.totalCost - $scope.paymentMade;
+
             if(!treatments[0]) {
 
                 $scope.treatments = [
@@ -55,6 +60,14 @@ var TreatmentController = function($scope, $http, $routeParams) {
         });
     };
 
+    $scope.getPaymentsDetail = function() {
+
+        $scope.totalCost = $scope.totalCost + 200;
+        $scope.paymentMade = $scope.paymentMade + 100;
+
+        $scope.pendingPayment = $scope.totalCost - $scope.paymentMade;
+    }
+
     $scope.saveTreatment = function(treatments) {
         $scope.resetError();
 
@@ -73,7 +86,7 @@ var TreatmentController = function($scope, $http, $routeParams) {
             {
                 "id":null,
                 "paymentDate": new Date(),//$filter('date')(new Date(),'dd-MM-yyyy'),
-                "paymentAmount":"",
+                "paymentAmount":0,
                 "treatmentDone":""
             };
 
@@ -85,7 +98,7 @@ var TreatmentController = function($scope, $http, $routeParams) {
         {
             "id":null,
             "description" : "",
-            "cost" : ""
+            "cost" : 0
         };
 
         $scope.patientOralExamination.push(newPatientOralExamination);

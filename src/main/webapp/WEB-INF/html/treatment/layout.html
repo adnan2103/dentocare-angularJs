@@ -29,9 +29,9 @@
 
                     <div class="row">
                     <h2 style="background-color: #00b3ee">Treatment ID : {{treatment.id}}</h2>
-                        <div ng-repeat="images in treatment.preTreatmentImages">
+                        <!--<div ng-repeat="images in treatment.preTreatmentImages">
                             <img class="img-responsive" ng-src="{{images.path}}"/>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="row">
                         <div class="col-md-2"><b> Status : </b></div>
@@ -59,6 +59,9 @@
                         <button ng-click="addPatientOralExamination()" style="background-color: red"><b>+</b></button>
                     </div>
                     <br />
+                    <div class="row col-md-12">
+                        <b>Total Treatment Cost</b> : {{totalCost}}
+                    </div>
                     <div class="row">
                         <div class="col-md-4"><b> Description : </b>  </div>
                         <div class="col-md-4"><b> Cost : </b> </div>
@@ -66,7 +69,7 @@
                     <div ng-repeat="oralExamination in treatment.patientOralExamination">
                         <div class="row">
                             <div class="col-md-4"><input type="text" ng-model="oralExamination.description" placeholder="Description"/></div>
-                            <div class="col-md-4"><input type="number" ng-model="oralExamination.cost" placeholder="Cost"/></div>
+                            <div class="col-md-4"><input type="number" ng-model="oralExamination.cost" placeholder="Cost" ng-change="getPaymentsDetail()"/></div>
                         </div>
                     </div>
 
@@ -77,6 +80,9 @@
                         <button ng-click="addPayment()" style="background-color: red"><b>+</b></button>
                     </div>
                     <br />
+                    <div class="row col-md-12">
+                        <b>Payment Made</b> : {{paymentMade}} <b>Pending Payment</b> : {{pendingPayment}}
+                    </div>
                     <div class="row">
                         <div class="col-md-3"><b> Payment Date : </b></div>
                         <div class="col-md-3"><b> Payment Amount : </b></div>
@@ -85,14 +91,14 @@
                     <div ng-repeat="payment in treatment.payment">
                         <div class="row">
                             <div class="col-md-3"><ng-datepicker format="YYYY-MM-DD" view-format="Do MMMM YYYY" ng-model="payment.paymentDate"></ng-datepicker></div>
-                            <div class="col-md-3"><input type="number" ng-model="payment.paymentAmount" placeholder="Amount"/></div>
+                            <div class="col-md-3"><input type="number" ng-model="payment.paymentAmount" placeholder="Amount" ng-change="getPaymentsDetail()"/></div>
                             <div class="col-md-3"><input type="text" ng-model="payment.treatmentDone" placeholder="Notes"/></div>
                         </div>
                     </div>
                 </div>
-            <div ng-repeat="images in treatment.postTreatmentImages">
+            <!--<div ng-repeat="images in treatment.postTreatmentImages">
                 <img class="img-responsive" ng-src="{{images.path}}"/>
-            </div>
+            </div>-->
         </div>
         <div class="row" style="margin-bottom: 60px">
             <div class="col-lg-12">

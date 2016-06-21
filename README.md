@@ -31,6 +31,8 @@
 
 ########FUTURE ITEMS TO COME ###########################################################################
 Saving and Showing Patient E-mail Id.
+Applying discount or offer code.
+
 
 Doctor can refer patient to other doctor, don't show treatment costs & payments of one doc to other.
 Access management & ROLE based access
