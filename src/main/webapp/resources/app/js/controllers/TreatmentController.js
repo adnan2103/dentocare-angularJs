@@ -19,11 +19,6 @@ var TreatmentController = function($scope, $http, $routeParams) {
         $http.get('patient/' + $routeParams.id + '/treatment').success(function(treatments){
             $scope.treatments = treatments;
 
-
-            $scope.totalCost = 100;
-            $scope.paymentMade = 100;
-            $scope.pendingPayment = $scope.totalCost - $scope.paymentMade;
-
             if(!treatments[0]) {
 
                 $scope.treatments = [
@@ -36,7 +31,7 @@ var TreatmentController = function($scope, $http, $routeParams) {
                             {
                                 "id":null,
                                 "paymentDate":"",
-                                "paymentAmount":"",
+                                "paymentAmount":0,
                                 "treatmentDone":""
                             }
                         ],
@@ -44,7 +39,7 @@ var TreatmentController = function($scope, $http, $routeParams) {
                             {
                                 "id":null,
                                 "description":"",
-                                "cost":""
+                                "cost":0
                             }
                         ]
                     }
@@ -55,18 +50,33 @@ var TreatmentController = function($scope, $http, $routeParams) {
                 $scope.payment = treatments[0].payment;
                 $scope.patientOralExamination = treatments[0].patientOralExamination;
             }
-
+            $scope.totalCost = 0;
+            $scope.paymentMade = 0;
+            $scope.updateTotalCost();
+            $scope.updateTotalPayment();
 
         });
     };
 
-    $scope.getPaymentsDetail = function() {
+    $scope.updateTotalCost = function() {
+        var cost = 0;
+        angular.forEach($scope.treatments[0].patientOralExamination, function(patientOralExamination) {
+            cost += patientOralExamination.cost;
+        });
+        $scope.totalCost = cost;
+        $scope.pendingPayment = $scope.totalCost - $scope.paymentMade;
+    }
 
-        $scope.totalCost = $scope.totalCost + 200;
-        $scope.paymentMade = $scope.paymentMade + 100;
+    $scope.updateTotalPayment = function() {
+        var totalPayment = 0;
+        angular.forEach($scope.treatments[0].payment, function(payment) {
+            totalPayment += payment.paymentAmount;
+        });
+        $scope.paymentMade = totalPayment;
 
         $scope.pendingPayment = $scope.totalCost - $scope.paymentMade;
     }
+
 
     $scope.saveTreatment = function(treatments) {
         $scope.resetError();

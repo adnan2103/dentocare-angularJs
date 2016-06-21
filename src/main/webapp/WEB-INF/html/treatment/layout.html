@@ -69,7 +69,7 @@
                     <div ng-repeat="oralExamination in treatment.patientOralExamination">
                         <div class="row">
                             <div class="col-md-4"><input type="text" ng-model="oralExamination.description" placeholder="Description"/></div>
-                            <div class="col-md-4"><input type="number" ng-model="oralExamination.cost" placeholder="Cost" ng-change="getPaymentsDetail()"/></div>
+                            <div class="col-md-4"><input type="number" ng-model="oralExamination.cost" placeholder="Cost" ng-change="updateTotalCost()"/></div>
                         </div>
                     </div>
 
@@ -91,7 +91,7 @@
                     <div ng-repeat="payment in treatment.payment">
                         <div class="row">
                             <div class="col-md-3"><ng-datepicker format="YYYY-MM-DD" view-format="Do MMMM YYYY" ng-model="payment.paymentDate"></ng-datepicker></div>
-                            <div class="col-md-3"><input type="number" ng-model="payment.paymentAmount" placeholder="Amount" ng-change="getPaymentsDetail()"/></div>
+                            <div class="col-md-3"><input type="number" ng-model="payment.paymentAmount" placeholder="Amount" ng-change="updateTotalPayment()"/></div>
                             <div class="col-md-3"><input type="text" ng-model="payment.treatmentDone" placeholder="Notes"/></div>
                         </div>
                     </div>
