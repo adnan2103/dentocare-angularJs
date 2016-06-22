@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("/patient")
 public class PatientController {
 
     /**
@@ -35,7 +36,7 @@ public class PatientController {
      * @return
      */
     @RequestMapping(
-            value = "/{id}",
+            value = "/patient/{id}",
             method = RequestMethod.GET
     )
     @ResponseBody
@@ -55,7 +56,7 @@ public class PatientController {
      * @return
      */
     @RequestMapping(
-            value = "/save",
+            value = "/patient/save",
             method = RequestMethod.PUT,
             produces = "application/json"
     )
@@ -67,6 +68,27 @@ public class PatientController {
         } catch (Exception e) {
             LOGGER.error(" Error occurred while saving patient : {} ", e.getMessage());
             return new ResponseEntity("Error Occurred while saving or updating patient.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * End point to get all patients of logged in Doctor.
+     * @return
+     */
+    @RequestMapping(
+            value = "/patients/all",
+            method = RequestMethod.GET
+    )
+    public @ResponseBody
+    ResponseEntity getAllPatientsForLoggedInDoctor() {
+
+        try {
+            List<Patient> patients = userDetailService.getAllPatient();
+            return new ResponseEntity(patients, HttpStatus.OK);
+
+        } catch(Exception e) {
+            LOGGER.error("Error occurred while fetching all patients {} ",e.getMessage());
+            return new ResponseEntity("No patient found", HttpStatus.NOT_FOUND);
         }
     }
 }

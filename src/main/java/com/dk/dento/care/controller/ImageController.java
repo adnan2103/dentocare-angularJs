@@ -45,7 +45,6 @@ public class ImageController {
             @PathVariable final Long patientId
     ) {
 
-
         if (patientImage.isEmpty()) {
             return new ResponseEntity("You failed to upload because the file was empty.", HttpStatus.NOT_FOUND);
         }
