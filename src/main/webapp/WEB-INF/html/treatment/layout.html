@@ -29,10 +29,19 @@
 
                     <div class="row">
                     <h2 style="background-color: #00b3ee">Treatment ID : {{treatment.id}}</h2>
-                        <!--<div ng-repeat="images in treatment.preTreatmentImages">
-                            <img class="img-responsive" ng-src="{{images.path}}"/>
-                        </div>-->
                     </div>
+                    <div>
+                        <a href="#/patient/{{patient.id}}/treatment/{{treatment.id}}/images/pre">
+                            <span class="label">PRE TREATMENT IMAGES</span>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="#/patient/{{patient.id}}/treatment/{{treatment.id}}/images/post">
+                            <span class="label">POST TREATMENT IMAGES</span>
+                        </a>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-2"><b> Status : </b></div>
                         <div class="col-md-2"><select ng-model="treatment.status">

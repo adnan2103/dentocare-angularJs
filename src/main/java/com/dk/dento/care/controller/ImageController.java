@@ -1,0 +1,66 @@
+package com.dk.dento.care.controller;
+
+import com.dk.dento.care.service.ImageService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.io.IOException;
+
+/**
+ * Created by khana on 22/06/16.
+ */
+@Controller
+public class ImageController {
+
+    /**
+     * Logger for this class.
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(ImageController.class);
+
+
+    @Autowired
+    String home;
+
+    @Autowired
+    ImageService imageService;
+
+    /**
+     * Handles GET action for pre and post treatment photo.
+     *
+     * @param id The treatment Id
+     * @return MultipartFile patient Photo.
+     */
+    @RequestMapping(
+            value = "treatment/{id}/images/{state}/{sequence}",
+            method = RequestMethod.GET,
+            produces = "image/png"
+    )
+    @ResponseBody
+    public ResponseEntity getPostTreatmentImages(@PathVariable final String id,
+                                                 @PathVariable final String sequence,
+                                                 @PathVariable final String state) {
+
+        try {
+            String path =  home + "/images/treatments/";
+            byte[] data = imageService.getImage(path, state+ "Treatment_" + id + "_"+sequence + ".png");
+
+            return new ResponseEntity(data, HttpStatus.OK);
+
+        } catch (IOException exception) {
+            LOGGER.error(" IOException for patient image retrieve ", exception.getMessage());
+            return new ResponseEntity(exception.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (Exception exception) {
+            LOGGER.error(" Exception for patient image retrieve ", exception.getMessage());
+            return new ResponseEntity("An Error Occurred", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+}

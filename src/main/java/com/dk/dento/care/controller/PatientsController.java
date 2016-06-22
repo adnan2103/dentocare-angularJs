@@ -50,9 +50,4 @@ public class PatientsController {
             return new ResponseEntity("No patient found", HttpStatus.NOT_FOUND);
         }
     }
-
-    @RequestMapping("/layout")
-    public String getPatientPartialPage() {
-        return "patients/layout";
-    }
 }

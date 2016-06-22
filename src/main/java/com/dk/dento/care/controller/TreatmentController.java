@@ -2,7 +2,6 @@ package com.dk.dento.care.controller;
 
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.service.AuthenticationService;
-import com.dk.dento.care.service.ImageService;
 import com.dk.dento.care.service.TreatmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.IOException;
 import java.util.List;
 
 
@@ -33,12 +31,6 @@ public class TreatmentController {
 
     @Autowired
     TreatmentService treatmentService;
-
-    @Autowired
-    String home;
-
-    @Autowired
-    ImageService imageService;
 
     /**
      * End point to get all treatment for given patient id.
@@ -84,70 +76,5 @@ public class TreatmentController {
             return new ResponseEntity("Error Occurred while saving or updating treatment.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-    }
-
-    /**
-     * Handles GET action for pre treatment photo.
-     *
-     * @param id The treatment Id
-     * @return MultipartFile patient Photo.
-     */
-    @RequestMapping(
-            value = "treatment/{id}/pre-treatment/{sequence}",
-            method = RequestMethod.GET,
-            produces = "image/png"
-    )
-    @ResponseBody
-    public ResponseEntity getPreTreatmentImages(@PathVariable final String id,
-                                          @PathVariable final String sequence) {
-
-        try {
-            String path =  home + "/images/treatments/";
-            byte[] data = imageService.getImage(path, "Pre_Treatment_" + id + "_" + sequence + ".png");
-
-            return new ResponseEntity(data, HttpStatus.OK);
-
-        } catch (IOException exception) {
-            LOGGER.error(" IOException for patient image retrieve ", exception.getMessage());
-            return new ResponseEntity(exception.getMessage(), HttpStatus.NOT_FOUND);
-        } catch (Exception exception) {
-            LOGGER.error(" Exception for patient image retrieve ", exception.getMessage());
-            return new ResponseEntity("An Error Occurred", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    /**
-     * Handles GET action for post treatment photo.
-     *
-     * @param id The treatment Id
-     * @return MultipartFile patient Photo.
-     */
-    @RequestMapping(
-            value = "treatment/{id}/post-treatment/{sequence}",
-            method = RequestMethod.GET,
-            produces = "image/png"
-    )
-    @ResponseBody
-    public ResponseEntity getPostTreatmentImages(@PathVariable final String id,
-                                          @PathVariable final String sequence) {
-
-        try {
-            String path =  home + "/images/treatments/";
-            byte[] data = imageService.getImage(path, "Post_Treatment_" + id + "_"+sequence + ".png");
-
-            return new ResponseEntity(data, HttpStatus.OK);
-
-        } catch (IOException exception) {
-            LOGGER.error(" IOException for patient image retrieve ", exception.getMessage());
-            return new ResponseEntity(exception.getMessage(), HttpStatus.NOT_FOUND);
-        } catch (Exception exception) {
-            LOGGER.error(" Exception for patient image retrieve ", exception.getMessage());
-            return new ResponseEntity("An Error Occurred", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @RequestMapping("treatment/layout")
-    public String getPatientPartialPage() {
-        return "treatment/layout";
     }
 }

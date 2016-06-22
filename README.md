@@ -17,19 +17,18 @@
 ##immediately refreshing uploaded photo each time.
 
 ##5
-## CSS and alignment, theme entire application.
-
+## CSS and alignment, apply theme to entire application. http://themeforest.net/
+## Add Payment and Oral examination + button styling.
 ###################### Low priority ######################################################################
 
-## Add Payment and Oral examination + button styling.
-## Default logged in page does not show list of patients.
 ## Adding multiple treatments, low priority.
 ## Treatment Start and End Date.?
+## Fields for create_ts, by, modified_ts ,by
 
 ########FUTURE ITEMS TO COME ###########################################################################
+
 Saving and Showing Patient E-mail Id.
 Applying discount or offer code.
-
 
 Doctor can refer patient to other doctor, don't show treatment costs & payments of one doc to other.
 Access management & ROLE based access
@@ -49,6 +48,7 @@ Got the excellent case, share it on FB or to other doctor, get the patient feedb
 
 ################################### DONE #####################################################################
 
+##DONE## Default logged in page does not show list of patients.
 ##DONE## Total treatment cost display.
 ##DONE## Total amount paid and pending amount display.
 

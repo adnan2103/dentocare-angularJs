@@ -46,10 +46,10 @@ public class TreatmentMapper {
             List<ImagePath> preTreatmentImages = new ArrayList<ImagePath>(0);
             List<ImagePath> postTreatmentImages = new ArrayList<ImagePath>(0);
 
-            preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/pre-treatment/"+1));
-            preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/pre-treatment/"+2));
-            preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/pre-treatment/"+1));
-            postTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/post-treatment/"+2));
+            preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/images/pre/"+1));
+            preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/images/pre/"+2));
+            preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/images/pre/"+1));
+            postTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/images/post/"+2));
 
             treatment.setPreTreatmentImages(preTreatmentImages);
             treatment.setPostTreatmentImages(postTreatmentImages);

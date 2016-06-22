@@ -19,7 +19,10 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
     }).when('/login', {
         templateUrl : 'login/layout',
         controller : 'navigation'
-    }).otherwise('/');
+    }).when('/patient/:id/treatment/:treatmentId/images/:state', {
+        templateUrl : 'treatment-images/layout',
+        controller : TreatmentImageController
+    }).otherwise('/patients');
 
     $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

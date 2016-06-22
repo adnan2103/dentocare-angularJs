@@ -1,0 +1,12 @@
+<div class="container" style="margin-bottom: 10px;">
+    <ul class="nav navbar-nav col-md-12">
+        <li class="red-big-text">
+            <b><span ng-bind="state | uppercase"></span> TREATMENT IMAGES </b>
+        </li>
+    </ul>
+    <div ng-repeat="treatment in treatments">
+        <div ng-repeat="images in treatment.preTreatmentImages">
+            <img class="img-responsive" ng-src="{{images.path}}"/>
+        </div>
+    </div>
+</div>

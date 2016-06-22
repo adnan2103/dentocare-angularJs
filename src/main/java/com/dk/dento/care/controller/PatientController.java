@@ -201,8 +201,4 @@ public class PatientController {
         gif
     };
 
-    @RequestMapping("/layout")
-    public String getPatientPartialPage() {
-        return "patient/layout";
-    }
 }
