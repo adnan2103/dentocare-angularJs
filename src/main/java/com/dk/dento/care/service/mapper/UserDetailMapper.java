@@ -24,13 +24,9 @@ public class UserDetailMapper {
 
     public List<Patient> userDetailEntitiesToPatients(Set<UserDetailEntity> userDetailEntities) {
         List<Patient> patients = new ArrayList<Patient>(0);
-
         for (UserDetailEntity userDetailEntity : userDetailEntities) {
-            Patient patient = modelMapper.map(userDetailEntity, Patient.class);
-            patient.setImagePath("patient/"+patient.getId()+"/image");
-            patients.add(patient);
+            patients.add(this.userDetailEntityToPatient(userDetailEntity));
         }
-
         return patients;
     }
 
