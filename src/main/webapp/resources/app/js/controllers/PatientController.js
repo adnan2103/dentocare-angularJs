@@ -37,14 +37,10 @@ var PatientController = function($scope, $http, $routeParams, fileUpload, patien
     };
 
     $scope.saveImage = function(patient){
-        var file = $scope.image;
-        console.log('file is ' );
-        console.dir(file);
-        var uploadUrl = 'patient/' + patient.id + '/image'
-        fileUpload.uploadFileToUrl(file, uploadUrl);
+        var uploadUrl = 'patient/' + patient.id + '/image';
+        fileUpload.uploadFileToUrl($scope.image, uploadUrl);
         $scope.patient.imagePath = uploadUrl;
         $scope.message = 'Photo Uploaded Successfully.';
-
     };
 
     $scope.fetchPatient();
