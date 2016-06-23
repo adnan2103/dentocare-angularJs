@@ -97,8 +97,10 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
         },
         controller : PatientController
     };
-}]).service('fileUpload', ['$http', function ($http) {
+}]).service('fileUpload', ['$http','$q', function ($http, $q) {
     this.uploadFileToUrl = function(file, uploadUrl){
+        var deferred = $q.defer();
+
         var fd = new FormData();
         fd.append('file', file);
         $http.post(uploadUrl, fd, {
@@ -106,13 +108,17 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
             headers: {'Content-Type': undefined}
         })
             .success(function(){
+                deferred.resolve("Patient photo uploaded successfully.");
             })
-            .error(function(){
+            .error(function(message){
+                deferred.reject("Patient photo upload failed. : " + message);
             });
+        return deferred.promise;
     }
 }]).service('patientService', ['$resource', function ($resource) {
 
     return $resource('patient/save', {}, {
+
         'update': { method:'PUT' }
     });
 

@@ -14,7 +14,7 @@ var PatientController = function($scope, $http, $routeParams, fileUpload, patien
         } else {
             $scope.patient = {};
         }
-
+        $scope.random = 232112;
     };
 
     $scope.gender = [
@@ -37,10 +37,18 @@ var PatientController = function($scope, $http, $routeParams, fileUpload, patien
     };
 
     $scope.saveImage = function(patient){
+        $scope.random = $scope.random + 1;
         var uploadUrl = 'patient/' + patient.id + '/image';
-        fileUpload.uploadFileToUrl($scope.image, uploadUrl);
-        $scope.patient.imagePath = uploadUrl;
-        $scope.message = 'Photo Uploaded Successfully.';
+        var promise = fileUpload.uploadFileToUrl($scope.image, uploadUrl);
+
+        promise.then(function(response) {
+            $scope.patient.imagePath = uploadUrl + '?random=' + $scope.random;
+            alert(response);
+        }, function(error) {
+            alert(error);
+        }, function(update) {
+            alert('Got notification: ' + update);
+        });
     };
 
     $scope.fetchPatient();
