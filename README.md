@@ -3,20 +3,20 @@
 
 ################################Major issues before go live.########################################
 
-##2
-## Pre and post treatment photos upload and display library.
-
-##3
+##1
 ##UI Validation messages.
 ##Service Success/Failure Messages.
+##adding javax.validation annotations and messages in response.
 ## Auto move focus to validation messages and success messages.
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 
-##4
-##Patient Photo upload immediately
-##immediately refreshing uploaded photo each time.
+##2
+##Patient Photo upload immediately after creating patient.
 
-##5
+##3
+## Pre and post treatment photos upload and display library.
+
+##4
 ## CSS and alignment, apply theme to entire application. http://themeforest.net/
 ## Add Payment and Oral examination + button styling.
 ###################### Low priority ######################################################################
@@ -48,6 +48,7 @@ Got the excellent case, share it on FB or to other doctor, get the patient feedb
 
 ################################### DONE #####################################################################
 
+##DONE## immediately refreshing uploaded photo each time.
 ##DONE## Default logged in page does not show list of patients.
 ##DONE## Total treatment cost display.
 ##DONE## Total amount paid and pending amount display.
