@@ -26,6 +26,12 @@
 ## Fields for create_ts, by, modified_ts ,by
 
 ########FUTURE ITEMS TO COME ###########################################################################
+Implement Caching
+Set up liquibase
+Change App folder and packaging structure
+Setup unit, integration, functional tests.
+Write frontend tests.
+
 
 Saving and Showing Patient E-mail Id.
 Applying discount or offer code.
