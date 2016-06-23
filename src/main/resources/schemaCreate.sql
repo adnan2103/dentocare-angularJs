@@ -97,6 +97,8 @@ CREATE TABLE IF NOT EXISTS treatment
   status_id integer NOT NULL,
   chief_complaint_description character varying(100),
   notes character varying(100),
+  pre_image_count integer NOT NULL,
+  post_image_count integer NOT NULL,
   creation_date date,
   created_by integer NOT NULL,
   last_updated_date date,

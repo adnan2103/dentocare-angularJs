@@ -8,7 +8,7 @@ var TreatmentImageController = function($scope, $http, $routeParams) {
 
     $scope.fetchTreatmentImagePaths = function() {
 
-        $http.get('treatment/' + $routeParams.id + '/' + $routeParams.type + '/images' )
+        $http.get('treatment/' + $routeParams.id + '/' + $routeParams.type + '/images/' + $routeParams.count )
             .success(function(treatmentImages){
                 $scope.treatmentImages = treatmentImages;
             });

@@ -86,14 +86,16 @@ public class TreatmentController {
      * @return
      */
     @RequestMapping(
-            value = "treatment/{id}/{type}/images",
+            value = "treatment/{id}/{type}/images/{count}",
             method = RequestMethod.GET,
             produces = "application/json"
     )
     @ResponseBody
-    public ResponseEntity getTreatmentImages(@PathVariable final Long id, @PathVariable final String type) {
+    public ResponseEntity getTreatmentImages(@PathVariable final Long id,
+                                             @PathVariable final String type,
+                                             @PathVariable final Integer count) {
         try {
-            List<ImagePath> treatmentImages = treatmentService.getTreatmentImages(id, type);
+            List<ImagePath> treatmentImages = treatmentService.getTreatmentImages(id, type, count);
 
             return new ResponseEntity(treatmentImages, HttpStatus.OK);
         } catch(Exception e) {

@@ -27,6 +27,25 @@ public class Treatment {
         this.createdBy = createdBy;
     }
 
+    private Long preImageCount;
+
+    private Long postImageCount;
+
+    public Long getPreImageCount() {
+        return preImageCount;
+    }
+
+    public void setPreImageCount(Long preImageCount) {
+        this.preImageCount = preImageCount;
+    }
+
+    public Long getPostImageCount() {
+        return postImageCount;
+    }
+
+    public void setPostImageCount(Long postImageCount) {
+        this.postImageCount = postImageCount;
+    }
 
     private List<Payment> payment = new ArrayList<Payment>(0);
 

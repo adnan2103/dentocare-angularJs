@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Entity
 @Table(name ="treatment")
-public class TreatmentEntity extends AbstractTrackedEntity {
+public class TreatmentEntity extends AbstractTrackedEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,6 +39,27 @@ public class TreatmentEntity extends AbstractTrackedEntity {
     @Column(name = "notes")
     private String notes;
 
+    @Column(name = "pre_image_count")
+    private Long preImageCount;
+
+    @Column(name = "post_image_count")
+    private Long postImageCount;
+
+    public Long getPreImageCount() {
+        return preImageCount;
+    }
+
+    public void setPreImageCount(Long preImageCount) {
+        this.preImageCount = preImageCount;
+    }
+
+    public Long getPostImageCount() {
+        return postImageCount;
+    }
+
+    public void setPostImageCount(Long postImageCount) {
+        this.postImageCount = postImageCount;
+    }
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "treatment_id")

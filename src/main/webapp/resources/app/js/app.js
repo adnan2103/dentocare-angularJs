@@ -19,7 +19,7 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
     }).when('/login', {
         templateUrl : 'login/layout',
         controller : 'navigation'
-    }).when('/treatment/:id/:type/images', {
+    }).when('/treatment/:id/:type/images/:count', {
         templateUrl : 'treatment-images/layout',
         controller : TreatmentImageController
     }).otherwise('/patients');

@@ -65,6 +65,8 @@ public class TreatmentMapper {
             if (treatmentEntity.getId() == null) {
                 treatmentEntity.setId(treatmentIdGenerator.getNextId());
                 treatmentEntity.setCreatedBy(loggedInUser.getId());
+                treatmentEntity.setPreImageCount(0L);
+                treatmentEntity.setPostImageCount(0L);
             }
             treatmentEntity.setLastUpdatedBy(loggedInUser.getId());
 

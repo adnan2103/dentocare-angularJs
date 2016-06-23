@@ -33,13 +33,17 @@ public class TreatmentService {
         );
     }
 
-    public List<ImagePath> getTreatmentImages(Long treatmentId, String type) {
+    public List<ImagePath> getTreatmentImages(Long treatmentId, String type, Integer count) {
         List<ImagePath> treatmentImages = new ArrayList<ImagePath>(0);
-        treatmentImages.add(new ImagePath("treatment/"+treatmentId+"/" + type + "/images/"+1));
-        treatmentImages.add(new ImagePath("treatment/"+treatmentId+"/" + type + "/images/"+2));
-        treatmentImages.add(new ImagePath("treatment/"+treatmentId+"/" + type + "/images/"+3));
+
+        for(int i = 1; i <= count; i++) {
+            treatmentImages.add(new ImagePath("treatment/"+treatmentId+"/" + type + "/images/"+i));
+        }
+
         return treatmentImages;
     }
+
+
     @Transactional(propagation = Propagation.REQUIRED)
     public List<Treatment> saveTreatmentsForPatient(List<Treatment> treatments, Long patientId) {
         List<TreatmentEntity> treatmentEntities =
