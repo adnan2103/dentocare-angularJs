@@ -18,6 +18,16 @@ public class Payment {
 
     private String treatmentDone;
 
+    private Long createdBy;
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
     public Long getId() {
         return id;
     }

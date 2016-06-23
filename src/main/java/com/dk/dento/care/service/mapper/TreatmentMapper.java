@@ -96,6 +96,9 @@ public class TreatmentMapper {
 
             paymentEntity = modelMapper.map(payment, PaymentEntity.class);
             paymentEntity.setTreatmentEntity(treatmentEntity);
+            //TODO correct this later.
+            paymentEntity.setCreatedBy(loggedInUser.getId());
+            paymentEntity.setLastUpdatedBy(loggedInUser.getId());
             paymentEntities.add(paymentEntity);
         }
 
@@ -114,6 +117,9 @@ public class TreatmentMapper {
 
             patientOralExaminationEntity = modelMapper.map(patientOralExamination, PatientOralExaminationEntity.class);
             patientOralExaminationEntity.setTreatmentEntity(treatmentEntity);
+            //TODO correct this later.
+            patientOralExaminationEntity.setCreatedBy(loggedInUser.getId());
+            patientOralExaminationEntity.setLastUpdatedBy(loggedInUser.getId());
             patientOralExaminationEntities.add(patientOralExaminationEntity);
         }
 

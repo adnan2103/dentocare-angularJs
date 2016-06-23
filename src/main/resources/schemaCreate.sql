@@ -126,6 +126,10 @@ CREATE TABLE IF NOT EXISTS patient_oral_examination
   treatment_id integer NOT NULL,
   description character varying(100),
   cost integer,
+  creation_date date,
+  created_by integer NOT NULL,
+  last_updated_date date,
+  last_modified_by integer NOT NULL,
   CONSTRAINT patient_oral_examination_pkey PRIMARY KEY (oral_examination_id),
   CONSTRAINT patient_oral_examination_fkey FOREIGN KEY (treatment_id)
       REFERENCES treatment (treatment_id) MATCH SIMPLE
@@ -147,6 +151,10 @@ CREATE TABLE IF NOT EXISTS payment
   payment_date date,
   payment_amount integer,
   treatment_done character varying(100),
+  creation_date date,
+  created_by integer NOT NULL,
+  last_updated_date date,
+  last_modified_by integer NOT NULL,
   CONSTRAINT payment_pkey PRIMARY KEY (payment_id),
   CONSTRAINT payment_treatment_fkey FOREIGN KEY (treatment_id)
       REFERENCES treatment (treatment_id) MATCH SIMPLE

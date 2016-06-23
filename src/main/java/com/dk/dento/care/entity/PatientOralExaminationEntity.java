@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "patient_oral_examination")
-public class PatientOralExaminationEntity {
+public class PatientOralExaminationEntity extends AbstractTrackedEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

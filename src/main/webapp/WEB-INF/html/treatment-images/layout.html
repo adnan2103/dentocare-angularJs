@@ -4,6 +4,9 @@
             <b><span ng-bind="type | uppercase"></span> TREATMENT IMAGES </b>
         </li>
     </ul>
+    <div ng-hide="treatmentImages.images">
+        No images available.
+    </div>
         <div ng-repeat="images in treatmentImages">
             <img class="img-responsive" ng-src="{{images.path}}"/>
         </div>

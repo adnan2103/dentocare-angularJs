@@ -4,43 +4,45 @@
 ################################Major issues before go live.########################################
 
 ##1
+## Pre and post treatment photos upload and display library.
+
+##2
+## Saving and Showing Patient E-mail Id.
+
+##3
+##Patient Photo upload immediately after creating patient.
+
+##4
 ##UI Validation messages.
 ##Service Success/Failure Messages.
 ##adding javax.validation annotations and messages in response.
 ## Auto move focus to validation messages and success messages.
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 
-##2
-##Patient Photo upload immediately after creating patient.
+##5
+## Pulled out notes and Chief Complaint to separate tables. and add + button functionalities to them.
 
-##3
-## Pre and post treatment photos upload and display library.
-
-##4
+##6
 ## CSS and alignment, apply theme to entire application. http://themeforest.net/
 ## Add Payment and Oral examination + button styling.
+
+
 ###################### Low priority ######################################################################
 
+## Convert Patient as directive
 ## Adding multiple treatments, low priority.
-## Treatment Start and End Date.?
-## Fields for create_ts, by, modified_ts ,by
+
 
 ########FUTURE ITEMS TO COME ###########################################################################
-Implement Caching
-Set up liquibase
-Change App folder and packaging structure
-Setup unit, integration, functional tests.
-Write frontend tests.
-
-
-Saving and Showing Patient E-mail Id.
-Applying discount or offer code.
-
 Doctor can refer patient to other doctor, don't show treatment costs & payments of one doc to other.
 Access management & ROLE based access
-User Maintenance
+User ROLE and Access Maintenance
+
+Applying discount or offer code.
 
 Doctor can configure & print the patient report card.
+
+Push notification and chat option for logged in doctors.
 
 Creating Patient login credentials.
 Sending Patient login credentials via email & sms.
@@ -48,12 +50,20 @@ Asking Patient to change password after first use.
 
 Appointment Diary, Day/Week/Month schedule, reminders to doctor and patient.
 
-Letting Doctor to call patient from application and sending emails.
+Letting Doctor to call/email patient from application.
 
 Got the excellent case, share it on FB or to other doctor, get the patient feedback and comments and rating.
 
+Implement Caching
+Set up liquibase
+Change App folder and packaging structure
+Setup unit, integration, functional tests.
+Write frontend tests.
+
 ################################### DONE #####################################################################
 
+##DONE## Treatment Start and End Date.?
+##DONE## Fields for create_ts, by, modified_ts ,by
 ##DONE## immediately refreshing uploaded photo each time.
 ##DONE## Default logged in page does not show list of patients.
 ##DONE## Total treatment cost display.

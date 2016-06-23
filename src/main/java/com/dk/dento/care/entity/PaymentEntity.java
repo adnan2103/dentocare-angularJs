@@ -19,7 +19,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "payment")
-public class PaymentEntity {
+public class PaymentEntity extends AbstractTrackedEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
