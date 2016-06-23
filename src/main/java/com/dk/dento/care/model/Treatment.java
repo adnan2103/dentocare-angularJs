@@ -21,26 +21,6 @@ public class Treatment {
 
     private List<PatientOralExamination> patientOralExamination = new ArrayList<PatientOralExamination>(0);
 
-    private List<ImagePath> preTreatmentImages = new ArrayList<ImagePath>(0);
-
-    private List<ImagePath> postTreatmentImages = new ArrayList<ImagePath>(0);
-
-    public List<ImagePath> getPreTreatmentImages() {
-        return preTreatmentImages;
-    }
-
-    public void setPreTreatmentImages(List<ImagePath> preTreatmentImages) {
-        this.preTreatmentImages = preTreatmentImages;
-    }
-
-    public List<ImagePath> getPostTreatmentImages() {
-        return postTreatmentImages;
-    }
-
-    public void setPostTreatmentImages(List<ImagePath> postTreatmentImages) {
-        this.postTreatmentImages = postTreatmentImages;
-    }
-
     public Long getId() {
         return id;
     }

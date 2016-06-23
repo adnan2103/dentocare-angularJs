@@ -5,7 +5,6 @@ import com.dk.dento.care.entity.PaymentEntity;
 import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.TreatmentIdGenerator;
 import com.dk.dento.care.entity.UserDetailEntity;
-import com.dk.dento.care.model.ImagePath;
 import com.dk.dento.care.model.PatientOralExamination;
 import com.dk.dento.care.model.Payment;
 import com.dk.dento.care.model.Treatment;
@@ -43,17 +42,6 @@ public class TreatmentMapper {
 
         for (TreatmentEntity treatmentEntity : treatmentEntities) {
             treatment = modelMapper.map(treatmentEntity, Treatment.class);
-            List<ImagePath> preTreatmentImages = new ArrayList<ImagePath>(0);
-            List<ImagePath> postTreatmentImages = new ArrayList<ImagePath>(0);
-
-            preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/images/pre/"+1));
-            preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/images/pre/"+2));
-            preTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/images/pre/"+1));
-            postTreatmentImages.add(new ImagePath("treatment/"+treatmentEntity.getId()+"/images/post/"+2));
-
-            treatment.setPreTreatmentImages(preTreatmentImages);
-            treatment.setPostTreatmentImages(postTreatmentImages);
-
             treatment.setStatus(treatmentEntity.getStatusEntity().getStatus());
             treatments.add(treatment);
         }

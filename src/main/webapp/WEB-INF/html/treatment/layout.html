@@ -30,14 +30,15 @@
                     <div class="row">
                     <h2 style="background-color: #00b3ee">Treatment ID : {{treatment.id}}</h2>
                     </div>
-                    <div>
-                        <a href="#/patient/{{patient.id}}/treatment/{{treatment.id}}/images/pre">
+
+                    <div ng-if='treatment.id' class="col-md-3">
+                        <a href="#/treatment/{{treatment.id}}/pre/images">
                             <span class="label">PRE TREATMENT IMAGES</span>
                         </a>
                     </div>
 
-                    <div>
-                        <a href="#/patient/{{patient.id}}/treatment/{{treatment.id}}/images/post">
+                    <div ng-if='treatment.id' class="col-md-3">
+                        <a href="#/treatment/{{treatment.id}}/post/images">
                             <span class="label">POST TREATMENT IMAGES</span>
                         </a>
                     </div>

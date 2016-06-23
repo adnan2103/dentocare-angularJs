@@ -105,7 +105,7 @@ public class ImageController {
      * @return MultipartFile patient Photo.
      */
     @RequestMapping(
-            value = "treatment/{id}/images/{state}/{sequence}",
+            value = "treatment/{id}/{state}/images/{sequence}",
             method = RequestMethod.GET,
             produces = "image/png"
     )

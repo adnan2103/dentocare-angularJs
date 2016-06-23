@@ -1,5 +1,6 @@
 package com.dk.dento.care.controller;
 
+import com.dk.dento.care.model.ImagePath;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.service.AuthenticationService;
 import com.dk.dento.care.service.TreatmentService;
@@ -74,6 +75,30 @@ public class TreatmentController {
         } catch (Exception e) {
             LOGGER.error("Error occurred while saving treatments for patient {} ",e.getMessage());
             return new ResponseEntity("Error Occurred while saving or updating treatment.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+
+    /**
+     * End point to get all treatment images pre or post for given treatment id.
+     * @param id
+     * @return
+     */
+    @RequestMapping(
+            value = "treatment/{id}/{type}/images",
+            method = RequestMethod.GET,
+            produces = "application/json"
+    )
+    @ResponseBody
+    public ResponseEntity getTreatmentImages(@PathVariable final Long id, @PathVariable final String type) {
+        try {
+            List<ImagePath> treatmentImages = treatmentService.getTreatmentImages(id, type);
+
+            return new ResponseEntity(treatmentImages, HttpStatus.OK);
+        } catch(Exception e) {
+            LOGGER.error("Error occurred while geting treatment images ",e.getMessage());
+            return new ResponseEntity("No treatment image found", HttpStatus.NOT_FOUND);
         }
 
     }
