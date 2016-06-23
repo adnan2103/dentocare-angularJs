@@ -43,11 +43,12 @@ var PatientController = function($scope, $http, $routeParams, fileUpload, patien
 
         promise.then(function(response) {
             $scope.patient.imagePath = uploadUrl + '?random=' + $scope.random;
-            alert(response);
+            $scope.error = true;
+            $scope.errorMessage = response;
         }, function(error) {
-            alert(error);
+            $scope.setError(error);
         }, function(update) {
-            alert('Got notification: ' + update);
+            $scope.setError('Got notification: ' + update);
         });
     };
 

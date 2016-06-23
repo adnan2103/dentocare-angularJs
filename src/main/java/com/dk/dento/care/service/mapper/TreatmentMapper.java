@@ -4,12 +4,14 @@ import com.dk.dento.care.entity.PatientOralExaminationEntity;
 import com.dk.dento.care.entity.PaymentEntity;
 import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.TreatmentIdGenerator;
+import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.model.PatientOralExamination;
 import com.dk.dento.care.model.Payment;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.repository.StatusRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
+import com.dk.dento.care.service.AuthenticationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +38,9 @@ public class TreatmentMapper {
     @Autowired
     private TreatmentIdGenerator treatmentIdGenerator;
 
+    @Autowired
+    private AuthenticationService authenticationService;
+
     public List<Treatment> treatmentEntitiesToTreatments(Iterable<TreatmentEntity> treatmentEntities) {
         List<Treatment> treatments = new ArrayList<Treatment>(0);
         Treatment treatment;
@@ -56,9 +61,13 @@ public class TreatmentMapper {
         TreatmentEntity treatmentEntity;
         for (Treatment treatment : treatments) {
             treatmentEntity = modelMapper.map(treatment, TreatmentEntity.class);
+            UserCredentialsEntity loggedInUser = authenticationService.getAuthenticatedUser();
             if (treatmentEntity.getId() == null) {
                 treatmentEntity.setId(treatmentIdGenerator.getNextId());
+                treatmentEntity.setCreatedBy(loggedInUser.getId());
             }
+            treatmentEntity.setLastUpdatedBy(loggedInUser.getId());
+
             treatmentEntity.setUserDetailEntity(userDetailEntity);
             treatmentEntity.setStatusEntity(statusRepository.findByStatus(treatment.getStatus()));
 
@@ -79,6 +88,8 @@ public class TreatmentMapper {
     private List<PaymentEntity> paymentsToPaymentEntities(List<Payment> payments, TreatmentEntity treatmentEntity) {
         List<PaymentEntity> paymentEntities = new ArrayList<PaymentEntity>(0);
         PaymentEntity paymentEntity;
+        UserCredentialsEntity loggedInUser = authenticationService.getAuthenticatedUser();
+
         for (Payment payment : payments) {
 
             paymentEntity = modelMapper.map(payment, PaymentEntity.class);
@@ -95,12 +106,12 @@ public class TreatmentMapper {
             ) {
         List<PatientOralExaminationEntity> patientOralExaminationEntities = new ArrayList<PatientOralExaminationEntity>(0);
         PatientOralExaminationEntity patientOralExaminationEntity;
+        UserCredentialsEntity loggedInUser = authenticationService.getAuthenticatedUser();
 
         for (PatientOralExamination patientOralExamination : patientOralExaminations) {
 
             patientOralExaminationEntity = modelMapper.map(patientOralExamination, PatientOralExaminationEntity.class);
             patientOralExaminationEntity.setTreatmentEntity(treatmentEntity);
-
             patientOralExaminationEntities.add(patientOralExaminationEntity);
         }
 

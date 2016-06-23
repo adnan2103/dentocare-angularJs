@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Entity
 @Table(name ="treatment")
-public class TreatmentEntity {
+public class TreatmentEntity extends AbstractTrackedEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

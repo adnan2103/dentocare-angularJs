@@ -1,7 +1,9 @@
 <div>
     <div class="alert alert-danger" ng-show="message"/>
 
-    <div class="alert alert-danger" ng-show="error"/>
+    <div class="alert alert-danger" ng-show="error">
+        {{errorMessage}}
+    </div>
     <form name="myForm" class="col-md-8 portfolio-item">
         <div class="col-md-4 portfolio-item" ng-if='patient.id'>
             <img class="img-responsive" ng-src="{{patient.imagePath}}"

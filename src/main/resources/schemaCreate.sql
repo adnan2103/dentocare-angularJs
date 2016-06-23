@@ -97,6 +97,10 @@ CREATE TABLE IF NOT EXISTS treatment
   status_id integer NOT NULL,
   chief_complaint_description character varying(100),
   notes character varying(100),
+  creation_date date,
+  created_by integer NOT NULL,
+  last_updated_date date,
+  last_modified_by integer NOT NULL,
   CONSTRAINT treatment_pkey PRIMARY KEY (treatment_id),
   CONSTRAINT treatment_fkey FOREIGN KEY (user_id)
       REFERENCES user_detail (user_id) MATCH SIMPLE

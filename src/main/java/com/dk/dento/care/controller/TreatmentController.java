@@ -69,13 +69,13 @@ public class TreatmentController {
     @ResponseBody
     public ResponseEntity savePatientTreatment(@PathVariable final Long id,
                                                       @RequestBody final List<Treatment> treatments) {
-        try {
+        //try {
             List<Treatment> updatedTreatments = treatmentService.saveTreatmentsForPatient(treatments, id);
             return new ResponseEntity(updatedTreatments, HttpStatus.OK);
-        } catch (Exception e) {
+        /*} catch (Exception e) {
             LOGGER.error("Error occurred while saving treatments for patient {} ",e.getMessage());
             return new ResponseEntity("Error Occurred while saving or updating treatment.", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        }*/
 
     }
 

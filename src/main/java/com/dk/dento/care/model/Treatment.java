@@ -17,6 +17,17 @@ public class Treatment {
 
     private String status;
 
+    private Long createdBy;
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+
     private List<Payment> payment = new ArrayList<Payment>(0);
 
     private List<PatientOralExamination> patientOralExamination = new ArrayList<PatientOralExamination>(0);
