@@ -24,7 +24,7 @@ public class ImageService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageService.class);
 
 
-    public void uploadImage(MultipartFile image, String imageName, String path) throws IOException {
+    public void uploadImage(MultipartFile image, String path, String imageName) throws IOException {
         byte[] bytes = image.getBytes();
         File dir = new File(path);
         if (!dir.exists()) {

@@ -12,6 +12,9 @@
 ##3
 ##Patient Photo upload immediately after creating patient.
 
+##
+## Add button Navigation functionality.
+
 ##4
 ##UI Validation messages.
 ##Service Success/Failure Messages.

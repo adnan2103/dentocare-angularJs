@@ -1,5 +1,7 @@
 package com.dk.dento.care.controller;
 
+import com.dk.dento.care.entity.TreatmentEntity;
+import com.dk.dento.care.repository.TreatmentRepository;
 import com.dk.dento.care.service.ImageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +35,9 @@ public class ImageController {
     @Autowired
     ImageService imageService;
 
+    @Autowired
+    TreatmentRepository treatmentRepository;
+
     @RequestMapping(
             value = "/patient/{patientId}/image",
             headers = "content-type=multipart/*",
@@ -56,7 +61,9 @@ public class ImageController {
 
         try {
             String path =  home + "/images/patients/";
-            imageService.uploadImage(patientImage, "Patient_" + patientId + ".png", path);
+            String imageName = "Patient_" + patientId + ".png";
+
+            imageService.uploadImage(patientImage, path, imageName);
             LOGGER.info("Patient Image Uploaded Successfully.");
             return new ResponseEntity("Uploaded Successfully", HttpStatus.OK);
         } catch (IOException exception) {
@@ -85,7 +92,9 @@ public class ImageController {
 
         try {
             String path =  home + "/images/patients/";
-            byte[] data = imageService.getImage(path, "Patient_" + patientId + ".png");
+            String imageName = "Patient_" + patientId + ".png";
+
+            byte[] data = imageService.getImage(path, imageName);
 
             return new ResponseEntity(data, HttpStatus.OK);
 
@@ -105,18 +114,20 @@ public class ImageController {
      * @return MultipartFile patient Photo.
      */
     @RequestMapping(
-            value = "treatment/{id}/{state}/images/{sequence}",
+            value = "treatment/{id}/{type}/images/{sequence}",
             method = RequestMethod.GET,
             produces = "image/png"
     )
     @ResponseBody
     public ResponseEntity getPostTreatmentImages(@PathVariable final String id,
                                                  @PathVariable final String sequence,
-                                                 @PathVariable final String state) {
+                                                 @PathVariable final String type) {
 
         try {
             String path =  home + "/images/treatments/";
-            byte[] data = imageService.getImage(path, state+ "Treatment_" + id + "_"+sequence + ".png");
+            String imageName = type+ "Treatment_" + id + "_"+sequence + ".png";
+
+            byte[] data = imageService.getImage(path, imageName);
 
             return new ResponseEntity(data, HttpStatus.OK);
 
@@ -126,6 +137,60 @@ public class ImageController {
         } catch (Exception exception) {
             LOGGER.error(" Exception for patient image retrieve ", exception.getMessage());
             return new ResponseEntity("An Error Occurred", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(
+            value = "/treatment/{id}/{type}/images",
+            headers = "content-type=multipart/*",
+            method = RequestMethod.POST,
+            produces = "application/json"
+    )
+    @ResponseBody
+    public ResponseEntity uploadTreatmentImages(
+            @RequestParam("file") final MultipartFile treatmentImage,
+            @PathVariable final Long id,
+            @PathVariable final String type
+
+    ) {
+
+        if (treatmentImage.isEmpty()) {
+            return new ResponseEntity("You failed to upload because the file was empty.", HttpStatus.NOT_FOUND);
+        }
+
+        String fileExtension = getFileExtension(treatmentImage);
+        if (!isInEnum(fileExtension, SupportedExtension.class)) {
+            return new ResponseEntity("Not a supported file type!", HttpStatus.UNSUPPORTED_MEDIA_TYPE);
+        }
+
+        TreatmentEntity treatmentEntity = treatmentRepository.findOne(id);
+        Long sequence = 0L;
+        if(type.equalsIgnoreCase("pre")) {
+            sequence = treatmentEntity.getPreImageCount() + 1;
+            treatmentEntity.setPreImageCount(sequence);
+        }
+        if(type.equalsIgnoreCase("post")) {
+            sequence = treatmentEntity.getPostImageCount() + 1;
+            treatmentEntity.setPostImageCount(sequence);
+        }
+
+        try {
+            String path =  home + "/images/treatments/";
+            String imageName = type+ "Treatment_" + id + "_"+sequence + ".png";
+
+            imageService.uploadImage(treatmentImage, path, imageName);
+
+            LOGGER.info("Treatment Image Uploaded Successfully.");
+
+            treatmentRepository.save(treatmentEntity);
+
+            return new ResponseEntity("Uploaded Successfully", HttpStatus.OK);
+        } catch (IOException exception) {
+            LOGGER.error(" IOException for treatment image upload ", exception.getMessage());
+            return new ResponseEntity(exception.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (Exception exception) {
+            LOGGER.error(" Exception for treatment image upload ", exception.getMessage());
+            return new ResponseEntity("Upload Failed", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
