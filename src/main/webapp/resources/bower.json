@@ -8,7 +8,8 @@
     "bootstrap": "~3.3.6",
     "angular-animate": "~1.5.0",
     "angular-srph-age-filter": "~0.0.1",
-    "ngDatepicker": "*"
+    "ngDatepicker": "*",
+    "angular-file-upload": "~2.3.4"
   },
   "devDependencies": {},
   "resolutions": {
