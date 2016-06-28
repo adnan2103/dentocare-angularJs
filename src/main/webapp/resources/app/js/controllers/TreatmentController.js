@@ -86,7 +86,9 @@ var TreatmentController = function($scope, $http, $routeParams) {
             $scope.payment = treatments[0].payment;
             $scope.patientOralExamination = treatments[0].patientOralExamination;
             $scope.message = 'Treatment Updated.';
-        }).error(function() {
+            alert('Treatment Added/Updated Successfully.');
+        }).error(function(error) {
+            alert(error);
             $scope.setError('Could not update the treatment.');
         });
     };

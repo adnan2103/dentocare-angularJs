@@ -23,7 +23,18 @@ var PatientController = function($scope, $http, $routeParams, fileUpload, patien
     ];
 
     $scope.savePatient = function(patient) {
-        $scope.patient = patientService.update({}, patient);
+        var promise = patientService.update(patient);
+
+        promise.then(function(response) {
+            $scope.patient = response;
+            alert('Patient Added/Updated Successfully.');
+        }, function(error) {
+            alert(error);
+            $scope.setError(error);
+        }, function(update) {
+            alert(update);
+            $scope.setError('Got notification: ' + update);
+        });
     };
 
     $scope.resetError = function() {
@@ -36,18 +47,21 @@ var PatientController = function($scope, $http, $routeParams, fileUpload, patien
         $scope.errorMessage = message;
     };
 
-    $scope.saveImage = function(patient){
+    $scope.saveImage = function(id){
         $scope.random = $scope.random + 1;
-        var uploadUrl = 'patient/' + patient.id + '/image';
+        var uploadUrl = 'patient/' + id + '/image';
         var promise = fileUpload.uploadFileToUrl($scope.image, uploadUrl);
 
         promise.then(function(response) {
             $scope.patient.imagePath = uploadUrl + '?random=' + $scope.random;
             $scope.error = true;
             $scope.errorMessage = response;
+            alert('Patient image updated successfully.');
         }, function(error) {
+            alert(error);
             $scope.setError(error);
         }, function(update) {
+            alert(update);
             $scope.setError('Got notification: ' + update);
         });
     };

@@ -115,13 +115,20 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
             });
         return deferred.promise;
     }
-}]).service('patientService', ['$resource', function ($resource) {
+}]).service('patientService', ['$http','$q', function ($http, $q) {
 
-    return $resource('patient/save', {}, {
+    this.update = function(patient){
+        var deferred = $q.defer();
 
-        'update': { method:'PUT' }
-    });
-
+        $http.put('patient/save', patient, {})
+            .success(function(response){
+                deferred.resolve(response);
+            })
+            .error(function(message){
+                deferred.reject(message);
+            });
+        return deferred.promise;
+    }
 
 }]).directive('ngThumb', ['$window', function($window) {
     var helper = {
