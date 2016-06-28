@@ -30,7 +30,7 @@ var TreatmentController = function($scope, $http, $routeParams) {
                         "payment":[
                             {
                                 "id":null,
-                                "paymentDate":"",
+                                "paymentDate":new Date(),
                                 "paymentAmount":0,
                                 "treatmentDone":""
                             }

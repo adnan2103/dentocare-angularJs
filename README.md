@@ -1,34 +1,29 @@
 
-#############################################Dento care application###############################################################
+#############################################Dento care application#################################
 
 ################################Major issues before go live.########################################
 
-##1
-## Pre and post treatment photos upload and display library.
+## Saving and Showing Patient E-mail Id and Blood group.
 
-##2
-## Saving and Showing Patient E-mail Id.
-
-##3
 ##Patient Photo upload immediately after creating patient.
 
-##
-## Add button Navigation functionality.
-
-##4
 ##UI Validation messages.
 ##Service Success/Failure Messages.
 ##adding javax.validation annotations and messages in response.
 ## Auto move focus to validation messages and success messages.
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 
-##5
-## Pulled out notes and Chief Complaint to separate tables. and add + button functionalities to them.
+## Pulled out notes and Chief Complaint to separate tables. and add Multiple Notes and Multiple Complaints function.
 
-##6
 ## CSS and alignment, apply theme to entire application. http://themeforest.net/
-## Add Payment and Oral examination + button styling.
+## "add more.." button styling.
 
+##Responsive alignment of treatment’s tables.
+##Responsive alignment of pre and post treatment images.
+##Auto refresh pre and post treatment uploaded images.
+
+##Optimize Web server calls. and add Back button navigation. (Use "angular-ui-router" instead route provider.)
+##Enable XSRF token functionality which is disabled due to treatment imagages upload function.
 
 ###################### Low priority ######################################################################
 
@@ -37,13 +32,18 @@
 
 
 ########FUTURE ITEMS TO COME ###########################################################################
+
+Patient Medical History on Treatment Page.
+Delete Functionality.
+Personalizations
+
 Doctor can refer patient to other doctor, don't show treatment costs & payments of one doc to other.
 Access management & ROLE based access
 User ROLE and Access Maintenance
 
 Applying discount or offer code.
 
-Doctor can configure & print the patient report card.
+Doctor can configure & print the patient report card. (What details he wants to print in patient card)
 
 Push notification and chat option for logged in doctors.
 
@@ -65,6 +65,7 @@ Write frontend tests.
 
 ################################### DONE #####################################################################
 
+##DONE## Pre and post treatment photos upload and display library.
 ##DONE## Treatment Start and End Date.?
 ##DONE## Fields for create_ts, by, modified_ts ,by
 ##DONE## immediately refreshing uploaded photo each time.

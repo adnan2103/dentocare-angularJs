@@ -19,7 +19,7 @@
 <!-- Page Content -->
 <div class="container">
     <div ng-repeat="patient in patients | searchForName:searchName | searchForNumber:searchNumber"
-         class="col-md-3 patient">
+         class="col-md-3 boxed">
         <div class="row">
             <div class="col-md-12">
                 <img class="img-responsive" ng-src="{{patient.imagePath}}"
