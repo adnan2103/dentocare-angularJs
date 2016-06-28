@@ -3,7 +3,6 @@
 
 ################################Major issues before go live.########################################
 
-## Saving and Showing Patient E-mail Id and Blood group.
 
 ##Patient Photo upload immediately after creating patient.
 
@@ -13,7 +12,7 @@
 ## Auto move focus to validation messages and success messages.
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 
-## Pulled out notes and Chief Complaint to separate tables. and add Multiple Notes and Multiple Complaints function.
+
 
 ## CSS and alignment, apply theme to entire application. http://themeforest.net/
 ## "add more.." button styling.
@@ -24,6 +23,10 @@
 
 ##Optimize Web server calls. and add Back button navigation. (Use "angular-ui-router" instead route provider.)
 ##Enable XSRF token functionality which is disabled due to treatment imagages upload function.
+
+
+## Pulled out notes and Chief Complaint to separate tables. and add Multiple Notes and Multiple Complaints function.
+## Saving and Showing Patient E-mail Id and Blood group.
 
 ###################### Low priority ######################################################################
 
