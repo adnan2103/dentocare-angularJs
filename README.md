@@ -5,6 +5,7 @@
 
 
 ##Patient Photo upload immediately after creating patient.
+##Auto refresh pre and post treatment uploaded images.
 
 ##UI Validation messages.
 ##Service Success/Failure Messages.
@@ -12,14 +13,12 @@
 ## Auto move focus to validation messages and success messages.
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 
-
-
 ## CSS and alignment, apply theme to entire application. http://themeforest.net/
 ## "add more.." button styling.
 
 ##Responsive alignment of treatment’s tables.
 ##Responsive alignment of pre and post treatment images.
-##Auto refresh pre and post treatment uploaded images.
+
 
 ##Optimize Web server calls. and add Back button navigation. (Use "angular-ui-router" instead route provider.)
 ##Enable XSRF token functionality which is disabled due to treatment imagages upload function.

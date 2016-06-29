@@ -30,24 +30,29 @@
                     <h2 style="background-color: #00b3ee">Treatment ID : {{treatment.id}}</h2>
                     </div>
 
-                    <div class="row">
-                        <div ng-if='treatment.id' class="col-md-3">
-                            <a href="#/treatment/{{treatment.id}}/pre/images/{{treatment.preImageCount}}">
-                                <span class="label">PRE TREATMENT IMAGES</span>
-                            </a>
-                        </div>
-                        <div ng-if='treatment.id' class="col-md-3">
-                            <a href="#/treatment/{{treatment.id}}/post/images/{{treatment.postImageCount}}">
-                                <span class="label">POST TREATMENT IMAGES</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3"><b> Status : </b>
-                            <select ng-model="treatment.status">
-                                <option ng-repeat="status in status" value="{{status.status}}"
-                                        ng-selected="treatment.status === status.status">{{status.status}}
-                                </option>
-                            </select>
-                        </div>
+                    <div class="col-md-9">
+                        <table class="table"><thead><tr>
+                            <th ng-if='treatment.id'>
+                                    <a href="#/treatment/{{treatment.id}}/pre/images/{{treatment.preImageCount}}">
+                                        <span class="label">PRE TREATMENT IMAGES</span>
+                                    </a>
+                                </th>
+                                <th ng-if='treatment.id'>
+                                    <a href="#/treatment/{{treatment.id}}/post/images/{{treatment.postImageCount}}">
+                                        <span class="label">POST TREATMENT IMAGES</span>
+                                    </a>
+                                </th>
+                                <th>
+                                    <b> Status : </b>
+                                    <select ng-model="treatment.status">
+                                        <option ng-repeat="status in status" value="{{status.status}}"
+                                                ng-selected="treatment.status === status.status">{{status.status}}
+                                        </option>
+                                    </select>
+                                </th>
+                            </tr>
+                            </thead>
+                        </table>
                     </div>
                     <br />
 
@@ -61,50 +66,68 @@
                         <div class="col-md-6"><input type="text" size="90" ng-model="treatment.notes" placeholder="Notes"/></div>
                     </div>
 
-
-                    <br/>
                     <br/>
 
-                    <div class="row">
+                    <div class="row col-md-12">
                         <div class="col-md-3"><b>Patient Oral Examinations</b></div>
                         <div class="col-md-6"><button ng-click="addPatientOralExamination()" style="background-color: red"><b>add more..</b></button></div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3"><b> Description : </b>  </div>
-                        <div class="col-md-6"><b> Cost : </b> </div>
-                    </div>
-                    <div ng-repeat="oralExamination in treatment.patientOralExamination">
-                        <div class="row">
-                            <div class="col-md-3"><input type="text" ng-model="oralExamination.description" placeholder="Description"/></div>
-                            <div class="col-md-6"><input type="number" ng-model="oralExamination.cost" placeholder="Cost" ng-change="updateTotalCost()"/></div>
-                        </div>
-                    </div>
+                    <div class="col-md-4">
+                        <table class="table"><thead><tr>
+                            <th>Description</th>
+                            <th>Cost</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="oralExamination in treatment.patientOralExamination">
+                            <td>
+                                <input type="text" ng-model="oralExamination.description" placeholder="Description"/>
+                            </td>
+                            <td>
+                                <input type="number" ng-model="oralExamination.cost" placeholder="Cost" ng-change="updateTotalCost()"/>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table></div>
 
                     <br/>
                     <br/>
 
-                    <div class="row">
+                    <div class="row col-md-12">
                         <div class="col-md-3"><b>Payments Detail</b></div>
                         <div class="col-md-6"><button ng-click="addPayment()" style="background-color: red"><b>add more..</b></button></div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3"><b> Payment Date : </b></div>
-                        <div class="col-md-3"><b> Payment Amount : </b></div>
-                        <div class="col-md-3"><b> Treatment Done : </b></div>
-                    </div>
-                    <div ng-repeat="payment in treatment.payment">
-                        <div class="row">
-                            <div class="col-md-3"><ng-datepicker format="YYYY-MM-DD" view-format="Do MMMM YYYY" ng-model="payment.paymentDate"></ng-datepicker></div>
-                            <div class="col-md-3"><input type="number" ng-model="payment.paymentAmount" placeholder="Amount" ng-change="updateTotalPayment()"/></div>
-                            <div class="col-md-3"><input type="text" ng-model="payment.treatmentDone" placeholder="Notes"/></div>
-                        </div>
-                    </div>
-
                     <br/>
-                    <div class="row" style="color: blue">
-                        <div class="col-md-3"><b>Total Cost : {{totalCost}}</b></div>
-                        <div class="col-md-3"><b>Payment Made : {{paymentMade}}</b></div>
-                        <div class="col-md-3"><b>Pending Payment : {{pendingPayment}}</b></div>
+                    <div class="col-md-7">
+                        <table class="table"><thead><tr>
+                            <th>Payment Date</th>
+                            <th>Payment Amount</th>
+                            <th>Treatment Done</th>
+                        </tr>
+                        </thead>
+                            <tbody>
+                            <tr ng-repeat="payment in treatment.payment">
+                                <td>
+                                <ng-datepicker format="YYYY-MM-DD" view-format="Do MMMM YYYY" ng-model="payment.paymentDate"></ng-datepicker>
+                            </td>
+                            <td>
+                                <input type="number" ng-model="payment.paymentAmount" placeholder="Amount" ng-change="updateTotalPayment()"/>
+                            </td>
+                            <td>
+                                <input type="text" ng-model="payment.treatmentDone" placeholder="Notes"/>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table></div>
+                    <br/>
+                    <div class="col-md-7">
+                        <table class="table"><thead><tr>
+                            <th>Total Cost : {{totalCost}}</th>
+                            <th>Payment Made : {{paymentMade}}</th>
+                            <th>Pending Payment : {{pendingPayment}}</th>
+                        </tr>
+                        </thead>
+                    </table>
                     </div>
                 </div>
             <!--<div ng-repeat="images in treatment.postTreatmentImages">
