@@ -18,31 +18,28 @@
 
 <!-- Page Content -->
 <div class="container">
-    <div ng-repeat="patient in patients | searchForName:searchName | searchForNumber:searchNumber"
-         class="col-md-3 boxed">
-        <div class="row">
-            <div class="col-md-12">
-                <img class="img-responsive" ng-src="{{patient.imagePath}}"
-                     onerror="this.src='resources/app/images/patients/patient.svg'"/>
-            </div>
-            <div class="col-md-12">
-                <div>
-                    <a href="#/patient/{{patient.id}}">
-                        <span class="label" ng-bind="patient.name | uppercase"></span>
-                    </a>
-                 </div>
-                <div class="row">
-                    <b><span ng-bind="patient.gender"></span></b>
-                    <span> Age :</span> <b><span> {{patient.dateOfBirth | age}} Years</span></b>
-                </div>
-                <div class="row">
-                    <b> Mobile : </b><span ng-bind="patient.phoneNumber"></span>
-                </div>
-                <div>
-                    <a href="#/patient/{{patient.id}}/treatment">
-                        <span class="label">UPDATE TREATMENT</span></a>
+    <section>
+        <div class="row" style="margin-bottom: 50px;">
+        <div ng-repeat="patient in patients | searchForName:searchName | searchForNumber:searchNumber" class="col-lg-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img class="img-responsive" ng-src="{{patient.imagePath}}"
+                             style="height: 200px;" alt="Patient Image" onerror="this.src='resources/app/images/patients/patient.svg'"/>
+                        <h3>
+                            <a href="#/patient/{{patient.id}}">
+                            <span class="label" ng-bind="patient.name | uppercase"></span>
+                            </a>
+                        </h3>
+                        <p>
+                            <strong>{{patient.gender | uppercase}}</strong> Age : {{patient.dateOfBirth | age}} Years
+                            <br/> M : +91-{{patient.phoneNumber}}
+                        </p>
+                        <div class="btn-group">
+                            <a href="#/patient/{{patient.id}}/treatment" class="btn btn-md btn-primary">Treatments</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>

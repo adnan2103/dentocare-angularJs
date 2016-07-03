@@ -3,45 +3,48 @@
 <head>
     <meta charset="utf-8"/>
     <title>Dento-Care</title>
+
     <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+
+
     <link rel="stylesheet" href="resources/app/css/main.css"/>
     <link rel="stylesheet" href="resources/app/css/login.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="resources/bower_components/ngDatepicker/src/css/ngDatepicker.css"/>
-    <link href="favicon.ico" rel="icon" type="image/x-icon" />
-    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 </head>
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="navigation" ng-show="authenticated()">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="navigation"
+     ng-show="authenticated()">
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
+        <div class="navbar-header"><!-- Brand and toggle get grouped for better mobile display -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#dento-care-header">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-        </div>
+            <a href="" class="navbar-brand">DentoCare</a>
+        </div><!-- Navbar Header-->
+
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="dento-care-header">
             <ul class="nav navbar-nav">
                 <li><a href="#/patients">All Patient</a></li>
                 <li><a href="#/patient/new">Add New Patient</a></li>
                 <li><a href="" ng-click="logout()">logout</a></li>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
+    </div><!-- End Container-->
+</nav><!-- End Navigation-->
+
+
 <div class="view-container">
-    <div ng-view="" class="view"></div>
+    <div ng-view="" class="view"></div>>
 </div>
 <footer>
-    <p>Copyright &copy; Dento care 2016</p>
+    <p>&copy; Copyright 2016 Dento care </p>
 </footer>
 
 <script src="resources/bower_components/angular/angular.js"></script>
@@ -53,6 +56,7 @@
 <script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment-with-locales.min.js"></script>
+
 <script type="text/javascript" src="resources/bower_components/ngDatepicker/src/js/ngDatepicker.min.js"></script>
 <script src="resources/bower_components/angular-srph-age-filter/angular-age-filter.js"></script>
 <script src="resources/bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>

@@ -1,14 +1,21 @@
+<!-- Feedback-->
+<div class="container">
+    <section>
+        <div class="page-header red-big-text" id="feedback">
+            <h2><span ng-bind="type | uppercase"> </span> TREATMENT IMAGES</h2>
+        </div>
+        <div class="row">
+            <div ng-repeat="images in treatmentImages">
+                <div class="col-sm-4">
+                    <img class="img-responsive" ng-src="{{images.path}}"/>
+                </div>
+            </div>
+        </div><!-- End row -->
+    </section>
+</div><!--End Container-->
+
+
 <div class="container" style="margin-bottom: 40px;">
-    <ul class="nav navbar-nav col-md-12">
-        <li class="red-big-text">
-            <b><span ng-bind="type | uppercase"></span> TREATMENT IMAGES </b>
-        </li>
-    </ul>
-
-    <div ng-repeat="images in treatmentImages">
-        <img class="img-responsive" ng-src="{{images.path}}"/>
-    </div>
-
     <div class="container" nv-file-drop="" uploader="uploader">
         <div class="row">
             <div class="col-md-3">

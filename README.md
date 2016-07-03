@@ -6,6 +6,7 @@
 
 ##Patient Photo upload immediately after creating patient.
 ##Auto refresh pre and post treatment uploaded images.
+## Add/Update patient page responsiveness.
 
 ##UI Validation messages.
 ##Service Success/Failure Messages.
@@ -15,10 +16,6 @@
 
 ## CSS and alignment, apply theme to entire application. http://themeforest.net/
 ## "add more.." button styling.
-
-##Responsive alignment of treatment’s tables.
-##Responsive alignment of pre and post treatment images.
-
 
 ##Optimize Web server calls. and add Back button navigation. (Use "angular-ui-router" instead route provider.)
 ##Enable XSRF token functionality which is disabled due to treatment imagages upload function.
@@ -67,6 +64,8 @@ Write frontend tests.
 
 ################################### DONE #####################################################################
 
+##DONE## Responsive alignment of treatment’s tables.
+##DONE## Responsive alignment of pre and post treatment images.
 ##DONE## Pre and post treatment photos upload and display library.
 ##DONE## Treatment Start and End Date.?
 ##DONE## Fields for create_ts, by, modified_ts ,by
