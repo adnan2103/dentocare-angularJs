@@ -21,60 +21,66 @@ var TreatmentController = function($scope, $http, $routeParams) {
 
             if(!treatments[0]) {
 
-                $scope.treatments = [
-                    {
-                        "id":null,
-                        "chiefComplaintDescription":"",
-                        "notes":"",
-                        "status":"In-Progress",
-                        "payment":[
-                            {
-                                "id":null,
-                                "paymentDate":new Date(),
-                                "paymentAmount":0,
-                                "treatmentDone":""
-                            }
-                        ],
-                        "patientOralExamination":[
-                            {
-                                "id":null,
-                                "description":"",
-                                "cost":0
-                            }
-                        ]
-                    }
-                ];
-                $scope.payment = $scope.treatments[0].payment;
-                $scope.patientOralExamination = $scope.treatments[0].patientOralExamination;
+                $scope.treatments[0] = treatment;
+                /*$scope.payment = $scope.treatments[0].payment;
+                $scope.patientOralExamination = $scope.treatments[0].patientOralExamination;*/
             } else {
-                $scope.payment = treatments[0].payment;
-                $scope.patientOralExamination = treatments[0].patientOralExamination;
+                /*$scope.payment = treatments[0].payment;
+                $scope.patientOralExamination = treatments[0].patientOralExamination;*/
             }
-            $scope.totalCost = 0;
-            $scope.paymentMade = 0;
-            $scope.updateTotalCost();
-            $scope.updateTotalPayment();
+            $scope.totalCost = [0];
+            $scope.paymentMade = [0];
+            $scope.pendingPayment = [0];
+
+            $scope.updateTotalCost(0);
+            $scope.updateTotalPayment(0);
 
         });
     };
 
-    $scope.updateTotalCost = function() {
+
+    var treatment = {
+            "id":null,
+            "chiefComplaintDescription":"",
+            "notes":"",
+            "status":"In-Progress",
+            "payment":[
+                {
+                    "id":null,
+                    "paymentDate":new Date(),
+                    "paymentAmount":0,
+                    "treatmentDone":""
+                }
+            ],
+            "patientOralExamination":[
+                {
+                    "id":null,
+                    "description":"",
+                    "cost":0
+                }
+            ]
+        };
+
+    $scope.updateTotalCost = function(index) {
         var cost = 0;
-        angular.forEach($scope.treatments[0].patientOralExamination, function(patientOralExamination) {
+        angular.forEach($scope.treatments[index].patientOralExamination, function(patientOralExamination) {
             cost += patientOralExamination.cost;
         });
-        $scope.totalCost = cost;
-        $scope.pendingPayment = $scope.totalCost - $scope.paymentMade;
+        $scope.treatments[index].totalCost.push(cost);
+        $scope.totalCost[index] = cost;
+        $scope.pendingPayment[index] = $scope.totalCost[index] - $scope.paymentMade[index];
     }
 
-    $scope.updateTotalPayment = function() {
+    $scope.updateTotalPayment = function(index) {
+        alert(index);
+
         var totalPayment = 0;
-        angular.forEach($scope.treatments[0].payment, function(payment) {
+        angular.forEach($scope.treatments[index].payment, function(payment) {
             totalPayment += payment.paymentAmount;
         });
-        $scope.paymentMade = totalPayment;
+        $scope.paymentMade[index] = totalPayment;
 
-        $scope.pendingPayment = $scope.totalCost - $scope.paymentMade;
+        $scope.pendingPayment[index] = $scope.totalCost[index] - $scope.paymentMade[index];
     }
 
 
@@ -83,8 +89,6 @@ var TreatmentController = function($scope, $http, $routeParams) {
 
         $http.put('patient/' + $routeParams.id + '/treatment', treatments).success(function(treatments) {
             $scope.treatments = treatments;
-            $scope.payment = treatments[0].payment;
-            $scope.patientOralExamination = treatments[0].patientOralExamination;
             $scope.message = 'Treatment Updated.';
             alert('Treatment Added/Updated Successfully.');
         }).error(function(error) {
@@ -93,7 +97,7 @@ var TreatmentController = function($scope, $http, $routeParams) {
         });
     };
 
-    $scope.addPayment = function() {
+    $scope.addPayment = function(index) {
         var newPayment =
             {
                 "id":null,
@@ -102,10 +106,10 @@ var TreatmentController = function($scope, $http, $routeParams) {
                 "treatmentDone":""
             };
 
-        $scope.payment.push(newPayment);
+        $scope.treatments[index].payment.push(newPayment);
     };
 
-    $scope.addPatientOralExamination = function() {
+    $scope.addPatientOralExamination = function(index) {
         var newPatientOralExamination =
         {
             "id":null,
@@ -113,8 +117,13 @@ var TreatmentController = function($scope, $http, $routeParams) {
             "cost" : 0
         };
 
-        $scope.patientOralExamination.push(newPatientOralExamination);
+        $scope.treatments[index].patientOralExamination.push(newPatientOralExamination);
     };
+
+    $scope.addNewTreatment = function(size) {
+        alert('Treatment Added, Click save to permanently add it.');
+        $scope.treatments[size] = treatment;
+    }
 
     $scope.resetError = function() {
         $scope.error = false;

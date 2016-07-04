@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS payment
   treatment_id integer NOT NULL,
   payment_date date,
   payment_amount integer,
-  treatment_done character varying(100),
+  treatment_done character varying(500),
   creation_date date,
   created_by integer NOT NULL,
   last_updated_date date,

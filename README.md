@@ -3,32 +3,39 @@
 
 ################################Major issues before go live.########################################
 
+##Add more fields for mobile numbers.
+##Add functionality to add more treatment.
+##Add most recent treatment status on home page and add a filter to filter records based on treatment status.
+(On going, Closed, Not started, All)
 
-##Patient Photo upload immediately after creating patient.
-##Auto refresh pre and post treatment uploaded images.
+#######################################################################################################################
+
+
+
+
+
 ## Add/Update patient page responsiveness.
 
-##UI Validation messages.
+
 ##Service Success/Failure Messages.
 ##adding javax.validation annotations and messages in response.
 ## Auto move focus to validation messages and success messages.
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 
 ## CSS and alignment, apply theme to entire application. http://themeforest.net/
-## "add more.." button styling.
 
 ##Optimize Web server calls. and add Back button navigation. (Use "angular-ui-router" instead route provider.)
 ##Enable XSRF token functionality which is disabled due to treatment imagages upload function.
 
 
-## Pulled out notes and Chief Complaint to separate tables. and add Multiple Notes and Multiple Complaints function.
-## Saving and Showing Patient E-mail Id and Blood group.
 
 ###################### Low priority ######################################################################
 
 ## Convert Patient as directive
-## Adding multiple treatments, low priority.
-
+##Patient Photo upload immediately after creating patient.
+##Auto refresh pre and post treatment uploaded images.
+##UI Validation messages.
+## Saving and Showing Patient E-mail Id.
 
 ########FUTURE ITEMS TO COME ###########################################################################
 

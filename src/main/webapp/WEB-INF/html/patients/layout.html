@@ -1,7 +1,7 @@
 <div class="container" style="margin-bottom: 10px;">
     <ul class="nav navbar-nav col-md-12">
         <li class="red-big-text">
-            <b> Search Patient </b>
+            <span class="glyphicon glyphicon-search"></span>
         </li>
         <li>
             <div class="search">
@@ -18,26 +18,30 @@
 
 <!-- Page Content -->
 <div class="container">
-    <section>
-        <div class="row" style="margin-bottom: 50px;">
-        <div ng-repeat="patient in patients | searchForName:searchName | searchForNumber:searchNumber" class="col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <img class="img-responsive" ng-src="{{patient.imagePath}}"
-                             style="height: 200px;" alt="Patient Image" onerror="this.src='resources/app/images/patients/patient.svg'"/>
-                        <h3>
-                            <a href="#/patient/{{patient.id}}">
-                            <span class="label" ng-bind="patient.name | uppercase"></span>
-                            </a>
-                        </h3>
-                        <p>
-                            <strong>{{patient.gender | uppercase}}</strong> Age : {{patient.dateOfBirth | age}} Years
-                            <br/> M : +91-{{patient.phoneNumber}}
-                        </p>
-                        <div class="btn-group">
-                            <a href="#/patient/{{patient.id}}/treatment" class="btn btn-md btn-primary">Treatments</a>
-                        </div>
-                    </div>
+    <section style="margin: 50px">
+        <div ng-repeat="patient in patients | searchForName:searchName | searchForNumber:searchNumber">
+            <div class="row">
+                <div class="col-sm-3" style="font-size: large; height: 30px;padding:5px;">
+                    <a href="#/patient/{{patient.id}}">
+                        <span class="glyphicon glyphicon-edit"></span> {{patient.name | uppercase}}</a>
+                </div>
+                <div class="col-sm-2">
+                    <strong>{{patient.gender | uppercase}}</strong> ({{patient.dateOfBirth | age}} Years)
+                </div>
+                <div class="col-sm-3">
+                    <span class="glyphicon glyphicon-phone-alt"></span> +91-{{patient.phoneNumber}}
+                </div>
+                <div class="col-sm-2 btn-group">
+                    <a href="#/patient/{{patient.id}}/treatment" class="btn btn-md btn-primary">
+                        <span class="glyphicon glyphicon-edit"></span> Treatments</a>
+                </div>
+                <div class="col-sm-2 btn-group">
+                    <div class="btn btn-md btn-success">Running</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <hr />
                 </div>
             </div>
         </div>
