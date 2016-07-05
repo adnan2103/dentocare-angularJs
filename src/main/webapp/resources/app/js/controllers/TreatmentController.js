@@ -18,22 +18,18 @@ var TreatmentController = function($scope, $http, $routeParams) {
 
         $http.get('patient/' + $routeParams.id + '/treatment').success(function(treatments){
             $scope.treatments = treatments;
+            $scope.disableAddTreatment = false;
 
             if(!treatments[0]) {
-
                 $scope.treatments[0] = treatment;
-                /*$scope.payment = $scope.treatments[0].payment;
-                $scope.patientOralExamination = $scope.treatments[0].patientOralExamination;*/
-            } else {
-                /*$scope.payment = treatments[0].payment;
-                $scope.patientOralExamination = treatments[0].patientOralExamination;*/
+                $scope.disableAddTreatment = true;
+             } else {
+                angular.forEach($scope.treatments, function(treatments) {
+                    $scope.updateTotalCost(treatments.id);
+                    $scope.updateTotalPayment(treatments.id);
+                });
             }
-            $scope.totalCost = [0];
-            $scope.paymentMade = [0];
-            $scope.pendingPayment = [0];
 
-            $scope.updateTotalCost(0);
-            $scope.updateTotalPayment(0);
 
         });
     };
@@ -44,6 +40,9 @@ var TreatmentController = function($scope, $http, $routeParams) {
             "chiefComplaintDescription":"",
             "notes":"",
             "status":"In-Progress",
+            "totalCost":0,
+            "totalPayment":0,
+            "pendingPayment":0,
             "payment":[
                 {
                     "id":null,
@@ -61,26 +60,22 @@ var TreatmentController = function($scope, $http, $routeParams) {
             ]
         };
 
-    $scope.updateTotalCost = function(index) {
+    $scope.updateTotalCost = function(treatmentId) {
         var cost = 0;
-        angular.forEach($scope.treatments[index].patientOralExamination, function(patientOralExamination) {
+        angular.forEach($scope.findById($scope.treatments,treatmentId).patientOralExamination, function(patientOralExamination) {
             cost += patientOralExamination.cost;
         });
-        $scope.treatments[index].totalCost.push(cost);
-        $scope.totalCost[index] = cost;
-        $scope.pendingPayment[index] = $scope.totalCost[index] - $scope.paymentMade[index];
+        $scope.findById($scope.treatments,treatmentId).totalCost = cost;
+        $scope.findById($scope.treatments,treatmentId).pendingPayment = (cost - $scope.findById($scope.treatments,treatmentId).totalPayment);
     }
 
-    $scope.updateTotalPayment = function(index) {
-        alert(index);
-
+    $scope.updateTotalPayment = function(treatmentId) {
         var totalPayment = 0;
-        angular.forEach($scope.treatments[index].payment, function(payment) {
+        angular.forEach($scope.findById($scope.treatments,treatmentId).payment, function(payment) {
             totalPayment += payment.paymentAmount;
         });
-        $scope.paymentMade[index] = totalPayment;
-
-        $scope.pendingPayment[index] = $scope.totalCost[index] - $scope.paymentMade[index];
+        $scope.findById($scope.treatments,treatmentId).totalPayment = totalPayment;
+        $scope.findById($scope.treatments,treatmentId).pendingPayment = ($scope.findById($scope.treatments,treatmentId).totalCost - totalPayment);
     }
 
 
@@ -89,27 +84,33 @@ var TreatmentController = function($scope, $http, $routeParams) {
 
         $http.put('patient/' + $routeParams.id + '/treatment', treatments).success(function(treatments) {
             $scope.treatments = treatments;
+            angular.forEach($scope.treatments, function(treatments) {
+                $scope.updateTotalCost(treatments.id);
+                $scope.updateTotalPayment(treatments.id);
+            });
             $scope.message = 'Treatment Updated.';
             alert('Treatment Added/Updated Successfully.');
         }).error(function(error) {
             alert(error);
             $scope.setError('Could not update the treatment.');
         });
+        $scope.disableAddTreatment = false;
+
+
     };
 
-    $scope.addPayment = function(index) {
+    $scope.addPayment = function(treatmentId) {
         var newPayment =
             {
                 "id":null,
-                "paymentDate": new Date(),//$filter('date')(new Date(),'dd-MM-yyyy'),
+                "paymentDate": new Date(),
                 "paymentAmount":0,
                 "treatmentDone":""
             };
-
-        $scope.treatments[index].payment.push(newPayment);
+        $scope.findById($scope.treatments,treatmentId).payment.push(newPayment);
     };
 
-    $scope.addPatientOralExamination = function(index) {
+    $scope.addPatientOralExamination = function(treatmentId) {
         var newPatientOralExamination =
         {
             "id":null,
@@ -117,11 +118,20 @@ var TreatmentController = function($scope, $http, $routeParams) {
             "cost" : 0
         };
 
-        $scope.treatments[index].patientOralExamination.push(newPatientOralExamination);
+        $scope.findById($scope.treatments,treatmentId).patientOralExamination.push(newPatientOralExamination);
     };
 
+     $scope.findById = function(source, id) {
+        for (var i = 0; i < source.length; i++) {
+            if (source[i].id === id) {
+                return source[i];
+            }
+        }
+        throw "Couldn't find object with id: " + id;
+    }
+
     $scope.addNewTreatment = function(size) {
-        alert('Treatment Added, Click save to permanently add it.');
+        $scope.disableAddTreatment = true;
         $scope.treatments[size] = treatment;
     }
 

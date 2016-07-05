@@ -2,11 +2,14 @@
 #############################################Dento care application#################################
 
 ################################Major issues before go live.########################################
-
 ##Add more fields for mobile numbers.
-##Add functionality to add more treatment.
+##Letting enter Age or DOB while creating new patient.
+##Delete Functionality : Payment, Oral examination, treatment.
+
 ##Add most recent treatment status on home page and add a filter to filter records based on treatment status.
 (On going, Closed, Not started, All)
+
+##Appointment Diary, Day/Week/Month schedule, reminders to doctor and patient.
 
 #######################################################################################################################
 
@@ -57,7 +60,6 @@ Creating Patient login credentials.
 Sending Patient login credentials via email & sms.
 Asking Patient to change password after first use.
 
-Appointment Diary, Day/Week/Month schedule, reminders to doctor and patient.
 
 Letting Doctor to call/email patient from application.
 
@@ -70,7 +72,7 @@ Setup unit, integration, functional tests.
 Write frontend tests.
 
 ################################### DONE #####################################################################
-
+##DONE## Add functionality to add more treatment.
 ##DONE## Responsive alignment of treatment’s tables.
 ##DONE## Responsive alignment of pre and post treatment images.
 ##DONE## Pre and post treatment photos upload and display library.
