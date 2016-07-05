@@ -13,6 +13,9 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
     }).when('/patient/:id', {
         templateUrl : 'patient/layout',
         controller : PatientController
+    }).when('/appointment', {
+        templateUrl : 'appointment/layout',
+        controller : AppointmentController
     }).when('/patient/:id/treatment', {
         templateUrl : 'treatment/layout',
         controller : TreatmentController
