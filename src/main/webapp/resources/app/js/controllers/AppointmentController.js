@@ -4,6 +4,6 @@
  * AppointmentController
  * @constructor
  */
-var AppointmentController = function($scope, $document) {
+var AppointmentController = function($scope) {
 
 };

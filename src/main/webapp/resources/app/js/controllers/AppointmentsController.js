@@ -11,43 +11,14 @@ var AppointmentsController = function($scope, $document) {
     $scope.appointments = [
         {
             id     : 12345,
+            patientId : 767676,
+            doctorId : 765757,
             title  : 'Avengers : RCT',
+            allDay : false, // will make the time show
+            url    :  '#/appointment/12345',
             start  : '2016-07-07T11:30:00',
             end  : '2016-07-07T12:30:00',
-            allDay : false, // will make the time show
-            url    :  '#/appointment/12345',
-            patientId : 767676,
-            doctorId : 765757
-        },
-        {
-            id     : 12345,
-            title  : 'Sunil : RCT',
-            start  : '2016-07-07T09:30:00',
-            end  : '2016-07-07T10:30:00',
-            allDay : false, // will make the time show
-            url    :  '#/appointment/12345',
-            patientId : 767676,
-            doctorId : 765757
-        },
-        {
-            id     : 12345,
-            title  : 'Suresh : RCT',
-            start  : '2016-07-07T14:00:00',
-            end  : '2016-07-07T14:30:00',
-            allDay : false, // will make the time show
-            url    :  '#/appointment/12345',
-            patientId : 767676,
-            doctorId : 765757
-        },
-        {
-            id     : 12345,
-            title  : 'Prashant : RCT',
-            start  : '2016-07-07T15:30:00',
-            end  : '2016-07-07T17:30:00',
-            allDay : false, // will make the time show
-            url    :  '#/appointment/12345',
-            patientId : 767676,
-            doctorId : 765757
+            treatment : 'RCT'
         }
     ];
 
