@@ -19,6 +19,11 @@ public class LayoutController {
         return "patient/layout";
     }
 
+    @RequestMapping("appointments/layout")
+    public String getAppointmentsPartialPage() {
+        return "appointments/layout";
+    }
+
     @RequestMapping("appointment/layout")
     public String getAppointmentPartialPage() {
         return "appointment/layout";
