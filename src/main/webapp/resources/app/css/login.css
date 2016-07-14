@@ -8,7 +8,7 @@
     border-color:transparent
 }
 .btn-outline.btn-white {
-    box-shadow:0 0 0 2px rgba(255,255,255,.8)inset;
+    box-shadow:0 0 0 2px rgba(0,0,0,.8)inset;
     color:rgba(255,255,255,.8)
 }
 .btn-outline.btn-white:hover {
@@ -71,7 +71,7 @@
     right:0;
     bottom:0;
     overflow:auto;
-    background:#3ca2e0;
+    background:white;
     text-align:center;
     color:#fff;
     padding:3em

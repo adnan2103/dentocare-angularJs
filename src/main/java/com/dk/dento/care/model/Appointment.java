@@ -1,20 +1,103 @@
 package com.dk.dento.care.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Calendar;
+
 /**
  * Created by khana on 06/07/16.
  */
 public class Appointment {
 
-    /*
-    Fields Required :
+    private Long id;
 
-    id     : 12345,
-    patientId : 767676, doctorId : 765757,
-    url    :  '#/appointment/12345',
-     start  : '2016-07-07T11:30:00', end  : '2016-07-07T12:30:00',
-    treatment : “RCT”,
+    private Long patientId;
 
-    title  : 'Avengers : RCT', allDay : false, // will make the time show
+    private Long doctorId;
 
-     */
+    private String title;
+
+    private boolean allDay;
+
+    private String url;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm", timezone = "IST")
+    private Calendar start;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm", timezone = "IST")
+    private Calendar end;
+
+    private String procedure;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
+    }
+
+    public Long getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean isAllDay() {
+        return allDay;
+    }
+
+    public void setAllDay(boolean allDay) {
+        this.allDay = allDay;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Calendar getStart() {
+        return start;
+    }
+
+    public void setStart(Calendar start) {
+        this.start = start;
+    }
+
+    public Calendar getEnd() {
+        return end;
+    }
+
+    public void setEnd(Calendar end) {
+        this.end = end;
+    }
+
+    public String getProcedure() {
+        return procedure;
+    }
+
+    public void setProcedure(String procedure) {
+        this.procedure = procedure;
+    }
 }

@@ -7,10 +7,11 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class AppointmentController {
-    // Get end point to get appointment.
 
-    // PUT endpoint to create/edit appointment.
+    // GET end point to get appointment for given patient for logged in doctor.
 
-    // GET endpoint to get list all appointment for doctor.
+    // PUT endpoint to create/edit appointment for given patient for logged in doctor..
+
+    // GET endpoint to get list of all appointments for logged in doctor.
 
 }
