@@ -2,74 +2,73 @@
 #############################################Dento care application#################################
 
 ################################Major issues before go live.########################################
-##Add more fields for mobile numbers.
+
+##Appointment Diary, Day/Week/Month schedule.
+
+##Add more fields for mobile numbers, add radio button for active mobile number.
+## Saving and Showing Patient E-mail Id.
 ##Letting enter Age or DOB while creating new patient.
-##Delete Functionality : Payment, Oral examination, treatment.
+
+## Login Screen and All responsive UIs
+
+## Back buttons
+
+##Optimize Web server calls.
+
+########LIVE$$$$$$$$$$$$$$$$S
 
 ##Add most recent treatment status on home page and add a filter to filter records based on treatment status.
 (On going, Closed, Not started, All)
 
-##Appointment Diary, Day/Week/Month schedule, reminders to doctor and patient.
-
-#######################################################################################################################
+## SMS/Email reminders to doctor and patient.
 
 
+###################### Low priority ######################################################################
 
+## Pagination for list of patients.
+## Sort or show patients based on Selected Alphabet to have quick search.
 
+##Delete Functionality : Payment, Oral examination, treatment.
 
-## Add/Update patient page responsiveness.
-
-
+##UI Validation messages on screen instead pop ups.
 ##Service Success/Failure Messages.
 ##adding javax.validation annotations and messages in response.
 ## Auto move focus to validation messages and success messages.
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 
-## CSS and alignment, apply theme to entire application. http://themeforest.net/
-
-##Optimize Web server calls. and add Back button navigation. (Use "angular-ui-router" instead route provider.)
+##(Use "angular-ui-router" instead route provider.)
 ##Enable XSRF token functionality which is disabled due to treatment imagages upload function.
-
-
-
-###################### Low priority ######################################################################
 
 ## Convert Patient as directive
 ##Patient Photo upload immediately after creating patient.
 ##Auto refresh pre and post treatment uploaded images.
-##UI Validation messages.
-## Saving and Showing Patient E-mail Id.
+
 
 ########FUTURE ITEMS TO COME ###########################################################################
 
-Patient Medical History on Treatment Page.
-Delete Functionality.
-Personalizations
+Let the doctor create their account/profile in dento care, let them use application free of cost for one month, start charging them going forward, manage payment and account expiry.
+(For now we can do in manually)
 
-Doctor can refer patient to other doctor, don't show treatment costs & payments of one doc to other.
+Patient Medical History on Treatment Page.
+Personalizations and Logged in Doctor welcome message and information.
+
 Access management & ROLE based access
 User ROLE and Access Maintenance
 
-Applying discount or offer code.
-
 Doctor can configure & print the patient report card. (What details he wants to print in patient card)
-
-Push notification and chat option for logged in doctors.
-
-Creating Patient login credentials.
-Sending Patient login credentials via email & sms.
-Asking Patient to change password after first use.
-
+Generate monthly payment collection report.
 
 Letting Doctor to call/email patient from application.
 
 Got the excellent case, share it on FB or to other doctor, get the patient feedback and comments and rating.
 
+###############ALM and CICD Task ######################
 Implement Caching
 Set up liquibase
 Change App folder and packaging structure
 Setup unit, integration, functional tests.
 Write frontend tests.
+Automate Build and Deployment.
 
 ################################### DONE #####################################################################
 ##DONE## Add functionality to add more treatment.
