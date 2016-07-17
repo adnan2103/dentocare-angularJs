@@ -99,7 +99,7 @@ public class TreatmentController {
 
             return new ResponseEntity(treatmentImages, HttpStatus.OK);
         } catch(Exception e) {
-            LOGGER.error("Error occurred while geting treatment images ",e.getMessage());
+            LOGGER.error("Error occurred while geting treatment images {} ",e.getMessage());
             return new ResponseEntity("No treatment image found", HttpStatus.NOT_FOUND);
         }
 

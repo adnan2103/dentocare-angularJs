@@ -5,8 +5,8 @@
 
 ##Appointment Diary, Day/Week/Month schedule.
 
-##Add more fields for mobile numbers, add radio button for active mobile number.
-## Saving and Showing Patient E-mail Id.
+##Add more fields for mobile numbers.
+
 ##Letting enter Age or DOB while creating new patient.
 
 ## Login Screen and All responsive UIs
@@ -43,6 +43,7 @@
 ##Patient Photo upload immediately after creating patient.
 ##Auto refresh pre and post treatment uploaded images.
 
+## Saving and Showing Patient E-mail Id.
 
 ########FUTURE ITEMS TO COME ###########################################################################
 
@@ -50,7 +51,7 @@ Let the doctor create their account/profile in dento care, let them use applicat
 (For now we can do in manually)
 
 Patient Medical History on Treatment Page.
-Personalizations and Logged in Doctor welcome message and information.
+Personalizations and Logged in Doctor welcome message and information, clinic information,
 
 Access management & ROLE based access
 User ROLE and Access Maintenance

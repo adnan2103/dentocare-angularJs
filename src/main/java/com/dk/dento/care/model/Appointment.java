@@ -19,15 +19,13 @@ public class Appointment {
 
     private boolean allDay;
 
-    private String url;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm", timezone = "IST")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ", timezone = "IST")
     private Calendar start;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm", timezone = "IST")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ", timezone = "IST")
     private Calendar end;
 
-    private String procedure;
+    private String plannedTreatment;
 
     public Long getId() {
         return id;
@@ -69,14 +67,6 @@ public class Appointment {
         this.allDay = allDay;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public Calendar getStart() {
         return start;
     }
@@ -93,11 +83,11 @@ public class Appointment {
         this.end = end;
     }
 
-    public String getProcedure() {
-        return procedure;
+    public String getPlannedTreatment() {
+        return plannedTreatment;
     }
 
-    public void setProcedure(String procedure) {
-        this.procedure = procedure;
+    public void setPlannedTreatment(String procedure) {
+        this.plannedTreatment = plannedTreatment;
     }
 }

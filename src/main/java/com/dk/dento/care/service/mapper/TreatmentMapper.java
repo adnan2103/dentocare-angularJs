@@ -1,11 +1,13 @@
 package com.dk.dento.care.service.mapper;
 
+import com.dk.dento.care.entity.AppointmentEntity;
 import com.dk.dento.care.entity.PatientOralExaminationEntity;
 import com.dk.dento.care.entity.PaymentEntity;
 import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.TreatmentIdGenerator;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
+import com.dk.dento.care.model.Appointment;
 import com.dk.dento.care.model.PatientOralExamination;
 import com.dk.dento.care.model.Payment;
 import com.dk.dento.care.model.Treatment;
@@ -125,4 +127,5 @@ public class TreatmentMapper {
 
         return patientOralExaminationEntities;
     }
+
 }

@@ -8,47 +8,45 @@ var AppointmentsController = function($scope, $document) {
 
     var $jq = jQuery.noConflict();
 
+    $scope.eventId = 100;
+
     $scope.appointments = [
         {
-            id     : 12345,
+            id     : 1,
             patientId : 767676,
             doctorId : 765757,
             title  : 'Sunil : RCT',
             allDay : false, // will make the time show
-            url    :  '#/appointment/12345',
             start  : '2016-07-07T11:30:00',
             end  : '2016-07-07T12:30:00',
             procedure : 'RCT'
         },
         {
-            id     : 12345,
+            id     : 2,
             patientId : 767676,
             doctorId : 765757,
             title  : 'Ramesh : RCT',
             allDay : false, // will make the time show
-            url    :  '#/appointment/12345',
             start  : '2016-07-07T14:30:00',
             end  : '2016-07-07T15:30:00',
             procedure : 'RCT'
         },
         {
-            id     : 12345,
+            id     : 3,
             patientId : 767676,
             doctorId : 765757,
             title  : 'Suresh : RCT',
             allDay : false, // will make the time show
-            url    :  '#/appointment/12345',
             start  : '2016-07-07T16:30:00',
             end  : '2016-07-07T17:30:00',
             procedure : 'RCT'
         },
         {
-            id     : 12345,
+            id     : 4,
             patientId : 767676,
             doctorId : 765757,
             title  : 'Naresh : RCT',
             allDay : false, // will make the time show
-            url    :  '#/appointment/12345',
             start  : '2016-07-07T17:30:00',
             end  : '2016-07-07T19:30:00',
             procedure : 'RCT'
@@ -62,10 +60,36 @@ var AppointmentsController = function($scope, $document) {
             // put your options and callbacks here
 
             height: 450,
+            defaultView : 'agendaWeek',
+            businessHours : {
+                start: '09:00',
+                end: '21:00',
+                dow: [ 1, 2, 3, 4, 5, 6 ]
+            },
+            //selectable : true,
+            //selectHelper : true,
+            editable : true,
             header: {
                 left: 'prev,next, today',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
+            },
+            /*select : function(start, end, jsEvent, view ) {
+
+                var events = new Array();
+                event = new Object();
+                event.title = 'Hello';
+                event.start = start;
+                event.end = end;
+                event.allDay = false;
+                events.push(event);
+                $jq('#calendar').fullCalendar('addEventSource', events);
+            },*/
+            eventResize: function(event, delta, revertFunc) {
+              alert('Appointment resize.');
+            },
+            eventDrop: function(event, delta, revertFunc) {
+              alert('Appointment dropped.');
             },
             /*dayClick: function(date, view) {
                 alert('Clicked on: ' + date.format());

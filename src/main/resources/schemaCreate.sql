@@ -166,3 +166,21 @@ WITH (
 ALTER TABLE payment
   OWNER TO dentocaa;
 
+
+-- Table: appointment
+
+CREATE TABLE IF NOT EXISTS appointment
+(
+  appointment_id SERIAL NOT NULL,
+  doctor_id integer NOT NULL,
+  patient_id integer NOT NULL,
+  appointment_start timestamp,
+  appointment_end timestamp,
+  planned_treatment character varying(100),
+  CONSTRAINT appointment_pkey PRIMARY KEY (appointment_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE appointment
+  OWNER TO dentocaa;
