@@ -29,7 +29,7 @@ angular.module('auth', []).factory(
 										+ credentials.password)
 					} : {};
 
-					$http.get('patients/all', {
+					$http.get('patients', {
 						headers : headers
 					}).success(function(data) {
 						if (data) {

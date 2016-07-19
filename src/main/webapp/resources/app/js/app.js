@@ -126,7 +126,22 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
     this.update = function(patient){
         var deferred = $q.defer();
 
-        $http.put('patient/save', patient, {})
+        $http.put('patient', patient, {})
+            .success(function(response){
+                deferred.resolve(response);
+            })
+            .error(function(message){
+                deferred.reject(message);
+            });
+        return deferred.promise;
+    }
+
+}]).service('appointmentService', ['$http','$q', function ($http, $q) {
+
+    this.save = function(appointment){
+        var deferred = $q.defer();
+
+        $http.put('appointment', appointment, {})
             .success(function(response){
                 deferred.resolve(response);
             })

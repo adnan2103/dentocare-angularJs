@@ -31,4 +31,11 @@ public class AppointmentMapper {
         return appointments;
     }
 
+    public AppointmentEntity appointmentToAppointmentEntity(Appointment appointment) {
+        return modelMapper.map(appointment, AppointmentEntity.class);
+    }
+
+    public Appointment appointmentEntityToAppointment(AppointmentEntity appointmentEntity) {
+        return modelMapper.map(appointmentEntity, Appointment.class);
+    }
 }

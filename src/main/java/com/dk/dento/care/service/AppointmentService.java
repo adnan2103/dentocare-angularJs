@@ -1,5 +1,6 @@
 package com.dk.dento.care.service;
 
+import com.dk.dento.care.entity.AppointmentEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.model.Appointment;
 import com.dk.dento.care.repository.AppointmentRepository;
@@ -32,5 +33,11 @@ public class AppointmentService {
         return appointmentMapper.appointmentEntityListToAppointments(
                 appointmentRepository.findByDoctorId(authenticationService.getAuthenticatedUser().getId())
         );
+    }
+
+    public Appointment save(final Appointment appointment) {
+        AppointmentEntity appointmentEntity =
+                appointmentRepository.save(appointmentMapper.appointmentToAppointmentEntity(appointment));
+        return appointmentMapper.appointmentEntityToAppointment(appointmentEntity);
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,7 +33,7 @@ public class AppointmentController {
      * Get end point to fetch all appointments of logged id doctor.
      */
     @RequestMapping(
-            value = "appointments",
+            value = "/appointments",
             method = RequestMethod.GET,
             produces = "application/json"
     )
@@ -47,7 +48,19 @@ public class AppointmentController {
         }
     }
 
-    // PUT endpoint to create/edit appointment.
+    /**
+     * PUT end point to create/update appointment resource.
+     */
+    @RequestMapping(
+            value = "/appointment",
+            method = RequestMethod.PUT,
+            produces = "application/json"
+    )
+    @ResponseBody
+    public ResponseEntity saveAppointment(@RequestBody final Appointment appointment) {
+        Appointment appointment1 = appointmentService.save(appointment);
+        return new ResponseEntity(appointment1, HttpStatus.OK);
+    }
 
 
 }
