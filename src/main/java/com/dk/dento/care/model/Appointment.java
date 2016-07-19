@@ -87,7 +87,7 @@ public class Appointment {
         return plannedTreatment;
     }
 
-    public void setPlannedTreatment(String procedure) {
+    public void setPlannedTreatment(String plannedTreatment) {
         this.plannedTreatment = plannedTreatment;
     }
 }

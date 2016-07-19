@@ -13,4 +13,4 @@ insert into user_detail(user_id,name,gender,date_of_birth,phone_number,address_l
 (1,'Dr Test User','Male',now(),'123444444','Address line1','Address line2','Hyderabad','TS','India','800086');
 
 
-insert into appointment(appointment_id,doctor_id,patient_id,appointment_start,appointment_end,planned_treatment) values(2,2,1,now(),now(),'RCT');
+insert into appointment(appointment_id,doctor_id,patient_id,appointment_start,appointment_end,planned_treatment) values(1,2,1,now(),now()::date + 1,'RCT');
