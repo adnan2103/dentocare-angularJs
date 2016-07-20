@@ -3,15 +3,13 @@
 
 ################################Major issues before go live.########################################
 
-##Appointment Diary, Day/Week/Month schedule.
-
 ##Add more fields for mobile numbers.
 
 ##Letting enter Age or DOB while creating new patient.
 
-## Login Screen and All responsive UIs
+##Login Screen and All responsive UIs
 
-## Back buttons
+##Back buttons : (Use "angular-ui-router" instead route provider.)
 
 ##Optimize Web server calls.
 
@@ -21,7 +19,6 @@
 (On going, Closed, Not started, All)
 
 ## SMS/Email reminders to doctor and patient.
-
 
 ###################### Low priority ######################################################################
 
@@ -36,7 +33,6 @@
 ## Auto move focus to validation messages and success messages.
 ## Required fields validations.(Name, Gender, Mobile no in Add/Update patient AND chief complain in Add/Update Treatment)
 
-##(Use "angular-ui-router" instead route provider.)
 ##Enable XSRF token functionality which is disabled due to treatment imagages upload function.
 
 ## Convert Patient as directive
@@ -70,12 +66,14 @@ Doctor can generate daily/weekly/monthly/yearly invoices.
 ###############ALM and CICD Task ############################################################################
 Implement Caching
 Set up liquibase
-Change App folder and packaging structure
+Change App folder and packaging structure.
+restructure the angular code.
 Setup unit, integration, functional tests.
 Write frontend tests.
 Automate Build and Deployment.
 
 ################################### DONE #####################################################################
+##DONE## Appointment Diary, Day/Week/Month schedule.
 ##DONE## Add functionality to add more treatment.
 ##DONE## Responsive alignment of treatment’s tables.
 ##DONE## Responsive alignment of pre and post treatment images.
