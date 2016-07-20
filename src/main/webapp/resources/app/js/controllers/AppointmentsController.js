@@ -87,7 +87,7 @@ var AppointmentsController = function($scope, $document, $http, appointmentServi
         var promise = appointmentService.save(appointment);
 
         promise.then(function(response) {
-            alert('Appointment Updated Successfully.');
+            alert('Appointment Set Successfully.');
         }, function(error) {
             alert(error);
         }, function(update) {
