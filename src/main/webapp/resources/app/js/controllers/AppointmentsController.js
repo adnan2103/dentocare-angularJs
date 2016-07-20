@@ -4,77 +4,99 @@
  * AppointmentsController
  * @constructor
  */
-var AppointmentsController = function($scope, $document, $http, appointmentService) {
+var AppointmentsController = function ($scope, $document, $http, $routeParams, appointmentService) {
 
-    $scope.fetchAppointments = function() {
+    $scope.fetchAppointments = function () {
 
-        $http.get('appointments').success(function(appointments){
-            $scope.appointments=appointments;
+        $http.get('appointments').success(function (appointments) {
+
+            $scope.patientId = $routeParams.id;
+            angular.forEach(appointments, function (appointment) {
+                if ($scope.patientId == appointment.patientId) {
+                    appointment['backgroundColor'] = 'red',
+                        appointment['color'] = 'red'
+                }
+            });
+
+            $scope.appointments = appointments;
+
 
             var $jq = jQuery.noConflict();
 
-            $document.ready(function() {
+            $document.ready(function () {
                 // page is now ready, initialize the calendar...
 
                 $jq('#calendar').fullCalendar({
                     // put your options and callbacks here
 
                     height: 450,
-                    timeFormat:'h(:mm)t',
-                    defaultView : 'agendaWeek',
-                    businessHours : {
+                    timeFormat: 'h(:mm)t',
+                    defaultView: 'agendaWeek',
+                    businessHours: {
                         start: '09:00',
                         end: '21:00',
-                        dow: [ 1, 2, 3, 4, 5, 6 ]
+                        dow: [1, 2, 3, 4, 5, 6]
                     },
-                    //selectable : true,
-                    //selectHelper : true,
-                    editable : true,
+                    selectable: $scope.patientId === 'all' ? false : true,
+                    selectHelper: $scope.patientId === 'all' ? false : true,
+                    editable: true,
+                    selectOverlap: false,
+                    eventOverlap: false,
                     header: {
                         left: 'prev,next, today',
                         center: 'title',
                         right: 'month,agendaWeek,agendaDay'
                     },
-                    /*select : function(start, end, jsEvent, view ) {
+                    select: function (start, end, jsEvent, view) {
 
-                     var events = new Array();
-                     event = new Object();
-                     event.title = 'Hello';
-                     event.start = start;
-                     event.end = end;
-                     event.allDay = false;
-                     events.push(event);
-                     $jq('#calendar').fullCalendar('addEventSource', events);
-                     },*/
-                    eventResize: function(event, delta, revertFunc) {
+                        if (!confirm("Are you sure to set new appointment from " + start.format('LLLL') + " to " + end.format('LLLL'))) {
+                            $jq('#calendar').fullCalendar('unselect');
+                            return;
+                        }
+                        var events = new Array();
+                        event = new Object();
+                        event.title = 'RCT';
+                        event.start = start;
+                        event.end = end;
+                        event.allDay = false;
+                        events.push(event);
+                        $jq('#calendar').fullCalendar('addEventSource', events);
 
-                        if (!confirm("Are you sure to set new appointment from "+event.start.format('LLLL')+ " to "+event.end.format('LLLL'))) {
+                        var appointment = {
+                            "id": null,
+                            "patientId": $scope.patientId,
+                            "doctorId": null,
+                            "start": start,
+                            "end": end,
+                            "plannedTreatment": "RCT"
+                        }
+                        $scope.saveAppointment(appointment);
+
+                    },
+                    eventResize: function (event, delta, revertFunc) {
+
+                        if (!confirm("Are you sure to set appointment from " + event.start.format('LLLL') + " to " + event.end.format('LLLL'))) {
                             revertFunc();
                             return;
                         }
-                        var appointment = $scope.findById($scope.appointments,event.id);
+                        var appointment = $scope.findById($scope.appointments, event.id);
                         appointment['start'] = event.start.format();
                         appointment['end'] = event.end.format();
 
                         $scope.saveAppointment(appointment);
                     },
-                    eventDrop: function(event, delta, revertFunc) {
+                    eventDrop: function (event, delta, revertFunc) {
 
-                        if (!confirm("Are you sure to set new appointment from "+event.start.format('LLLL')+ " to "+event.end.format('LLLL'))) {
+                        if (!confirm("Are you sure to set new appointment from " + event.start.format('LLLL') + " to " + event.end.format('LLLL'))) {
                             revertFunc();
                             return;
                         }
-                        var appointment = $scope.findById($scope.appointments,event.id);
+                        var appointment = $scope.findById($scope.appointments, event.id);
                         appointment['start'] = event.start.format();
                         appointment['end'] = event.end.format();
 
                         $scope.saveAppointment(appointment);
                     },
-                    /*dayClick: function(date, view) {
-                     alert('Clicked on: ' + date.format());
-                     alert('Current view: ' + view.name);
-                     $jq(this).css('background-color', 'red');
-                     },*/
                     events: $scope.appointments
                 })
 
@@ -83,19 +105,19 @@ var AppointmentsController = function($scope, $document, $http, appointmentServi
     }
     $scope.fetchAppointments();
 
-    $scope.saveAppointment = function(appointment) {
+    $scope.saveAppointment = function (appointment) {
         var promise = appointmentService.save(appointment);
 
-        promise.then(function(response) {
+        promise.then(function (response) {
             alert('Appointment Set Successfully.');
-        }, function(error) {
+        }, function (error) {
             alert(error);
-        }, function(update) {
+        }, function (update) {
             alert(update);
         });
     };
 
-    $scope.findById = function(source, id) {
+    $scope.findById = function (source, id) {
         for (var i = 0; i < source.length; i++) {
             if (source[i].id === id) {
                 return source[i];

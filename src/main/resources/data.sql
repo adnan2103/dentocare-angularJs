@@ -5,7 +5,7 @@ insert into role(role) values('DOCTOR');
 insert into status(status) values('In-Progress');
 insert into status(status) values('Closed');
 
-insert into user_credentials(email,login_enabled,password,role_id) values ('adnan.electronics@gmail.com',true,'password',2);
+insert into user_credentials(email,login_enabled,password,role_id) values ('test.user@gmail.com',true,'password',2);
 update user_credentials set password = '$2a$10$FBAKClV1zBIOOC9XMXf3AO8RoGXYVYsfvUdoLxGkd/BnXEn4tqT3u';
 
 

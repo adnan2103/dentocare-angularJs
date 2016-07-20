@@ -47,6 +47,8 @@
 
 ########FUTURE ITEMS TO COME ###########################################################################
 
+Dento-care users management, billing cycle and billing maintenance.
+
 Let the doctor create their account/profile in dento care, let them use application free of cost for one month, start charging them going forward, manage payment and account expiry.
 (For now we can do in manually)
 
@@ -63,7 +65,9 @@ Letting Doctor to call/email patient from application.
 
 Got the excellent case, share it on FB or to other doctor, get the patient feedback and comments and rating.
 
-###############ALM and CICD Task ######################
+Doctor can generate daily/weekly/monthly/yearly invoices.
+
+###############ALM and CICD Task ############################################################################
 Implement Caching
 Set up liquibase
 Change App folder and packaging structure

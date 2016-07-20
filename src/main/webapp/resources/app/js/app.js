@@ -13,7 +13,7 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
     }).when('/patient/:id', {
         templateUrl : 'patient/layout',
         controller : PatientController
-    }).when('/appointments', {
+    }).when('/patients/:id/appointments', {
         templateUrl : 'appointments/layout',
         controller : AppointmentsController
     }).when('/patient/:id/treatment', {

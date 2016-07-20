@@ -36,6 +36,10 @@ public class AppointmentService {
     }
 
     public Appointment save(final Appointment appointment) {
+
+        if(appointment.getDoctorId() ==null) {
+            appointment.setDoctorId(authenticationService.getAuthenticatedUser().getId());
+        }
         AppointmentEntity appointmentEntity =
                 appointmentRepository.save(appointmentMapper.appointmentToAppointmentEntity(appointment));
         return appointmentMapper.appointmentEntityToAppointment(appointmentEntity);
