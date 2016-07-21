@@ -56,6 +56,27 @@ public class TreatmentController {
     }
 
     /**
+     * End point to get list of treatment ids for given patient id.
+     * @param id
+     * @return
+     */
+    @RequestMapping(
+            value = "patient/{id}/treatmentIds",
+            method = RequestMethod.GET,
+            produces = "application/json"
+    )
+    @ResponseBody
+    public ResponseEntity getTreatmentIdsForPatient(@PathVariable final Long id) {
+        try {
+            List<Long> treatmentIds = treatmentService.getTreatmentIdsForPatient(id);
+            return new ResponseEntity(treatmentIds, HttpStatus.OK);
+        } catch(Exception e) {
+            LOGGER.error("Error occurred while geting treatments for patient {} ",e.getMessage());
+            return new ResponseEntity("No treatments found", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
      * End point to create/update treatment for given patient id.
      * @param id
      * @param treatments
