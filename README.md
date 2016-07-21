@@ -45,13 +45,15 @@
 
 Dento-care users management, billing cycle and billing maintenance.
 
-Let the doctor create their account/profile in dento care, let them use application free of cost for one month, start charging them going forward, manage payment and account expiry.
-(For now we can do in manually)
+Invoice Management : Clinic User can generate daily/weekly/monthly/yearly invoices and print it.
+
+Let the Clinic Sign up and setup their account/profile in dento care.
+Buy the package and do setup from : Clinic settings tab.
 
 Patient Medical History on Treatment Page.
 Personalizations and Logged in Doctor welcome message and information, clinic information,
 
-Access management & ROLE based access
+Access management & ROLE based access : Application modules and packages.
 User ROLE and Access Maintenance
 
 Doctor can configure & print the patient report card. (What details he wants to print in patient card)
@@ -60,8 +62,6 @@ Generate monthly payment collection report.
 Letting Doctor to call/email patient from application.
 
 Got the excellent case, share it on FB or to other doctor, get the patient feedback and comments and rating.
-
-Doctor can generate daily/weekly/monthly/yearly invoices.
 
 ###############ALM and CICD Task ############################################################################
 Implement Caching

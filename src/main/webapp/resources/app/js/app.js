@@ -25,6 +25,9 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
     }).when('/treatment/:id/:type/images/:count', {
         templateUrl : 'treatment-images/layout',
         controller : TreatmentImageController
+    }).when('/settings', {
+        templateUrl : 'settings/layout',
+        controller : SettingsController
     }).otherwise('/patients');
 
     $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

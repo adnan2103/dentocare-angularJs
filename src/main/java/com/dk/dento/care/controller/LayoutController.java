@@ -34,6 +34,10 @@ public class LayoutController {
         return "treatment-images/layout";
     }
 
+    @RequestMapping("settings/layout")
+    public String getSettingsPartialPage() {
+        return "settings/layout";
+    }
     @RequestMapping("login/layout")
     public String getLoginPartialPage() {
         return "login/layout";
