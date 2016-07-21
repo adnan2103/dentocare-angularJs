@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by khana on 24/02/16.
  */
-public class Payment {
+public class Payment extends AbstractTracked {
 
     private Long id;
 
@@ -17,16 +17,6 @@ public class Payment {
     private Long paymentAmount;
 
     private String treatmentDone;
-
-    private Long createdBy;
-
-    public Long getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Long createdBy) {
-        this.createdBy = createdBy;
-    }
 
     public Long getId() {
         return id;

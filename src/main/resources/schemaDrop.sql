@@ -6,3 +6,4 @@ DROP TABLE IF EXISTS  doctor_patient_mapping;
 DROP TABLE IF EXISTS  user_detail;
 DROP TABLE IF EXISTS  user_credentials;
 DROP TABLE IF EXISTS  role;
+DROP TABLE IF EXISTS  appointment;

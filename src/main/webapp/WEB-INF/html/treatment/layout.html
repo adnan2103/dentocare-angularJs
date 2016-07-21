@@ -33,6 +33,9 @@
                 <span ng-if="!treatment.id" style="color: red;">
                     New Treatment
                 </span>
+                <span ng-if="treatment.id">
+                    Created On : {{treatment.creationDate}}
+                </span>
             </div>
 
             <div class="row">

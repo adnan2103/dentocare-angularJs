@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by khana on 24/02/16.
  */
-public class Treatment {
+public class Treatment extends AbstractTracked {
 
     private Long id;
 
@@ -16,16 +16,6 @@ public class Treatment {
     private String notes;
 
     private String status;
-
-    private Long createdBy;
-
-    public Long getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Long createdBy) {
-        this.createdBy = createdBy;
-    }
 
     private Long preImageCount;
 

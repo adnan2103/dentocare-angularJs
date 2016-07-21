@@ -71,7 +71,6 @@ public class TreatmentMapper {
                 treatmentEntity.setPostImageCount(0L);
             }
             treatmentEntity.setLastUpdatedBy(loggedInUser.getId());
-
             treatmentEntity.setUserDetailEntity(userDetailEntity);
             treatmentEntity.setStatusEntity(statusRepository.findByStatus(treatment.getStatus()));
 
