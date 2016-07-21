@@ -26,17 +26,28 @@
     </div>
 </div>
 <div class="container">
-        <div ng-repeat="treatment in treatments | orderBy : '-id'" class="portfolio-item boxed">
-
-            <div class="row" style="font-size: large; height: 30px;padding:5px; background-color: #00b3ee">
-                Treatment ID : {{treatment.id}}
-                <span ng-if="!treatment.id" style="color: red;">
-                    New Treatment
-                </span>
-                <span ng-if="treatment.id">
-                    Created On : {{treatment.creationDate}}
-                </span>
-            </div>
+    <div ng-repeat="treatment in treatments | orderBy : '-id'" class="portfolio-item boxed">
+        <div class="row" style="font-size: large; height: 30px;padding:5px; background-color: #00b3ee" ng-if="treatment.id">
+            <span><b> Treatment Status : </b>
+                <select ng-model="treatment.status">
+                    <option ng-repeat="status in status" value="{{status.status}}"
+                            ng-selected="treatment.status === status.status">{{status.status}}
+                    </option>
+                </select>
+            </span>
+            <span>
+                Created On : {{treatment.creationDate}}
+            </span>
+            <span>
+                Last Modified On : {{treatment.updatedDate}}
+            </span>
+        </div>
+        <div class="row" style="font-size: large; height: 30px;padding:5px; background-color: #00b3ee" ng-if="!treatment.id">
+            Treatment ID : {{treatment.id}}
+            <span ng-if="!treatment.id" style="color: red;">
+                New Treatment
+            </span>
+        </div>
 
             <div class="row">
                     <div class="col-md-9">
