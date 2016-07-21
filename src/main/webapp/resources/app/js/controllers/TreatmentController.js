@@ -16,7 +16,7 @@ var TreatmentController = function($scope, $http, $routeParams) {
             $scope.patient = patient;
         });
 
-        $http.get('patient/' + $routeParams.id + '/treatment').success(function(treatments){
+        $http.get('patient/' + $routeParams.id + '/treatments').success(function(treatments){
             $scope.treatments = treatments;
             $scope.disableAddTreatment = false;
 
@@ -82,7 +82,7 @@ var TreatmentController = function($scope, $http, $routeParams) {
     $scope.saveTreatment = function(treatments) {
         $scope.resetError();
 
-        $http.put('patient/' + $routeParams.id + '/treatment', treatments).success(function(treatments) {
+        $http.put('patient/' + $routeParams.id + '/treatments', treatments).success(function(treatments) {
             $scope.treatments = treatments;
             angular.forEach($scope.treatments, function(treatments) {
                 $scope.updateTotalCost(treatments.id);

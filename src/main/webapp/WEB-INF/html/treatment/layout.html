@@ -36,10 +36,10 @@
                 </select>
             </span>
             <span>
-                Created On : {{treatment.creationDate}}
+                Started On : {{treatment.creationDate}}
             </span>
             <span>
-                Last Modified On : {{treatment.updatedDate}}
+                Last Saved On : {{treatment.updatedDate}}
             </span>
         </div>
         <div class="row" style="font-size: large; height: 30px;padding:5px; background-color: #00b3ee" ng-if="!treatment.id">
@@ -61,14 +61,6 @@
                                     <a href="#/treatment/{{treatment.id}}/post/images/{{treatment.postImageCount}}">
                                         <span class="label">POST TREATMENT IMAGES</span>
                                     </a>
-                                </th>
-                                <th>
-                                    <b> Status : </b>
-                                    <select ng-model="treatment.status">
-                                        <option ng-repeat="status in status" value="{{status.status}}"
-                                                ng-selected="treatment.status === status.status">{{status.status}}
-                                        </option>
-                                    </select>
                                 </th>
                             </tr>
                             </thead>

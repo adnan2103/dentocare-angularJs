@@ -39,7 +39,7 @@ public class TreatmentController {
      * @return
      */
     @RequestMapping(
-            value = "patient/{id}/treatment",
+            value = "patient/{id}/treatments",
             method = RequestMethod.GET,
             produces = "application/json"
     )
@@ -83,7 +83,7 @@ public class TreatmentController {
      * @return
      */
     @RequestMapping(
-            value = "patient/{id}/treatment",
+            value = "patient/{id}/treatments",
             method = RequestMethod.PUT,
             produces = "application/json"
     )
