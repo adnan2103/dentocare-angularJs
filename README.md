@@ -7,6 +7,8 @@
 
 ##Letting enter Age or DOB while creating new patient.
 
+##Adnan : Model for appointment treatment, Accordian for treatment page, save individual treatment, date format.
+
 ##Login Screen and All responsive UIs
 
 ##Back buttons : (Use "angular-ui-router" instead route provider.)
