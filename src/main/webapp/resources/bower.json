@@ -10,8 +10,7 @@
     "angular-srph-age-filter": "~0.0.1",
     "ngDatepicker": "*",
     "angular-file-upload": "~2.3.4",
-    "fullcalendar": "~2.8.0",
-    "angular-touch": "~1.5.0"
+    "fullcalendar": "~2.8.0"
   },
   "devDependencies": {},
   "resolutions": {
