@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS  payment;
+DROP TABLE IF EXISTS  patient_payment;
 DROP TABLE IF EXISTS  patient_oral_examination;
 DROP TABLE IF EXISTS  treatment;
 DROP TABLE IF EXISTS  status;
@@ -7,3 +8,4 @@ DROP TABLE IF EXISTS  user_detail;
 DROP TABLE IF EXISTS  user_credentials;
 DROP TABLE IF EXISTS  role;
 DROP TABLE IF EXISTS  appointment;
+DROP TABLE IF EXISTS  modules;

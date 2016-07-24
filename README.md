@@ -2,6 +2,7 @@
 #############################################Dento care application#################################
 
 ################################Major issues before go live.########################################
+##Fix bug in new appointment
 
 ##Add more fields for mobile numbers.
 
@@ -45,25 +46,42 @@
 
 ########FUTURE ITEMS TO COME ###########################################################################
 
-Dento-care users management, billing cycle and billing maintenance.
-
-Invoice Management : Clinic User can generate daily/weekly/monthly/yearly invoices and print it.
-
-Let the Clinic Sign up and setup their account/profile in dento care.
-Buy the package and do setup from : Clinic settings tab.
-
-Patient Medical History on Treatment Page.
-Personalizations and Logged in Doctor welcome message and information, clinic information,
-
 Access management & ROLE based access : Application modules and packages.
 User ROLE and Access Maintenance
+ROLES IN DENTOCARE (4 Currently)
+    DENTOCAREADMIN
+    CLINICADMIN
+    CLINICUSER
+    PATIENT
+MODULES in Dento-care (7 currently)
+    PMM : Patient Management Module
+    TMM : Treatment Management Module
+    TIMM : Treatment Image Management Module
+    AMMALERTS : Appointment management Module with Alerts
+    AMMNOALERTS : Appointment management Module without Alerts
+    IMM : Invoces management Module.
+    RMM : Report management Module.
 
-Doctor can configure & print the patient report card. (What details he wants to print in patient card)
-Generate monthly payment collection report.
+DentocareAdmin :
+    As a dento care admin,
+    I can setup Clinic Account as ClinicAdmin
+    I can see list of such clinic's account created with basic information.
+    In detail page I can see the packages what they have purchased and when they are expiring.
+    I can add more packages or extend expiry by adding payment for a clinic.
+    I can create new clinic users ClinicUser and give access to purchased modules.
+    By default Clinic User will have access to all purchased modules.
+    ClinicAdmin can see all the links in application but can access to only purchased modules, for non purchased modules
+    or expired modules he will get a message to purchase it.
+    ClinicUser will see or have access to modules for which access is given and not expired.
 
-Letting Doctor to call/email patient from application.
 
-Got the excellent case, share it on FB or to other doctor, get the patient feedback and comments and rating.
+New Functionality :
+As a clinic user I can generate daily/weekly/monthly/yearly invoices and print it.
+As a clinic user I can configure & print the patient report card. (What details he wants to print in patient card)
+As a clinic user I can add Patient Medical History on Treatment Page.
+Personalizations for Logged in User welcome message with Name,
+As a clinic user I want to call/email patient directly from dento care application.
+As a clinic user I want to share an excellent case on FB ,or to get the patient feedback and comments and rating.
 
 ###############ALM and CICD Task ############################################################################
 Implement Caching

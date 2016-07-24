@@ -144,7 +144,7 @@ ALTER TABLE patient_oral_examination
 
 -- Table: payment
 
-CREATE TABLE IF NOT EXISTS payment
+CREATE TABLE IF NOT EXISTS patient_payment
 (
   payment_id SERIAL NOT NULL,
   treatment_id integer NOT NULL,
@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS payment
   created_by integer NOT NULL,
   last_updated_date timestamp,
   last_modified_by integer NOT NULL,
-  CONSTRAINT payment_pkey PRIMARY KEY (payment_id),
+  CONSTRAINT patient_payment_pkey PRIMARY KEY (payment_id),
   CONSTRAINT payment_treatment_fkey FOREIGN KEY (treatment_id)
       REFERENCES treatment (treatment_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
@@ -163,7 +163,7 @@ CREATE TABLE IF NOT EXISTS payment
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE payment
+ALTER TABLE patient_payment
   OWNER TO dentocaa;
 
 
@@ -183,4 +183,23 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE appointment
+  OWNER TO dentocaa;
+
+-- Table: modules
+
+CREATE TABLE IF NOT EXISTS modules
+(
+  module_id SERIAL NOT NULL,
+  module_code character varying(15),
+  module_description character varying(100),
+  monthly_cost integer NOT NULL,
+  quaterly_cost integer NOT NULL,
+  half_yearly_cost integer NOT NULL,
+  yearly_cost integer NOT NULL,
+  CONSTRAINT modules_pkey PRIMARY KEY (module_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE modules
   OWNER TO dentocaa;

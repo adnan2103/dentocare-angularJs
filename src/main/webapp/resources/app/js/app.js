@@ -2,7 +2,7 @@
 
 var DentoCareApp = {};
 
-var App = angular.module('DentoCareApp', ['angularFileUpload','srph.age-filter','jkuri.datepicker', 'ngRoute','auth','navigation','DentoCareApp.filters', 'DentoCareApp.services', 'DentoCareApp.directives', 'DentoCareApp.factory', 'ngResource']);
+var App = angular.module('DentoCareApp', ['angularFileUpload','srph.age-filter','jkuri.datepicker', 'ngRoute','auth','navigation','DentoCareApp.filters', 'DentoCareApp.services', 'DentoCareApp.directives', 'DentoCareApp.factory', 'ngResource', 'ui.calendar']);
 
 // Declare app level module which depends on filters, and services
 App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpProvider) {
@@ -25,9 +25,9 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
     }).when('/treatment/:id/:type/images/:count', {
         templateUrl : 'treatment-images/layout',
         controller : TreatmentImageController
-    }).when('/settings', {
-        templateUrl : 'settings/layout',
-        controller : SettingsController
+    }).when('/administration', {
+        templateUrl : 'administration/layout',
+        controller : AdministrationController
     }).otherwise('/patients');
 
     $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

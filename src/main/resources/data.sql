@@ -1,6 +1,28 @@
+insert into modules(module_id,module_code,module_description,monthly_cost,quaterly_cost,half_yearly_cost,yearly_cost)
+values(1,'PMM','Patient Managment Module',200,500,1000,1800);
 
+insert into modules(module_id,module_code,module_description,monthly_cost,quaterly_cost,half_yearly_cost,yearly_cost)
+values(2,'TMM','Treatment Management Module',200,500,1000,1800);
+
+insert into modules(module_id,module_code,module_description,monthly_cost,quaterly_cost,half_yearly_cost,yearly_cost)
+values(3,'TIMM','Treatment Image Management Module',200,500,1000,1800);
+
+insert into modules(module_id,module_code,module_description,monthly_cost,quaterly_cost,half_yearly_cost,yearly_cost)
+values(4,'AMMALERTS','Appointment management Module with Alerts',200,500,1000,1800);
+
+insert into modules(module_id,module_code,module_description,monthly_cost,quaterly_cost,half_yearly_cost,yearly_cost)
+values(5,'AMMNOALERTS','Appointment management Module without Alerts',200,500,1000,1800);
+
+insert into modules(module_id,module_code,module_description,monthly_cost,quaterly_cost,half_yearly_cost,yearly_cost)
+values(6,'IMM','Invoces management Module',200,500,1000,1800);
+
+insert into modules(module_id,module_code,module_description,monthly_cost,quaterly_cost,half_yearly_cost,yearly_cost)
+values(7,'RMM','Report management Module',200,500,1000,1800);
+
+insert into role(role) values('DENTOCAREADMIN');
+insert into role(role) values('CLINICADMIN');
+insert into role(role) values('CLINICUSER');
 insert into role(role) values('PATIENT');
-insert into role(role) values('DOCTOR');
 
 insert into status(status) values('In-Progress');
 insert into status(status) values('Closed');

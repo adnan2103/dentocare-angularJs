@@ -10,7 +10,8 @@
     "angular-srph-age-filter": "~0.0.1",
     "ngDatepicker": "*",
     "angular-file-upload": "~2.3.4",
-    "fullcalendar": "~2.8.0"
+    "angular-bootstrap": "~2.0.0",
+    "angular-ui-calendar": "~1.0.1"
   },
   "devDependencies": {},
   "resolutions": {

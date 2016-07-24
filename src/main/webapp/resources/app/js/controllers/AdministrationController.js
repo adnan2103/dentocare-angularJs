@@ -5,6 +5,6 @@
  * @Constructor
  */
 
-var SettingsController = function() {
+var AdministrationController = function() {
 
 };
