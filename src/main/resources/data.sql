@@ -19,9 +19,9 @@ values(6,'IMM','Invoces management Module',200,500,1000,1800);
 insert into modules(module_id,module_code,module_description,monthly_cost,quaterly_cost,half_yearly_cost,yearly_cost)
 values(7,'RMM','Report management Module',200,500,1000,1800);
 
-insert into role(role) values('DENTOCAREADMIN');
-insert into role(role) values('CLINICADMIN');
-insert into role(role) values('CLINICUSER');
+insert into role(role) values('DENTOCARE_ADMIN');
+insert into role(role) values('CLINIC_ADMIN');
+insert into role(role) values('CLINIC_USER');
 insert into role(role) values('PATIENT');
 
 insert into status(status) values('In-Progress');
