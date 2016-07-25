@@ -28,8 +28,11 @@
                 <div class="col-sm-2">
                     <strong>{{patient.gender | uppercase}}</strong> ({{patient.dateOfBirth | age}} Years)
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <span class="glyphicon glyphicon-phone-alt"></span> +91-{{patient.contactList[0].phoneNumber}}
+                </div>
+                <div class="col-sm-3">
+                    <span class="glyphicon glyphicon-envelope"></span> {{patient.contactList[0].email}}
                 </div>
                 <div class="col-sm-2 btn-group">
                     <a href="#/patient/{{patient.id}}/treatment" class="btn btn-md btn-primary">

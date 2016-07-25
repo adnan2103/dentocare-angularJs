@@ -6,12 +6,12 @@
 ## Bug in Patient Update.
 ##Add more fields for mobile numbers.
 ##Letting enter Age or DOB while creating new patient.
-
+## Have single universal search button(name,mobile no, email id), have add patient button adjacent to it, remove it from top bar.
 
 ##Adnan : Model for appointment treatment, Accordian for treatment page, save individual treatment, date format for treat start and last modified date.
 
 
-##All Treatment Page
+##All Treatment Page [Add "Treatments" top bar link]
 [We can fetch all treatments of logged in doctor with following details ]
 Filter/Sorting can be applied to any column.
 Treatment start, last modified, status(with Treatment Detail page link),Total Treatment Cost, Paid Amount, Pending Amount, Patient Name(Patient Detail page Link), Mobile no.
@@ -75,9 +75,7 @@ Setup unit, integration, functional tests.
 Write frontend tests.
 Automate Build and Deployment.
 
-########FUTURE ITEMS TO COME ###########################################################################################
-
-New Functionality/Idea Board :
+########FUTURE ITEMS TO COME : Idea Board  ###########################################################################################
 
 Billing[IMM] : As a clinic user I can generate daily/weekly/monthly/yearly invoices and print it.
 Print[PMM] : As a clinic user I can configure & print the patient report card. (What details he wants to print in patient card)
