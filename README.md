@@ -9,7 +9,12 @@
 
 ##Letting enter Age or DOB while creating new patient.
 
-##Adnan : Model for appointment treatment, Accordian for treatment page, save individual treatment, date format.
+##Adnan : Model for appointment treatment, Accordian for treatment page, save individual treatment, date format for treat start and last modified date.
+
+##All Treatment Page
+[We can fetch all treatments of logged in doctor with following details ]
+Filter/Sorting can be applied to any column.
+Treatment start, last modified, status(with Treatment Detail page link),Total Treatment Cost, Paid Amount, Pending Amount, Patient Name(Patient Detail page Link), Mobile no.
 
 ##Login Screen and All responsive UIs
 
@@ -19,15 +24,9 @@
 
 ########LIVE$$$$$$$$$$$$$$$$S
 
-##Add most recent treatment status on home page and add a filter to filter records based on treatment status.
-(On going, Closed, Not started, All)
-
 ## SMS/Email reminders to doctor and patient.
 
 ###################### Low priority ######################################################################
-
-## Pagination for list of patients.
-## Sort or show patients based on Selected Alphabet to have quick search.
 
 ##Delete Functionality : Payment, Oral examination, treatment.
 
@@ -39,13 +38,10 @@
 
 ##Enable XSRF token functionality which is disabled due to treatment imagages upload function.
 
-## Convert Patient as directive
 ##Patient Photo upload immediately after creating patient.
 ##Auto refresh pre and post treatment uploaded images.
 
-## Saving and Showing Patient E-mail Id.
-
-########FUTURE ITEMS TO COME ###########################################################################
+########FUTURE ITEMS TO COME ###########################################################################################
 
 Access management & ROLE based access : Application modules and packages.
 User ROLE and Access Maintenance
@@ -71,19 +67,23 @@ DentocareAdmin :
     In detail page I can see the packages what they have purchased and when they are expiring.
     I can add more packages or extend expiry by adding payment for a clinic.
     I can create new clinic users ClinicUser and give access to purchased modules.
-    By default Clinic User will have access to all purchased modules.
     ClinicAdmin can see all the links in application but can access to only purchased modules, for non purchased modules
     or expired modules he will get a message to purchase it.
     ClinicUser will see or have access to modules for which access is given and not expired.
 
 
-New Functionality :
+
+New Functionality/Idea Board :
+
 Billing[IMM] : As a clinic user I can generate daily/weekly/monthly/yearly invoices and print it.
 Print[PMM] : As a clinic user I can configure & print the patient report card. (What details he wants to print in patient card)
 As a clinic user I can add Patient Medical History on Treatment Page.
 Personalizations for Logged in User welcome message with Name,
 As a clinic user I want to call/email patient directly from dento care application.
 As a clinic user I want to share an excellent case on FB ,or to get the patient feedback and comments and rating.
+## Pagination for list of patients.
+## Sort or show patients based on Selected Alphabet to have quick search.
+## Convert Patient as directive
 
 ###############ALM and CICD Task ############################################################################
 Implement Caching
@@ -95,6 +95,7 @@ Write frontend tests.
 Automate Build and Deployment.
 
 ################################### DONE #####################################################################
+##DONE## Saving and Showing Patient E-mail Id.
 ##DONE## Appointment Diary, Day/Week/Month schedule.
 ##DONE## Add functionality to add more treatment.
 ##DONE## Responsive alignment of treatment’s tables.
