@@ -45,7 +45,7 @@ public class PatientRepositoryUserDetailsService implements UserDetailsService {
         }
 
         public String getUsername() {
-            return getEmail();
+            return getLoginId();
         }
 
         public boolean isAccountNonExpired() {

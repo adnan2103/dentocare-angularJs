@@ -22,7 +22,7 @@ public class AuthenticationService {
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails loggedInUser = (UserDetails) authentication.getPrincipal();
 
-        return userCredentialsRepository.findByEmail(loggedInUser.getUsername());
+        return userCredentialsRepository.findByLoginId(loggedInUser.getUsername());
     }
 
 }

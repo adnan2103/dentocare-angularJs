@@ -79,7 +79,7 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
         // Using the forEach helper method to loop through the array
         angular.forEach(arr, function(patients){
 
-            if(patients.phoneNumber.toLowerCase().indexOf(searchNumber) !== -1){
+            if(patients.contactList[0].phoneNumber.toLowerCase().indexOf(searchNumber) !== -1){
                 result.push(patients);
             }
 

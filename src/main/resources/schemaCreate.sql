@@ -14,7 +14,7 @@ ALTER TABLE role
 CREATE TABLE IF NOT EXISTS user_credentials
 (
   user_id SERIAL NOT NULL,
-  email character varying(30),
+  login_id character varying(30),
   login_enabled boolean,
   password character varying(100),
   role_id INTEGER NOT NULL ,
@@ -38,13 +38,6 @@ CREATE TABLE IF NOT EXISTS user_detail
   name character varying(100) NOT NULL,
   gender character varying(6) NOT NULL,
   date_of_birth date,
-  phone_number character varying(10) NOT NULL,
-  address_line1 character varying(30),
-  address_line2 character varying(30),
-  city character varying(20),
-  state character varying(30),
-  country character varying(20),
-  pincode character varying(8),
   CONSTRAINT user_detail_pkey PRIMARY KEY (user_id),
   CONSTRAINT user_detail_user_fkey FOREIGN KEY (user_id)
       REFERENCES user_credentials (user_id) MATCH SIMPLE
@@ -56,6 +49,30 @@ WITH (
 ALTER TABLE user_detail
   OWNER TO dentocaa;
 
+-- Table: contact_detail
+
+CREATE TABLE IF NOT EXISTS contact_detail
+(
+  contact_id SERIAL NOT NULL,
+  user_id integer NOT NULL,
+  phone_number character varying(10) NOT NULL,
+  email character varying(50),
+  address_line1 character varying(30),
+  address_line2 character varying(30),
+  city character varying(20),
+  state character varying(30),
+  country character varying(20),
+  pincode character varying(8),
+  CONSTRAINT contact_detail_pkey PRIMARY KEY (contact_id),
+  CONSTRAINT contact_detail_user_fkey FOREIGN KEY (user_id)
+      REFERENCES user_credentials (user_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE contact_detail
+  OWNER TO dentocaa;
 
 -- Table: doctor_patient_mapping
 

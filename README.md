@@ -2,7 +2,8 @@
 #############################################Dento care application#################################
 
 ################################Major issues before go live.########################################
-##Fix bug in new appointment
+##Fix bug in new appointment.
+## Bug in Patient Update.
 
 ##Add more fields for mobile numbers.
 
@@ -59,8 +60,9 @@ MODULES in Dento-care (7 currently)
     TIMM : Treatment Image Management Module
     AMMALERTS : Appointment management Module with Alerts
     AMMNOALERTS : Appointment management Module without Alerts
+
     IMM : Invoces management Module.
-    RMM : Report management Module.
+    PRMM : Print management Module.
 
 DentocareAdmin :
     As a dento care admin,
@@ -76,8 +78,8 @@ DentocareAdmin :
 
 
 New Functionality :
-As a clinic user I can generate daily/weekly/monthly/yearly invoices and print it.
-As a clinic user I can configure & print the patient report card. (What details he wants to print in patient card)
+Billing[IMM] : As a clinic user I can generate daily/weekly/monthly/yearly invoices and print it.
+Print[PMM] : As a clinic user I can configure & print the patient report card. (What details he wants to print in patient card)
 As a clinic user I can add Patient Medical History on Treatment Page.
 Personalizations for Logged in User welcome message with Name,
 As a clinic user I want to call/email patient directly from dento care application.
