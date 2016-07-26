@@ -46,15 +46,19 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
 
         angular.forEach(arr, function(patients){
 
-            if(patients.name.toLowerCase().indexOf(searchKey) !== -1){
+            if(angular.isString(patients.name) && patients.name.toLowerCase().indexOf(searchKey) !== -1){
                 result.push(patients);
             }
 
-            if(patients.contactList[0].phoneNumber.toLowerCase().indexOf(searchKey) !== -1){
+            if(angular.isString(patients.gender) && patients.gender.toLowerCase() === searchKey){
                 result.push(patients);
             }
 
-            if(patients.contactList[0].email.toLowerCase().indexOf(searchKey) !== -1){
+            if(angular.isString(patients.contactList[0].phoneNumber) && patients.contactList[0].phoneNumber.toLowerCase().indexOf(searchKey) !== -1){
+                result.push(patients);
+            }
+
+            if(angular.isString(patients.contactList[0].email) && patients.contactList[0].email.toLowerCase().indexOf(searchKey) !== -1){
                 result.push(patients);
             }
         });
