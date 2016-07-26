@@ -5,7 +5,9 @@ package com.dk.dento.care.model;
  */
 public class Contact {
 
-    private String phoneNumber;
+    private String primaryPhoneNumber;
+
+    private String secondaryPhoneNumber;
 
     private String email;
 
@@ -21,12 +23,20 @@ public class Contact {
 
     private String pincode;
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPrimaryPhoneNumber() {
+        return primaryPhoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPrimaryPhoneNumber(String primaryPhoneNumber) {
+        this.primaryPhoneNumber = primaryPhoneNumber;
+    }
+
+    public String getSecondaryPhoneNumber() {
+        return secondaryPhoneNumber;
+    }
+
+    public void setSecondaryPhoneNumber(String secondaryPhoneNumber) {
+        this.secondaryPhoneNumber = secondaryPhoneNumber;
     }
 
     public String getEmail() {

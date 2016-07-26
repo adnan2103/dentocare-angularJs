@@ -55,7 +55,8 @@ CREATE TABLE IF NOT EXISTS contact_detail
 (
   contact_id SERIAL NOT NULL,
   user_id integer NOT NULL,
-  phone_number character varying(10) NOT NULL,
+  primary_phone_number character varying(10) NOT NULL DEFAULT 0,
+  secondary_phone_number character varying(10) DEFAULT 0,
   email character varying(50),
   address_line1 character varying(30),
   address_line2 character varying(30),

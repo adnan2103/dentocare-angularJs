@@ -8,7 +8,12 @@
             <strong>{{patient.gender | uppercase}}</strong> ({{patient.dateOfBirth | age}} Years)
         </div>
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-phone-alt"></span> +91-{{patient.contactList[0].phoneNumber}}
+            <div>
+                <i class="fa fa-phone fa-lg" aria-hidden="true"></i> +91-{{patient.contactList[0].primaryPhoneNumber}}
+            </div>
+            <div>
+                <i class="fa fa-phone fa-lg" aria-hidden="true"></i> +91-{{patient.contactList[0].secondaryPhoneNumber}}
+            </div>
         </div>
     </div>
     <div class="row">

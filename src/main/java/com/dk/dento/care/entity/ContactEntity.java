@@ -25,8 +25,11 @@ public class ContactEntity {
     @JoinColumn(name = "user_id")
     private UserDetailEntity userDetailEntity;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
+    @Column(name = "primary_phone_number")
+    private String primaryPhoneNumber;
+
+    @Column(name = "secondary_phone_number")
+    private String secondaryPhoneNumber;
 
     private String email;
 
@@ -37,6 +40,7 @@ public class ContactEntity {
     private String addressLine2;
 
     private String city;
+
 
     private String state;
 
@@ -52,13 +56,20 @@ public class ContactEntity {
         this.id = id;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPrimaryPhoneNumber() {
+        return primaryPhoneNumber;
     }
 
+    public void setPrimaryPhoneNumber(String primaryPhoneNumber) {
+        this.primaryPhoneNumber = primaryPhoneNumber;
+    }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public String getSecondaryPhoneNumber() {
+        return secondaryPhoneNumber;
+    }
+
+    public void setSecondaryPhoneNumber(String secondaryPhoneNumber) {
+        this.secondaryPhoneNumber = secondaryPhoneNumber;
     }
 
     public String getEmail() {

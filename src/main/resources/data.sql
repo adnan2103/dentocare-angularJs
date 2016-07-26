@@ -26,4 +26,4 @@ update user_credentials set password = '$2a$10$FBAKClV1zBIOOC9XMXf3AO8RoGXYVYsfv
 
 insert into user_detail(user_id,name,gender,date_of_birth) values(1,'Dento Care Admin','Male',now());
 
-insert into contact_detail(contact_id,user_id,phone_number,email,address_line1,address_line2,city,state,country,pincode) values(1,1,'123444444','test@gmail.com','Address line1','Address line2','Hyderabad','TS','India','800086');
+insert into contact_detail(contact_id,user_id,primary_phone_number,secondary_phone_number,email,address_line1,address_line2,city,state,country,pincode) values(1,1,'123444444','9876543201','test@gmail.com','Address line1','Address line2','Hyderabad','TS','India','800086');

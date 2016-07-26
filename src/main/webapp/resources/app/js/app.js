@@ -57,7 +57,11 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
                 result.push(patients);
             }
 
-            if(angular.isString(patients.contactList[0].phoneNumber) && patients.contactList[0].phoneNumber.toLowerCase().indexOf(searchKey) !== -1){
+            if(angular.isString(patients.contactList[0].primaryPhoneNumber) && patients.contactList[0].primaryPhoneNumber.toLowerCase().indexOf(searchKey) !== -1){
+                result.push(patients);
+            }
+
+            if(angular.isString(patients.contactList[0].secondaryPhoneNumber) && patients.contactList[0].secondaryPhoneNumber.toLowerCase().indexOf(searchKey) !== -1){
                 result.push(patients);
             }
 
