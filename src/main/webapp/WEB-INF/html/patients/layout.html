@@ -5,12 +5,7 @@
         </li>
         <li>
             <div class="search">
-                <input type="text" ng-model="searchName" placeholder="Enter patient name"/>
-            </div>
-        </li>
-        <li>
-            <div class="search">
-                <input type="text" ng-model="searchNumber" placeholder="Enter patient mobile number"/>
+                <input type="text" ng-model="searchField" placeholder="Name/Email/Mobile"/>
             </div>
         </li>
     </ul>
@@ -19,7 +14,7 @@
 <!-- Page Content -->
 <div class="container">
     <section style="margin: 50px">
-        <div ng-repeat="patient in patients | searchForName:searchName | searchForNumber:searchNumber">
+        <div ng-repeat="patient in patients | searchOnKey:searchField">
             <div class="row">
                 <div class="col-sm-3" style="font-size: large; height: 30px;padding:5px;">
                     <a href="#/patient/{{patient.id}}">
