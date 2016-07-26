@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS  patient_payment;
+DROP TABLE IF EXISTS  payment;
 DROP TABLE IF EXISTS  patient_oral_examination;
 DROP TABLE IF EXISTS  treatment;
 DROP TABLE IF EXISTS  status;
