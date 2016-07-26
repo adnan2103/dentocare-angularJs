@@ -39,6 +39,11 @@ public class LayoutController {
         return "administration/layout";
     }
 
+    @RequestMapping("treatments/layout")
+    public String getAllTreatmentsPartialPage() {
+        return "treatments/layout";
+    }
+
     @RequestMapping("login/layout")
     public String getLoginPartialPage() {
         return "login/layout";

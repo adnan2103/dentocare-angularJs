@@ -6,7 +6,6 @@
 ## Bug in Patient Update.
 ##Add more fields for mobile numbers.
 ##Letting enter Age or DOB while creating new patient.
-## Have single universal search button(name,mobile no, email id), have add patient button adjacent to it, remove it from top bar.
 
 ##Adnan : Model for appointment treatment, Accordian for treatment page, save individual treatment, date format for treat start and last modified date.
 
@@ -21,8 +20,6 @@ Treatment start, last modified, status(with Treatment Detail page link),Total Tr
 ##Back buttons : (Use "angular-ui-router" instead route provider.)
 
 ##Optimize Web server calls.
-
-########LIVE$$$$$$$$$$$$$$$$S
 
 ## SMS/Email reminders to doctor and patient.
 
@@ -50,6 +47,7 @@ DentocareAdmin :
     ClinicAdmin can see all the links in application but can access to only purchased modules, for non purchased modules
     or expired modules he will get a message to purchase it.
     ClinicUser will see or have access to modules for which access is given and not expired.
+########LIVE$$$$$$$$$$$$$$$$S
 
 ###################### Low priority Issue ######################################################################
 

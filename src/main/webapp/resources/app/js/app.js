@@ -25,6 +25,9 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
     }).when('/treatment/:id/:type/images/:count', {
         templateUrl : 'treatment-images/layout',
         controller : TreatmentImageController
+    }).when('/treatments', {
+        templateUrl : 'treatments/layout',
+        controller : TreatmentsController
     }).when('/administration', {
         templateUrl : 'administration/layout',
         controller : AdministrationController
