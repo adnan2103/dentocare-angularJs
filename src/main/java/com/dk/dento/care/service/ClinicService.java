@@ -1,5 +1,6 @@
 package com.dk.dento.care.service;
 
+import com.dk.dento.care.entity.ModuleEntity;
 import com.dk.dento.care.entity.clinic.ModulesMappingEntity;
 import com.dk.dento.care.entity.clinic.UserModuleAccessEntity;
 import com.dk.dento.care.repository.ModuleRepository;
@@ -39,33 +40,38 @@ public class ClinicService {
 
     public Map<String, Boolean> getUserModules(Long userId, String role) {
 
+        //Merge the access from Step 1 & 2.
+        Map<String, Boolean> userModules = new HashMap<String, Boolean>();
+
+        if(DENTOCARE_ADMIN.equalsIgnoreCase(role)) {
+
+            Iterable<ModuleEntity> moduleEntities = moduleRepository.findAll();
+            for(ModuleEntity moduleEntity : moduleEntities) {
+                userModules.put(moduleEntity.getCode(), false);
+            }
+            return userModules;
+        }
         //Get the clinic id of logged in user.
         Long clinicId = userMappingRepository.findByUserId(userId).getClinicId();
         System.out.println("clinicId : "+clinicId);
         //Step 1 : Get the clinic's purchased modules.
         List<ModulesMappingEntity> modulesMappingEntityList = modulesMappingRepository.findByClinicId(clinicId);
-        Map<Long, Boolean> clinicModules = new HashMap<Long, Boolean>();
+        Map<String, Boolean> clinicModules = new HashMap<String, Boolean>();
         for(ModulesMappingEntity modulesMappingEntity : modulesMappingEntityList) {
-            Long moduleId = modulesMappingEntity.getModuleId();
-            System.out.println("clinicId : moduleId "+clinicId +" : " + moduleId);
             Boolean accessStatus = modulesMappingEntity.getExpiryDate().compareTo(new Date())>0 ? true : false;
-            System.out.println("moduleId : accessStatus "+moduleId+" : "+accessStatus);
-            clinicModules.put(moduleId, accessStatus);
+            clinicModules.put(moduleRepository.findOne(modulesMappingEntity.getModuleId()).getCode(), accessStatus);
+        }
+
+        if(CLINIC_ADMIN.equalsIgnoreCase(role)) {
+            return clinicModules;
         }
 
         //Step 2 : Get the user modules
         List<UserModuleAccessEntity> userModuleAccessEntityList = userModuleAccessRepository.findByUserId(userId);
-
-
-        //Merge the access from Step 1 & 2.
-        Map<String, Boolean> userModules = new HashMap<String, Boolean>();
         for(UserModuleAccessEntity userModuleAccessEntity : userModuleAccessEntityList) {
-
-            Long moduleId = userModuleAccessEntity.getModuleId();
-            System.out.println("User Module id : "+moduleId);
-            if(clinicModules.containsKey(moduleId) && clinicModules.get(moduleId)) {
-                System.out.println("User Module id is true for : "+moduleRepository.findOne(moduleId).getCode());
-                userModules.put(moduleRepository.findOne(moduleId).getCode(), true);
+            String moduleCode = moduleRepository.findOne(userModuleAccessEntity.getModuleId()).getCode();
+            if(clinicModules.containsKey(moduleCode) && clinicModules.get(moduleCode)) {
+                userModules.put(moduleCode, true);
             }
         }
 

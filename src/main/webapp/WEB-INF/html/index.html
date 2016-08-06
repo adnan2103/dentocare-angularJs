@@ -37,7 +37,9 @@
             <a href="" class=" navbar-text navbar-right" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span></a>
             <p class="navbar-text navbar-right">Welcome <strong>{{user.username}}</strong></p>
             <ul class="nav navbar-nav">
-                <li><a href="#/patients"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li ng-show="hasAccess('PMM')">
+                    <a href="#/patients"><span class="glyphicon glyphicon-home"></span></a>
+                </li>
                 <li ng-show="hasAccess('TMM')"><a href="#/treatments">
                     <i class="fa fa-user-md fa-lg" aria-hidden="true"></i> Treatments</a>
                 </li>

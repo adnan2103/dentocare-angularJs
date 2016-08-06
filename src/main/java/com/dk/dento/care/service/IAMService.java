@@ -45,6 +45,7 @@ public class IAMService {
 
         String userName = userDetailService.getPatientDetails(userId).getName();
         String role = roleRepository.findOne(userId).getRole();
+
         Map<String, Boolean> modules = clinicService.getUserModules(userId, role);
 
 

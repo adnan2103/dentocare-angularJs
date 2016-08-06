@@ -55,6 +55,7 @@ angular.module('auth', []).factory(
 					auth.authenticated = false;
 					delete $rootScope.user;
 					delete $http.defaults.headers.common[appConfiguration.basicAuthHeaderName];
+
 					$http.get('/login/layout', {}).success(function() {
 						console.log("Logout succeeded");
 					}).error(function(data) {
