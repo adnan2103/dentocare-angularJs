@@ -2,7 +2,6 @@ package com.dk.dento.care.controller;
 
 import com.dk.dento.care.model.ImagePath;
 import com.dk.dento.care.model.Treatment;
-import com.dk.dento.care.service.AuthenticationService;
 import com.dk.dento.care.service.TreatmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,9 +27,6 @@ public class TreatmentController {
     private static final Logger LOGGER = LoggerFactory.getLogger(TreatmentController.class);
 
     @Autowired
-    AuthenticationService authenticationService;
-
-    @Autowired
     TreatmentService treatmentService;
 
     /**
@@ -39,7 +35,7 @@ public class TreatmentController {
      * @return
      */
     @RequestMapping(
-            value = "patient/{id}/treatment",
+            value = "patient/{id}/treatments",
             method = RequestMethod.GET,
             produces = "application/json"
     )
@@ -56,13 +52,34 @@ public class TreatmentController {
     }
 
     /**
+     * End point to get list of treatment ids for given patient id.
+     * @param id
+     * @return
+     */
+    @RequestMapping(
+            value = "patient/{id}/treatmentIds",
+            method = RequestMethod.GET,
+            produces = "application/json"
+    )
+    @ResponseBody
+    public ResponseEntity getTreatmentIdsForPatient(@PathVariable final Long id) {
+        try {
+            List<Long> treatmentIds = treatmentService.getTreatmentIdsForPatient(id);
+            return new ResponseEntity(treatmentIds, HttpStatus.OK);
+        } catch(Exception e) {
+            LOGGER.error("Error occurred while geting treatments for patient {} ",e.getMessage());
+            return new ResponseEntity("No treatments found", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
      * End point to create/update treatment for given patient id.
      * @param id
      * @param treatments
      * @return
      */
     @RequestMapping(
-            value = "patient/{id}/treatment",
+            value = "patient/{id}/treatments",
             method = RequestMethod.PUT,
             produces = "application/json"
     )
@@ -99,7 +116,7 @@ public class TreatmentController {
 
             return new ResponseEntity(treatmentImages, HttpStatus.OK);
         } catch(Exception e) {
-            LOGGER.error("Error occurred while geting treatment images ",e.getMessage());
+            LOGGER.error("Error occurred while geting treatment images {} ",e.getMessage());
             return new ResponseEntity("No treatment image found", HttpStatus.NOT_FOUND);
         }
 

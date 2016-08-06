@@ -56,7 +56,7 @@ public class PatientController {
      * @return
      */
     @RequestMapping(
-            value = "/patient/save",
+            value = "/patient",
             method = RequestMethod.PUT,
             produces = "application/json"
     )
@@ -76,7 +76,7 @@ public class PatientController {
      * @return
      */
     @RequestMapping(
-            value = "/patients/all",
+            value = "/patients",
             method = RequestMethod.GET
     )
     public @ResponseBody

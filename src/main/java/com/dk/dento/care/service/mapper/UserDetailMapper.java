@@ -1,7 +1,9 @@
 package com.dk.dento.care.service.mapper;
 
+import com.dk.dento.care.entity.ContactEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
+import com.dk.dento.care.model.Contact;
 import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.model.UserCredentials;
 import org.modelmapper.ModelMapper;
@@ -37,9 +39,20 @@ public class UserDetailMapper {
     }
 
     public UserDetailEntity patientToUserDetailEntity(Patient patient) throws ParseException {
-        return modelMapper.map(patient, UserDetailEntity.class);
+        UserDetailEntity userDetailEntity = modelMapper.map(patient, UserDetailEntity.class);
+        userDetailEntity.setContactEntityList(contactListToContactEntityList(patient.getContactList(), userDetailEntity));
+        return userDetailEntity;
     }
 
+    public List<ContactEntity> contactListToContactEntityList(List<Contact> contactList, UserDetailEntity userDetailEntity) {
+        List<ContactEntity> contactEntityList = new ArrayList<ContactEntity>();
+        for(Contact contact : contactList) {
+            ContactEntity contactEntity = modelMapper.map(contact, ContactEntity.class);
+            contactEntity.setUserDetailEntity(userDetailEntity);
+            contactEntityList.add(contactEntity);
+        }
+        return contactEntityList;
+    }
     public UserCredentials userCredentialsEntityToUserCredentials(UserCredentialsEntity userCredentialsEntity) {
         return modelMapper.map(userCredentialsEntity, UserCredentials.class);
     }

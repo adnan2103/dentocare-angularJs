@@ -31,6 +31,23 @@ public abstract class AbstractTrackedEntity {
     @Column(name = "last_modified_by", nullable = false)
     private Long lastUpdatedBy;
 
+
+    public Calendar getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Calendar creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Calendar getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Calendar updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
     public Long getCreatedBy() {
         return createdBy;
     }
@@ -45,24 +62,6 @@ public abstract class AbstractTrackedEntity {
 
     public void setLastUpdatedBy(Long lastUpdatedBy) {
         this.lastUpdatedBy = lastUpdatedBy;
-    }
-
-    /**
-     * Get the date that the object was created
-     * 
-     * @return The creation date
-     */
-    public Calendar getCreationDate() {
-        return creationDate;
-    }
-
-    /**
-     * Get the date the object was last updated
-     * 
-     * @return The last update date
-     */
-    public Calendar getUpdatedDate() {
-        return updatedDate;
     }
 
     /**

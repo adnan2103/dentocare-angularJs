@@ -1,9 +1,15 @@
 package com.dk.dento.care.model;
 
 /**
- * Address Model.
+ * ContactEntity Model.
  */
-public class Address {
+public class Contact {
+
+    private String primaryPhoneNumber;
+
+    private String secondaryPhoneNumber;
+
+    private String email;
 
     private String addressLine1;
 
@@ -17,6 +23,29 @@ public class Address {
 
     private String pincode;
 
+    public String getPrimaryPhoneNumber() {
+        return primaryPhoneNumber;
+    }
+
+    public void setPrimaryPhoneNumber(String primaryPhoneNumber) {
+        this.primaryPhoneNumber = primaryPhoneNumber;
+    }
+
+    public String getSecondaryPhoneNumber() {
+        return secondaryPhoneNumber;
+    }
+
+    public void setSecondaryPhoneNumber(String secondaryPhoneNumber) {
+        this.secondaryPhoneNumber = secondaryPhoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getAddressLine1() {
         return addressLine1;

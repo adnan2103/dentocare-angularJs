@@ -11,7 +11,7 @@ import com.dk.dento.care.model.Payment;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.repository.StatusRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
-import com.dk.dento.care.service.AuthenticationService;
+import com.dk.dento.care.service.IAMService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +39,7 @@ public class TreatmentMapper {
     private TreatmentIdGenerator treatmentIdGenerator;
 
     @Autowired
-    private AuthenticationService authenticationService;
+    private IAMService iamService;
 
     public List<Treatment> treatmentEntitiesToTreatments(Iterable<TreatmentEntity> treatmentEntities) {
         List<Treatment> treatments = new ArrayList<Treatment>(0);
@@ -61,7 +61,7 @@ public class TreatmentMapper {
         TreatmentEntity treatmentEntity;
         for (Treatment treatment : treatments) {
             treatmentEntity = modelMapper.map(treatment, TreatmentEntity.class);
-            UserCredentialsEntity loggedInUser = authenticationService.getAuthenticatedUser();
+            UserCredentialsEntity loggedInUser = iamService.getAuthenticatedUser();
             if (treatmentEntity.getId() == null) {
                 treatmentEntity.setId(treatmentIdGenerator.getNextId());
                 treatmentEntity.setCreatedBy(loggedInUser.getId());
@@ -69,7 +69,6 @@ public class TreatmentMapper {
                 treatmentEntity.setPostImageCount(0L);
             }
             treatmentEntity.setLastUpdatedBy(loggedInUser.getId());
-
             treatmentEntity.setUserDetailEntity(userDetailEntity);
             treatmentEntity.setStatusEntity(statusRepository.findByStatus(treatment.getStatus()));
 
@@ -90,7 +89,7 @@ public class TreatmentMapper {
     private List<PaymentEntity> paymentsToPaymentEntities(List<Payment> payments, TreatmentEntity treatmentEntity) {
         List<PaymentEntity> paymentEntities = new ArrayList<PaymentEntity>(0);
         PaymentEntity paymentEntity;
-        UserCredentialsEntity loggedInUser = authenticationService.getAuthenticatedUser();
+        UserCredentialsEntity loggedInUser = iamService.getAuthenticatedUser();
 
         for (Payment payment : payments) {
 
@@ -111,7 +110,7 @@ public class TreatmentMapper {
             ) {
         List<PatientOralExaminationEntity> patientOralExaminationEntities = new ArrayList<PatientOralExaminationEntity>(0);
         PatientOralExaminationEntity patientOralExaminationEntity;
-        UserCredentialsEntity loggedInUser = authenticationService.getAuthenticatedUser();
+        UserCredentialsEntity loggedInUser = iamService.getAuthenticatedUser();
 
         for (PatientOralExamination patientOralExamination : patientOralExaminations) {
 
@@ -125,4 +124,5 @@ public class TreatmentMapper {
 
         return patientOralExaminationEntities;
     }
+
 }

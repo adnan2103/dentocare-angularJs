@@ -1,9 +1,9 @@
 package com.dk.dento.care.model;
 
-import com.dk.dento.care.entity.Address;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by khana on 22/02/16.
@@ -19,9 +19,7 @@ public class Patient {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "IST")
     private Date dateOfBirth;
 
-    private String phoneNumber;
-
-    private Address address;
+    private List<Contact> contactList;
 
     private String imagePath;
 
@@ -65,20 +63,12 @@ public class Patient {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public List<Contact> getContactList() {
+        return contactList;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setContactList(List<Contact> contactList) {
+        this.contactList = contactList;
     }
 
     @Override
@@ -88,8 +78,7 @@ public class Patient {
                 ", name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", address=" + address +
+                ", contactList=" + contactList +
                 '}';
     }
 }

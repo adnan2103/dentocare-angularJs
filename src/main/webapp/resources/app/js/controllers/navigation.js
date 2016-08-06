@@ -1,7 +1,7 @@
 angular.module('navigation', ['ngRoute', 'auth']).controller(
     'navigation',
 
-    function($scope, $route, auth) {
+    function($scope, $route, auth, $rootScope) {
 
         $scope.credentials = {};
 
@@ -14,8 +14,9 @@ angular.module('navigation', ['ngRoute', 'auth']).controller(
         }
 
         $scope.login = function() {
-            auth.authenticate($scope.credentials, function(authenticated) {
-                if (authenticated) {
+            auth.authenticate($scope.credentials, function(user) {
+                $rootScope.user = user;
+                if (user.isAuthenticated) {
                     console.log("Login succeeded")
                     $scope.error = false;
                 } else {
@@ -23,6 +24,30 @@ angular.module('navigation', ['ngRoute', 'auth']).controller(
                     $scope.error = true;
                 }
             })
+        };
+
+        $rootScope.isAuthenticated = function() {
+
+            if ($rootScope.user === undefined) {
+                return false;
+            }
+            if ($rootScope.user.isAuthenticated === undefined) {
+                return false;
+            }
+            if (!$rootScope.user.isAuthenticated) {
+                return false;
+            }
+            return true;
+        };
+        $rootScope.hasAccess = function(moduleId) {
+
+            if (!$rootScope.isAuthenticated()) {
+                return false;
+            }
+            if ($rootScope.user.modules[moduleId] === undefined) {
+                return false;
+            }
+            return $rootScope.user.modules[moduleId];
         };
 
         $scope.logout = auth.clear;

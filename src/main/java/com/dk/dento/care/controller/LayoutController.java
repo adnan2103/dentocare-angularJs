@@ -19,6 +19,11 @@ public class LayoutController {
         return "patient/layout";
     }
 
+    @RequestMapping("appointments/layout")
+    public String getAppointmentsPartialPage() {
+        return "appointments/layout";
+    }
+
     @RequestMapping("treatment/layout")
     public String getTreatmentPartialPage() {
         return "treatment/layout";
@@ -27,6 +32,16 @@ public class LayoutController {
     @RequestMapping("treatment-images/layout")
     public String getTreatmentImagesPartialPage() {
         return "treatment-images/layout";
+    }
+
+    @RequestMapping("administration/layout")
+    public String getAdministrationPartialPage() {
+        return "administration/layout";
+    }
+
+    @RequestMapping("treatments/layout")
+    public String getAllTreatmentsPartialPage() {
+        return "treatments/layout";
     }
 
     @RequestMapping("login/layout")

@@ -3,7 +3,7 @@ package com.dk.dento.care.model;
 /**
  * Created by khana on 24/02/16.
  */
-public class PatientOralExamination {
+public class PatientOralExamination extends AbstractTracked {
 
 
     private Long id;
@@ -11,16 +11,6 @@ public class PatientOralExamination {
     private String description;
 
     private Long cost;
-
-    private Long createdBy;
-
-    public Long getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Long createdBy) {
-        this.createdBy = createdBy;
-    }
 
     public Long getId() {
         return id;

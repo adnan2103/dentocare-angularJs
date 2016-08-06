@@ -18,9 +18,9 @@ public class UserCredentialsService {
     private UserDetailMapper userDetailMapper;
 
 
-    public UserCredentials getPrincipal(final String email) {
+    public UserCredentials getPrincipal(final String loginId) {
 
-        UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByEmail(email);
+        UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByLoginId(loginId);
         return userDetailMapper.userCredentialsEntityToUserCredentials(userCredentialsEntity);
 
     }

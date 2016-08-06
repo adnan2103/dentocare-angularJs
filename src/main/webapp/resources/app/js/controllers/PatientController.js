@@ -12,7 +12,9 @@ var PatientController = function($scope, $http, $routeParams, fileUpload, patien
                 $scope.patient = patient;
             });
         } else {
-            $scope.patient = {};
+            $scope.patient = {
+                "contactList": [{}
+            ]}
         }
         $scope.random = 232112;
     };
@@ -21,6 +23,7 @@ var PatientController = function($scope, $http, $routeParams, fileUpload, patien
         {'gender': 'Male'},
         {'gender': 'Female'}
     ];
+
 
     $scope.savePatient = function(patient) {
         var promise = patientService.update(patient);

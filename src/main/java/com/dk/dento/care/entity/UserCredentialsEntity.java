@@ -22,8 +22,8 @@ public class UserCredentialsEntity implements Serializable {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "login_id")
+    private String loginId;
 
     @Column(name = "login_enabled")
     private boolean loginEnable;
@@ -66,12 +66,12 @@ public class UserCredentialsEntity implements Serializable {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLoginId() {
+        return loginId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
     }
 
     public String getPassword() {

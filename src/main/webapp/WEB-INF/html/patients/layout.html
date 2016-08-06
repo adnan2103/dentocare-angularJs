@@ -1,43 +1,43 @@
-<div class="container" style="margin-bottom: 10px;">
-    <ul class="nav navbar-nav col-md-12">
-        <li class="red-big-text">
-            <b> Search Patient </b>
-        </li>
-        <li>
-            <div class="search">
-                <input type="text" ng-model="searchName" placeholder="Enter patient name"/>
-            </div>
-        </li>
-        <li>
-            <div class="search">
-                <input type="text" ng-model="searchNumber" placeholder="Enter patient mobile number"/>
-            </div>
+<div class="container" style="margin-bottom: 10px;" ng-show="hasAccess('PMM')">
+    <ul class="nav navbar-nav col-sm-12">
+        <li class="search col-sm-12">
+            <span class="col-sm-1" style="padding-top: 10px; padding-right: 0px;"><a href="#/patient/new"><span class="glyphicon glyphicon-plus"></span>New</a></span>
+            <span class="col-sm-10"><input type="text" ng-model="searchKey" placeholder="Name/Mobile/Gender/Email"/></span>
         </li>
     </ul>
 </div>
 
 <!-- Page Content -->
-<div class="container">
-    <section>
-        <div class="row" style="margin-bottom: 50px;">
-        <div ng-repeat="patient in patients | searchForName:searchName | searchForNumber:searchNumber" class="col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <img class="img-responsive" ng-src="{{patient.imagePath}}"
-                             style="height: 200px;" alt="Patient Image" onerror="this.src='resources/app/images/patients/patient.svg'"/>
-                        <h3>
-                            <a href="#/patient/{{patient.id}}">
-                            <span class="label" ng-bind="patient.name | uppercase"></span>
-                            </a>
-                        </h3>
-                        <p>
-                            <strong>{{patient.gender | uppercase}}</strong> Age : {{patient.dateOfBirth | age}} Years
-                            <br/> M : +91-{{patient.phoneNumber}}
-                        </p>
-                        <div class="btn-group">
-                            <a href="#/patient/{{patient.id}}/treatment" class="btn btn-md btn-primary">Treatments</a>
-                        </div>
+<div class="container" ng-show="hasAccess('PMM')">
+    <section style="margin: 50px">
+        <div ng-repeat="patient in patients | searchOnKey:searchKey">
+            <div class="row">
+                <div class="col-sm-3" style="font-size: large; height: 30px;padding:5px;">
+                    <a href="#/patient/{{patient.id}}">
+                        <span class="glyphicon glyphicon-edit"></span> {{patient.name | uppercase}}</a>
+                </div>
+                <div class="col-sm-2">
+                    <strong>{{patient.gender | uppercase}}</strong> ({{patient.dateOfBirth | age}} Years)
+                </div>
+                <div class="col-sm-2">
+                    <div>
+                        <i class="fa fa-phone fa-lg" aria-hidden="true"></i> +91-{{patient.contactList[0].primaryPhoneNumber}}
                     </div>
+                    <div>
+                        <i class="fa fa-phone fa-lg" aria-hidden="true"></i> +91-{{patient.contactList[0].secondaryPhoneNumber}}
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <span class="glyphicon glyphicon-envelope"></span> {{patient.contactList[0].email}}
+                </div>
+                <div class="col-sm-2 btn-group" ng-show="hasAccess('TMM')">
+                    <a href="#/patient/{{patient.id}}/treatment" class="btn btn-md btn-primary">
+                        <span class="glyphicon glyphicon-edit"></span> Treatments</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <hr />
                 </div>
             </div>
         </div>

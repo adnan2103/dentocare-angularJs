@@ -18,7 +18,7 @@ import java.util.Date;
  * Created by khana on 06/02/16.
  */
 @Entity
-@Table(name = "payment")
+@Table(name = "patient_payment")
 public class PaymentEntity extends AbstractTrackedEntity {
 
     @Id

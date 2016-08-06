@@ -1,7 +1,5 @@
 package com.dk.dento.care.model;
 
-
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.io.Serializable;
@@ -10,9 +8,8 @@ public class UserCredentials implements Serializable {
 
     private Long id;
 
-    @Email(message = "Please provide a valid email address.")
-    @NotEmpty(message = "Email is required.")
-    private String email;
+    @NotEmpty(message = "LoginId is required.")
+    private String loginId;
 
     private String password;
 
@@ -27,7 +24,7 @@ public class UserCredentials implements Serializable {
     public UserCredentials(UserCredentials userCredentials) {
 
         this.id = userCredentials.id;
-        this.email = userCredentials.email;
+        this.loginId = userCredentials.loginId;
         this.password = userCredentials.password;
         this.role = userCredentials.role;
         this.loginEnable = userCredentials.loginEnable;
@@ -41,12 +38,12 @@ public class UserCredentials implements Serializable {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLoginId() {
+        return loginId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
     }
 
     public String getPassword() {

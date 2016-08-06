@@ -72,7 +72,7 @@ public class TreatmentEntity extends AbstractTrackedEntity {
 
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "patient_id", referencedColumnName="user_id")
     private UserDetailEntity userDetailEntity;
 
     public UserDetailEntity getUserDetailEntity() {
