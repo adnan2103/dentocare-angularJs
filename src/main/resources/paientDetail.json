@@ -2,7 +2,7 @@
   "id":2,
   "name":"Rohit Tihor",
   "gender":"Male",
-  "dataOfBirth":1455474600000,
+  "age":24,
   "phoneNumber":{
     "phoneNumber":"123456789"
   },

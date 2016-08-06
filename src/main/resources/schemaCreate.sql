@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS user_detail
   user_id integer NOT NULL,
   name character varying(100) NOT NULL,
   gender character varying(6) NOT NULL,
-  date_of_birth date,
+  age smallint,
   CONSTRAINT user_detail_pkey PRIMARY KEY (user_id),
   CONSTRAINT user_detail_user_fkey FOREIGN KEY (user_id)
       REFERENCES user_credentials (user_id) MATCH SIMPLE
