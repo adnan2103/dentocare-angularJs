@@ -23,22 +23,22 @@ public class AppointmentService {
     private AppointmentMapper appointmentMapper;
 
     @Autowired
-    AuthenticationService authenticationService;
+    IAMService iamService;
 
     public List<Appointment> getAppointments() {
 
-        UserCredentialsEntity loggedInDoctor = authenticationService.getAuthenticatedUser();
+        UserCredentialsEntity loggedInDoctor = iamService.getAuthenticatedUser();
         Long loggedIdDoctorId = loggedInDoctor.getId();
 
         return appointmentMapper.appointmentEntityListToAppointments(
-                appointmentRepository.findByDoctorId(authenticationService.getAuthenticatedUser().getId())
+                appointmentRepository.findByDoctorId(iamService.getAuthenticatedUser().getId())
         );
     }
 
     public Appointment save(final Appointment appointment) {
 
         if(appointment.getDoctorId() ==null) {
-            appointment.setDoctorId(authenticationService.getAuthenticatedUser().getId());
+            appointment.setDoctorId(iamService.getAuthenticatedUser().getId());
         }
         AppointmentEntity appointmentEntity =
                 appointmentRepository.save(appointmentMapper.appointmentToAppointmentEntity(appointment));

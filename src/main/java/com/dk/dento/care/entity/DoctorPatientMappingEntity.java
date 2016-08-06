@@ -13,7 +13,6 @@ import java.io.Serializable;
 @Table(name ="doctor_patient_mapping")
 public class DoctorPatientMappingEntity implements Serializable {
 
-
     public DoctorPatientMappingEntity() {
     }
 

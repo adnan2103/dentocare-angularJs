@@ -203,9 +203,9 @@ WITH (
 ALTER TABLE appointment
   OWNER TO dentocaa;
 
--- Table: modules
+-- Table: module
 
-CREATE TABLE IF NOT EXISTS modules
+CREATE TABLE IF NOT EXISTS module
 (
   module_id SERIAL NOT NULL,
   module_code character varying(15),
@@ -214,10 +214,92 @@ CREATE TABLE IF NOT EXISTS modules
   quaterly_cost integer NOT NULL,
   half_yearly_cost integer NOT NULL,
   yearly_cost integer NOT NULL,
-  CONSTRAINT modules_pkey PRIMARY KEY (module_id)
+  CONSTRAINT module_pkey PRIMARY KEY (module_id)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE modules
+ALTER TABLE module
+  OWNER TO dentocaa;
+
+
+-- Table: clinic
+
+CREATE TABLE IF NOT EXISTS clinic
+(
+  clinic_id integer NOT NULL,
+  name character varying(100) NOT NULL,
+  CONSTRAINT clinic_pkey PRIMARY KEY (clinic_id),
+  CONSTRAINT clinic_fkey FOREIGN KEY (clinic_id)
+      REFERENCES user_credentials (user_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE clinic
+  OWNER TO dentocaa;
+
+
+-- Table: clinic_modules_mapping
+
+CREATE TABLE IF NOT EXISTS clinic_modules_mapping
+(
+  clinic_id integer NOT NULL,
+  module_id integer NOT NULL,
+  start_date date,
+  expiry_date date,
+  CONSTRAINT clinic_modules_mapping_pkey PRIMARY KEY (clinic_id,module_id),
+  CONSTRAINT clinic_id_fkey FOREIGN KEY (clinic_id)
+      REFERENCES user_credentials (user_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT module_id_fkey FOREIGN KEY (module_id)
+      REFERENCES module (module_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE clinic_modules_mapping
+  OWNER TO dentocaa;
+
+
+-- Table: clinic_user_mapping
+
+CREATE TABLE IF NOT EXISTS clinic_user_mapping
+(
+  clinic_id integer NOT NULL,
+  user_id integer NOT NULL,
+  CONSTRAINT clinic_user_mapping_pkey PRIMARY KEY (clinic_id, user_id),
+  CONSTRAINT clinic_user_mapping_clinic_fkey FOREIGN KEY (clinic_id)
+      REFERENCES user_credentials (user_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT clinic_user_mapping_user_fkey FOREIGN KEY (user_id)
+      REFERENCES user_credentials (user_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE clinic_user_mapping
+  OWNER TO dentocaa;
+
+-- Table: clinic_user_module_access
+
+CREATE TABLE IF NOT EXISTS clinic_user_module_access
+(
+  user_id integer NOT NULL,
+  module_id integer NOT NULL,
+  CONSTRAINT clinic_user_module_access_pkey PRIMARY KEY (user_id, module_id),
+  CONSTRAINT clinic_user_module_access_user_fkey FOREIGN KEY (user_id)
+      REFERENCES user_credentials (user_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT clinic_user_module_access_module_fkey FOREIGN KEY (module_id)
+      REFERENCES module (module_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE clinic_user_module_access
   OWNER TO dentocaa;

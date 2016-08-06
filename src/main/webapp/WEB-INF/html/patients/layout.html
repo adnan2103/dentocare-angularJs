@@ -30,7 +30,7 @@
                 <div class="col-sm-3">
                     <span class="glyphicon glyphicon-envelope"></span> {{patient.contactList[0].email}}
                 </div>
-                <div class="col-sm-2 btn-group">
+                <div class="col-sm-2 btn-group" ng-show="hasAccess('TMM')">
                     <a href="#/patient/{{patient.id}}/treatment" class="btn btn-md btn-primary">
                         <span class="glyphicon glyphicon-edit"></span> Treatments</a>
                 </div>

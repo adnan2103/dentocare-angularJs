@@ -1,3 +1,9 @@
+DROP TABLE IF EXISTS  clinic_user_module_access;
+DROP TABLE IF EXISTS  clinic_user_mapping;
+DROP TABLE IF EXISTS  clinic_modules_mapping;
+DROP TABLE IF EXISTS  clinic;
+DROP TABLE IF EXISTS  module;
+DROP TABLE IF EXISTS  appointment;
 DROP TABLE IF EXISTS  patient_payment;
 DROP TABLE IF EXISTS  patient_oral_examination;
 DROP TABLE IF EXISTS  treatment;
@@ -7,5 +13,3 @@ DROP TABLE IF EXISTS  user_detail;
 DROP TABLE IF EXISTS  contact_detail;
 DROP TABLE IF EXISTS  user_credentials;
 DROP TABLE IF EXISTS  role;
-DROP TABLE IF EXISTS  appointment;
-DROP TABLE IF EXISTS  modules;

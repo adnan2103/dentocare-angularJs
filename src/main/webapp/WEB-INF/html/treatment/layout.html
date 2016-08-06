@@ -17,15 +17,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3 btn-group">
+        <div class="col-sm-3 btn-group" ng-show="hasAccess('TMM')">
             <div class="btn btn-md btn-success" ng-click='addNewTreatment(treatments.length)' ng-disabled='disableAddTreatment'>
                 Add New Treatment
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3" ng-show="hasAccess('TMM')">
             <div class="btn btn-md btn-primary" ng-click='saveTreatment(treatments)'>Save</div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4" ng-show="hasAccess('AMM')">
             <a href="#/patients/{{patient.id}}/appointments" class="btn btn-md btn-primary">Next Appointment</a>
         </div>
     </div>
@@ -56,7 +56,8 @@
 
             <div class="row">
                     <div class="col-md-9">
-                        <table class="table"><thead><tr>
+                        <table class="table" ng-show="hasAccess('TIMM')">
+                            <thead><tr>
                             <th ng-if='treatment.id'>
                                     <a href="#/treatment/{{treatment.id}}/pre/images/{{treatment.preImageCount}}">
                                         <span class="label">PRE TREATMENT IMAGES</span>

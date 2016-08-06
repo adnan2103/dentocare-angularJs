@@ -2,7 +2,6 @@ package com.dk.dento.care.controller;
 
 import com.dk.dento.care.model.ImagePath;
 import com.dk.dento.care.model.Treatment;
-import com.dk.dento.care.service.AuthenticationService;
 import com.dk.dento.care.service.TreatmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +25,6 @@ public class TreatmentController {
      * Logger for this class.
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(TreatmentController.class);
-
-    @Autowired
-    AuthenticationService authenticationService;
 
     @Autowired
     TreatmentService treatmentService;

@@ -35,7 +35,10 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
 
     $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-}]).filter('searchOnKey', function(){
+}]).constant('appConfiguration', {
+    xAuthTokenHeaderName: 'x-auth-token',
+    basicAuthHeaderName: 'authorization'
+}).filter('searchOnKey', function(){
 
     return function(arr, searchKey){
 

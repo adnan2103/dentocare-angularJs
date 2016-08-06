@@ -17,9 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.ServletContext;
 import java.text.ParseException;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -48,7 +46,7 @@ public class UserDetailService {
     private RoleRepository roleRepository;
 
     @Autowired
-    private AuthenticationService authenticationService;
+    private IAMService iamService;
 
     //TODO service should throw appropriate exception to controller, like not found for null pointer.
     public List<Patient> getAllPatient() {
@@ -59,7 +57,7 @@ public class UserDetailService {
     private Set<UserDetailEntity> getAllPatientForDoctor() {
         Set<UserDetailEntity> userDetailEntities = new LinkedHashSet<UserDetailEntity>();
 
-        UserCredentialsEntity doctor = authenticationService.getAuthenticatedUser();
+        UserCredentialsEntity doctor = iamService.getAuthenticatedUser();
         Iterable<DoctorPatientMappingEntity> allPatients = doctorPatientMappingRepository.findAllPatientsForDoctor(doctor.getId());
         for (DoctorPatientMappingEntity doctorPatientMappingEntity : allPatients) {
 
@@ -90,7 +88,7 @@ public class UserDetailService {
             patientEntity.setId(userCredentialsEntity.getId());
             patientEntity = userDetailRepository.save(patientEntity);
 
-            UserDetailEntity doctor = userDetailRepository.findOne(authenticationService.getAuthenticatedUser().getId());
+            UserDetailEntity doctor = userDetailRepository.findOne(iamService.getAuthenticatedUser().getId());
             DoctorPatientMappingId doctorPatientMappingId = new DoctorPatientMappingId(doctor.getId(), patientEntity.getId());
             DoctorPatientMappingEntity doctorPatientMappingEntity = new DoctorPatientMappingEntity(doctorPatientMappingId);
 
