@@ -5,7 +5,6 @@
 ## Fix bug in new appointment.
 ## Touch is not working in appointment.
 ## Patient Update not working.
-## Letting enter Age or DOB while creating new patient.
 ## Model for planned appointment
 ## Accordian for treatment page,
 ## save individual treatment,
