@@ -25,15 +25,15 @@ insert into status(status) values('In-Progress');
 insert into status(status) values('Closed');
 
 insert into user_credentials(login_id,login_enabled,password,role_id) values ('test-dento-care-admin',true,'password',1);
-insert into user_detail(user_id,name,gender,date_of_birth) values(1,'Dento Care Admin','Male',now());
+insert into user_detail(user_id,name,gender,age) values(1,'Dento Care Admin','Male',40);
 insert into contact_detail(contact_id,user_id,primary_phone_number,secondary_phone_number,email,address_line1,address_line2,city,state,country,pincode) values(1,1,'123444444','9876543201','test@gmail.com','Address line1','Address line2','Hyderabad','TS','India','800086');
 
 insert into user_credentials(login_id,login_enabled,password,role_id) values ('test-clinic-admin',true,'password',2);
-insert into user_detail(user_id,name,gender,date_of_birth) values(2,'Clinic Admin','Male',now());
+insert into user_detail(user_id,name,gender,age) values(2,'Clinic Admin','Male',35);
 insert into contact_detail(contact_id,user_id,primary_phone_number,secondary_phone_number,email,address_line1,address_line2,city,state,country,pincode) values(2,2,'123444444','9876543201','test@gmail.com','Address line1','Address line2','Hyderabad','TS','India','800086');
 
 insert into user_credentials(login_id,login_enabled,password,role_id) values ('test-clinic-user',true,'password',3);
-insert into user_detail(user_id,name,gender,date_of_birth) values(3,'Clinic User','Male',now());
+insert into user_detail(user_id,name,gender,age) values(3,'Clinic User','Male',30);
 insert into contact_detail(contact_id,user_id,primary_phone_number,secondary_phone_number,email,address_line1,address_line2,city,state,country,pincode) values(3,3,'123444444','9876543201','test@gmail.com','Address line1','Address line2','Hyderabad','TS','India','800086');
 
 update user_credentials set password = '$2a$10$FBAKClV1zBIOOC9XMXf3AO8RoGXYVYsfvUdoLxGkd/BnXEn4tqT3u';

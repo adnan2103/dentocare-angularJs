@@ -16,8 +16,7 @@ public class Patient {
 
     private String gender;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "IST")
-    private Date dateOfBirth;
+    private Integer age;
 
     private List<Contact> contactList;
 
@@ -55,12 +54,12 @@ public class Patient {
         this.gender = gender;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public List<Contact> getContactList() {
@@ -77,7 +76,7 @@ public class Patient {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
+                ", age=" + age +
                 ", contactList=" + contactList +
                 '}';
     }
