@@ -5,6 +5,8 @@ package com.dk.dento.care.model;
  */
 public class Contact {
 
+    private Long id;
+
     private String primaryPhoneNumber;
 
     private String secondaryPhoneNumber;
@@ -22,6 +24,14 @@ public class Contact {
     private String country;
 
     private String pincode;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getPrimaryPhoneNumber() {
         return primaryPhoneNumber;
