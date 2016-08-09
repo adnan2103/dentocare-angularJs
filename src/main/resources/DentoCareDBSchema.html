@@ -1,0 +1,1537 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN' 'http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' >
+<head>
+<title>DentoCareDbSchema</title>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+<style type='text/css'>
+body {
+    font-family: 'Segoe UI', 'Lucida sans', Dialog;
+    font-size: 13px;
+    color: #444;
+    margin: 10px;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    caption-side: top;
+    width: auto;
+    margin: 10px 15px 5px 0;
+}
+
+
+.bordered td, .bordered th {
+   background-color: #F7F7FF;
+   border: 1px solid #D5D5D3;
+   padding: 5px 5px 5px 5px;
+  white-space:pre-wrap!important;
+}
+
+.bordered th {
+    background-color: #4d82b8;
+    border: none;
+    border-bottom: 1px solid #0b67cd;
+    padding: 3px 5px 3px 5px;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+    color: #FFFFFF;
+}
+
+.section-header h2 {
+    background-color: #F7F7FF;
+    font-size: 18px;
+    font-weight: normal;
+    border-top: solid 1px #D5D5D3;
+    border-bottom: solid 1px #D5D5D3;
+    width: 95%;
+    margin: 5px 0 5px 0;
+    padding: 5px 0 5px 0;
+    color: #4d82b8;
+}
+.section-header div {
+    font-family: Verdana,Arial,Helvetica;
+    font-size: 70%;
+    padding-left: 5px;
+}
+
+a, a:visited, a:hover, a:active {
+  color: #4d82b8;
+  text-decoration: none;
+}
+
+.lg {
+    font-size: 110%;
+}
+
+h1 {
+    font-family: Verdana,Arial,Helvetica;
+    font-weight: normal;
+    color: #4d82b8;
+    margin: 20px 0 10px 0;
+}
+
+</style>
+
+<script>
+  function showhide(id)
+  {
+    if (document.getElementById)
+    {
+      obj = document.getElementById(id);
+      if (obj.style.display == "none"){ obj.style.display = ""; } else { obj.style.display = "none"; }
+    }
+  }
+</script>
+</head>
+
+<body>
+<div class='page-header'><h1>DentoCareDbSchema</h1></div>
+<div class='svg-container'>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' text-rendering='optimizeLegibility'   width='1020' height='1115' viewbox='0 0 1020 1115' >
+  <script type='text/ecmascript'>
+  <![CDATA[
+  function hghl(el) { for ( var i in el ){ document.getElementById(el[i]).setAttribute('class','highlight');  }  }
+  function uhghl(el) { for ( var i in el ){ document.getElementById(el[i]).setAttribute('class','scene'); }  } 
+  ]]>
+  </script> 
+
+<style type='text/css'>
+  text                { fill:#000000; font-family: Lucida Grande, 'Trebuchet MS', Dialog; font-size:11px; }
+  text:hover          { fill:#304ea4; font-weight:bold; }
+  text.highlight      { fill:#304ea4; font-weight:bold; }
+  text.colType        { fill:#b3b3b3; }
+  text.relName        { fill:#b6b696; }
+  path                { stroke:#5c554f; stroke-width:1.25; fill:none; }
+  path.scene          { stroke-width:10; opacity:0;}
+  path.highlight      { stroke-width:7; stroke:#b3ccf5; opacity:0.6;}
+  rect.table          { fill:#ffffff; stroke:#aaa; stroke-width:1;shape-rendering:crispEdges; filter:url(#shadow); }
+  line.delim          { stroke:#777; stroke-width:0.3; }
+  text.callout        { fill:#000000; font-family: Lucida Grande, 'Trebuchet MS', Dialog; font-size:12px; }
+  rect.callout        { fill:url(#calloutGradient); stroke:#bebdbd; stroke-width:0.5; filter: url(#shadow);}
+  rect.grp            { stroke:#b1b1b1; stroke-width:1.7; }
+</style>
+<defs>
+  <pattern patternUnits='userSpaceOnUse' id='layoutBgA' width='10' height='20' x='0' y='0' viewBox='0 0 5 10'>  
+     <line x1='-2' y1='1' x2='7' y2='10' stroke='#f3f3f3' stroke-width='.5'/>  
+     <line x1='-2' y1='6' x2='7' y2='15' stroke='#f3f3f3' stroke-width='.5'/>  
+     <line x1='-2' y1='-4' x2='7' y2='5' stroke='#f3f3f3' stroke-width='.5'/>  
+  </pattern>  
+  <radialGradient id='layoutBgB' gradientUnits='userSpaceOnUse' cx='50%' cy='50%' r='75%' fx='46%' fy='22%'>
+     <stop offset='0%' stop-opacity='.2' stop-color='#f0f0f0' />  
+     <stop offset='100%' stop-color='#e7e7e7' />  
+  </radialGradient>
+  <linearGradient id='groupUnderTitleLine' x1='0%' y1='0%' x2='100%' y2='0%' >
+          <stop offset='0%' stop-color='#999999' stop-opacity='0.7'/> 
+          <stop offset='100%' stop-color='#999999' stop-opacity='0' /> 
+   </linearGradient>
+  <radialGradient id='calloutGradient' cx='25%' cy='20%' r='80%' fx='10%' fy='10%'>
+	   <stop offset='0%' stop-color='#ffffff' />
+    <stop offset='100%' stop-color='#f8f6d1' />
+  </radialGradient>
+  <filter id='shadow' width='120%' height='120%'> 
+      <feOffset result='offOut' in='SourceGraphic' dx='1' dy='1' /> 
+      <feColorMatrix result='matrixOut' in='offOut' type='matrix' 
+      values='0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.3 0' /> 
+      <feGaussianBlur result='blurOut' in='matrixOut' stdDeviation='3' /> 
+      <feBlend in='SourceGraphic' in2='blurOut' mode='normal' /> 
+    </filter> 
+  <filter id='fkShadow' height='130%'> 
+    <feGaussianBlur in='SourceAlpha' stdDeviation='1.5'/> <!-- stdDeviation is how much to blur -->
+    <feOffset dx='1.2' dy='1.2' result='offsetblur'/> <!-- how much to offset -->
+    <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in='SourceGraphic'/> <!-- this contains the element that the filter is applied to -->
+    </feMerge>
+  </filter>
+  <radialGradient id='legendGradient' fx='5%' fy='5%' r='75%' spreadMethod='pad'>
+          <stop offset='0%' stop-color='#eefbf2' stop-opacity='1'/> 
+          <stop offset='100%' stop-color='#cff9cb' stop-opacity='1' /> 
+   </radialGradient>
+  <symbol id='calloutArrowDown' overflow='visible' >
+      <path d='M 0,0 L 7,11 L 15,0 z' style='fill:#f8f6d1;stroke:none; filter: url(#shadow);' />
+      <path d='M 0,0 L 7,11 L 15,0' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='calloutArrowUp' overflow='visible' >
+      <path d='M 0,15 L 7,3 L 15,15 z' style='fill:#ffffff; stroke:none; filter: url(#shadow);' />
+      <path d='M 0,15 L 7,3 L 15,15' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='pk' overflow='visible' >
+    <g transform='scale(0.99)'>
+     <path style='fill:#fbea8e;stroke:#472106;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;'
+        d='M 9.3678877,3.5695485 C 9.1030218,3.2729386 9.0796382,2.7628519 9.3396185,2.4517097 9.5449651,2.1956495 9.9040386,2.0980533 10.199638,2.2169415 10.533525,2.3415459 10.775153,2.706942 10.750675,3.0842709 10.737029,3.3980003 10.541153,3.699122 10.258248,3.8066067 9.966649,3.9250429 9.6169668,3.8418805 9.4008073,3.6062324 9.3894892,3.5943518 9.3785264,3.582104 9.3678886,3.5695487 z M 11.226617,6.9916004 C 11.888137,6.3548946 12.293488,5.4172188 12.311087,4.442353 12.378144,2.7379364 11.248678,1.0541269 9.7322318,0.44767357 8.3887112,-0.1280313 6.7865012,0.26822889 5.8918395,1.4007929 5.080823,2.3839145 4.9336815,3.8452096 5.3635544,5.101615 L 4.3670905,5.315913 C 4.0664984,5.3682645 4.0967703,5.6316724 4.2574957,5.8208829 L 4.9124,6.5655244 4.1543436,7.2512357 3.2136002,7.2163506 3.1674775,8.5586827 2.0406832,8.5086512 1.5965306,8.9299953 1.5471661,10.179833 0.75616674,10.195223 0.2112857,10.758575 0.15354288,11.735988 0.07199052,12.765553 c 0.36440953,0.238225 0.79006967,0.195492 1.44938278,-0.02675 L 6.3033562,8.1282037 6.8217102,8.6765688 C 6.9985465,8.8799427 7.3003699,8.7497574 7.358381,8.5016252 L 7.4938877,7.5084164 c 0.8537488,0.3985387 1.8303125,0.4711541 2.6851793,0.1427713 0.393927,-0.1407258 0.746858,-0.3701772 1.04755,-0.6595873 z'/>
+     <path d='M 6.8014948,6.3102123 0.15369063,13.024481 0.21560535,12.141962 6.0062342,6.2683782 z'
+        style='fill:#ffe5a5;fill-opacity:1;stroke:#854e31;stroke-width:0.06912433;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:3.00300009'/>
+    </g>
+  </symbol>
+  <symbol id='unq' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:#e07554;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+         width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+         d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+         transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+      <text x='5.5' y='7.7' style='font-size:8px;fill:#8a8a8a;'>1</text>
+    </g>
+  </symbol>
+  <symbol id='idx' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:#e07554;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+         width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+         d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+         transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+    </g>
+  </symbol>
+  <symbol id='fk' overflow='visible' >
+    <g transform='scale(0.87)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+      d='M 12.48,0.33 7.07,0.89 9.067,2.974 0.329,11.731 1.073,12.597 9.811,3.841 11.77,5.78 z' />
+    </g>
+  </symbol>
+  <symbol id='ref' overflow='visible' >
+    <g transform='scale(0.87)'>
+      <path style='fill:#f3e1b7;stroke:#472106;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.10,12.70 5.31,12.15 3.40,10.06 11.82,1.32 11.11,0.45 2.68,9.19 0.80,7.24 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='nn' overflow='visible' >
+  <path style='stroke:#9b3e50;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0,0 3,3 M 0,3 3,0 z'/>
+  </symbol>
+  <symbol id='view' overflow='visible' >
+    <g transform='scale(0.99)'>
+     <line x1='12' y1='6' x2='19' y2='0' stroke='black' stroke-width='0.5' />
+     <line x1='0' y1='6' x2='7' y2='0' stroke='black' stroke-width='0.5' />
+     <circle cx='3' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+     <circle cx='10' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+    </g>
+  </symbol>
+  <marker id='arrow01' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 15.000,3.750 L 7.500,0.000 L 7.500,7.500 L 15.000,3.750 z' style='fill:#5e554d;' />
+  </marker>
+  <marker id='arrow1' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 15.000,3.750 L 7.500,0.000 L 7.500,7.500 L 15.000,3.750 z' style='fill:#5e554d;' />
+  </marker>
+  <marker id='foot01' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <circle cx='11.25' cy='3.75' r='2.50' style='fill:white;stroke:#5e554d;' />
+    <path d='M 3.75,0.00 L 3.75, 7.50 z' />
+  </marker>
+  <marker id='foot0p' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <circle cx='11.25' cy='3.75' r='2.50' style='fill:white;stroke:#5e554d;' />
+    <path d='M 0.00,0.00 L 7.50,3.75 L 0.00,7.50' />
+  </marker>
+  <marker id='foot1' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <path d='M 7.50,0.00 L 7.50, 7.50 z' />
+    <path d='M 3.75,0.00 L 3.75, 7.50 z' />
+  </marker>
+  <marker id='foot1p' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <path d='M 7.50,0.00 L 7.50, 7.50 z' />
+    <path d='M 0.00,0.00 L 7.50,3.75 L 0.00,7.50' />
+  </marker>
+</defs>
+
+<!-- ============= Desktop ============= -->
+<rect x='1' y='1' width='1018' height='1113' rx='7' ry='7' style='fill:#ffffff; stroke:#333333; stroke-width:0.3;'/>
+
+<!-- ============= Legend ============= -->
+<g transform='translate(10,10)'>
+  <rect x='10' y='10' width='267' height='78' rx='6' ry='6' style='fill:url(#legendGradient);filter:url(#shadow);'/> 
+  <text x='20' y='30'>DentoCareDbSchema</text> 
+  <text x='25' y='49' style='fill:#8a9d89; font-size:11px;'><tspan>HTML5 interactive image documentation.</tspan></text> 
+  <text x='25' y='63' style='fill:#8a9d89; font-size:11px;'><tspan>Move the mouse over tables to read the comments.</tspan></text> 
+  <text x='25' y='77' style='fill:#8a9d89; font-size:11px;'>Powered by <a xlink:href='http://www.dbschema.com' text-decoration='underline' style='fill:#97a496'>DbSchema</a></text> 
+</g>
+
+<g transform='translate(0,110)'>
+<!-- ============= Fk 'user_detail_user_detail_user_fkey' ============= -->
+<path id='user_detail_user_detail_user_fkey'  onmouseover="hghl(['user_detail_user_detail_user_fkey','public.user_detail.user_id','public.user_credentials.user_id'])" onmouseout="uhghl(['user_detail_user_detail_user_fkey','public.user_detail.user_id','public.user_credentials.user_id'])" transform='translate(7,0)' class='scene' d='M 375 300 L 615,300' >
+	<title>Fk user_detail_user_fkey
+user_detail ref user_credentials ( user_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1)' marker-end='url(#arrow1)'    d='M 375 300 L 615,300' ></path>
+<text x='382' y='295' transform='rotate(0 382,295)' title='Fk user_detail_user_fkey
+user_detail ref user_credentials ( user_id )' class='relName'>user_id</text>
+<!-- ============= Fk 'clinic_user_mapping_clinic_id_fkey' ============= -->
+<path id='clinic_user_mapping_clinic_id_fkey'  onmouseover="hghl(['clinic_user_mapping_clinic_id_fkey','public.clinic_user_mapping.clinic_id','public.clinic.clinic_id'])" onmouseout="uhghl(['clinic_user_mapping_clinic_id_fkey','public.clinic_user_mapping.clinic_id','public.clinic.clinic_id'])" transform='translate(7,0)' class='scene' d='M 585 225 L 645,225' >
+	<title>Fk clinic_id_fkey
+clinic_user_mapping ref clinic ( clinic_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 585 225 L 645,225' ></path>
+<text x='592' y='220' transform='rotate(0 592,220)' title='Fk clinic_id_fkey
+clinic_user_mapping ref clinic ( clinic_id )' class='relName'>clinic_id</text>
+<!-- ============= Fk 'clinic_user_mapping_user_id_fkey' ============= -->
+<path id='clinic_user_mapping_user_id_fkey'  onmouseover="hghl(['clinic_user_mapping_user_id_fkey','public.clinic_user_mapping.user_id','public.user_detail.user_id'])" onmouseout="uhghl(['clinic_user_mapping_user_id_fkey','public.clinic_user_mapping.user_id','public.user_detail.user_id'])" transform='translate(7,0)' class='scene' d='M 435 240 L 367,240 Q 360,240 360,247 L 360,255' >
+	<title>Fk user_id_fkey
+clinic_user_mapping ref user_detail ( user_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 435 240 L 367,240 Q 360,240 360,247 L 360,255' ></path>
+<text x='397' y='235' transform='rotate(0 397,235)' title='Fk user_id_fkey
+clinic_user_mapping ref user_detail ( user_id )' class='relName'>user_id</text>
+<!-- ============= Fk 'doctor_patient_mapping_doctor_patient_mapping_doctor_id_fkey' ============= -->
+<path id='doctor_patient_mapping_doctor_patient_mapping_doctor_id_fkey'  onmouseover="hghl(['doctor_patient_mapping_doctor_patient_mapping_doctor_id_fkey','public.doctor_patient_mapping.doctor_id','public.user_detail.user_id'])" onmouseout="uhghl(['doctor_patient_mapping_doctor_patient_mapping_doctor_id_fkey','public.doctor_patient_mapping.doctor_id','public.user_detail.user_id'])" transform='translate(7,0)' class='scene' d='M 450 345 L 375,345' >
+	<title>Fk doctor_patient_mapping_doctor_id_fkey
+doctor_patient_mapping ref user_detail ( doctor_id -&gt; user_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 450 345 L 375,345' ></path>
+<text x='400' y='340' transform='rotate(0 400,340)' title='Fk doctor_patient_mapping_doctor_id_fkey
+doctor_patient_mapping ref user_detail ( doctor_id -&gt; user_id )' class='relName'>doctor_id</text>
+<!-- ============= Fk 'doctor_patient_mapping_doctor_patient_mapping_patient_id_fkey' ============= -->
+<path id='doctor_patient_mapping_doctor_patient_mapping_patient_id_fkey'  onmouseover="hghl(['doctor_patient_mapping_doctor_patient_mapping_patient_id_fkey','public.doctor_patient_mapping.patient_id','public.user_detail.user_id'])" onmouseout="uhghl(['doctor_patient_mapping_doctor_patient_mapping_patient_id_fkey','public.doctor_patient_mapping.patient_id','public.user_detail.user_id'])" transform='translate(7,0)' class='scene' d='M 450 360 L 375,360' >
+	<title>Fk doctor_patient_mapping_patient_id_fkey
+doctor_patient_mapping ref user_detail ( patient_id -&gt; user_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 450 360 L 375,360' ></path>
+<text x='399' y='355' transform='rotate(0 399,355)' title='Fk doctor_patient_mapping_patient_id_fkey
+doctor_patient_mapping ref user_detail ( patient_id -&gt; user_id )' class='relName'>patient_id</text>
+<!-- ============= Fk 'user_credentials_user_credentials_role_fkey' ============= -->
+<path id='user_credentials_user_credentials_role_fkey'  onmouseover="hghl(['user_credentials_user_credentials_role_fkey','public.user_credentials.role_id','public.role.role_id'])" onmouseout="uhghl(['user_credentials_user_credentials_role_fkey','public.user_credentials.role_id','public.role.role_id'])" transform='translate(7,0)' class='scene' d='M 750 315 L 795,315' >
+	<title>Fk user_credentials_role_fkey
+user_credentials ref role ( role_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 750 315 L 795,315' ></path>
+<text x='757' y='310' transform='rotate(0 757,310)' title='Fk user_credentials_role_fkey
+user_credentials ref role ( role_id )' class='relName'>role_id</text>
+<!-- ============= Fk 'treatment_treatment_status_fkey' ============= -->
+<path id='treatment_treatment_status_fkey'  onmouseover="hghl(['treatment_treatment_status_fkey','public.treatment.status_id','public.status.status_id'])" onmouseout="uhghl(['treatment_treatment_status_fkey','public.treatment.status_id','public.status.status_id'])" transform='translate(7,0)' class='scene' d='M 210 495 L 150,495' >
+	<title>Fk treatment_status_fkey
+treatment ref status ( status_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 210 495 L 150,495' ></path>
+<text x='163' y='490' transform='rotate(0 163,490)' title='Fk treatment_status_fkey
+treatment ref status ( status_id )' class='relName'>status_id</text>
+<!-- ============= Fk 'treatment_treatment_fkey' ============= -->
+<path id='treatment_treatment_fkey'  onmouseover="hghl(['treatment_treatment_fkey','public.treatment.patient_id','public.user_detail.user_id'])" onmouseout="uhghl(['treatment_treatment_fkey','public.treatment.patient_id','public.user_detail.user_id'])" transform='translate(7,0)' class='scene' d='M 315 450 L 315,375' >
+	<title>Fk treatment_fkey
+treatment ref user_detail ( patient_id -&gt; user_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 315 450 L 315,375' ></path>
+<text x='317' y='445' transform='rotate(270 317,445)' title='Fk treatment_fkey
+treatment ref user_detail ( patient_id -&gt; user_id )' class='relName'>patient_id</text>
+<!-- ============= Fk 'appointment_appointment_doctor_id_fkey' ============= -->
+<path id='appointment_appointment_doctor_id_fkey'  onmouseover="hghl(['appointment_appointment_doctor_id_fkey','public.appointment.doctor_id','public.user_detail.user_id'])" onmouseout="uhghl(['appointment_appointment_doctor_id_fkey','public.appointment.doctor_id','public.user_detail.user_id'])" transform='translate(7,0)' class='scene' d='M 210 330 L 285,330' >
+	<title>Fk appointment_doctor_id_fkey
+appointment ref user_detail ( doctor_id -&gt; user_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 210 330 L 285,330' ></path>
+<text x='217' y='325' transform='rotate(0 217,325)' title='Fk appointment_doctor_id_fkey
+appointment ref user_detail ( doctor_id -&gt; user_id )' class='relName'>doctor_id</text>
+<!-- ============= Fk 'appointment_appointment_id_patient_id_fkey' ============= -->
+<path id='appointment_appointment_id_patient_id_fkey'  onmouseover="hghl(['appointment_appointment_id_patient_id_fkey','public.appointment.patient_id','public.user_detail.user_id'])" onmouseout="uhghl(['appointment_appointment_id_patient_id_fkey','public.appointment.patient_id','public.user_detail.user_id'])" transform='translate(7,0)' class='scene' d='M 210 345 L 285,345' >
+	<title>Fk appointment_id_patient_id_fkey
+appointment ref user_detail ( patient_id -&gt; user_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 210 345 L 285,345' ></path>
+<text x='217' y='340' transform='rotate(0 217,340)' title='Fk appointment_id_patient_id_fkey
+appointment ref user_detail ( patient_id -&gt; user_id )' class='relName'>patient_id</text>
+<!-- ============= Fk 'patient_payment_payment_treatment_fkey' ============= -->
+<path id='patient_payment_payment_treatment_fkey'  onmouseover="hghl(['patient_payment_payment_treatment_fkey','public.patient_payment.treatment_id','public.treatment.treatment_id'])" onmouseout="uhghl(['patient_payment_payment_treatment_fkey','public.patient_payment.treatment_id','public.treatment.treatment_id'])" transform='translate(7,0)' class='scene' d='M 345 765 L 345,675' >
+	<title>Fk payment_treatment_fkey
+patient_payment ref treatment ( treatment_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 345 765 L 345,675' ></path>
+<text x='347' y='760' transform='rotate(270 347,760)' title='Fk payment_treatment_fkey
+patient_payment ref treatment ( treatment_id )' class='relName'>treatment_id</text>
+<!-- ============= Fk 'patient_oral_examination_patient_oral_examination_fkey' ============= -->
+<path id='patient_oral_examination_patient_oral_examination_fkey'  onmouseover="hghl(['patient_oral_examination_patient_oral_examination_fkey','public.patient_oral_examination.treatment_id','public.treatment.treatment_id'])" onmouseout="uhghl(['patient_oral_examination_patient_oral_examination_fkey','public.patient_oral_examination.treatment_id','public.treatment.treatment_id'])" transform='translate(7,0)' class='scene' d='M 240 765 L 240,675' >
+	<title>Fk patient_oral_examination_fkey
+patient_oral_examination ref treatment ( treatment_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 240 765 L 240,675' ></path>
+<text x='242' y='760' transform='rotate(270 242,760)' title='Fk patient_oral_examination_fkey
+patient_oral_examination ref treatment ( treatment_id )' class='relName'>treatment_id</text>
+<!-- ============= Fk 'clinic_user_module_access_clinic_user_module_access_module_fkey' ============= -->
+<path id='clinic_user_module_access_clinic_user_module_access_module_fkey'  onmouseover="hghl(['clinic_user_module_access_clinic_user_module_access_module_fkey','public.clinic_user_module_access.module_id','public.module.module_id'])" onmouseout="uhghl(['clinic_user_module_access_clinic_user_module_access_module_fkey','public.clinic_user_module_access.module_id','public.module.module_id'])" transform='translate(7,0)' class='scene' d='M 465 60 L 555,60' >
+	<title>Fk clinic_user_module_access_module_fkey
+clinic_user_module_access ref module ( module_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 465 60 L 555,60' ></path>
+<text x='472' y='55' transform='rotate(0 472,55)' title='Fk clinic_user_module_access_module_fkey
+clinic_user_module_access ref module ( module_id )' class='relName'>module_id</text>
+<!-- ============= Fk 'clinic_user_module_access_clinic_user_module_access_user_fkey' ============= -->
+<path id='clinic_user_module_access_clinic_user_module_access_user_fkey'  onmouseover="hghl(['clinic_user_module_access_clinic_user_module_access_user_fkey','public.clinic_user_module_access.user_id','public.user_detail.user_id'])" onmouseout="uhghl(['clinic_user_module_access_clinic_user_module_access_user_fkey','public.clinic_user_module_access.user_id','public.user_detail.user_id'])" transform='translate(7,0)' class='scene' d='M 315 120 L 315,255' >
+	<title>Fk clinic_user_module_access_user_fkey
+clinic_user_module_access ref user_detail ( user_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 315 120 L 315,255' ></path>
+<text x='328' y='120' transform='rotate(90 328,120)' title='Fk clinic_user_module_access_user_fkey
+clinic_user_module_access ref user_detail ( user_id )' class='relName'>user_id</text>
+<!-- ============= Fk 'clinic_modules_mapping_clinic_id_fkey' ============= -->
+<path id='clinic_modules_mapping_clinic_id_fkey'  onmouseover="hghl(['clinic_modules_mapping_clinic_id_fkey','public.clinic_modules_mapping.clinic_id','public.clinic.clinic_id'])" onmouseout="uhghl(['clinic_modules_mapping_clinic_id_fkey','public.clinic_modules_mapping.clinic_id','public.clinic.clinic_id'])" transform='translate(7,0)' class='scene' d='M 810 120 L 757,120 Q 750,120 750,127 L 750,217 Q 750,225 742,225 L 735,225' >
+	<title>Fk clinic_id_fkey
+clinic_modules_mapping ref clinic ( clinic_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 810 120 L 757,120 Q 750,120 750,127 L 750,217 Q 750,225 742,225 L 735,225' ></path>
+<text x='768' y='115' transform='rotate(0 768,115)' title='Fk clinic_id_fkey
+clinic_modules_mapping ref clinic ( clinic_id )' class='relName'>clinic_id</text>
+<!-- ============= Fk 'clinic_modules_mapping_module_id_fkey' ============= -->
+<path id='clinic_modules_mapping_module_id_fkey'  onmouseover="hghl(['clinic_modules_mapping_module_id_fkey','public.clinic_modules_mapping.module_id','public.module.module_id'])" onmouseout="uhghl(['clinic_modules_mapping_module_id_fkey','public.clinic_modules_mapping.module_id','public.module.module_id'])" transform='translate(7,0)' class='scene' d='M 810 60 L 720,60' >
+	<title>Fk module_id_fkey
+clinic_modules_mapping ref module ( module_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 810 60 L 720,60' ></path>
+<text x='756' y='55' transform='rotate(0 756,55)' title='Fk module_id_fkey
+clinic_modules_mapping ref module ( module_id )' class='relName'>module_id</text>
+<!-- ============= Fk 'contact_detail_contact_detail_user_fkey' ============= -->
+<path id='contact_detail_contact_detail_user_fkey'  onmouseover="hghl(['contact_detail_contact_detail_user_fkey','public.contact_detail.user_id','public.user_detail.user_id'])" onmouseout="uhghl(['contact_detail_contact_detail_user_fkey','public.contact_detail.user_id','public.user_detail.user_id'])" transform='translate(7,0)' class='scene' d='M 225 270 L 285,270' >
+	<title>Fk contact_detail_user_fkey
+contact_detail ref user_detail ( user_id )</title>
+</path>
+<path class='defo' transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 225 270 L 285,270' ></path>
+<text x='232' y='265' transform='rotate(0 232,265)' title='Fk contact_detail_user_fkey
+contact_detail ref user_detail ( user_id )' class='relName'>user_id</text>
+<!-- ============= Table 'user_detail' ============= -->
+<rect class='table' x='300' y='263' width='75' height='105' rx='7' ry='7' style='stroke:#b7ccb3'/>
+<line class='delim' x1='300.000000' y1='289.000000' x2='375.000000' y2='289.000000'/>
+<line class='delim' x1='315.000000' y1='289.000000' x2='315.000000' y2='368.000000'/>
+<line class='delim' x1='364.000000' y1='289.000000' x2='364.000000' y2='368.000000'/>
+<path d='M 300.00 289.00 L 300.00 270.00 Q 300.00 263.00 307.00 263.00 L 368.00 263.00 Q 375.00 263.00 375.00 270.00 L 375.00 289.00 L300.00 289.00 ' style='fill:#bef5b3;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#user_detail'><text x='305' y='281'>user_detail</text><title>Table public.user_detail</title></a>
+  <use id='nn' x='302' y='297' xlink:href='#nn'/><a xlink:href='#user_detail.user_id'><use id='pk' x='302' y='296' xlink:href='#pk'/><title>Pk user_detail_pkey ( user_id ) </title></a>
+<a xlink:href='#user_detail.user_id'><text id='public.user_detail.user_id' x='318' y='307' onmouseover="hghl(['user_detail_user_detail_user_fkey','appointment_appointment_doctor_id_fkey','appointment_appointment_id_patient_id_fkey','clinic_user_module_access_clinic_user_module_access_user_fkey','contact_detail_contact_detail_user_fkey','doctor_patient_mapping_doctor_patient_mapping_doctor_id_fkey','doctor_patient_mapping_doctor_patient_mapping_patient_id_fkey','treatment_treatment_fkey','clinic_user_mapping_user_id_fkey'])" onmouseout="uhghl(['user_detail_user_detail_user_fkey','appointment_appointment_doctor_id_fkey','appointment_appointment_id_patient_id_fkey','clinic_user_module_access_clinic_user_module_access_user_fkey','contact_detail_contact_detail_user_fkey','doctor_patient_mapping_doctor_patient_mapping_doctor_id_fkey','doctor_patient_mapping_doctor_patient_mapping_patient_id_fkey','treatment_treatment_fkey','clinic_user_mapping_user_id_fkey'])">user_id</text><title>user_id
+* integer</title></a>
+<a xlink:href='#user_detail.user_id'><use id='fk' x='364' y='296' xlink:href='#fk'/><title>References user_credentials ( user_id ) 
+Referred by appointment ( doctor_id -&gt; user_id ) 
+Referred by appointment ( patient_id -&gt; user_id ) 
+Referred by clinic_user_module_access ( user_id ) 
+Referred by contact_detail ( user_id ) 
+Referred by doctor_patient_mapping ( doctor_id -&gt; user_id ) 
+Referred by doctor_patient_mapping ( patient_id -&gt; user_id ) 
+Referred by treatment ( patient_id -&gt; user_id ) 
+Referred by clinic_user_mapping ( user_id ) </title></a>
+  <use id='nn' x='302' y='312' xlink:href='#nn'/><a xlink:href='#user_detail.name'><text id='public.user_detail.name' x='318' y='322'>name</text><title>name
+* varchar(100)</title></a>
+  <use id='nn' x='302' y='327' xlink:href='#nn'/><a xlink:href='#user_detail.gender'><text id='public.user_detail.gender' x='318' y='337'>gender</text><title>gender
+* varchar(6)</title></a>
+  <a xlink:href='#user_detail.age'><text id='public.user_detail.age' x='318' y='352'>age</text><title>age
+smallint</title></a>
+
+<!-- ============= Table 'clinic_user_mapping' ============= -->
+<rect class='table' x='450' y='203' width='135' height='75' rx='7' ry='7' style='stroke:#b3bccc'/>
+<line class='delim' x1='450.000000' y1='229.000000' x2='585.000000' y2='229.000000'/>
+<line class='delim' x1='465.000000' y1='229.000000' x2='465.000000' y2='278.000000'/>
+<line class='delim' x1='574.000000' y1='229.000000' x2='574.000000' y2='278.000000'/>
+<path d='M 450.00 229.00 L 450.00 210.00 Q 450.00 203.00 457.00 203.00 L 578.00 203.00 Q 585.00 203.00 585.00 210.00 L 585.00 229.00 L450.00 229.00 ' style='fill:#b3ccf5;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#clinic_user_mapping'><text x='459' y='221'>clinic_user_mapping</text><title>Table public.clinic_user_mapping</title></a>
+  <use id='nn' x='452' y='237' xlink:href='#nn'/><a xlink:href='#clinic_user_mapping.clinic_id'><use id='pk' x='452' y='236' xlink:href='#pk'/><title>Pk clinic_user_mapping_pkey ( clinic_id, user_id ) </title></a>
+<a xlink:href='#clinic_user_mapping.clinic_id'><text id='public.clinic_user_mapping.clinic_id' x='468' y='247' onmouseover="hghl(['clinic_user_mapping_clinic_id_fkey'])" onmouseout="uhghl(['clinic_user_mapping_clinic_id_fkey'])">clinic_id</text><title>clinic_id
+* integer</title></a>
+<a xlink:href='#clinic_user_mapping.clinic_id'><use id='fk' x='574' y='236' xlink:href='#fk'/><title>References clinic ( clinic_id ) </title></a>
+  <use id='nn' x='452' y='252' xlink:href='#nn'/><a xlink:href='#clinic_user_mapping.user_id'><use id='pk' x='452' y='251' xlink:href='#pk'/><title>Pk clinic_user_mapping_pkey ( clinic_id, user_id ) </title></a>
+<a xlink:href='#clinic_user_mapping.user_id'><text id='public.clinic_user_mapping.user_id' x='468' y='262' onmouseover="hghl(['clinic_user_mapping_user_id_fkey'])" onmouseout="uhghl(['clinic_user_mapping_user_id_fkey'])">user_id</text><title>user_id
+* integer</title></a>
+<a xlink:href='#clinic_user_mapping.user_id'><use id='fk' x='574' y='251' xlink:href='#fk'/><title>References user_detail ( user_id ) </title></a>
+
+<!-- ============= Table 'clinic' ============= -->
+<rect class='table' x='660' y='203' width='75' height='75' rx='7' ry='7' style='stroke:#b3bccc'/>
+<line class='delim' x1='660.000000' y1='229.000000' x2='735.000000' y2='229.000000'/>
+<line class='delim' x1='675.000000' y1='229.000000' x2='675.000000' y2='278.000000'/>
+<line class='delim' x1='724.000000' y1='229.000000' x2='724.000000' y2='278.000000'/>
+<path d='M 660.00 229.00 L 660.00 210.00 Q 660.00 203.00 667.00 203.00 L 728.00 203.00 Q 735.00 203.00 735.00 210.00 L 735.00 229.00 L660.00 229.00 ' style='fill:#b3ccf5;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#clinic'><text x='680' y='221'>clinic</text><title>Table public.clinic</title></a>
+  <use id='nn' x='662' y='237' xlink:href='#nn'/><a xlink:href='#clinic.clinic_id'><use id='pk' x='662' y='236' xlink:href='#pk'/><title>Pk clinic_pkey ( clinic_id ) </title></a>
+<a xlink:href='#clinic.clinic_id'><text id='public.clinic.clinic_id' x='678' y='247' onmouseover="hghl(['clinic_modules_mapping_clinic_id_fkey','clinic_user_mapping_clinic_id_fkey'])" onmouseout="uhghl(['clinic_modules_mapping_clinic_id_fkey','clinic_user_mapping_clinic_id_fkey'])">clinic_id</text><title>clinic_id
+* integer</title></a>
+<a xlink:href='#clinic.clinic_id'><use id='ref' x='724' y='236' xlink:href='#ref'/><title>Referred by clinic_modules_mapping ( clinic_id ) 
+Referred by clinic_user_mapping ( clinic_id ) </title></a>
+  <use id='nn' x='662' y='252' xlink:href='#nn'/><a xlink:href='#clinic.name'><text id='public.clinic.name' x='678' y='262'>name</text><title>name
+* varchar(100)</title></a>
+
+<!-- ============= Table 'doctor_patient_mapping' ============= -->
+<rect class='table' x='465' y='338' width='150' height='75' rx='7' ry='7' style='stroke:#ccc1b3'/>
+<line class='delim' x1='465.000000' y1='364.000000' x2='615.000000' y2='364.000000'/>
+<line class='delim' x1='480.000000' y1='364.000000' x2='480.000000' y2='413.000000'/>
+<line class='delim' x1='604.000000' y1='364.000000' x2='604.000000' y2='413.000000'/>
+<path d='M 465.00 364.00 L 465.00 345.00 Q 465.00 338.00 472.00 338.00 L 608.00 338.00 Q 615.00 338.00 615.00 345.00 L 615.00 364.00 L465.00 364.00 ' style='fill:#f5d8b3;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#doctor_patient_mapping'><text x='471' y='356'>doctor_patient_mapping</text><title>Table public.doctor_patient_mapping</title></a>
+  <use id='nn' x='467' y='372' xlink:href='#nn'/><a xlink:href='#doctor_patient_mapping.doctor_id'><use id='pk' x='467' y='371' xlink:href='#pk'/><title>Pk doctor_patient_mapping_pkey ( doctor_id, patient_id ) </title></a>
+<a xlink:href='#doctor_patient_mapping.doctor_id'><text id='public.doctor_patient_mapping.doctor_id' x='483' y='382' onmouseover="hghl(['doctor_patient_mapping_doctor_patient_mapping_doctor_id_fkey'])" onmouseout="uhghl(['doctor_patient_mapping_doctor_patient_mapping_doctor_id_fkey'])">doctor_id</text><title>doctor_id
+* integer</title></a>
+<a xlink:href='#doctor_patient_mapping.doctor_id'><use id='fk' x='604' y='371' xlink:href='#fk'/><title>References user_detail ( doctor_id -&gt; user_id ) </title></a>
+  <use id='nn' x='467' y='387' xlink:href='#nn'/><a xlink:href='#doctor_patient_mapping.patient_id'><use id='pk' x='467' y='386' xlink:href='#pk'/><title>Pk doctor_patient_mapping_pkey ( doctor_id, patient_id ) </title></a>
+<a xlink:href='#doctor_patient_mapping.patient_id'><text id='public.doctor_patient_mapping.patient_id' x='483' y='397' onmouseover="hghl(['doctor_patient_mapping_doctor_patient_mapping_patient_id_fkey'])" onmouseout="uhghl(['doctor_patient_mapping_doctor_patient_mapping_patient_id_fkey'])">patient_id</text><title>patient_id
+* integer</title></a>
+<a xlink:href='#doctor_patient_mapping.patient_id'><use id='fk' x='604' y='386' xlink:href='#fk'/><title>References user_detail ( patient_id -&gt; user_id ) </title></a>
+
+<!-- ============= Table 'user_credentials' ============= -->
+<rect class='table' x='630' y='293' width='120' height='120' rx='7' ry='7' style='stroke:#ccc1b3'/>
+<line class='delim' x1='630.000000' y1='319.000000' x2='750.000000' y2='319.000000'/>
+<line class='delim' x1='645.000000' y1='319.000000' x2='645.000000' y2='413.000000'/>
+<line class='delim' x1='739.000000' y1='319.000000' x2='739.000000' y2='413.000000'/>
+<path d='M 630.00 319.00 L 630.00 300.00 Q 630.00 293.00 637.00 293.00 L 743.00 293.00 Q 750.00 293.00 750.00 300.00 L 750.00 319.00 L630.00 319.00 ' style='fill:#f5d8b3;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#user_credentials'><text x='642' y='311'>user_credentials</text><title>Table public.user_credentials</title></a>
+  <use id='nn' x='632' y='327' xlink:href='#nn'/><a xlink:href='#user_credentials.user_id'><use id='pk' x='632' y='326' xlink:href='#pk'/><title>Pk user_credentials_pkey ( user_id ) </title></a>
+<a xlink:href='#user_credentials.user_id'><text id='public.user_credentials.user_id' x='648' y='337' onmouseover="hghl(['user_detail_user_detail_user_fkey'])" onmouseout="uhghl(['user_detail_user_detail_user_fkey'])">user_id</text><title>user_id
+* serial</title></a>
+<a xlink:href='#user_credentials.user_id'><use id='ref' x='739' y='326' xlink:href='#ref'/><title>Referred by user_detail ( user_id ) </title></a>
+  <a xlink:href='#user_credentials.login_id'><text id='public.user_credentials.login_id' x='648' y='352'>login_id</text><title>login_id
+varchar(30)</title></a>
+  <a xlink:href='#user_credentials.login_enabled'><text id='public.user_credentials.login_enabled' x='648' y='367'>login_enabled</text><title>login_enabled
+bool</title></a>
+  <a xlink:href='#user_credentials.password'><text id='public.user_credentials.password' x='648' y='382'>password</text><title>password
+varchar(100)</title></a>
+  <use id='nn' x='632' y='387' xlink:href='#nn'/><a xlink:href='#user_credentials.role_id'><text id='public.user_credentials.role_id' x='648' y='397' onmouseover="hghl(['user_credentials_user_credentials_role_fkey'])" onmouseout="uhghl(['user_credentials_user_credentials_role_fkey'])">role_id</text><title>role_id
+* integer</title></a>
+<a xlink:href='#user_credentials.role_id'><use id='fk' x='739' y='386' xlink:href='#fk'/><title>References role ( role_id ) </title></a>
+
+<!-- ============= Table 'role' ============= -->
+<rect class='table' x='810' y='293' width='75' height='75' rx='7' ry='7' style='stroke:#ccc1b3'/>
+<line class='delim' x1='810.000000' y1='319.000000' x2='885.000000' y2='319.000000'/>
+<line class='delim' x1='825.000000' y1='319.000000' x2='825.000000' y2='368.000000'/>
+<line class='delim' x1='874.000000' y1='319.000000' x2='874.000000' y2='368.000000'/>
+<path d='M 810.00 319.00 L 810.00 300.00 Q 810.00 293.00 817.00 293.00 L 878.00 293.00 Q 885.00 293.00 885.00 300.00 L 885.00 319.00 L810.00 319.00 ' style='fill:#f5d8b3;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#role'><text x='834' y='311'>role</text><title>Table public.role</title></a>
+  <use id='nn' x='812' y='327' xlink:href='#nn'/><a xlink:href='#role.role_id'><use id='pk' x='812' y='326' xlink:href='#pk'/><title>Pk role_pkey ( role_id ) </title></a>
+<a xlink:href='#role.role_id'><text id='public.role.role_id' x='828' y='337' onmouseover="hghl(['user_credentials_user_credentials_role_fkey'])" onmouseout="uhghl(['user_credentials_user_credentials_role_fkey'])">role_id</text><title>role_id
+* serial</title></a>
+<a xlink:href='#role.role_id'><use id='ref' x='874' y='326' xlink:href='#ref'/><title>Referred by user_credentials ( role_id ) </title></a>
+  <a xlink:href='#role.role'><text id='public.role.role' x='828' y='352'>role</text><title>role
+varchar(30)</title></a>
+
+<!-- ============= Table 'treatment' ============= -->
+<rect class='table' x='225' y='458' width='195' height='210' rx='7' ry='7' style='stroke:#b3b3cc'/>
+<line class='delim' x1='225.000000' y1='484.000000' x2='420.000000' y2='484.000000'/>
+<line class='delim' x1='240.000000' y1='484.000000' x2='240.000000' y2='668.000000'/>
+<line class='delim' x1='409.000000' y1='484.000000' x2='409.000000' y2='668.000000'/>
+<path d='M 225.00 484.00 L 225.00 465.00 Q 225.00 458.00 232.00 458.00 L 413.00 458.00 Q 420.00 458.00 420.00 465.00 L 420.00 484.00 L225.00 484.00 ' style='fill:#b3b3f5;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#treatment'><text x='293' y='476'>treatment</text><title>Table public.treatment</title></a>
+  <use id='nn' x='227' y='492' xlink:href='#nn'/><a xlink:href='#treatment.treatment_id'><use id='pk' x='227' y='491' xlink:href='#pk'/><title>Pk treatment_pkey ( treatment_id ) </title></a>
+<a xlink:href='#treatment.treatment_id'><text id='public.treatment.treatment_id' x='243' y='502' onmouseover="hghl(['patient_oral_examination_patient_oral_examination_fkey','patient_payment_payment_treatment_fkey'])" onmouseout="uhghl(['patient_oral_examination_patient_oral_examination_fkey','patient_payment_payment_treatment_fkey'])">treatment_id</text><title>treatment_id
+* serial</title></a>
+<a xlink:href='#treatment.treatment_id'><use id='ref' x='409' y='491' xlink:href='#ref'/><title>Referred by patient_oral_examination ( treatment_id ) 
+Referred by patient_payment ( treatment_id ) </title></a>
+  <use id='nn' x='227' y='507' xlink:href='#nn'/><a xlink:href='#treatment.patient_id'><text id='public.treatment.patient_id' x='243' y='517' onmouseover="hghl(['treatment_treatment_fkey'])" onmouseout="uhghl(['treatment_treatment_fkey'])">patient_id</text><title>patient_id
+* integer</title></a>
+<a xlink:href='#treatment.patient_id'><use id='fk' x='409' y='506' xlink:href='#fk'/><title>References user_detail ( patient_id -&gt; user_id ) </title></a>
+  <use id='nn' x='227' y='522' xlink:href='#nn'/><a xlink:href='#treatment.status_id'><text id='public.treatment.status_id' x='243' y='532' onmouseover="hghl(['treatment_treatment_status_fkey'])" onmouseout="uhghl(['treatment_treatment_status_fkey'])">status_id</text><title>status_id
+* integer</title></a>
+<a xlink:href='#treatment.status_id'><use id='fk' x='409' y='521' xlink:href='#fk'/><title>References status ( status_id ) </title></a>
+  <a xlink:href='#treatment.chief_complaint_description'><text id='public.treatment.chief_complaint_description' x='243' y='547'>chief_complaint_description</text><title>chief_complaint_description
+varchar(100)</title></a>
+  <a xlink:href='#treatment.notes'><text id='public.treatment.notes' x='243' y='562'>notes</text><title>notes
+varchar(100)</title></a>
+  <use id='nn' x='227' y='567' xlink:href='#nn'/><a xlink:href='#treatment.pre_image_count'><text id='public.treatment.pre_image_count' x='243' y='577'>pre_image_count</text><title>pre_image_count
+* integer</title></a>
+  <use id='nn' x='227' y='582' xlink:href='#nn'/><a xlink:href='#treatment.post_image_count'><text id='public.treatment.post_image_count' x='243' y='592'>post_image_count</text><title>post_image_count
+* integer</title></a>
+  <a xlink:href='#treatment.creation_date'><text id='public.treatment.creation_date' x='243' y='607'>creation_date</text><title>creation_date
+timestamp</title></a>
+  <use id='nn' x='227' y='612' xlink:href='#nn'/><a xlink:href='#treatment.created_by'><text id='public.treatment.created_by' x='243' y='622'>created_by</text><title>created_by
+* integer</title></a>
+  <a xlink:href='#treatment.last_updated_date'><text id='public.treatment.last_updated_date' x='243' y='637'>last_updated_date</text><title>last_updated_date
+timestamp</title></a>
+  <use id='nn' x='227' y='642' xlink:href='#nn'/><a xlink:href='#treatment.last_modified_by'><text id='public.treatment.last_modified_by' x='243' y='652'>last_modified_by</text><title>last_modified_by
+* integer</title></a>
+
+<!-- ============= Table 'appointment' ============= -->
+<rect class='table' x='75' y='308' width='135' height='135' rx='7' ry='7' style='stroke:#b7ccb3'/>
+<line class='delim' x1='75.000000' y1='334.000000' x2='210.000000' y2='334.000000'/>
+<line class='delim' x1='90.000000' y1='334.000000' x2='90.000000' y2='443.000000'/>
+<line class='delim' x1='199.000000' y1='334.000000' x2='199.000000' y2='443.000000'/>
+<path d='M 75.00 334.00 L 75.00 315.00 Q 75.00 308.00 82.00 308.00 L 203.00 308.00 Q 210.00 308.00 210.00 315.00 L 210.00 334.00 L75.00 334.00 ' style='fill:#bef5b3;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#appointment'><text x='105' y='326'>appointment</text><title>Table public.appointment</title></a>
+  <use id='nn' x='77' y='342' xlink:href='#nn'/><a xlink:href='#appointment.appointment_id'><use id='pk' x='77' y='341' xlink:href='#pk'/><title>Pk appointment_pkey ( appointment_id ) </title></a>
+<a xlink:href='#appointment.appointment_id'><text id='public.appointment.appointment_id' x='93' y='352'>appointment_id</text><title>appointment_id
+* serial</title></a>
+  <use id='nn' x='77' y='357' xlink:href='#nn'/><a xlink:href='#appointment.doctor_id'><text id='public.appointment.doctor_id' x='93' y='367' onmouseover="hghl(['appointment_appointment_doctor_id_fkey'])" onmouseout="uhghl(['appointment_appointment_doctor_id_fkey'])">doctor_id</text><title>doctor_id
+* integer</title></a>
+<a xlink:href='#appointment.doctor_id'><use id='fk' x='199' y='356' xlink:href='#fk'/><title>References user_detail ( doctor_id -&gt; user_id ) </title></a>
+  <use id='nn' x='77' y='372' xlink:href='#nn'/><a xlink:href='#appointment.patient_id'><text id='public.appointment.patient_id' x='93' y='382' onmouseover="hghl(['appointment_appointment_id_patient_id_fkey'])" onmouseout="uhghl(['appointment_appointment_id_patient_id_fkey'])">patient_id</text><title>patient_id
+* integer</title></a>
+<a xlink:href='#appointment.patient_id'><use id='fk' x='199' y='371' xlink:href='#fk'/><title>References user_detail ( patient_id -&gt; user_id ) </title></a>
+  <a xlink:href='#appointment.appointment_start'><text id='public.appointment.appointment_start' x='93' y='397'>appointment_start</text><title>appointment_start
+timestamp</title></a>
+  <a xlink:href='#appointment.appointment_end'><text id='public.appointment.appointment_end' x='93' y='412'>appointment_end</text><title>appointment_end
+timestamp</title></a>
+  <a xlink:href='#appointment.planned_treatment'><text id='public.appointment.planned_treatment' x='93' y='427'>planned_treatment</text><title>planned_treatment
+varchar(100)</title></a>
+
+<!-- ============= Table 'status' ============= -->
+<rect class='table' x='60' y='473' width='90' height='75' rx='7' ry='7' style='stroke:#ccc1b3'/>
+<line class='delim' x1='60.000000' y1='499.000000' x2='150.000000' y2='499.000000'/>
+<line class='delim' x1='75.000000' y1='499.000000' x2='75.000000' y2='548.000000'/>
+<line class='delim' x1='139.000000' y1='499.000000' x2='139.000000' y2='548.000000'/>
+<path d='M 60.00 499.00 L 60.00 480.00 Q 60.00 473.00 67.00 473.00 L 143.00 473.00 Q 150.00 473.00 150.00 480.00 L 150.00 499.00 L60.00 499.00 ' style='fill:#f5d8b3;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#status'><text x='85' y='491'>status</text><title>Table public.status</title></a>
+  <use id='nn' x='62' y='507' xlink:href='#nn'/><a xlink:href='#status.status_id'><use id='pk' x='62' y='506' xlink:href='#pk'/><title>Pk status_pkey ( status_id ) </title></a>
+<a xlink:href='#status.status_id'><text id='public.status.status_id' x='78' y='517' onmouseover="hghl(['treatment_treatment_status_fkey'])" onmouseout="uhghl(['treatment_treatment_status_fkey'])">status_id</text><title>status_id
+* serial</title></a>
+<a xlink:href='#status.status_id'><use id='ref' x='139' y='506' xlink:href='#ref'/><title>Referred by treatment ( status_id ) </title></a>
+  <a xlink:href='#status.status'><text id='public.status.status' x='78' y='532'>status</text><title>status
+varchar(50)</title></a>
+
+<!-- ============= Table 'patient_payment' ============= -->
+<rect class='table' x='330' y='773' width='135' height='180' rx='7' ry='7' style='stroke:#b3b3cc'/>
+<line class='delim' x1='330.000000' y1='799.000000' x2='465.000000' y2='799.000000'/>
+<line class='delim' x1='345.000000' y1='799.000000' x2='345.000000' y2='953.000000'/>
+<line class='delim' x1='454.000000' y1='799.000000' x2='454.000000' y2='953.000000'/>
+<path d='M 330.00 799.00 L 330.00 780.00 Q 330.00 773.00 337.00 773.00 L 458.00 773.00 Q 465.00 773.00 465.00 780.00 L 465.00 799.00 L330.00 799.00 ' style='fill:#b3b3f5;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#patient_payment'><text x='350' y='791'>patient_payment</text><title>Table public.patient_payment</title></a>
+  <use id='nn' x='332' y='807' xlink:href='#nn'/><a xlink:href='#patient_payment.payment_id'><use id='pk' x='332' y='806' xlink:href='#pk'/><title>Pk patient_payment_pkey ( payment_id ) </title></a>
+<a xlink:href='#patient_payment.payment_id'><text id='public.patient_payment.payment_id' x='348' y='817'>payment_id</text><title>payment_id
+* serial</title></a>
+  <use id='nn' x='332' y='822' xlink:href='#nn'/><a xlink:href='#patient_payment.treatment_id'><text id='public.patient_payment.treatment_id' x='348' y='832' onmouseover="hghl(['patient_payment_payment_treatment_fkey'])" onmouseout="uhghl(['patient_payment_payment_treatment_fkey'])">treatment_id</text><title>treatment_id
+* integer</title></a>
+<a xlink:href='#patient_payment.treatment_id'><use id='fk' x='454' y='821' xlink:href='#fk'/><title>References treatment ( treatment_id ) </title></a>
+  <a xlink:href='#patient_payment.payment_date'><text id='public.patient_payment.payment_date' x='348' y='847'>payment_date</text><title>payment_date
+date</title></a>
+  <a xlink:href='#patient_payment.payment_amount'><text id='public.patient_payment.payment_amount' x='348' y='862'>payment_amount</text><title>payment_amount
+integer</title></a>
+  <a xlink:href='#patient_payment.treatment_done'><text id='public.patient_payment.treatment_done' x='348' y='877'>treatment_done</text><title>treatment_done
+varchar(500)</title></a>
+  <a xlink:href='#patient_payment.creation_date'><text id='public.patient_payment.creation_date' x='348' y='892'>creation_date</text><title>creation_date
+timestamp</title></a>
+  <use id='nn' x='332' y='897' xlink:href='#nn'/><a xlink:href='#patient_payment.created_by'><text id='public.patient_payment.created_by' x='348' y='907'>created_by</text><title>created_by
+* integer</title></a>
+  <a xlink:href='#patient_payment.last_updated_date'><text id='public.patient_payment.last_updated_date' x='348' y='922'>last_updated_date</text><title>last_updated_date
+timestamp</title></a>
+  <use id='nn' x='332' y='927' xlink:href='#nn'/><a xlink:href='#patient_payment.last_modified_by'><text id='public.patient_payment.last_modified_by' x='348' y='937'>last_modified_by</text><title>last_modified_by
+* integer</title></a>
+
+<!-- ============= Table 'patient_oral_examination' ============= -->
+<rect class='table' x='150' y='773' width='150' height='165' rx='7' ry='7' style='stroke:#b3b3cc'/>
+<line class='delim' x1='150.000000' y1='799.000000' x2='300.000000' y2='799.000000'/>
+<line class='delim' x1='165.000000' y1='799.000000' x2='165.000000' y2='938.000000'/>
+<line class='delim' x1='289.000000' y1='799.000000' x2='289.000000' y2='938.000000'/>
+<path d='M 150.00 799.00 L 150.00 780.00 Q 150.00 773.00 157.00 773.00 L 293.00 773.00 Q 300.00 773.00 300.00 780.00 L 300.00 799.00 L150.00 799.00 ' style='fill:#b3b3f5;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#patient_oral_examination'><text x='154' y='791'>patient_oral_examination</text><title>Table public.patient_oral_examination</title></a>
+  <use id='nn' x='152' y='807' xlink:href='#nn'/><a xlink:href='#patient_oral_examination.oral_examination_id'><use id='pk' x='152' y='806' xlink:href='#pk'/><title>Pk patient_oral_examination_pkey ( oral_examination_id ) </title></a>
+<a xlink:href='#patient_oral_examination.oral_examination_id'><text id='public.patient_oral_examination.oral_examination_id' x='168' y='817'>oral_examination_id</text><title>oral_examination_id
+* serial</title></a>
+  <use id='nn' x='152' y='822' xlink:href='#nn'/><a xlink:href='#patient_oral_examination.treatment_id'><text id='public.patient_oral_examination.treatment_id' x='168' y='832' onmouseover="hghl(['patient_oral_examination_patient_oral_examination_fkey'])" onmouseout="uhghl(['patient_oral_examination_patient_oral_examination_fkey'])">treatment_id</text><title>treatment_id
+* integer</title></a>
+<a xlink:href='#patient_oral_examination.treatment_id'><use id='fk' x='289' y='821' xlink:href='#fk'/><title>References treatment ( treatment_id ) </title></a>
+  <a xlink:href='#patient_oral_examination.description'><text id='public.patient_oral_examination.description' x='168' y='847'>description</text><title>description
+varchar(100)</title></a>
+  <a xlink:href='#patient_oral_examination.cost'><text id='public.patient_oral_examination.cost' x='168' y='862'>cost</text><title>cost
+integer</title></a>
+  <a xlink:href='#patient_oral_examination.creation_date'><text id='public.patient_oral_examination.creation_date' x='168' y='877'>creation_date</text><title>creation_date
+timestamp</title></a>
+  <use id='nn' x='152' y='882' xlink:href='#nn'/><a xlink:href='#patient_oral_examination.created_by'><text id='public.patient_oral_examination.created_by' x='168' y='892'>created_by</text><title>created_by
+* integer</title></a>
+  <a xlink:href='#patient_oral_examination.last_updated_date'><text id='public.patient_oral_examination.last_updated_date' x='168' y='907'>last_updated_date</text><title>last_updated_date
+timestamp</title></a>
+  <use id='nn' x='152' y='912' xlink:href='#nn'/><a xlink:href='#patient_oral_examination.last_modified_by'><text id='public.patient_oral_examination.last_modified_by' x='168' y='922'>last_modified_by</text><title>last_modified_by
+* integer</title></a>
+
+<!-- ============= Table 'module' ============= -->
+<rect class='table' x='570' y='38' width='150' height='150' rx='7' ry='7' style='stroke:#b3bccc'/>
+<line class='delim' x1='570.000000' y1='64.000000' x2='720.000000' y2='64.000000'/>
+<line class='delim' x1='585.000000' y1='64.000000' x2='585.000000' y2='188.000000'/>
+<line class='delim' x1='709.000000' y1='64.000000' x2='709.000000' y2='188.000000'/>
+<path d='M 570.00 64.00 L 570.00 45.00 Q 570.00 38.00 577.00 38.00 L 713.00 38.00 Q 720.00 38.00 720.00 45.00 L 720.00 64.00 L570.00 64.00 ' style='fill:#b3ccf5;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#module'><text x='622' y='56'>module</text><title>Table public.module</title></a>
+  <use id='nn' x='572' y='72' xlink:href='#nn'/><a xlink:href='#module.module_id'><use id='pk' x='572' y='71' xlink:href='#pk'/><title>Pk module_pkey ( module_id ) </title></a>
+<a xlink:href='#module.module_id'><text id='public.module.module_id' x='588' y='82' onmouseover="hghl(['clinic_user_module_access_clinic_user_module_access_module_fkey','clinic_modules_mapping_module_id_fkey'])" onmouseout="uhghl(['clinic_user_module_access_clinic_user_module_access_module_fkey','clinic_modules_mapping_module_id_fkey'])">module_id</text><title>module_id
+* serial</title></a>
+<a xlink:href='#module.module_id'><use id='ref' x='709' y='71' xlink:href='#ref'/><title>Referred by clinic_user_module_access ( module_id ) 
+Referred by clinic_modules_mapping ( module_id ) </title></a>
+  <a xlink:href='#module.module_code'><text id='public.module.module_code' x='588' y='97'>module_code</text><title>module_code
+varchar(15)</title></a>
+  <a xlink:href='#module.module_description'><text id='public.module.module_description' x='588' y='112'>module_description</text><title>module_description
+varchar(100)</title></a>
+  <use id='nn' x='572' y='117' xlink:href='#nn'/><a xlink:href='#module.monthly_cost'><text id='public.module.monthly_cost' x='588' y='127'>monthly_cost</text><title>monthly_cost
+* integer</title></a>
+  <use id='nn' x='572' y='132' xlink:href='#nn'/><a xlink:href='#module.quaterly_cost'><text id='public.module.quaterly_cost' x='588' y='142'>quaterly_cost</text><title>quaterly_cost
+* integer</title></a>
+  <use id='nn' x='572' y='147' xlink:href='#nn'/><a xlink:href='#module.half_yearly_cost'><text id='public.module.half_yearly_cost' x='588' y='157'>half_yearly_cost</text><title>half_yearly_cost
+* integer</title></a>
+  <use id='nn' x='572' y='162' xlink:href='#nn'/><a xlink:href='#module.yearly_cost'><text id='public.module.yearly_cost' x='588' y='172'>yearly_cost</text><title>yearly_cost
+* integer</title></a>
+
+<!-- ============= Table 'clinic_user_module_access' ============= -->
+<rect class='table' x='300' y='38' width='165' height='75' rx='7' ry='7' style='stroke:#b7ccb3'/>
+<line class='delim' x1='300.000000' y1='64.000000' x2='465.000000' y2='64.000000'/>
+<line class='delim' x1='315.000000' y1='64.000000' x2='315.000000' y2='113.000000'/>
+<line class='delim' x1='454.000000' y1='64.000000' x2='454.000000' y2='113.000000'/>
+<path d='M 300.00 64.00 L 300.00 45.00 Q 300.00 38.00 307.00 38.00 L 458.00 38.00 Q 465.00 38.00 465.00 45.00 L 465.00 64.00 L300.00 64.00 ' style='fill:#bef5b3;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#clinic_user_module_access'><text x='306' y='56'>clinic_user_module_access</text><title>Table public.clinic_user_module_access</title></a>
+  <use id='nn' x='302' y='72' xlink:href='#nn'/><a xlink:href='#clinic_user_module_access.user_id'><use id='pk' x='302' y='71' xlink:href='#pk'/><title>Pk clinic_user_module_access_pkey ( user_id, module_id ) </title></a>
+<a xlink:href='#clinic_user_module_access.user_id'><text id='public.clinic_user_module_access.user_id' x='318' y='82' onmouseover="hghl(['clinic_user_module_access_clinic_user_module_access_user_fkey'])" onmouseout="uhghl(['clinic_user_module_access_clinic_user_module_access_user_fkey'])">user_id</text><title>user_id
+* integer</title></a>
+<a xlink:href='#clinic_user_module_access.user_id'><use id='fk' x='454' y='71' xlink:href='#fk'/><title>References user_detail ( user_id ) </title></a>
+  <use id='nn' x='302' y='87' xlink:href='#nn'/><a xlink:href='#clinic_user_module_access.module_id'><use id='pk' x='302' y='86' xlink:href='#pk'/><title>Pk clinic_user_module_access_pkey ( user_id, module_id ) </title></a>
+<a xlink:href='#clinic_user_module_access.module_id'><text id='public.clinic_user_module_access.module_id' x='318' y='97' onmouseover="hghl(['clinic_user_module_access_clinic_user_module_access_module_fkey'])" onmouseout="uhghl(['clinic_user_module_access_clinic_user_module_access_module_fkey'])">module_id</text><title>module_id
+* integer</title></a>
+<a xlink:href='#clinic_user_module_access.module_id'><use id='fk' x='454' y='86' xlink:href='#fk'/><title>References module ( module_id ) </title></a>
+
+<!-- ============= Table 'clinic_modules_mapping' ============= -->
+<rect class='table' x='825' y='38' width='150' height='105' rx='7' ry='7' style='stroke:#b3bccc'/>
+<line class='delim' x1='825.000000' y1='64.000000' x2='975.000000' y2='64.000000'/>
+<line class='delim' x1='840.000000' y1='64.000000' x2='840.000000' y2='143.000000'/>
+<line class='delim' x1='964.000000' y1='64.000000' x2='964.000000' y2='143.000000'/>
+<path d='M 825.00 64.00 L 825.00 45.00 Q 825.00 38.00 832.00 38.00 L 968.00 38.00 Q 975.00 38.00 975.00 45.00 L 975.00 64.00 L825.00 64.00 ' style='fill:#b3ccf5;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#clinic_modules_mapping'><text x='830' y='56'>clinic_modules_mapping</text><title>Table public.clinic_modules_mapping</title></a>
+  <use id='nn' x='827' y='72' xlink:href='#nn'/><a xlink:href='#clinic_modules_mapping.clinic_id'><use id='pk' x='827' y='71' xlink:href='#pk'/><title>Pk clinic_modules_mapping_pkey ( clinic_id, module_id ) </title></a>
+<a xlink:href='#clinic_modules_mapping.clinic_id'><text id='public.clinic_modules_mapping.clinic_id' x='843' y='82' onmouseover="hghl(['clinic_modules_mapping_clinic_id_fkey'])" onmouseout="uhghl(['clinic_modules_mapping_clinic_id_fkey'])">clinic_id</text><title>clinic_id
+* integer</title></a>
+<a xlink:href='#clinic_modules_mapping.clinic_id'><use id='fk' x='964' y='71' xlink:href='#fk'/><title>References clinic ( clinic_id ) </title></a>
+  <use id='nn' x='827' y='87' xlink:href='#nn'/><a xlink:href='#clinic_modules_mapping.module_id'><use id='pk' x='827' y='86' xlink:href='#pk'/><title>Pk clinic_modules_mapping_pkey ( clinic_id, module_id ) </title></a>
+<a xlink:href='#clinic_modules_mapping.module_id'><text id='public.clinic_modules_mapping.module_id' x='843' y='97' onmouseover="hghl(['clinic_modules_mapping_module_id_fkey'])" onmouseout="uhghl(['clinic_modules_mapping_module_id_fkey'])">module_id</text><title>module_id
+* integer</title></a>
+<a xlink:href='#clinic_modules_mapping.module_id'><use id='fk' x='964' y='86' xlink:href='#fk'/><title>References module ( module_id ) </title></a>
+  <a xlink:href='#clinic_modules_mapping.start_date'><text id='public.clinic_modules_mapping.start_date' x='843' y='112'>start_date</text><title>start_date
+date</title></a>
+  <a xlink:href='#clinic_modules_mapping.expiry_date'><text id='public.clinic_modules_mapping.expiry_date' x='843' y='127'>expiry_date</text><title>expiry_date
+date</title></a>
+
+<!-- ============= Table 'contact_detail' ============= -->
+<rect class='table' x='45' y='68' width='180' height='210' rx='7' ry='7' style='stroke:#b7ccb3'/>
+<line class='delim' x1='45.000000' y1='94.000000' x2='225.000000' y2='94.000000'/>
+<line class='delim' x1='60.000000' y1='94.000000' x2='60.000000' y2='278.000000'/>
+<line class='delim' x1='214.000000' y1='94.000000' x2='214.000000' y2='278.000000'/>
+<path d='M 45.00 94.00 L 45.00 75.00 Q 45.00 68.00 52.00 68.00 L 218.00 68.00 Q 225.00 68.00 225.00 75.00 L 225.00 94.00 L45.00 94.00 ' style='fill:#bef5b3;stroke:1;stroke-opacity:0.1;' />
+<a xlink:href='#contact_detail'><text x='94' y='86'>contact_detail</text><title>Table public.contact_detail</title></a>
+  <use id='nn' x='47' y='102' xlink:href='#nn'/><a xlink:href='#contact_detail.contact_id'><use id='pk' x='47' y='101' xlink:href='#pk'/><title>Pk contact_detail_pkey ( contact_id ) </title></a>
+<a xlink:href='#contact_detail.contact_id'><text id='public.contact_detail.contact_id' x='63' y='112'>contact_id</text><title>contact_id
+* serial</title></a>
+  <use id='nn' x='47' y='117' xlink:href='#nn'/><a xlink:href='#contact_detail.user_id'><text id='public.contact_detail.user_id' x='63' y='127' onmouseover="hghl(['contact_detail_contact_detail_user_fkey'])" onmouseout="uhghl(['contact_detail_contact_detail_user_fkey'])">user_id</text><title>user_id
+* integer</title></a>
+<a xlink:href='#contact_detail.user_id'><use id='fk' x='214' y='116' xlink:href='#fk'/><title>References user_detail ( user_id ) </title></a>
+  <use id='nn' x='47' y='132' xlink:href='#nn'/><a xlink:href='#contact_detail.primary_phone_number'><text id='public.contact_detail.primary_phone_number' x='63' y='142'>primary_phone_number</text><title>primary_phone_number
+* varchar(10) default 0</title></a>
+  <a xlink:href='#contact_detail.secondary_phone_number'><text id='public.contact_detail.secondary_phone_number' x='63' y='157'>secondary_phone_number</text><title>secondary_phone_number
+varchar(10) default 0</title></a>
+  <a xlink:href='#contact_detail.email'><text id='public.contact_detail.email' x='63' y='172'>email</text><title>email
+varchar(50)</title></a>
+  <a xlink:href='#contact_detail.address_line1'><text id='public.contact_detail.address_line1' x='63' y='187'>address_line1</text><title>address_line1
+varchar(30)</title></a>
+  <a xlink:href='#contact_detail.address_line2'><text id='public.contact_detail.address_line2' x='63' y='202'>address_line2</text><title>address_line2
+varchar(30)</title></a>
+  <a xlink:href='#contact_detail.city'><text id='public.contact_detail.city' x='63' y='217'>city</text><title>city
+varchar(20)</title></a>
+  <a xlink:href='#contact_detail.state'><text id='public.contact_detail.state' x='63' y='232'>state</text><title>state
+varchar(30)</title></a>
+  <a xlink:href='#contact_detail.country'><text id='public.contact_detail.country' x='63' y='247'>country</text><title>country
+varchar(20)</title></a>
+  <a xlink:href='#contact_detail.pincode'><text id='public.contact_detail.pincode' x='63' y='262'>pincode</text><title>pincode
+varchar(8)</title></a>
+
+</g></svg></div>
+
+
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_user_detail'); return(false);">Table user_detail</a></h2></div>
+<div id='user_detail'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='user_detail'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='user_detail.user_id'>user&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='user_detail.name'>name</a></td>
+		<td> varchar&#40; 100 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='user_detail.gender'>gender</a></td>
+		<td> varchar&#40; 6 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='user_detail.age'>age</a></td>
+		<td> smallint   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>user&#95;detail&#95;pkey</td>
+		<td> ON user&#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td>&nbsp;</td><td>user_detail_user_fkey</td>
+		<td > ( user&#95;id ) ref <a href='#user&#95;credentials'>user&#95;credentials</a> (user&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_clinic_user_mapping'); return(false);">Table clinic_user_mapping</a></h2></div>
+<div id='clinic_user_mapping'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='clinic_user_mapping'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='clinic_user_mapping.clinic_id'>clinic&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='clinic_user_mapping.user_id'>user&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>clinic&#95;user&#95;mapping&#95;pkey</td>
+		<td> ON clinic&#95;id&#44; user&#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td>&nbsp;</td><td>clinic_id_fkey</td>
+		<td > ( clinic&#95;id ) ref <a href='#clinic'>clinic</a> (clinic&#95;id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>user_id_fkey</td>
+		<td > ( user&#95;id ) ref <a href='#user&#95;detail'>user&#95;detail</a> (user&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_clinic'); return(false);">Table clinic</a></h2></div>
+<div id='clinic'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='clinic'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='clinic.clinic_id'>clinic&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='clinic.name'>name</a></td>
+		<td> varchar&#40; 100 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>clinic&#95;pkey</td>
+		<td> ON clinic&#95;id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_doctor_patient_mapping'); return(false);">Table doctor_patient_mapping</a></h2></div>
+<div id='doctor_patient_mapping'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='doctor_patient_mapping'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='doctor_patient_mapping.doctor_id'>doctor&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='doctor_patient_mapping.patient_id'>patient&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>doctor&#95;patient&#95;mapping&#95;pkey</td>
+		<td> ON doctor&#95;id&#44; patient&#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td>&nbsp;</td><td>doctor_patient_mapping_doctor_id_fkey</td>
+		<td > ( doctor&#95;id ) ref <a href='#user&#95;detail'>user&#95;detail</a> (user&#95;id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>doctor_patient_mapping_patient_id_fkey</td>
+		<td > ( patient&#95;id ) ref <a href='#user&#95;detail'>user&#95;detail</a> (user&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_user_credentials'); return(false);">Table user_credentials</a></h2></div>
+<div id='user_credentials'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='user_credentials'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='user_credentials.user_id'>user&#95;id</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='user_credentials.login_id'>login&#95;id</a></td>
+		<td> varchar&#40; 30 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='user_credentials.login_enabled'>login&#95;enabled</a></td>
+		<td> bool   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='user_credentials.password'>password</a></td>
+		<td> varchar&#40; 100 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='user_credentials.role_id'>role&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>user&#95;credentials&#95;pkey</td>
+		<td> ON user&#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td>&nbsp;</td><td>user_credentials_role_fkey</td>
+		<td > ( role&#95;id ) ref <a href='#role'>role</a> (role&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_role'); return(false);">Table role</a></h2></div>
+<div id='role'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='role'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='role.role_id'>role&#95;id</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='role.role'>role</a></td>
+		<td> varchar&#40; 30 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>role&#95;pkey</td>
+		<td> ON role&#95;id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_treatment'); return(false);">Table treatment</a></h2></div>
+<div id='treatment'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='treatment'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='treatment.treatment_id'>treatment&#95;id</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='treatment.patient_id'>patient&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='treatment.status_id'>status&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='treatment.chief_complaint_description'>chief&#95;complaint&#95;description</a></td>
+		<td> varchar&#40; 100 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='treatment.notes'>notes</a></td>
+		<td> varchar&#40; 100 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='treatment.pre_image_count'>pre&#95;image&#95;count</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='treatment.post_image_count'>post&#95;image&#95;count</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='treatment.creation_date'>creation&#95;date</a></td>
+		<td> timestamp   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='treatment.created_by'>created&#95;by</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='treatment.last_updated_date'>last&#95;updated&#95;date</a></td>
+		<td> timestamp   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='treatment.last_modified_by'>last&#95;modified&#95;by</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>treatment&#95;pkey</td>
+		<td> ON treatment&#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td>&nbsp;</td><td>treatment_status_fkey</td>
+		<td > ( status&#95;id ) ref <a href='#status'>status</a> (status&#95;id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>treatment_fkey</td>
+		<td > ( patient&#95;id ) ref <a href='#user&#95;detail'>user&#95;detail</a> (user&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_appointment'); return(false);">Table appointment</a></h2></div>
+<div id='appointment'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='appointment'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='appointment.appointment_id'>appointment&#95;id</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='appointment.doctor_id'>doctor&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='appointment.patient_id'>patient&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='appointment.appointment_start'>appointment&#95;start</a></td>
+		<td> timestamp   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='appointment.appointment_end'>appointment&#95;end</a></td>
+		<td> timestamp   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='appointment.planned_treatment'>planned&#95;treatment</a></td>
+		<td> varchar&#40; 100 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>appointment&#95;pkey</td>
+		<td> ON appointment&#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td>&nbsp;</td><td>appointment_doctor_id_fkey</td>
+		<td > ( doctor&#95;id ) ref <a href='#user&#95;detail'>user&#95;detail</a> (user&#95;id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>appointment_id_patient_id_fkey</td>
+		<td > ( patient&#95;id ) ref <a href='#user&#95;detail'>user&#95;detail</a> (user&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_status'); return(false);">Table status</a></h2></div>
+<div id='status'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='status'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='status.status_id'>status&#95;id</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='status.status'>status</a></td>
+		<td> varchar&#40; 50 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>status&#95;pkey</td>
+		<td> ON status&#95;id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_patient_payment'); return(false);">Table patient_payment</a></h2></div>
+<div id='patient_payment'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='patient_payment'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='patient_payment.payment_id'>payment&#95;id</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='patient_payment.treatment_id'>treatment&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='patient_payment.payment_date'>payment&#95;date</a></td>
+		<td> date   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='patient_payment.payment_amount'>payment&#95;amount</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='patient_payment.treatment_done'>treatment&#95;done</a></td>
+		<td> varchar&#40; 500 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='patient_payment.creation_date'>creation&#95;date</a></td>
+		<td> timestamp   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='patient_payment.created_by'>created&#95;by</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='patient_payment.last_updated_date'>last&#95;updated&#95;date</a></td>
+		<td> timestamp   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='patient_payment.last_modified_by'>last&#95;modified&#95;by</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>patient&#95;payment&#95;pkey</td>
+		<td> ON payment&#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td>&nbsp;</td><td>payment_treatment_fkey</td>
+		<td > ( treatment&#95;id ) ref <a href='#treatment'>treatment</a> (treatment&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_patient_oral_examination'); return(false);">Table patient_oral_examination</a></h2></div>
+<div id='patient_oral_examination'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='patient_oral_examination'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='patient_oral_examination.oral_examination_id'>oral&#95;examination&#95;id</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='patient_oral_examination.treatment_id'>treatment&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='patient_oral_examination.description'>description</a></td>
+		<td> varchar&#40; 100 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='patient_oral_examination.cost'>cost</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='patient_oral_examination.creation_date'>creation&#95;date</a></td>
+		<td> timestamp   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='patient_oral_examination.created_by'>created&#95;by</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='patient_oral_examination.last_updated_date'>last&#95;updated&#95;date</a></td>
+		<td> timestamp   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='patient_oral_examination.last_modified_by'>last&#95;modified&#95;by</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>patient&#95;oral&#95;examination&#95;pkey</td>
+		<td> ON oral&#95;examination&#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td>&nbsp;</td><td>patient_oral_examination_fkey</td>
+		<td > ( treatment&#95;id ) ref <a href='#treatment'>treatment</a> (treatment&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_module'); return(false);">Table module</a></h2></div>
+<div id='module'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='module'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='module.module_id'>module&#95;id</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='module.module_code'>module&#95;code</a></td>
+		<td> varchar&#40; 15 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='module.module_description'>module&#95;description</a></td>
+		<td> varchar&#40; 100 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='module.monthly_cost'>monthly&#95;cost</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='module.quaterly_cost'>quaterly&#95;cost</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='module.half_yearly_cost'>half&#95;yearly&#95;cost</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='module.yearly_cost'>yearly&#95;cost</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>module&#95;pkey</td>
+		<td> ON module&#95;id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_clinic_user_module_access'); return(false);">Table clinic_user_module_access</a></h2></div>
+<div id='clinic_user_module_access'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='clinic_user_module_access'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='clinic_user_module_access.user_id'>user&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='clinic_user_module_access.module_id'>module&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>clinic&#95;user&#95;module&#95;access&#95;pkey</td>
+		<td> ON user&#95;id&#44; module&#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td>&nbsp;</td><td>clinic_user_module_access_module_fkey</td>
+		<td > ( module&#95;id ) ref <a href='#module'>module</a> (module&#95;id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>clinic_user_module_access_user_fkey</td>
+		<td > ( user&#95;id ) ref <a href='#user&#95;detail'>user&#95;detail</a> (user&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_clinic_modules_mapping'); return(false);">Table clinic_modules_mapping</a></h2></div>
+<div id='clinic_modules_mapping'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='clinic_modules_mapping'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='clinic_modules_mapping.clinic_id'>clinic&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='clinic_modules_mapping.module_id'>module&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='clinic_modules_mapping.start_date'>start&#95;date</a></td>
+		<td> date   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='clinic_modules_mapping.expiry_date'>expiry&#95;date</a></td>
+		<td> date   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>clinic&#95;modules&#95;mapping&#95;pkey</td>
+		<td> ON clinic&#95;id&#44; module&#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td>&nbsp;</td><td>clinic_id_fkey</td>
+		<td > ( clinic&#95;id ) ref <a href='#clinic'>clinic</a> (clinic&#95;id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>module_id_fkey</td>
+		<td > ( module&#95;id ) ref <a href='#module'>module</a> (module&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<br/><br/>
+<div class='section-header'><h2><a onclick="showhide('table_contact_detail'); return(false);">Table contact_detail</a></h2></div>
+<div id='contact_detail'>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='contact_detail'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='contact_detail.contact_id'>contact&#95;id</a></td>
+		<td> serial   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='contact_detail.user_id'>user&#95;id</a></td>
+		<td> integer   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='contact_detail.primary_phone_number'>primary&#95;phone&#95;number</a></td>
+		<td> varchar&#40; 10 &#41;   DEFO 0 </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='contact_detail.secondary_phone_number'>secondary&#95;phone&#95;number</a></td>
+		<td> varchar&#40; 10 &#41;   DEFO 0 </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='contact_detail.email'>email</a></td>
+		<td> varchar&#40; 50 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='contact_detail.address_line1'>address&#95;line1</a></td>
+		<td> varchar&#40; 30 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='contact_detail.address_line2'>address&#95;line2</a></td>
+		<td> varchar&#40; 30 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='contact_detail.city'>city</a></td>
+		<td> varchar&#40; 20 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='contact_detail.state'>state</a></td>
+		<td> varchar&#40; 30 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='contact_detail.country'>country</a></td>
+		<td> varchar&#40; 20 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='contact_detail.pincode'>pincode</a></td>
+		<td> varchar&#40; 8 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td>Pk</td><td>contact&#95;detail&#95;pkey</td>
+		<td> ON contact&#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td>&nbsp;</td><td>contact_detail_user_fkey</td>
+		<td > ( user&#95;id ) ref <a href='#user&#95;detail'>user&#95;detail</a> (user&#95;id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</div>
+<p align='right'><a href='http://www.dbschema.com' style='color:#aaa'>Powered by DbSchema</a></p></body></html>

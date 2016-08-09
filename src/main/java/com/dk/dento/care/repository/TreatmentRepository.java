@@ -14,7 +14,4 @@ public interface TreatmentRepository extends CrudRepository<TreatmentEntity, Lon
 
      Iterable<TreatmentEntity> findByUserDetailEntity(UserDetailEntity userDetailEntity);
 
-     @Query("select t.id from TreatmentEntity t where t.userDetailEntity =?1")
-     List<Long> getTreatmentIdsForPatient(UserDetailEntity userDetailEntity);
-
 }

@@ -1,11 +1,9 @@
-package com.dk.dento.care.service;
+package com.dk.dento.care.security;
 
 
 import com.dk.dento.care.model.UserCredentials;
-import com.dk.dento.care.service.UserCredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

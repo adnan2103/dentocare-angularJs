@@ -1,10 +1,9 @@
-package com.dk.dento.care.service;
-
+package com.dk.dento.care.security;
 
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.model.UserCredentials;
 import com.dk.dento.care.repository.UserCredentialsRepository;
-import com.dk.dento.care.service.mapper.UserDetailMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +14,14 @@ public class UserCredentialsService {
     private UserCredentialsRepository userCredentialsRepository;
 
     @Autowired
-    private UserDetailMapper userDetailMapper;
-
+    private ModelMapper modelMapper;
 
     public UserCredentials getPrincipal(final String loginId) {
-
         UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByLoginId(loginId);
-        return userDetailMapper.userCredentialsEntityToUserCredentials(userCredentialsEntity);
+        return this.userCredentialsEntityToUserCredentials(userCredentialsEntity);
+    }
 
+    private UserCredentials userCredentialsEntityToUserCredentials(UserCredentialsEntity userCredentialsEntity) {
+        return modelMapper.map(userCredentialsEntity, UserCredentials.class);
     }
 }

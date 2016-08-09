@@ -1,6 +1,6 @@
 package com.dk.dento.care.config;
 
-import com.dk.dento.care.service.PatientRepositoryUserDetailsService;
+import com.dk.dento.care.security.PatientRepositoryUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

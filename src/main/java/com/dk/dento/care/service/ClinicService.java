@@ -1,13 +1,17 @@
 package com.dk.dento.care.service;
 
 import com.dk.dento.care.entity.ModuleEntity;
+import com.dk.dento.care.entity.clinic.ClinicEntity;
 import com.dk.dento.care.entity.clinic.ModulesMappingEntity;
 import com.dk.dento.care.entity.clinic.UserModuleAccessEntity;
+import com.dk.dento.care.model.Clinic;
 import com.dk.dento.care.repository.ModuleRepository;
+import com.dk.dento.care.repository.clinic.ClinicRepository;
 import com.dk.dento.care.repository.clinic.UserMappingRepository;
 import com.dk.dento.care.repository.clinic.ModulesMappingRepository;
 import com.dk.dento.care.repository.clinic.UserModuleAccessRepository;
 
+import com.dk.dento.care.service.mapper.ClinicMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,9 +38,19 @@ public class ClinicService {
     @Autowired
     ModuleRepository moduleRepository;
 
+    @Autowired
+    ClinicRepository clinicRepository;
+
+    @Autowired
+    ClinicMapper clinicMapper;
+
     private static final String DENTOCARE_ADMIN = "DENTOCARE_ADMIN";
     private static final String CLINIC_ADMIN = "CLINIC_ADMIN";
     private static final String CLINIC_USER = "CLINIC_USER";
+
+    public List<Clinic> getAllClinics() {
+        return clinicMapper.clinicEntityListToClinics(clinicRepository.findAll());
+    }
 
     public Map<String, Boolean> getUserModules(Long userId, String role) {
 
@@ -76,5 +90,14 @@ public class ClinicService {
         }
 
         return userModules;
+    }
+
+    public Clinic findOne(Long id) {
+        return clinicMapper.clinicEntityToClinic(clinicRepository.findOne(id));
+    }
+
+    public Clinic save(Clinic clinic) {
+        ClinicEntity clinicEntity = clinicMapper.clinicToClinicEntity(clinic);
+        return clinicMapper.clinicEntityToClinic(clinicRepository.save(clinicEntity));
     }
 }

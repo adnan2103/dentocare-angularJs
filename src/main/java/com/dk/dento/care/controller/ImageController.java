@@ -1,8 +1,10 @@
 package com.dk.dento.care.controller;
 
 import com.dk.dento.care.entity.TreatmentEntity;
+import com.dk.dento.care.model.ImagePath;
 import com.dk.dento.care.repository.TreatmentRepository;
 import com.dk.dento.care.service.ImageService;
+import com.dk.dento.care.service.TreatmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by khana on 22/06/16.
@@ -35,8 +38,12 @@ public class ImageController {
     @Autowired
     ImageService imageService;
 
+    //@TODO remove direct dependency on repository.
     @Autowired
     TreatmentRepository treatmentRepository;
+
+    @Autowired
+    TreatmentService treatmentService;
 
     @RequestMapping(
             value = "/patient/{patientId}/image",
@@ -191,6 +198,30 @@ public class ImageController {
         } catch (Exception exception) {
             LOGGER.error(" Exception for treatment image upload ", exception.getMessage());
             return new ResponseEntity("Upload Failed", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * End point to get all treatment images pre or post for given treatment id.
+     * @param id
+     * @return
+     */
+    @RequestMapping(
+            value = "treatment/{id}/{type}/images/{count}",
+            method = RequestMethod.GET,
+            produces = "application/json"
+    )
+    @ResponseBody
+    public ResponseEntity getTreatmentImages(@PathVariable final Long id,
+                                             @PathVariable final String type,
+                                             @PathVariable final Integer count) {
+        try {
+            List<ImagePath> treatmentImages = treatmentService.getTreatmentImages(id, type, count);
+
+            return new ResponseEntity(treatmentImages, HttpStatus.OK);
+        } catch(Exception e) {
+            LOGGER.error("Error occurred while geting treatment images {} ",e.getMessage());
+            return new ResponseEntity("No treatment image found", HttpStatus.NOT_FOUND);
         }
     }
 

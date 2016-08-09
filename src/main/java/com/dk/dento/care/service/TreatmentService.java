@@ -33,10 +33,6 @@ public class TreatmentService {
         );
     }
 
-    public List<Long> getTreatmentIdsForPatient(Long patientId) {
-        return treatmentRepository.getTreatmentIdsForPatient(userDetailRepository.findOne(patientId));
-    }
-
     public List<ImagePath> getTreatmentImages(Long treatmentId, String type, Integer count) {
         List<ImagePath> treatmentImages = new ArrayList<ImagePath>(0);
 

@@ -1,9 +1,11 @@
-package com.dk.dento.care.service;
+package com.dk.dento.care.security;
 
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.model.AuthenticationToken;
 import com.dk.dento.care.repository.RoleRepository;
 import com.dk.dento.care.repository.UserCredentialsRepository;
+import com.dk.dento.care.service.ClinicService;
+import com.dk.dento.care.service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

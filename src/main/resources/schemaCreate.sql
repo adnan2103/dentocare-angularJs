@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS contact_detail
   pincode character varying(8),
   CONSTRAINT contact_detail_pkey PRIMARY KEY (contact_id),
   CONSTRAINT contact_detail_user_fkey FOREIGN KEY (user_id)
-      REFERENCES user_credentials (user_id) MATCH SIMPLE
+      REFERENCES user_detail (user_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
@@ -83,10 +83,10 @@ CREATE TABLE IF NOT EXISTS doctor_patient_mapping
   patient_id integer NOT NULL,
   CONSTRAINT doctor_patient_mapping_pkey PRIMARY KEY (doctor_id, patient_id),
   CONSTRAINT doctor_patient_mapping_doctor_id_fkey FOREIGN KEY (doctor_id)
-      REFERENCES user_credentials (user_id) MATCH SIMPLE
+      REFERENCES user_detail (user_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT doctor_patient_mapping_patient_id_fkey FOREIGN KEY (patient_id)
-      REFERENCES user_credentials (user_id) MATCH SIMPLE
+      REFERENCES user_detail (user_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
@@ -195,7 +195,13 @@ CREATE TABLE IF NOT EXISTS appointment
   appointment_start timestamp,
   appointment_end timestamp,
   planned_treatment character varying(100),
-  CONSTRAINT appointment_pkey PRIMARY KEY (appointment_id)
+  CONSTRAINT appointment_pkey PRIMARY KEY (appointment_id),
+  CONSTRAINT appointment_doctor_id_fkey FOREIGN KEY (doctor_id)
+      REFERENCES user_detail (user_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT appointment_id_patient_id_fkey FOREIGN KEY (patient_id)
+      REFERENCES user_detail (user_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
   OIDS=FALSE
@@ -229,10 +235,7 @@ CREATE TABLE IF NOT EXISTS clinic
 (
   clinic_id integer NOT NULL,
   name character varying(100) NOT NULL,
-  CONSTRAINT clinic_pkey PRIMARY KEY (clinic_id),
-  CONSTRAINT clinic_fkey FOREIGN KEY (clinic_id)
-      REFERENCES user_credentials (user_id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
+  CONSTRAINT clinic_pkey PRIMARY KEY (clinic_id)
 )
 WITH (
   OIDS=FALSE
@@ -251,7 +254,7 @@ CREATE TABLE IF NOT EXISTS clinic_modules_mapping
   expiry_date date,
   CONSTRAINT clinic_modules_mapping_pkey PRIMARY KEY (clinic_id,module_id),
   CONSTRAINT clinic_id_fkey FOREIGN KEY (clinic_id)
-      REFERENCES user_credentials (user_id) MATCH SIMPLE
+      REFERENCES clinic (clinic_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT module_id_fkey FOREIGN KEY (module_id)
       REFERENCES module (module_id) MATCH SIMPLE
@@ -271,11 +274,11 @@ CREATE TABLE IF NOT EXISTS clinic_user_mapping
   clinic_id integer NOT NULL,
   user_id integer NOT NULL,
   CONSTRAINT clinic_user_mapping_pkey PRIMARY KEY (clinic_id, user_id),
-  CONSTRAINT clinic_user_mapping_clinic_fkey FOREIGN KEY (clinic_id)
-      REFERENCES user_credentials (user_id) MATCH SIMPLE
+  CONSTRAINT clinic_id_fkey FOREIGN KEY (clinic_id)
+      REFERENCES clinic (clinic_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT clinic_user_mapping_user_fkey FOREIGN KEY (user_id)
-      REFERENCES user_credentials (user_id) MATCH SIMPLE
+  CONSTRAINT user_id_fkey FOREIGN KEY (user_id)
+      REFERENCES user_detail (user_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
 WITH (
@@ -292,7 +295,7 @@ CREATE TABLE IF NOT EXISTS clinic_user_module_access
   module_id integer NOT NULL,
   CONSTRAINT clinic_user_module_access_pkey PRIMARY KEY (user_id, module_id),
   CONSTRAINT clinic_user_module_access_user_fkey FOREIGN KEY (user_id)
-      REFERENCES user_credentials (user_id) MATCH SIMPLE
+      REFERENCES user_detail (user_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT clinic_user_module_access_module_fkey FOREIGN KEY (module_id)
       REFERENCES module (module_id) MATCH SIMPLE

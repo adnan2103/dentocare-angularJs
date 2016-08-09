@@ -3,7 +3,6 @@ package com.dk.dento.care.service.mapper;
 import com.dk.dento.care.entity.PatientOralExaminationEntity;
 import com.dk.dento.care.entity.PaymentEntity;
 import com.dk.dento.care.entity.TreatmentEntity;
-import com.dk.dento.care.entity.TreatmentIdGenerator;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
 import com.dk.dento.care.model.PatientOralExamination;
@@ -11,7 +10,7 @@ import com.dk.dento.care.model.Payment;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.repository.StatusRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
-import com.dk.dento.care.service.IAMService;
+import com.dk.dento.care.security.IAMService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,9 +33,6 @@ public class TreatmentMapper {
 
     @Autowired
     private UserDetailRepository userDetailRepository;
-
-    @Autowired
-    private TreatmentIdGenerator treatmentIdGenerator;
 
     @Autowired
     private IAMService iamService;
@@ -63,7 +59,6 @@ public class TreatmentMapper {
             treatmentEntity = modelMapper.map(treatment, TreatmentEntity.class);
             UserCredentialsEntity loggedInUser = iamService.getAuthenticatedUser();
             if (treatmentEntity.getId() == null) {
-                treatmentEntity.setId(treatmentIdGenerator.getNextId());
                 treatmentEntity.setCreatedBy(loggedInUser.getId());
                 treatmentEntity.setPreImageCount(0L);
                 treatmentEntity.setPostImageCount(0L);
@@ -95,7 +90,7 @@ public class TreatmentMapper {
 
             paymentEntity = modelMapper.map(payment, PaymentEntity.class);
             paymentEntity.setTreatmentEntity(treatmentEntity);
-            //TODO correct this later.
+            //TODO correct this later, it is updating CreatedBy on every update.
             paymentEntity.setCreatedBy(loggedInUser.getId());
             paymentEntity.setLastUpdatedBy(loggedInUser.getId());
             paymentEntities.add(paymentEntity);
