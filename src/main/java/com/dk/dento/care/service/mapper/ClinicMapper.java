@@ -19,7 +19,7 @@ public class ClinicMapper {
     @Autowired
     private ModelMapper modelMapper;
 
-    //@TODO need to find out how can Entity List be mapped to DTO List without iterating manually.
+    //TODO need to find out how can Entity List be mapped to DTO List without iterating manually.
     public List<Clinic> clinicEntityListToClinics(Iterable<ClinicEntity> clinicEntities) {
         List<Clinic> clinics = new ArrayList<Clinic>(0);
         Clinic clinic;

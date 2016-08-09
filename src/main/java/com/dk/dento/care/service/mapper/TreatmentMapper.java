@@ -44,6 +44,7 @@ public class TreatmentMapper {
         for (TreatmentEntity treatmentEntity : treatmentEntities) {
             treatment = modelMapper.map(treatmentEntity, Treatment.class);
             treatment.setStatus(treatmentEntity.getStatusEntity().getStatus());
+            treatment.setPatientId(treatmentEntity.getPatient().getId());
             treatments.add(treatment);
         }
 
@@ -64,7 +65,8 @@ public class TreatmentMapper {
                 treatmentEntity.setPostImageCount(0L);
             }
             treatmentEntity.setLastUpdatedBy(loggedInUser.getId());
-            treatmentEntity.setUserDetailEntity(userDetailEntity);
+            treatmentEntity.setPatient(userDetailEntity);
+            treatmentEntity.setDoctor(userDetailRepository.findOne(loggedInUser.getId()));
             treatmentEntity.setStatusEntity(statusRepository.findByStatus(treatment.getStatus()));
 
             List<PatientOralExamination> patientOralExaminations = treatment.getPatientOralExamination();

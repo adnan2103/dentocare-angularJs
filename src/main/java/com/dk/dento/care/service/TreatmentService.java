@@ -5,6 +5,7 @@ import com.dk.dento.care.model.ImagePath;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.repository.TreatmentRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
+import com.dk.dento.care.security.IAMService;
 import com.dk.dento.care.service.mapper.TreatmentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,9 +28,20 @@ public class TreatmentService {
     @Autowired
     private TreatmentMapper treatmentMapper;
 
+    @Autowired
+    private IAMService iamService;
+
     public List<Treatment> getTreatmentsForPatient(Long patientId) {
+        //TODO Use join in query.
         return treatmentMapper.treatmentEntitiesToTreatments(
-                treatmentRepository.findByUserDetailEntity(userDetailRepository.findOne(patientId))
+                treatmentRepository.findByPatient(userDetailRepository.findOne(patientId))
+        );
+    }
+
+    public List<Treatment> getTreatmentsForDoctor() {
+        //TODO Use join in query.
+        return treatmentMapper.treatmentEntitiesToTreatments(
+                treatmentRepository.findByDoctor(userDetailRepository.findOne(iamService.getAuthenticatedUser().getId()))
         );
     }
 

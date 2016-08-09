@@ -112,6 +112,7 @@ CREATE TABLE IF NOT EXISTS treatment
 (
   treatment_id SERIAL NOT NULL,
   patient_id integer NOT NULL,
+  doctor_id integer NOT NULL,
   status_id integer NOT NULL,
   chief_complaint_description character varying(100),
   notes character varying(100),
@@ -122,7 +123,10 @@ CREATE TABLE IF NOT EXISTS treatment
   last_updated_date timestamp,
   last_modified_by integer NOT NULL,
   CONSTRAINT treatment_pkey PRIMARY KEY (treatment_id),
-  CONSTRAINT treatment_fkey FOREIGN KEY (patient_id)
+  CONSTRAINT treatment_patient_fkey FOREIGN KEY (patient_id)
+      REFERENCES user_detail (user_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT treatment_doctor_fkey FOREIGN KEY (doctor_id)
       REFERENCES user_detail (user_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT treatment_status_fkey FOREIGN KEY (status_id)

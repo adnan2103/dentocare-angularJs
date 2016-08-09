@@ -73,14 +73,26 @@ public class TreatmentEntity extends AbstractTrackedEntity {
 
     @ManyToOne
     @JoinColumn(name = "patient_id", referencedColumnName="user_id")
-    private UserDetailEntity userDetailEntity;
+    private UserDetailEntity patient;
 
-    public UserDetailEntity getUserDetailEntity() {
-        return userDetailEntity;
+    @ManyToOne
+    @JoinColumn(name = "doctor_id", referencedColumnName="user_id")
+    private UserDetailEntity doctor;
+
+    public UserDetailEntity getPatient() {
+        return patient;
     }
 
-    public void setUserDetailEntity(UserDetailEntity userDetailEntity) {
-        this.userDetailEntity = userDetailEntity;
+    public void setPatient(UserDetailEntity patient) {
+        this.patient = patient;
+    }
+
+    public UserDetailEntity getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(UserDetailEntity doctor) {
+        this.doctor = doctor;
     }
 
     public Long getId() {

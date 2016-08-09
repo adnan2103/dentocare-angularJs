@@ -39,9 +39,30 @@ public class TreatmentController {
             produces = "application/json"
     )
     @ResponseBody
-    public ResponseEntity getPatientTreatment(@PathVariable final Long id) {
+    public ResponseEntity getPatientTreatments(@PathVariable final Long id) {
         try {
             List<Treatment> treatments = treatmentService.getTreatmentsForPatient(id);
+            return new ResponseEntity(treatments, HttpStatus.OK);
+        } catch(Exception e) {
+            LOGGER.error("Error occurred while geting treatments for patient {} ",e.getMessage());
+            return new ResponseEntity("No treatments found", HttpStatus.NOT_FOUND);
+        }
+
+    }
+
+    /**
+     * End point to get all treatment for logged in doctor.
+     * @return
+     */
+    @RequestMapping(
+            value = "/treatments",
+            method = RequestMethod.GET,
+            produces = "application/json"
+    )
+    @ResponseBody
+    public ResponseEntity getDoctorTreatments() {
+        try {
+            List<Treatment> treatments = treatmentService.getTreatmentsForDoctor();
             return new ResponseEntity(treatments, HttpStatus.OK);
         } catch(Exception e) {
             LOGGER.error("Error occurred while geting treatments for patient {} ",e.getMessage());

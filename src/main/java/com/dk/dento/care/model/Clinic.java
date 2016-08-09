@@ -12,7 +12,7 @@ public class Clinic {
 
     private Long id;
 
-    //@TODO javax.validations are not working, fix this.
+    //TODO javax.validations are not working, fix this.
     @NotNull
     private String name;
 

@@ -12,6 +12,8 @@ import java.util.List;
  */
 public interface TreatmentRepository extends CrudRepository<TreatmentEntity, Long> {
 
-     Iterable<TreatmentEntity> findByUserDetailEntity(UserDetailEntity userDetailEntity);
+     Iterable<TreatmentEntity> findByPatient(UserDetailEntity patient);
+
+     Iterable<TreatmentEntity> findByDoctor(UserDetailEntity doctor);
 
 }

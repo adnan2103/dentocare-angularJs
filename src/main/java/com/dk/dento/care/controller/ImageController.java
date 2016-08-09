@@ -38,7 +38,7 @@ public class ImageController {
     @Autowired
     ImageService imageService;
 
-    //@TODO remove direct dependency on repository.
+    //TODO remove direct dependency on repository.
     @Autowired
     TreatmentRepository treatmentRepository;
 

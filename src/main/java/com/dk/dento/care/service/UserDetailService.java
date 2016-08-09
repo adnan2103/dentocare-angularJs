@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.ParseException;
 import java.util.List;
 
-//@TODO split UserDetailService to UserDetailService and PatientService.
+//TODO split UserDetailService to UserDetailService and PatientService.
 @Service
 public class UserDetailService {
 

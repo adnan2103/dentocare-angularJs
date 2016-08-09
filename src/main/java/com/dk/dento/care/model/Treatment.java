@@ -11,6 +11,8 @@ public class Treatment extends AbstractTracked {
 
     private Long id;
 
+    private Long patientId;
+
     private String chiefComplaintDescription;
 
     private String notes;
@@ -89,6 +91,14 @@ public class Treatment extends AbstractTracked {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public Long getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
     }
 
     @Override
