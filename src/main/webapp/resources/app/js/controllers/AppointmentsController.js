@@ -4,7 +4,7 @@
  * AppointmentsController
  * @constructor
  */
-var AppointmentsController = function ($scope, $http, $routeParams, appointmentService, uiCalendarConfig) {
+var AppointmentsController = function ($scope, $http, $routeParams, appointmentService, uiCalendarConfig, ngDialog) {
 
     $scope.eventSources = [];
 
@@ -71,6 +71,7 @@ var AppointmentsController = function ($scope, $http, $routeParams, appointmentS
         },
         select: function (start, end, jsEvent, view) {
 
+            ngDialog.open({template: '../inc/popUp.html'});
             if (!confirm("Are you sure to set new appointment from " + start.format('LLLL') + " to " + end.format('LLLL'))) {
                 //uiCalendarConfig.calendars[calendar].fullCalendar('unselect');
                 return;
@@ -81,6 +82,7 @@ var AppointmentsController = function ($scope, $http, $routeParams, appointmentS
             event.start = start;
             event.end = end;
             event.allDay = false;
+            event.url = '#/patient/'+$routeParams.id+'/treatment';
             events.push(event);
             //uiCalendarConfig.calendars[calendar].fullCalendar('addEventSource', events);
 

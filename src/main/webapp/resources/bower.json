@@ -11,10 +11,11 @@
     "ngDatepicker": "*",
     "angular-file-upload": "~2.3.4",
     "angular-bootstrap": "~2.0.0",
-    "angular-ui-calendar": "~1.0.1"
+    "angular-ui-calendar": "~1.0.1",
+    "ng-dialog": "^0.6.2"
   },
   "devDependencies": {},
   "resolutions": {
-    "angular": "~1.4.0"
+    "angular": "~1.5.0"
   }
 }
