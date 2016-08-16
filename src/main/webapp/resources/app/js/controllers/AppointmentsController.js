@@ -4,7 +4,7 @@
  * AppointmentsController
  * @constructor
  */
-var AppointmentsController = function ($scope, $http, $routeParams, appointmentService, uiCalendarConfig, ngDialog) {
+var AppointmentsController = function ($scope, $http, $routeParams, appointmentService, uiCalendarConfig) {
 
     $scope.eventSources = [];
 
@@ -71,14 +71,13 @@ var AppointmentsController = function ($scope, $http, $routeParams, appointmentS
         },
         select: function (start, end, jsEvent, view) {
 
-            ngDialog.open({template: '../inc/popUp.html'});
-            if (!confirm("Are you sure to set new appointment from " + start.format('LLLL') + " to " + end.format('LLLL'))) {
-                //uiCalendarConfig.calendars[calendar].fullCalendar('unselect');
+            var treatmentPlan = prompt("New appointment is being set from " + start.format('LLLL') + " to " + end.format('LLLL') +"\n Enter appointment description.");
+            if(treatmentPlan == null) {
                 return;
             }
             var events = new Array();
             var event = new Object();
-            event.title = 'RCT';
+            event.title = treatmentPlan;
             event.start = start;
             event.end = end;
             event.allDay = false;
@@ -92,7 +91,7 @@ var AppointmentsController = function ($scope, $http, $routeParams, appointmentS
                 "doctorId": null,
                 "start": start,
                 "end": end,
-                "plannedTreatment": "RCT"
+                "plannedTreatment": treatmentPlan
             }
             $scope.saveAppointment(appointment);
 
