@@ -16,10 +16,9 @@
     <link href="favicon.ico" rel="icon" type="image/x-icon"/>
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 </head>
-<body data-target="#dento-care-header">
+<body data-spy="scroll" data-target="#dento-care-header">
 
-<nav class="navbar navbar-inverse navbar-fixed-top" id="dento-care-header" role="navigation" ng-controller="navigation"
-     ng-if="user.isAuthenticated">
+<nav class="navbar navbar-inverse navbar-fixed-top" id="dento-care-header" ng-controller="navigation" ng-if="user.isAuthenticated">
     <div class="container">
         <div class="navbar-header"><!-- Brand and toggle get grouped for better mobile display -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#dento-care-header-collapse">
@@ -34,8 +33,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="dento-care-header-collapse">
 
-            <a href="" class=" navbar-text navbar-right" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span></a>
-            <p class="navbar-text navbar-right">Welcome <strong>{{user.username}}</strong></p>
+            <a href="" class=" navbar-text navbar-right" ng-click="logout()">
+                <span class="glyphicon glyphicon-log-out"></span>
+            </a>
+            <p class="navbar-text navbar-right">
+                <marquee class="welcome">
+                    Welcome <strong>{{user.username}}</strong>
+                </marquee>
+            </p>
             <ul class="nav navbar-nav">
                 <li ng-show="hasAccess('PMM')">
                     <a href="#/patients"><span class="glyphicon glyphicon-home"></span></a>
@@ -55,9 +60,9 @@
 </nav><!-- End Navigation-->
 
 
-<div class="view-container">
-    <div ng-view="" class="view"></div>
-</div>
+
+<div ng-view="" class="view"></div>
+
 <footer>
     <p>&copy; Copyright 2016 Dento care </p>
 </footer>

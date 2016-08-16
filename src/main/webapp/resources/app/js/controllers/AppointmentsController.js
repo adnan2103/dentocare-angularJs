@@ -76,7 +76,7 @@ var AppointmentsController = function ($scope, $http, $routeParams, appointmentS
                 return;
             }
             var events = new Array();
-            event = new Object();
+            var event = new Object();
             event.title = 'RCT';
             event.start = start;
             event.end = end;

@@ -22,10 +22,10 @@ footer {
     text-align: left;
 }
 .search{
-    margin: 5px;
+    margin: 0px;
     font-size: large;
     width: 200px;
-    padding: 1px;
+    padding: 0px;
     position:relative;
 }
 .search input{
@@ -92,4 +92,8 @@ option.heading {
 
 option.choice {
     color: blue;
+}
+
+.welcome {
+    color: #00ff1f;
 }
