@@ -13,7 +13,7 @@ public class TemplateConfig {
     @Bean
     public ServletContextTemplateResolver templateResolver() {
         ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-        resolver.setPrefix("/resources/app/view/");
+        resolver.setPrefix("/front-end/src/view/");
         resolver.setSuffix(".html");
         resolver.setTemplateMode("HTML5");
         resolver.setCacheable(false);
