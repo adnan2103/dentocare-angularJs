@@ -4,8 +4,6 @@
 ################################Major issues before go live.########################################
 ## Fix bug in new appointment.
 ## Touch is not working in appointment.
-## Patient Update not working.
-## Model for planned appointment
 ## Accordian for treatment page,
 ## save individual treatment,
 ## date format for treatment start and last modified date.
@@ -26,19 +24,6 @@ Patient Name(Patient Detail page Link), Mobile no.
 ## SMS/Email reminders to doctor and patient.
 
 Access management & ROLE based access : Application modules and packages.
-User ROLE and Access Maintenance
-ROLES IN DENTOCARE (4 Currently)
-    DENTOCARE_ADMIN
-    CLINIC_ADMIN
-    CLINIC_USER
-    PATIENT
-MODULES in Dento-care (7 currently)
-    PMM : Patient Management Module
-    PIMM : Patient Image Management Module
-    TMM : Treatment Management Module
-    TIMM : Treatment Image Management Module
-    AMM : Appointment management Module.
-    ALERTS : Alerts module for appointment and other activities.
 
 Dentocare_Admin :
     As a dento care admin,
