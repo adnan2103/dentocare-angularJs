@@ -2,12 +2,9 @@
 #############################################Dento care application#################################
 
 ################################Major issues before go live.########################################
-## Fix bug in new appointment.
-## Touch is not working in appointment.
-## Accordian for treatment page,
-## save individual treatment,
-## date format for treatment start and last modified date.
 
+## date format for treatment start and last modified date.
+## SMS/Email reminders to doctor and patient.
 
 ##All Treatment Page [Add "Treatments" top bar link]
 [We can fetch all treatments of logged in doctor with following details ]
@@ -15,15 +12,8 @@ Filter/Sorting can be applied to any column.
 Treatment start, last modified, status(with Treatment Detail page link),Total Treatment Cost, Paid Amount, Pending Amount,
 Patient Name(Patient Detail page Link), Mobile no.
 
-##Login Screen and All responsive UIs
 
-##Back buttons : (Use "angular-ui-router" instead route provider.)
-
-##Optimize Web server calls.
-
-## SMS/Email reminders to doctor and patient.
-
-Access management & ROLE based access : Application modules and packages.
+##Access management & ROLE based access : Application modules and packages.
 
 Dentocare_Admin :
     As a dento care admin,
@@ -35,9 +25,21 @@ Dentocare_Admin :
     ClinicAdmin can see all the links in application but can access to only purchased modules, for non purchased modules
     or expired modules he will get a message to purchase it.
     ClinicUser will see or have access to modules for which access is given and not expired.
+
+##Optimize Web server calls.
+
 ########LIVE$$$$$$$$$$$$$$$$S
 
 ###################### Low priority Issue ######################################################################
+
+
+## Fix bug in new appointment.
+## Touch is not working in appointment.
+## Accordian for treatment page,
+## save individual treatment,
+
+##Back buttons : (Use "angular-ui-router" instead route provider.)
+
 
 ##Delete Functionality : Payment, Oral examination, treatment.
 

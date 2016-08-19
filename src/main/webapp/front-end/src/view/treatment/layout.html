@@ -1,10 +1,10 @@
-<div class="container" style="font-size: large;">
+<div class="container-fluid" style="font-size: large;">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <a href="#/patient/{{patient.id}}">
                 <span class="glyphicon glyphicon-edit"></span> {{patient.name | uppercase}}</a>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <strong>{{patient.gender | uppercase}}</strong> ({{patient.age}} Years)
         </div>
         <div class="col-sm-4">
@@ -17,72 +17,99 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3 btn-group" ng-show="hasAccess('TMM')">
+        <div class="col-sm-4 btn-group" ng-show="hasAccess('TMM')">
             <div class="btn btn-md btn-success" ng-click='addNewTreatment(treatments.length)' ng-disabled='disableAddTreatment'>
                 Add New Treatment
             </div>
-        </div>
-        <div class="col-sm-3" ng-show="hasAccess('TMM')">
-            <div class="btn btn-md btn-primary" ng-click='saveTreatment(treatments)'>Save</div>
         </div>
         <div class="col-sm-4" ng-show="hasAccess('AMM')">
             <a href="#/patients/{{patient.id}}/appointments" class="btn btn-md btn-primary">Next Appointment</a>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <hr />
+        </div>
+    </div>
 </div>
-<div class="container">
-    <div ng-repeat="treatment in treatments | orderBy : '-id'" class="portfolio-item boxed">
-        <div class="row" style="font-size: large; height: 30px;padding:5px; background-color: #00b3ee" ng-if="treatment.id">
-            <span><b> Treatment Status : </b>
+<div class="container-fluid">
+    <div ng-repeat="treatment in treatments | orderBy : '-id'">
+        <div ng-if="treatment.id" style="font-size: large; height: auto;padding:5px; background-color: rgba(0, 0, 0, 0.22)">
+
+            <div class="row">
+            <div class="col-sm-12">
+            <span><b>Status : </b>
                 <select ng-model="treatment.status">
                     <option ng-repeat="status in status" value="{{status.status}}"
                             ng-selected="treatment.status === status.status">{{status.status}}
                     </option>
                 </select>
             </span>
+            </div></div>
+            <div class="row">
+                <div class="col-sm-12">
             <span>
-                Started On : {{treatment.creationDate}}
+                <b>Started On :</b> {{treatment.creationDate | date:'medium'}}
             </span>
             <span>
-                Last Saved On : {{treatment.updatedDate}}
+                <b>Last Modified :</b> {{treatment.updatedDate | date:'medium'}}
             </span>
-        </div>
-        <div class="row" style="font-size: large; height: 30px;padding:5px; background-color: #00b3ee" ng-if="!treatment.id">
-            Treatment ID : {{treatment.id}}
-            <span ng-if="!treatment.id" style="color: red;">
-                New Treatment
-            </span>
-        </div>
+            </div>
+            </div>
 
             <div class="row">
-                    <div class="col-md-9">
-                        <table class="table" ng-show="hasAccess('TIMM')">
-                            <thead><tr>
-                            <th ng-if='treatment.id'>
-                                    <a href="#/treatment/{{treatment.id}}/pre/images/{{treatment.preImageCount}}">
-                                        <span class="label">PRE TREATMENT IMAGES</span>
-                                    </a>
-                                </th>
-                                <th ng-if='treatment.id'>
-                                    <a href="#/treatment/{{treatment.id}}/post/images/{{treatment.postImageCount}}">
-                                        <span class="label">POST TREATMENT IMAGES</span>
-                                    </a>
-                                </th>
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
+                <div class="col-sm-4" ng-show="hasAccess('TIMM')">
+                    <a href="#/treatment/{{treatment.id}}/pre/images/{{treatment.preImageCount}}">
+                        <span class="btn btn-md btn-primary">PRE TREATMENT IMAGES</span>
+                    </a>
                 </div>
-                    <br />
+                <div class="col-sm-4" ng-show="hasAccess('TIMM')">
+                    <a href="#/treatment/{{treatment.id}}/post/images/{{treatment.postImageCount}}">
+                        <span class="btn btn-md btn-primary">POST TREATMENT IMAGES</span>
+                    </a>
+                </div>
+                <div class="col-sm-4" ng-show="hasAccess('TMM')">
+                    <div class="btn btn-md btn-primary" ng-click='saveTreatment(treatments)'>SAVE</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <span class="btn btn-md btn-info">Total Cost: {{treatment.totalCost}}</span>
+                </div>
+                <div class="col-sm-4">
+                    <span class="btn btn-md btn-info">Payment Made: {{treatment.totalPayment}}</span>
+                </div>
+                <div class="col-sm-4">
+                    <span class="btn btn-md btn-info">Pending Payment: {{treatment.pendingPayment}}</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="row" ng-if="!treatment.id">
+            <div class="col-sm-4" style="font-size: large; height: 30px;padding:5px; background-color: rgba(0, 0, 0, 0.22); color: red;">
+                New Treatment
+            </div>
+            <div class="col-sm-4" ng-show="hasAccess('TMM')">
+                <div class="btn btn-md btn-primary" ng-click='saveTreatment(treatments)'>SAVE</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <hr />
+            </div>
+        </div>
 
                     <div class="row">
                         <div class="col-md-3"><b> Chief Complaint : </b></div>
-                        <div class="col-md-6"><input type="text" size="90" ng-model="treatment.chiefComplaintDescription"
+                        <div class="col-md-6"><input type="text" size="50" ng-model="treatment.chiefComplaintDescription"
                                placeholder="Chief Complaint"/></div>
                     </div>
                     <div class="row">
                         <div class="col-md-3"><b> Notes : </b></div>
-                        <div class="col-md-6"><input type="text" size="90" ng-model="treatment.notes" placeholder="Notes"/></div>
+                        <div class="col-md-6"><input type="text" size="50" ng-model="treatment.notes" placeholder="Notes"/></div>
                     </div>
 
                     <br/>
@@ -144,25 +171,20 @@
                                 <input type="number" ng-model="payment.paymentAmount" placeholder="Amount" ng-change="updateTotalPayment(treatment.id)"/>
                             </td>
                             <td>
-                                <textarea name="payment.treatmentDone" id="payment.treatmentDone" ng-model="payment.treatmentDone" placeholder="Notes" cols="100" rows="8"></textarea>
+                                <textarea name="payment.treatmentDone" id="payment.treatmentDone" ng-model="payment.treatmentDone" placeholder="Notes" cols="60" rows="3"></textarea>
                             </td>
                         </tr>
                         </tbody>
                     </table></div>
                     </div>
                     <br/>
-            <div class="row">
-                    <div class="col-md-7">
-                        <table class="table"><thead><tr>
-                            <th>Total Cost : {{treatment.totalCost}}</th>
-                            <th>Payment Made : {{treatment.totalPayment}}</th>
-                            <th>Pending Payment : {{treatment.pendingPayment}}</th>
-                        </tr>
-                        </thead>
-                    </table>
-                    </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <hr />
+                <br/>
             </div>
         </div>
-    <hr/>
 
+        </div>
 </div>
