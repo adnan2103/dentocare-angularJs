@@ -5,6 +5,7 @@ import com.dk.dento.care.entity.PaymentEntity;
 import com.dk.dento.care.entity.TreatmentEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
+import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.model.PatientOralExamination;
 import com.dk.dento.care.model.Payment;
 import com.dk.dento.care.model.Treatment;
@@ -44,7 +45,7 @@ public class TreatmentMapper {
         for (TreatmentEntity treatmentEntity : treatmentEntities) {
             treatment = modelMapper.map(treatmentEntity, Treatment.class);
             treatment.setStatus(treatmentEntity.getStatusEntity().getStatus());
-            treatment.setPatientId(treatmentEntity.getPatient().getId());
+            treatment.setPatient(modelMapper.map(treatmentEntity.getPatient(), Patient.class));
             treatments.add(treatment);
         }
 

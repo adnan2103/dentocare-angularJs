@@ -39,6 +39,7 @@ public class TreatmentController {
             produces = "application/json"
     )
     @ResponseBody
+    @SuppressWarnings("unchecked")
     public ResponseEntity getPatientTreatments(@PathVariable final Long id) {
         try {
             List<Treatment> treatments = treatmentService.getTreatmentsForPatient(id);
@@ -60,6 +61,7 @@ public class TreatmentController {
             produces = "application/json"
     )
     @ResponseBody
+    @SuppressWarnings("unchecked")
     public ResponseEntity getDoctorTreatments() {
         try {
             List<Treatment> treatments = treatmentService.getTreatmentsForDoctor();
@@ -83,6 +85,7 @@ public class TreatmentController {
             produces = "application/json"
     )
     @ResponseBody
+    @SuppressWarnings("unchecked")
     public ResponseEntity savePatientTreatment(@PathVariable final Long id,
                                                       @RequestBody final List<Treatment> treatments) {
         //try {
