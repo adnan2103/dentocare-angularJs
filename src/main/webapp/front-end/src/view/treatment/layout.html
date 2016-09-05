@@ -1,4 +1,5 @@
-<div class="container-fluid" style="font-size: large;">
+<div class="container-fluid">
+    <div class="jumbotron">
     <div class="row">
         <div class="col-sm-4">
             <a href="#/patient/{{patient.id}}">
@@ -18,7 +19,8 @@
     </div>
     <div class="row">
         <div class="col-sm-4 btn-group" ng-show="hasAccess('TMM')">
-            <div class="btn btn-md btn-success" ng-click='addNewTreatment(treatments.length)' ng-disabled='disableAddTreatment'>
+            <div class="btn btn-md btn-success" ng-click='addNewTreatment(treatments.length)'
+                 ng-disabled='disableAddTreatment'>
                 Add New Treatment
             </div>
         </div>
@@ -26,36 +28,38 @@
             <a href="#/patients/{{patient.id}}/appointments" class="btn btn-md btn-primary">Next Appointment</a>
         </div>
     </div>
-
+    </div>
     <div class="row">
         <div class="col-lg-12">
-            <hr />
+            <hr/>
         </div>
     </div>
 </div>
+
+
 <div class="container-fluid">
     <div ng-repeat="treatment in treatments | orderBy : '-id'">
-        <div ng-if="treatment.id" style="font-size: large; height: auto;padding:5px; background-color: rgba(0, 0, 0, 0.22)">
+        <div ng-if="treatment.id" class="jumbotron">
 
             <div class="row">
-            <div class="col-sm-12">
-            <span><b>Status : </b>
-                <select ng-model="treatment.status">
-                    <option ng-repeat="status in status" value="{{status.status}}"
-                            ng-selected="treatment.status === status.status">{{status.status}}
-                    </option>
-                </select>
-            </span>
-            </div></div>
+                <div class="col-sm-4">
+                    <span>
+                        <b>Started :</b> {{treatment.creationDate | date:'medium'}}
+                    </span>
+                </div>
+                <div class="col-sm-4">
+                    <span>
+                        <b>Modified :</b> {{treatment.updatedDate | date:'medium'}}
+                    </span>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-sm-12">
-            <span>
-                <b>Started On :</b> {{treatment.creationDate | date:'medium'}}
-            </span>
-            <span>
-                <b>Last Modified :</b> {{treatment.updatedDate | date:'medium'}}
-            </span>
-            </div>
+                        <select ng-model="treatment.status" class="form-control">
+                            <option ng-repeat="status in status" value="{{status.status}}" ng-selected="treatment.status === status.status">{{status.status}}</option>
+                        </select>
+                </div>
             </div>
 
             <div class="row">
@@ -88,7 +92,8 @@
 
         </div>
         <div class="row" ng-if="!treatment.id">
-            <div class="col-sm-4" style="font-size: large; height: 30px;padding:5px; background-color: rgba(0, 0, 0, 0.22); color: red;">
+            <div class="col-sm-4"
+                 style="font-size: large; height: 30px;padding:5px; background-color: rgba(0, 0, 0, 0.22); color: red;">
                 New Treatment
             </div>
             <div class="col-sm-4" ng-show="hasAccess('TMM')">
@@ -98,93 +103,105 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <hr />
+                <hr/>
             </div>
         </div>
 
-                    <div class="row">
-                        <div class="col-md-3"><b> Chief Complaint : </b></div>
-                        <div class="col-md-6"><input type="text" size="50" ng-model="treatment.chiefComplaintDescription"
-                               placeholder="Chief Complaint"/></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3"><b> Notes : </b></div>
-                        <div class="col-md-6"><input type="text" size="50" ng-model="treatment.notes" placeholder="Notes"/></div>
-                    </div>
+        <div class="row">
+            <div class="col-md-3"><b> Chief Complaint : </b></div>
+            <div class="col-md-6"><input type="text" class="form-control" size="50" ng-model="treatment.chiefComplaintDescription" placeholder="Chief Complaint"/></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><b> Notes : </b></div>
+            <div class="col-md-6"><input type="text" class="form-control" size="50" ng-model="treatment.notes" placeholder="Notes"/></div>
+        </div>
 
-                    <br/>
+        <br/>
 
-                    <div class="row">
-                        <div class="col-md-3">
-                            <b>Patient Oral Examinations </b>
-                            <button ng-click="addPatientOralExamination(treatment.id)">
-                                <i class="fa fa-plus-square" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-md-4">
-                        <table class="table"><thead><tr>
-                            <th>Description</th>
-                            <th>Cost</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="oralExamination in treatment.patientOralExamination">
-                            <td>
-                                <textarea name="oralExamination.description" id="oralExamination.description" ng-model="oralExamination.description" placeholder="Description" cols="20" rows="1"></textarea>
-                            </td>
-                            <td>
-                                <input type="number" ng-model="oralExamination.cost" placeholder="Cost" ng-change="updateTotalCost(treatment.id)"/>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table></div>
-                    </div>
+        <div class="row">
+            <div class="col-md-3">
+                <b>Patient Oral Examinations </b>
+                <button ng-click="addPatientOralExamination(treatment.id)">
+                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Cost</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="oralExamination in treatment.patientOralExamination">
+                        <td>
+                            <textarea class="form-control" name="oralExamination.description" id="oralExamination.description"
+                                      ng-model="oralExamination.description" placeholder="Description" cols="20"
+                                      rows="1"></textarea>
+                        </td>
+                        <td>
+                            <input class="form-control" type="number" ng-model="oralExamination.cost" placeholder="Cost"
+                                   ng-change="updateTotalCost(treatment.id)"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-                    <br/>
-                    <br/>
+        <br/>
+        <br/>
 
-                    <div class="row">
-                        <div class="col-md-3">
-                            <b>Payments Detail </b>
-                            <button ng-click="addPayment(treatment.id)">
-                                <i class="fa fa-plus-square" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                    <div class="col-md-7">
-                        <table class="table"><thead><tr>
-                            <th>Payment Date</th>
-                            <th>Payment Amount</th>
-                            <th>Treatment Done</th>
-                        </tr>
-                        </thead>
-                            <tbody>
-                            <tr ng-repeat="payment in treatment.payment">
-                                <td>
-                                <ng-datepicker format="YYYY-MM-DD" view-format="Do MMMM YYYY" ng-model="payment.paymentDate"></ng-datepicker>
-                            </td>
-                            <td>
-                                <input type="number" ng-model="payment.paymentAmount" placeholder="Amount" ng-change="updateTotalPayment(treatment.id)"/>
-                            </td>
-                            <td>
-                                <textarea name="payment.treatmentDone" id="payment.treatmentDone" ng-model="payment.treatmentDone" placeholder="Notes" cols="60" rows="3"></textarea>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table></div>
-                    </div>
-                    <br/>
+        <div class="row">
+            <div class="col-md-3">
+                <b>Payments Detail </b>
+                <button ng-click="addPayment(treatment.id)">
+                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-7">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Payment Date</th>
+                        <th>Payment Amount</th>
+                        <th>Treatment Done</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="payment in treatment.payment">
+                        <td>
+                            <ng-datepicker class="form-control" format="YYYY-MM-DD" view-format="Do MMMM YYYY"
+                                           ng-model="payment.paymentDate"></ng-datepicker>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" ng-model="payment.paymentAmount" placeholder="Amount"
+                                   ng-change="updateTotalPayment(treatment.id)"/>
+                        </td>
+                        <td>
+                            <textarea class="form-control" name="payment.treatmentDone" id="payment.treatmentDone"
+                                      ng-model="payment.treatmentDone" placeholder="Notes" cols="40"
+                                      rows="3"></textarea>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br/>
 
         <div class="row">
             <div class="col-lg-12">
-                <hr />
+                <hr/>
                 <br/>
             </div>
         </div>
 
-        </div>
+    </div>
 </div>
