@@ -9,21 +9,30 @@ import com.dk.dento.care.repository.DoctorPatientMappingRepository;
 import com.dk.dento.care.repository.RoleRepository;
 import com.dk.dento.care.repository.UserCredentialsRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
+import com.dk.dento.care.security.IAMService;
 import com.dk.dento.care.service.mapper.UserDetailMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
+//TODO split UserDetailService to UserDetailService and PatientService.
 @Service
 public class UserDetailService {
+
+    /** Default page number if one is not specified */
+    private static final Integer DEFAULT_PAGE_NUMBER = 0;
+
+    /** Default page size if one is not specified */
+    private static final Integer DEFAULT_PAGE_SIZE = Integer.valueOf(1000);
 
     /**
      * Logger for this class.
@@ -48,24 +57,51 @@ public class UserDetailService {
     @Autowired
     private IAMService iamService;
 
-    //TODO service should throw appropriate exception to controller, like not found for null pointer.
-    public List<Patient> getAllPatient() {
-        Set<UserDetailEntity> userDetailEntities = getAllPatientForDoctor();
-        return userDetailMapper.userDetailEntitiesToPatients(userDetailEntities);
+    @Autowired
+    private TreatmentService treatmentService;
+
+    /**
+     * Calculate the page number to use
+     *
+     * @param pageNumber             The provided page number. May be null
+     * @return The actual page number to use
+     */
+    Integer calculatePageNumber(final Integer pageNumber) {
+        return pageNumber != null ? pageNumber : DEFAULT_PAGE_NUMBER;
     }
 
-    private Set<UserDetailEntity> getAllPatientForDoctor() {
-        Set<UserDetailEntity> userDetailEntities = new LinkedHashSet<UserDetailEntity>();
+    /**
+     * Calculate the page size to use
+     *
+     * @param pageSize             The provided page size
+     * @return The actual page size to use
+     */
+    Integer calculatePageSize(final Integer pageSize) {
+        return pageSize != null ? pageSize : DEFAULT_PAGE_SIZE;
+    }
 
+    //TODO service should throw appropriate exception to controller, like not found for null pointer.
+    public List<Patient> getAllPatient(final Integer pageNumber, final Integer pageSize, final Boolean loadTreatment) {
+
+        Pageable pageable = new PageRequest(calculatePageNumber(pageNumber),
+                calculatePageSize(pageSize));
         UserCredentialsEntity doctor = iamService.getAuthenticatedUser();
-        Iterable<DoctorPatientMappingEntity> allPatients = doctorPatientMappingRepository.findAllPatientsForDoctor(doctor.getId());
-        for (DoctorPatientMappingEntity doctorPatientMappingEntity : allPatients) {
+        Page<UserDetailEntity> userDetailEntities = userDetailRepository.findAllPatientOfLoggedInDoctor(doctor.getId(), pageable);
 
-            UserDetailEntity userDetailEntity = userDetailRepository.findOne(doctorPatientMappingEntity.getDoctorPatientMappingId().getPatientId());
-            userDetailEntities.add(userDetailEntity);
+        List<Patient> patients = userDetailMapper.userDetailEntitiesToPatients(userDetailEntities);
+
+        if(loadTreatment) {
+            patients = loadTreatments(patients);
         }
 
-        return userDetailEntities;
+        return patients;
+    }
+
+    private List<Patient> loadTreatments(List<Patient> patients) {
+        for(Patient patient : patients) {
+            patient.setTreatments(treatmentService.getTreatmentsForPatient(patient.getId()));
+        }
+        return patients;
     }
 
     public Patient getPatientDetails(Long patientId) {

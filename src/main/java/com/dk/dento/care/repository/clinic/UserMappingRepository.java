@@ -10,6 +10,7 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface UserMappingRepository extends CrudRepository<UserMappingEntity, UserModuleAccessId> {
 
-    //@TODO I need to correct mappings so that user id will be mapped to only one clinic.
+    //TODO I need to correct mappings so that user id will be mapped to only one clinic.
+    //TODO create a unique index on user_id in clinic_user_mapping table.
     UserMappingEntity findByUserId(Long userId);
 }

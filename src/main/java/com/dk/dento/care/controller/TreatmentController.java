@@ -1,6 +1,5 @@
 package com.dk.dento.care.controller;
 
-import com.dk.dento.care.model.ImagePath;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.service.TreatmentService;
 import org.slf4j.Logger;
@@ -40,7 +39,8 @@ public class TreatmentController {
             produces = "application/json"
     )
     @ResponseBody
-    public ResponseEntity getPatientTreatment(@PathVariable final Long id) {
+    @SuppressWarnings("unchecked")
+    public ResponseEntity getPatientTreatments(@PathVariable final Long id) {
         try {
             List<Treatment> treatments = treatmentService.getTreatmentsForPatient(id);
             return new ResponseEntity(treatments, HttpStatus.OK);
@@ -52,24 +52,25 @@ public class TreatmentController {
     }
 
     /**
-     * End point to get list of treatment ids for given patient id.
-     * @param id
+     * End point to get all treatment for logged in doctor.
      * @return
      */
     @RequestMapping(
-            value = "patient/{id}/treatmentIds",
+            value = "/treatments",
             method = RequestMethod.GET,
             produces = "application/json"
     )
     @ResponseBody
-    public ResponseEntity getTreatmentIdsForPatient(@PathVariable final Long id) {
+    @SuppressWarnings("unchecked")
+    public ResponseEntity getDoctorTreatments() {
         try {
-            List<Long> treatmentIds = treatmentService.getTreatmentIdsForPatient(id);
-            return new ResponseEntity(treatmentIds, HttpStatus.OK);
+            List<Treatment> treatments = treatmentService.getTreatmentsForDoctor();
+            return new ResponseEntity(treatments, HttpStatus.OK);
         } catch(Exception e) {
             LOGGER.error("Error occurred while geting treatments for patient {} ",e.getMessage());
             return new ResponseEntity("No treatments found", HttpStatus.NOT_FOUND);
         }
+
     }
 
     /**
@@ -84,6 +85,7 @@ public class TreatmentController {
             produces = "application/json"
     )
     @ResponseBody
+    @SuppressWarnings("unchecked")
     public ResponseEntity savePatientTreatment(@PathVariable final Long id,
                                                       @RequestBody final List<Treatment> treatments) {
         //try {
@@ -96,29 +98,4 @@ public class TreatmentController {
 
     }
 
-
-    /**
-     * End point to get all treatment images pre or post for given treatment id.
-     * @param id
-     * @return
-     */
-    @RequestMapping(
-            value = "treatment/{id}/{type}/images/{count}",
-            method = RequestMethod.GET,
-            produces = "application/json"
-    )
-    @ResponseBody
-    public ResponseEntity getTreatmentImages(@PathVariable final Long id,
-                                             @PathVariable final String type,
-                                             @PathVariable final Integer count) {
-        try {
-            List<ImagePath> treatmentImages = treatmentService.getTreatmentImages(id, type, count);
-
-            return new ResponseEntity(treatmentImages, HttpStatus.OK);
-        } catch(Exception e) {
-            LOGGER.error("Error occurred while geting treatment images {} ",e.getMessage());
-            return new ResponseEntity("No treatment image found", HttpStatus.NOT_FOUND);
-        }
-
-    }
 }

@@ -31,6 +31,7 @@ public class AppointmentMapper {
             String name = userDetailService.getPatientDetails(appointmentEntity.getPatientId()).getName();
             appointment.setTitle(name + " : " + appointmentEntity.getPlannedTreatment());
             appointment.setAllDay(false);
+            appointment.setUrl("#/patient/"+appointmentEntity.getPatientId()+"/treatment");
             appointments.add(appointment);
         }
         return appointments;

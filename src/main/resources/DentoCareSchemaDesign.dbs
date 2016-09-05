@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="PostgreSQL" id="Project_a3a1d21" html="y" template="Default" database="PostgreSQL" >
+	<schema name="public" catalogname="dentocaa_db" schemaname="public" >
+		<table name="appointment" >
+			<column name="appointment_id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="doctor_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="patient_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="appointment_start" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="appointment_end" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="planned_treatment" type="varchar" length="100" decimal="0" jt="12" />
+			<index name="appointment_pkey" unique="PRIMARY_KEY" >
+				<column name="appointment_id" />
+			</index>
+			<fk name="appointment_doctor_id_fkey" to_schema="public" to_table="user_detail" >
+				<fk_column name="doctor_id" pk="user_id" />
+			</fk>
+			<fk name="appointment_id_patient_id_fkey" to_schema="public" to_table="user_detail" >
+				<fk_column name="patient_id" pk="user_id" />
+			</fk>
+		</table>
+		<table name="clinic" >
+			<column name="clinic_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="name" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<index name="clinic_pkey" unique="PRIMARY_KEY" >
+				<column name="clinic_id" />
+			</index>
+		</table>
+		<table name="clinic_modules_mapping" >
+			<column name="clinic_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="module_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="start_date" type="date" length="13" decimal="0" jt="91" />
+			<column name="expiry_date" type="date" length="13" decimal="0" jt="91" />
+			<index name="clinic_modules_mapping_pkey" unique="PRIMARY_KEY" >
+				<column name="clinic_id" />
+				<column name="module_id" />
+			</index>
+			<fk name="clinic_id_fkey" to_schema="public" to_table="clinic" >
+				<fk_column name="clinic_id" pk="clinic_id" />
+			</fk>
+			<fk name="module_id_fkey" to_schema="public" to_table="module" >
+				<fk_column name="module_id" pk="module_id" />
+			</fk>
+		</table>
+		<table name="clinic_user_mapping" >
+			<column name="clinic_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="user_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<index name="clinic_user_mapping_pkey" unique="PRIMARY_KEY" >
+				<column name="clinic_id" />
+				<column name="user_id" />
+			</index>
+			<fk name="clinic_id_fkey" to_schema="public" to_table="clinic" >
+				<fk_column name="clinic_id" pk="clinic_id" />
+			</fk>
+			<fk name="user_id_fkey" to_schema="public" to_table="user_detail" >
+				<fk_column name="user_id" pk="user_id" />
+			</fk>
+		</table>
+		<table name="clinic_user_module_access" >
+			<column name="user_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="module_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<index name="clinic_user_module_access_pkey" unique="PRIMARY_KEY" >
+				<column name="user_id" />
+				<column name="module_id" />
+			</index>
+			<fk name="clinic_user_module_access_module_fkey" to_schema="public" to_table="module" >
+				<fk_column name="module_id" pk="module_id" />
+			</fk>
+			<fk name="clinic_user_module_access_user_fkey" to_schema="public" to_table="user_detail" >
+				<fk_column name="user_id" pk="user_id" />
+			</fk>
+		</table>
+		<table name="contact_detail" >
+			<column name="contact_id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="user_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="primary_phone_number" type="varchar" length="10" decimal="0" jt="12" mandatory="y" >
+				<defo>0</defo>
+			</column>
+			<column name="secondary_phone_number" type="varchar" length="10" decimal="0" jt="12" >
+				<defo>0</defo>
+			</column>
+			<column name="email" type="varchar" length="50" decimal="0" jt="12" />
+			<column name="address_line1" type="varchar" length="30" decimal="0" jt="12" />
+			<column name="address_line2" type="varchar" length="30" decimal="0" jt="12" />
+			<column name="city" type="varchar" length="20" decimal="0" jt="12" />
+			<column name="state" type="varchar" length="30" decimal="0" jt="12" />
+			<column name="country" type="varchar" length="20" decimal="0" jt="12" />
+			<column name="pincode" type="varchar" length="8" decimal="0" jt="12" />
+			<index name="contact_detail_pkey" unique="PRIMARY_KEY" >
+				<column name="contact_id" />
+			</index>
+			<fk name="contact_detail_user_fkey" to_schema="public" to_table="user_detail" >
+				<fk_column name="user_id" pk="user_id" />
+			</fk>
+		</table>
+		<table name="doctor_patient_mapping" >
+			<column name="doctor_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="patient_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<index name="doctor_patient_mapping_pkey" unique="PRIMARY_KEY" >
+				<column name="doctor_id" />
+				<column name="patient_id" />
+			</index>
+			<fk name="doctor_patient_mapping_doctor_id_fkey" to_schema="public" to_table="user_detail" >
+				<fk_column name="doctor_id" pk="user_id" />
+			</fk>
+			<fk name="doctor_patient_mapping_patient_id_fkey" to_schema="public" to_table="user_detail" >
+				<fk_column name="patient_id" pk="user_id" />
+			</fk>
+		</table>
+		<table name="module" >
+			<column name="module_id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="module_code" type="varchar" length="15" decimal="0" jt="12" />
+			<column name="module_description" type="varchar" length="100" decimal="0" jt="12" />
+			<column name="monthly_cost" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="quaterly_cost" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="half_yearly_cost" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="yearly_cost" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<index name="module_pkey" unique="PRIMARY_KEY" >
+				<column name="module_id" />
+			</index>
+		</table>
+		<table name="patient_oral_examination" >
+			<column name="oral_examination_id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="treatment_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="description" type="varchar" length="100" decimal="0" jt="12" />
+			<column name="cost" type="integer" length="10" decimal="0" jt="4" />
+			<column name="creation_date" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="created_by" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="last_updated_date" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="last_modified_by" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<index name="patient_oral_examination_pkey" unique="PRIMARY_KEY" >
+				<column name="oral_examination_id" />
+			</index>
+			<fk name="patient_oral_examination_fkey" to_schema="public" to_table="treatment" >
+				<fk_column name="treatment_id" pk="treatment_id" />
+			</fk>
+		</table>
+		<table name="patient_payment" >
+			<column name="payment_id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="treatment_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="payment_date" type="date" length="13" decimal="0" jt="91" />
+			<column name="payment_amount" type="integer" length="10" decimal="0" jt="4" />
+			<column name="treatment_done" type="varchar" length="500" decimal="0" jt="12" />
+			<column name="creation_date" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="created_by" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="last_updated_date" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="last_modified_by" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<index name="patient_payment_pkey" unique="PRIMARY_KEY" >
+				<column name="payment_id" />
+			</index>
+			<fk name="payment_treatment_fkey" to_schema="public" to_table="treatment" >
+				<fk_column name="treatment_id" pk="treatment_id" />
+			</fk>
+		</table>
+		<table name="role" >
+			<column name="role_id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="role" type="varchar" length="30" decimal="0" jt="12" />
+			<index name="role_pkey" unique="PRIMARY_KEY" >
+				<column name="role_id" />
+			</index>
+		</table>
+		<table name="status" >
+			<column name="status_id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="status" type="varchar" length="50" decimal="0" jt="12" />
+			<index name="status_pkey" unique="PRIMARY_KEY" >
+				<column name="status_id" />
+			</index>
+		</table>
+		<table name="treatment" >
+			<column name="treatment_id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="patient_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="status_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="chief_complaint_description" type="varchar" length="100" decimal="0" jt="12" />
+			<column name="notes" type="varchar" length="100" decimal="0" jt="12" />
+			<column name="pre_image_count" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="post_image_count" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="creation_date" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="created_by" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="last_updated_date" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="last_modified_by" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<index name="treatment_pkey" unique="PRIMARY_KEY" >
+				<column name="treatment_id" />
+			</index>
+			<fk name="treatment_status_fkey" to_schema="public" to_table="status" >
+				<fk_column name="status_id" pk="status_id" />
+			</fk>
+			<fk name="treatment_fkey" to_schema="public" to_table="user_detail" >
+				<fk_column name="patient_id" pk="user_id" />
+			</fk>
+		</table>
+		<table name="user_credentials" >
+			<column name="user_id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="login_id" type="varchar" length="30" decimal="0" jt="12" />
+			<column name="login_enabled" type="bool" length="1" decimal="0" jt="-7" />
+			<column name="password" type="varchar" length="100" decimal="0" jt="12" />
+			<column name="role_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<index name="user_credentials_pkey" unique="PRIMARY_KEY" >
+				<column name="user_id" />
+			</index>
+			<fk name="user_credentials_role_fkey" to_schema="public" to_table="role" >
+				<fk_column name="role_id" pk="role_id" />
+			</fk>
+		</table>
+		<table name="user_detail" >
+			<column name="user_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="name" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="gender" type="varchar" length="6" decimal="0" jt="12" mandatory="y" />
+			<column name="age" type="smallint" length="5" decimal="0" jt="5" />
+			<index name="user_detail_pkey" unique="PRIMARY_KEY" >
+				<column name="user_id" />
+			</index>
+			<fk name="user_detail_user_fkey" to_schema="public" to_table="user_credentials" >
+				<fk_column name="user_id" pk="user_id" />
+			</fk>
+		</table>
+		<sequence name="appointment_appointment_id_seq" start="1" />
+		<sequence name="contact_detail_contact_id_seq" start="1" />
+		<sequence name="hibernate_sequence" start="1" />
+		<sequence name="module_module_id_seq" start="1" />
+		<sequence name="patient_oral_examination_oral_examination_id_seq" start="1" />
+		<sequence name="patient_payment_payment_id_seq" start="1" />
+		<sequence name="role_role_id_seq" start="1" />
+		<sequence name="status_status_id_seq" start="1" />
+		<sequence name="treatment_treatment_id_seq" start="1" />
+		<sequence name="user_credentials_user_id_seq" start="1" />
+	</schema>
+	<connector name="PostgreSQL" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-9.4.1208.jar" host="localhost" port="5432" instance="dentocaa_db" user="dentocaa" />
+	<layout name="Default" id="Layout_19ec1f04" show_relation_columns="y" >
+		<entity schema="public" name="user_detail" color="bef5b3" x="300" y="270" />
+		<entity schema="public" name="clinic_user_mapping" color="b3ccf5" x="450" y="210" />
+		<entity schema="public" name="clinic" color="b3ccf5" x="660" y="210" />
+		<entity schema="public" name="doctor_patient_mapping" color="f5d8b3" x="465" y="345" />
+		<entity schema="public" name="user_credentials" color="f5d8b3" x="630" y="300" />
+		<entity schema="public" name="role" color="f5d8b3" x="810" y="300" />
+		<entity schema="public" name="treatment" color="b3b3f5" x="225" y="465" />
+		<entity schema="public" name="appointment" color="bef5b3" x="75" y="315" />
+		<entity schema="public" name="status" color="f5d8b3" x="60" y="480" />
+		<entity schema="public" name="patient_payment" color="b3b3f5" x="330" y="780" />
+		<entity schema="public" name="patient_oral_examination" color="b3b3f5" x="150" y="780" />
+		<entity schema="public" name="module" color="b3ccf5" x="570" y="45" />
+		<entity schema="public" name="clinic_user_module_access" color="bef5b3" x="300" y="45" />
+		<entity schema="public" name="clinic_modules_mapping" color="b3ccf5" x="825" y="45" />
+		<entity schema="public" name="contact_detail" color="bef5b3" x="45" y="75" />
+	</layout>
+	<layout name="Sample Layout with Groups" id="Layout_335b8920" show_relation_columns="y" >
+		<entity schema="public" name="appointment" color="bef5b3" x="420" y="345" />
+		<entity schema="public" name="clinic" color="b3ccf5" x="855" y="285" />
+		<entity schema="public" name="clinic_modules_mapping" color="b3ccf5" x="990" y="285" />
+		<entity schema="public" name="clinic_user_mapping" color="b3ccf5" x="660" y="420" />
+		<entity schema="public" name="clinic_user_module_access" color="bef5b3" x="60" y="510" />
+		<entity schema="public" name="contact_detail" color="bef5b3" x="45" y="75" />
+		<entity schema="public" name="doctor_patient_mapping" color="f5d8b3" x="795" y="690" />
+		<entity schema="public" name="module" color="b3ccf5" x="645" y="75" />
+		<entity schema="public" name="patient_oral_examination" color="b3b3f5" x="300" y="960" />
+		<entity schema="public" name="patient_payment" color="b3b3f5" x="300" y="690" />
+		<entity schema="public" name="role" color="f5d8b3" x="795" y="825" />
+		<entity schema="public" name="status" color="f5d8b3" x="645" y="825" />
+		<entity schema="public" name="treatment" color="b3b3f5" x="45" y="690" />
+		<entity schema="public" name="user_credentials" color="f5d8b3" x="1005" y="690" />
+		<entity schema="public" name="user_detail" color="bef5b3" x="285" y="345" />
+		<callout x="285" y="225" pointer="NO" >
+			<comment><![CDATA[Sample layout shows table grouping and creation of multiple layouts.
+Layouts will be saved to project file. One table may show in multiple layouts.
+Double-click any table header, columns or foreign key lines to edit.]]></comment>
+		</callout>
+		<group name="user_detail" color="f1f7f0" >
+			<entity schema="public" name="user_detail" />
+			<entity schema="public" name="appointment" />
+			<entity schema="public" name="clinic_user_module_access" />
+			<entity schema="public" name="contact_detail" />
+		</group>
+		<group name="clinic" color="f0f3f7" >
+			<entity schema="public" name="clinic" />
+			<entity schema="public" name="clinic_modules_mapping" />
+			<entity schema="public" name="clinic_user_mapping" />
+			<entity schema="public" name="module" />
+		</group>
+		<group name="doctor_patient_mapping" color="f7f4f0" >
+			<entity schema="public" name="doctor_patient_mapping" />
+			<entity schema="public" name="user_credentials" />
+			<entity schema="public" name="role" />
+			<entity schema="public" name="status" />
+		</group>
+		<group name="treatment" color="f0f0f7" >
+			<entity schema="public" name="treatment" />
+			<entity schema="public" name="patient_payment" />
+			<entity schema="public" name="patient_oral_examination" />
+		</group>
+	</layout>
+	<layout name="Sample Layout with Relational Data Browse" id="Layout_1d552ad6" show_relation_columns="y" >
+		<entity schema="public" name="appointment" color="bef5b3" x="420" y="315" />
+		<entity schema="public" name="clinic" color="b3ccf5" x="855" y="255" />
+		<entity schema="public" name="clinic_modules_mapping" color="b3ccf5" x="990" y="255" />
+		<entity schema="public" name="clinic_user_mapping" color="b3ccf5" x="660" y="390" />
+		<entity schema="public" name="clinic_user_module_access" color="bef5b3" x="60" y="480" />
+		<entity schema="public" name="contact_detail" color="bef5b3" x="45" y="45" />
+		<entity schema="public" name="doctor_patient_mapping" color="f5d8b3" x="795" y="660" />
+		<entity schema="public" name="module" color="b3ccf5" x="645" y="45" />
+		<entity schema="public" name="patient_oral_examination" color="b3b3f5" x="300" y="930" />
+		<entity schema="public" name="patient_payment" color="b3b3f5" x="300" y="660" />
+		<entity schema="public" name="role" color="f5d8b3" x="795" y="795" />
+		<entity schema="public" name="status" color="f5d8b3" x="645" y="795" />
+		<entity schema="public" name="treatment" color="b3b3f5" x="45" y="660" />
+		<entity schema="public" name="user_credentials" color="f5d8b3" x="1005" y="660" />
+		<entity schema="public" name="user_detail" color="bef5b3" x="285" y="315" />
+		<callout x="285" y="195" pointer="NO" >
+			<comment><![CDATA[Bellow is a Relational Data Browse for exploring data from multiple tables bind by foreign keys.
+Right-click table header to set filters.
+Press the foreign key ( arrow icon) near title to descend into further tables.
+If your schema misses foreign keys create virtual foreign keys in the layout.]]></comment>
+		</callout>
+		<browser id="Browse_326b9627" name="Sample Relational Data Browse" >
+			<browse_table schema="public" entity="user_detail" x="10" y="10" width="400" height="300" >
+				<browse_table schema="public" entity="user_credentials" fk="user_detail_user_fkey" x="420" y="10" width="400" height="300" record_view="y" />
+			</browse_table>
+		</browser>
+	</layout>
+</project>

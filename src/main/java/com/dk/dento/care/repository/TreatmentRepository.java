@@ -12,9 +12,8 @@ import java.util.List;
  */
 public interface TreatmentRepository extends CrudRepository<TreatmentEntity, Long> {
 
-     Iterable<TreatmentEntity> findByUserDetailEntity(UserDetailEntity userDetailEntity);
+     Iterable<TreatmentEntity> findByPatient(UserDetailEntity patient);
 
-     @Query("select t.id from TreatmentEntity t where t.userDetailEntity =?1")
-     List<Long> getTreatmentIdsForPatient(UserDetailEntity userDetailEntity);
+     Iterable<TreatmentEntity> findByDoctor(UserDetailEntity doctor);
 
 }

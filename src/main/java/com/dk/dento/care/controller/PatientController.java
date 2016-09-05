@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -80,10 +81,13 @@ public class PatientController {
             method = RequestMethod.GET
     )
     public @ResponseBody
-    ResponseEntity getAllPatientsForLoggedInDoctor() {
+    ResponseEntity getAllPatientsForLoggedInDoctor(
+            @RequestParam(value = "page", required = false, defaultValue = "0") final Integer pageNumber,
+            @RequestParam(value = "size", required = false, defaultValue = "1000") final Integer pageSize,
+            @RequestParam(value = "load-treatment", required = false, defaultValue = "false") final Boolean loadTreatment) {
 
         try {
-            List<Patient> patients = userDetailService.getAllPatient();
+            List<Patient> patients = userDetailService.getAllPatient(pageNumber, pageSize, loadTreatment);
             return new ResponseEntity(patients, HttpStatus.OK);
 
         } catch(Exception e) {
@@ -91,4 +95,5 @@ public class PatientController {
             return new ResponseEntity("No patient found", HttpStatus.NOT_FOUND);
         }
     }
+
 }

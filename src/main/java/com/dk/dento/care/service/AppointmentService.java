@@ -4,6 +4,7 @@ import com.dk.dento.care.entity.AppointmentEntity;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.model.Appointment;
 import com.dk.dento.care.repository.AppointmentRepository;
+import com.dk.dento.care.security.IAMService;
 import com.dk.dento.care.service.mapper.AppointmentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class AppointmentService {
         Long loggedIdDoctorId = loggedInDoctor.getId();
 
         return appointmentMapper.appointmentEntityListToAppointments(
-                appointmentRepository.findByDoctorId(iamService.getAuthenticatedUser().getId())
+                appointmentRepository.findByDoctorId(loggedIdDoctorId)
         );
     }
 

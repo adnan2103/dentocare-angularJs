@@ -3,15 +3,15 @@ package com.dk.dento.care.service.mapper;
 import com.dk.dento.care.entity.PatientOralExaminationEntity;
 import com.dk.dento.care.entity.PaymentEntity;
 import com.dk.dento.care.entity.TreatmentEntity;
-import com.dk.dento.care.entity.TreatmentIdGenerator;
 import com.dk.dento.care.entity.UserCredentialsEntity;
 import com.dk.dento.care.entity.UserDetailEntity;
+import com.dk.dento.care.model.Patient;
 import com.dk.dento.care.model.PatientOralExamination;
 import com.dk.dento.care.model.Payment;
 import com.dk.dento.care.model.Treatment;
 import com.dk.dento.care.repository.StatusRepository;
 import com.dk.dento.care.repository.UserDetailRepository;
-import com.dk.dento.care.service.IAMService;
+import com.dk.dento.care.security.IAMService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,9 +36,6 @@ public class TreatmentMapper {
     private UserDetailRepository userDetailRepository;
 
     @Autowired
-    private TreatmentIdGenerator treatmentIdGenerator;
-
-    @Autowired
     private IAMService iamService;
 
     public List<Treatment> treatmentEntitiesToTreatments(Iterable<TreatmentEntity> treatmentEntities) {
@@ -48,6 +45,7 @@ public class TreatmentMapper {
         for (TreatmentEntity treatmentEntity : treatmentEntities) {
             treatment = modelMapper.map(treatmentEntity, Treatment.class);
             treatment.setStatus(treatmentEntity.getStatusEntity().getStatus());
+            treatment.setPatient(modelMapper.map(treatmentEntity.getPatient(), Patient.class));
             treatments.add(treatment);
         }
 
@@ -63,13 +61,13 @@ public class TreatmentMapper {
             treatmentEntity = modelMapper.map(treatment, TreatmentEntity.class);
             UserCredentialsEntity loggedInUser = iamService.getAuthenticatedUser();
             if (treatmentEntity.getId() == null) {
-                treatmentEntity.setId(treatmentIdGenerator.getNextId());
                 treatmentEntity.setCreatedBy(loggedInUser.getId());
                 treatmentEntity.setPreImageCount(0L);
                 treatmentEntity.setPostImageCount(0L);
             }
             treatmentEntity.setLastUpdatedBy(loggedInUser.getId());
-            treatmentEntity.setUserDetailEntity(userDetailEntity);
+            treatmentEntity.setPatient(userDetailEntity);
+            treatmentEntity.setDoctor(userDetailRepository.findOne(loggedInUser.getId()));
             treatmentEntity.setStatusEntity(statusRepository.findByStatus(treatment.getStatus()));
 
             List<PatientOralExamination> patientOralExaminations = treatment.getPatientOralExamination();
@@ -95,7 +93,7 @@ public class TreatmentMapper {
 
             paymentEntity = modelMapper.map(payment, PaymentEntity.class);
             paymentEntity.setTreatmentEntity(treatmentEntity);
-            //TODO correct this later.
+            //TODO correct this later, it is updating CreatedBy on every update.
             paymentEntity.setCreatedBy(loggedInUser.getId());
             paymentEntity.setLastUpdatedBy(loggedInUser.getId());
             paymentEntities.add(paymentEntity);

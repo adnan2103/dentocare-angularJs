@@ -1,7 +1,7 @@
 package com.dk.dento.care.controller;
 
 import com.dk.dento.care.model.AuthenticationToken;
-import com.dk.dento.care.service.IAMService;
+import com.dk.dento.care.security.IAMService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
