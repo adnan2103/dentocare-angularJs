@@ -8,7 +8,7 @@ role character varying(30),
 CONSTRAINT role_pkey PRIMARY KEY (role_id)
 );
 ALTER TABLE role
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 
 CREATE TABLE IF NOT EXISTS user_credentials
@@ -27,7 +27,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE user_credentials
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 -- Table: user_detail
 
@@ -47,7 +47,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE user_detail
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 -- Table: contact_detail
 
@@ -73,7 +73,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE contact_detail
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 -- Table: doctor_patient_mapping
 
@@ -93,7 +93,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE doctor_patient_mapping
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 
 CREATE TABLE IF NOT EXISTS status
@@ -103,7 +103,7 @@ status character varying(50),
 CONSTRAINT status_pkey PRIMARY KEY (status_id)
 );
 ALTER TABLE status
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 -- Table: treatment
 
@@ -137,7 +137,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE treatment
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 
 -- Table: patient_oral_examination
@@ -161,7 +161,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE patient_oral_examination
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 
 -- Table: payment
@@ -186,7 +186,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE patient_payment
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 
 -- Table: appointment
@@ -211,7 +211,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE appointment
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 -- Table: module
 
@@ -230,7 +230,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE module
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 
 -- Table: clinic
@@ -245,7 +245,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE clinic
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 
 -- Table: clinic_modules_mapping
@@ -268,7 +268,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE clinic_modules_mapping
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 
 -- Table: clinic_user_mapping
@@ -289,7 +289,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE clinic_user_mapping
-  OWNER TO tihor;
+  OWNER TO dentocaa;
 
 -- Table: clinic_user_module_access
 
@@ -309,4 +309,12 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE clinic_user_module_access
-  OWNER TO tihor;
+  OWNER TO dentocaa;
+
+CREATE SEQUENCE IF NOT EXISTS public.hibernate_sequence
+   INCREMENT 1
+   START 1
+   MINVALUE 1
+   MAXVALUE 99999999;
+ALTER SEQUENCE public.hibernate_sequence
+  OWNER TO dentocaa;

@@ -13,3 +13,4 @@ DROP TABLE IF EXISTS  contact_detail;
 DROP TABLE IF EXISTS  user_detail;
 DROP TABLE IF EXISTS  user_credentials;
 DROP TABLE IF EXISTS  role;
+DROP SEQUENCE hibernate_sequence;
