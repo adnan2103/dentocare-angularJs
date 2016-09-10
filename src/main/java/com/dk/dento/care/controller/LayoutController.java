@@ -48,4 +48,9 @@ public class LayoutController {
     public String getLoginPartialPage() {
         return "login/layout";
     }
+
+    @RequestMapping(value = "/documentation")
+    public String documentation() {
+        return "redirect:swagger-ui.html";
+    }
 }
