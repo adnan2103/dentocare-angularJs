@@ -11,6 +11,10 @@
     <name>dentocare-web-app</name>
     <description>Dento care web application</description>
 
+    <properties>
+        <springfox-version>2.5.0</springfox-version>
+    </properties>
+
     <dependencies>
 
         <!-- Apache Commons -->
@@ -156,6 +160,19 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.7</version>
         </dependency>
+
+        <!--SpringFox dependencies -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-version}</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>ROOT</finalName>
