@@ -97,5 +97,4 @@ public class WebSecurityConfig
         repository.setHeaderName("X-XSRF-TOKEN");
         return repository;
     }
-
 }

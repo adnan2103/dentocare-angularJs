@@ -311,10 +311,3 @@ WITH (
 ALTER TABLE clinic_user_module_access
   OWNER TO dentocaa;
 
-CREATE SEQUENCE IF NOT EXISTS public.hibernate_sequence
-   INCREMENT 1
-   START 1
-   MINVALUE 1
-   MAXVALUE 99999999;
-ALTER SEQUENCE public.hibernate_sequence
-  OWNER TO dentocaa;
