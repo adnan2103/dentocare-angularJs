@@ -2,10 +2,12 @@ package com.dk.dento.care.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * Created by khana on 22/06/16.
  */
+@ApiIgnore
 @Controller
 public class LayoutController {
 

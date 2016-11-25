@@ -12,56 +12,60 @@
 
 <!--@TODO need to show this page only if there is an access for logged in user.-->
 <!-- Page Content -->
-<div class="container-fluid" ng-show="true">
-    <div class="row">
-        <div class="col-sm-2">Name</div>
-        <div class="col-sm-2">Contact</div>
-        <div class="col-sm-2">Created Date</div>
-        <div class="col-sm-2">Updated Date</div>
-        <div class="col-sm-1">Status</div>
-        <div class="col-sm-1">Treatment Cost</div>
-        <div class="col-sm-1">Paid Amount</div>
-        <div class="col-sm-1">Pending Amount</div>
-    </div>
-    <hr />
-    <div ng-repeat="treatment in treatments">
-        <div class="row">
-            <div class="col-sm-2" style="font-size: large; height: 30px;padding:5px;">
+<div class="container-fluid">
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Created Date</th>
+            <th>Updated Date</th>
+            <th>Status</th>
+            <th>Total Cost</th>
+            <th>Paid</th>
+            <th>Pending</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="treatment in treatments">
+            <td class="col-sm-2" style="font-size: large; height: 30px;padding:5px;">
                 <a href="#/patient/{{treatment.patient.id}}">
-                    <span class="glyphicon glyphicon-edit"></span> {{treatment.patient.name | uppercase}}</a>
-            </div>
-            <div class="col-sm-2">
-                <div>
-                    <i class="fa fa-phone fa-lg" aria-hidden="true"></i> +91-{{treatment.patient.contactList[0].primaryPhoneNumber}}
-                </div>
-                <div>
-                    <i class="fa fa-phone fa-lg" aria-hidden="true"></i> +91-{{treatment.patient.contactList[0].secondaryPhoneNumber}}
-                </div>
-                <div>
-                    <span class="glyphicon glyphicon-envelope"></span> {{treatment.patient.contactList[0].email}}
-                </div>
-            </div>
-            <div class="col-sm-2">
+                        <span class="glyphicon glyphicon-edit"></span> {{treatment.patient.name | uppercase}}
+                </a>
+            </td>
+            <td class="col-sm-2">
+                    <div class="row">
+                        <i class="fa fa-phone fa-lg" aria-hidden="true"></i> +91-{{treatment.patient.contactList[0].primaryPhoneNumber}}
+                    </div>
+                    <div class="row">
+                        <i class="fa fa-phone fa-lg" aria-hidden="true"></i> +91-{{treatment.patient.contactList[0].secondaryPhoneNumber}}
+                    </div>
+                    <div class="row">
+                        <span class="glyphicon glyphicon-envelope"></span> {{treatment.patient.contactList[0].email}}
+                    </div>
+            </td>
+            <td class="col-sm-2">
                 <span>{{treatment.creationDate | date:'medium'}}</span>
-            </div>
-            <div class="col-sm-2">
+            </td>
+            <td class="col-sm-2">
                 <span>{{treatment.updatedDate | date:'medium'}}</span>
-            </div>
-            <div class="col-sm-1">
+            </td>
+            <td class="col-sm-1">
                 <a href="#/patient/{{treatment.patient.id}}/treatment">
                     <span>{{treatment.status}}</span>
                 </a>
-            </div>
-            <div class="col-sm-1">
-                <span>{{getTreatmentCost(treatment.patientOralExamination)}}</span>
-            </div>
-            <div class="col-sm-1">
+            </td>
+            <td class="col-sm-1">
+                    <span>{{getTreatmentCost(treatment.patientOralExamination)}}</span>
+            </td>
+            <td class="col-sm-1">
                 <span>{{getPaidAmount(treatment.payment)}}</span>
-            </div>
-            <div class="col-sm-1">
+            </td>
+            <td class="col-sm-1">
                 <span>{{getTreatmentCost(treatment.patientOralExamination) - getPaidAmount(treatment.payment)}}</span>
-            </div>
-        </div>
-        <hr />
-    </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>

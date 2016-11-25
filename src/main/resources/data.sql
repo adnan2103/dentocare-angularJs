@@ -38,7 +38,7 @@ insert into contact_detail(contact_id,user_id,primary_phone_number,secondary_pho
 
 update user_credentials set password = '$2a$10$FBAKClV1zBIOOC9XMXf3AO8RoGXYVYsfvUdoLxGkd/BnXEn4tqT3u';
 
-insert into clinic(clinic_id,name) values(2, 'Test Dento Care Clinic');
+insert into clinic(clinic_id,name) values(2, 'Test Clinic');
 
 insert into clinic_modules_mapping(clinic_id,module_id,start_date,expiry_date) values(2,1,now(),now());
 insert into clinic_modules_mapping(clinic_id,module_id,start_date,expiry_date) values(2,2,now(),now());
@@ -52,3 +52,24 @@ insert into clinic_user_module_access(user_id, module_id) values(3,3);
 
 insert into clinic_user_mapping(clinic_id, user_id) values(2,3);
 insert into clinic_user_mapping(clinic_id, user_id) values(2,2);
+
+
+insert into user_credentials(login_id,login_enabled,password,role_id) values ('dr.danishkhan',true,'dentocare@123',2);
+insert into user_detail(user_id,name,gender,age) values(4,'Dr. Danish Khan','Male',28);
+insert into contact_detail(contact_id,user_id,primary_phone_number,secondary_phone_number,email,address_line1,address_line2,city,state,country,pincode) values(4,4,'9926414144','8878647837','dr.danishkhan@dento-care.com','Dento Care Clinic','Jahangirabad','Bhopal','MP','India','462008');
+insert into clinic(clinic_id,name) values(3, 'Dento Care Clinic Admin');
+insert into clinic_user_mapping(clinic_id, user_id) values(3,4);
+insert into clinic_modules_mapping(clinic_id,module_id,start_date,expiry_date) values(3,1,now(),now());
+insert into clinic_modules_mapping(clinic_id,module_id,start_date,expiry_date) values(3,2,now(),now());
+insert into clinic_modules_mapping(clinic_id,module_id,start_date,expiry_date) values(3,3,now(),now());
+insert into clinic_modules_mapping(clinic_id,module_id,start_date,expiry_date) values(3,4,now(),now());
+insert into clinic_modules_mapping(clinic_id,module_id,start_date,expiry_date) values(3,5,now(),now());
+insert into clinic_modules_mapping(clinic_id,module_id,start_date,expiry_date) values(3,6,now(),now());
+update clinic_modules_mapping set expiry_date = '2099-12-31';
+insert into clinic_user_module_access(user_id, module_id) values(4,1);
+insert into clinic_user_module_access(user_id, module_id) values(4,2);
+insert into clinic_user_module_access(user_id, module_id) values(4,3);
+insert into clinic_user_module_access(user_id, module_id) values(4,4);
+insert into clinic_user_module_access(user_id, module_id) values(4,5);
+insert into clinic_user_module_access(user_id, module_id) values(4,6);
+update user_credentials set password = '$2a$10$EuS3R0se59Ir4.kI56.yBuZXVbW1wpdbWxrRYVUj3ke4kUmoL7LFO' where user_id=4;

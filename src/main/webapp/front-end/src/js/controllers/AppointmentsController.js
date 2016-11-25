@@ -28,7 +28,7 @@ var AppointmentsController = function ($scope, $http, $routeParams, appointmentS
     $scope.calendarConfig = {
         height: 450,
         timeFormat: 'h(:mm)t',
-        defaultView: 'agendaWeek',
+        defaultView: 'month',
         businessHours: {
             start: '09:00',
             end: '21:00',
