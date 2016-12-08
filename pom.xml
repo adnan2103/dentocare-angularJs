@@ -226,7 +226,15 @@
                             <goal>bower</goal>
                         </goals>
                     </execution>
-                    
+                    <execution>
+						<id>gulp build</id>
+						<goals>
+							<goal>gulp</goal>
+						</goals>
+						<configuration>
+							<arguments>build --no-color</arguments>
+						</configuration>
+					</execution>
                     </executions>
             </plugin>
 
