@@ -46,7 +46,7 @@ public class WebSecurityConfig
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/public*//**", "/index.html", "/", "/login/layout").permitAll()
+                .antMatchers("/public/**/*", "/index.html", "/", "/login/layout").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 //.csrfTokenRepository(csrfTokenRepository())
