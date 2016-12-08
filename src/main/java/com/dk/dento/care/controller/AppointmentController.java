@@ -61,6 +61,4 @@ public class AppointmentController {
         Appointment appointment1 = appointmentService.save(appointment);
         return new ResponseEntity(appointment1, HttpStatus.OK);
     }
-
-
 }
