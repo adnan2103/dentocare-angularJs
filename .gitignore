@@ -10,6 +10,7 @@
 target
 .DS_Store
 */**/.DS_Store
-/src/main/webapp/front-end/bower_components/**
-/src/main/webapp/front-end/node/**
-/src/main/webapp/front-end/node_modules/**
+/ui/bower_components/**
+/ui/node/**
+/ui/node_modules/**
+/src/main/webapp/**
