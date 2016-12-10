@@ -55,8 +55,7 @@
     "require-dir": "~0.3.0",
     "tsd": "~0.6.1",
     "uglify-save-license": "~0.4.1",
-    "wiredep": "~2.2.2",
-    "wrench": "~1.5.8"
+    "wiredep": "~2.2.2"
   },
   "engines": {
     "node": ">=0.10.0"
