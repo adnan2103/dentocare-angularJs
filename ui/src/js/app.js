@@ -1,6 +1,8 @@
 'use strict';
 
-var App = angular.module('DentoCareApp', ['angularFileUpload','jkuri.datepicker', 'ngRoute','auth','navigation', 'DentoCareApp.factory', 'ngResource', 'ui.calendar']);
+var DentoCareApp = {};
+
+var App = angular.module('DentoCareApp', ['angularFileUpload','jkuri.datepicker', 'ngRoute','auth','navigation','DentoCareApp.filters', 'DentoCareApp.services', 'DentoCareApp.directives', 'DentoCareApp.factory', 'ngResource', 'ui.calendar']);
 
 // Declare app level module which depends on filters, and services
 App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpProvider) {
@@ -180,13 +182,13 @@ App.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpPro
             }
         }
     };
-}]).run(['auth',function(auth) {
+}]).run(function(auth) {
 
     // Initialize auth module with the home page and login/logout path
     // respectively
     auth.init('/', '/login', '/logout');
 
-}]);
+});
 
 
 

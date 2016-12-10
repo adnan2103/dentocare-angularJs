@@ -1,4 +1,10 @@
-App.controller('TreatmentController',['$scope', '$http', '$routeParams' , function($scope, $http, $routeParams) {
+'use strict';
+
+/**
+ * TreatmentController
+ * @constructor
+ */
+var TreatmentController = function($scope, $http, $routeParams) {
 
     $scope.status = [
         {'status': 'In-Progress'},
@@ -146,4 +152,4 @@ App.controller('TreatmentController',['$scope', '$http', '$routeParams' , functi
         changeMonth: true,
         yearRange: '1900:-0'
     };
-}]);
+};

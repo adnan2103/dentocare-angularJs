@@ -9,8 +9,8 @@ rename = require('gulp-rename');
 
 gulp.task('script', function() {
 	gulp.src('src/js/**/*.js')
-	.pipe(uglify())
-	.pipe(concat('dento-care-main.min.js'))
+	//.pipe(uglify())
+	//.pipe(concat('dento-care-main.min.js'))
 	.pipe(gulp.dest('dist/js'))
 	
 });
@@ -45,7 +45,7 @@ gulp.task('build', ['script','html','css','image','bower']);
 
 gulp.task('deploy', function() {
 	gulp.src('dist/**')
-	.pipe(gulp.dest('../src/main/webapp'))	
+	.pipe(gulp.dest('../src/main/webapp/front-end/src'))	
 });
 
 /**

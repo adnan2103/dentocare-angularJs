@@ -1,4 +1,10 @@
-App.controller('TreatmentImageController',[ '$scope', '$http', '$routeParams', 'FileUploader' , function($scope, $http, $routeParams, FileUploader) {
+'use strict';
+
+/**
+ * TreatmentImageController
+ * @constructor
+ */
+var TreatmentImageController = function($scope, $http, $routeParams, FileUploader) {
 
     $scope.fetchTreatmentImagePaths = function() {
 
@@ -64,4 +70,4 @@ App.controller('TreatmentImageController',[ '$scope', '$http', '$routeParams', '
     };
 
     console.info('uploader', uploader);
-}]);
+};

@@ -1,5 +1,10 @@
-App.controller('PatientController', ['$scope', '$http', '$routeParams', 'fileUpload', 'patientService', 
-	function($scope, $http, $routeParams, fileUpload, patientService) {
+'use strict';
+
+/**
+ * PatientController
+ * @constructor
+ */
+var PatientController = function($scope, $http, $routeParams, fileUpload, patientService) {
 
     $scope.fetchPatient = function() {
         if ($routeParams.id !== 'new') {
@@ -71,4 +76,4 @@ App.controller('PatientController', ['$scope', '$http', '$routeParams', 'fileUpl
         changeMonth: true,
         yearRange: '1900:-0'
     };
-}]);
+};

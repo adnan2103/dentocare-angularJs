@@ -1,7 +1,7 @@
 angular.module('auth', []).factory(
 		'auth',
 
-		[ '$rootScope', '$http', '$location', '$log', 'appConfiguration', function($rootScope, $http, $location, $log, appConfiguration) {
+		function($rootScope, $http, $location, $log, appConfiguration) {
 
 			enter = function() {
 				if ($location.path() != auth.loginPath) {
@@ -86,4 +86,4 @@ angular.module('auth', []).factory(
 
 			return auth;
 
-}]);
+		});

@@ -1,5 +1,10 @@
-App.controller('AppointmentsController',['$scope', '$http', '$routeParams', 'appointmentService', 'uiCalendarConfig' ,
-	function ($scope, $http, $routeParams, appointmentService, uiCalendarConfig) {
+'use strict';
+
+/**
+ * AppointmentsController
+ * @constructor
+ */
+var AppointmentsController = function ($scope, $http, $routeParams, appointmentService, uiCalendarConfig) {
 
     $scope.eventSources = [];
 
@@ -117,4 +122,4 @@ App.controller('AppointmentsController',['$scope', '$http', '$routeParams', 'app
         throw "Couldn't find object with id: " + id;
     }
 
-}]);
+};
