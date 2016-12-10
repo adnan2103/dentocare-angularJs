@@ -1,13 +1,9 @@
-'use strict';
+var DentoCareAppFactory = angular.module('DentoCareApp.factory', ['ngResource']);
 
-var app = angular.module('DentoCareApp.factory', ['ngResource']);
-
-app.factory("Post", function($resource) {
+DentoCareAppFactory.factory("Post", ['$resource', function($resource) {
     return $resource("/patients");
-});
+}]);
 
-app.factory("Treatments", function($resource) {
+DentoCareAppFactory.factory("Treatments", ['$resource', function($resource) {
     return $resource("/treatments");
-});
-
-app.value('version', '0.1');
+}]);

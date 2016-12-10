@@ -1,7 +1,7 @@
 angular.module('navigation', ['ngRoute', 'auth']).controller(
     'navigation',
 
-    function($scope, $route, auth, $rootScope) {
+    ['$scope', '$route', 'auth', '$rootScope', function($scope, $route, auth, $rootScope) {
 
         $scope.credentials = {};
 
@@ -52,4 +52,4 @@ angular.module('navigation', ['ngRoute', 'auth']).controller(
 
         $scope.logout = auth.clear;
 
-    });
+    }]);

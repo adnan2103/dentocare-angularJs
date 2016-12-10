@@ -1,11 +1,4 @@
-'use strict';
-
-/**
- * Clinic Treatments controller.
- * @Constructor
- */
-
-var TreatmentsController = function($scope, Treatments) {
+App.controller('TreatmentsController',[ '$scope', 'Treatments',function($scope, Treatments) {
     Treatments.query(function(data) {
         $scope.treatments = data;
     });
@@ -27,4 +20,4 @@ var TreatmentsController = function($scope, Treatments) {
 
         return paidAmount;
     }
-};
+}]);

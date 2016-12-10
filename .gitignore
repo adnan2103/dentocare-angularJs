@@ -11,6 +11,7 @@ target
 .DS_Store
 */**/.DS_Store
 /ui/bower_components/**
+/ui/dist/**
 /ui/node/**
 /ui/node_modules/**
 /src/main/webapp/**

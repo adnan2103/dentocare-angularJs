@@ -11,44 +11,46 @@ import springfox.documentation.annotations.ApiIgnore;
 @Controller
 public class LayoutController {
 
+	private static final String BASE = "view/";
+	
     @RequestMapping("patients/layout")
     public String getPatientsPartialPage() {
-        return "patients/layout";
+        return BASE + "patients/layout";
     }
 
     @RequestMapping("patient/layout")
     public String getPatientPartialPage() {
-        return "patient/layout";
+        return BASE + "patient/layout";
     }
 
     @RequestMapping("appointments/layout")
     public String getAppointmentsPartialPage() {
-        return "appointments/layout";
+        return BASE + "appointments/layout";
     }
 
     @RequestMapping("treatment/layout")
     public String getTreatmentPartialPage() {
-        return "treatment/layout";
+        return BASE + "treatment/layout";
     }
 
     @RequestMapping("treatment-images/layout")
     public String getTreatmentImagesPartialPage() {
-        return "treatment-images/layout";
+        return BASE + "treatment-images/layout";
     }
 
     @RequestMapping("administration/layout")
     public String getAdministrationPartialPage() {
-        return "administration/layout";
+        return BASE + "administration/layout";
     }
 
     @RequestMapping("treatments/layout")
     public String getAllTreatmentsPartialPage() {
-        return "treatments/layout";
+        return BASE + "treatments/layout";
     }
 
     @RequestMapping("login/layout")
     public String getLoginPartialPage() {
-        return "login/layout";
+        return BASE + "login/layout";
     }
 
     @RequestMapping(value = "/documentation")

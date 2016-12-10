@@ -1,10 +1,4 @@
-'use strict';
-
-/**
- * PatientsController
- * @constructor
- */
-var PatientsController = function($scope, $http, Post) {
+App.controller('PatientsController'['$scope', '$http', 'Post' , function($scope, $http, Post) {
     /*$scope.fetchAllPatients = function() {
         $http.get('patient/all').success(function(allpatients){
             $scope.patients = allpatients;
@@ -16,4 +10,4 @@ var PatientsController = function($scope, $http, Post) {
     });
     //$scope.fetchAllPatients();
 
-};
+}]);
