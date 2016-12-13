@@ -1,7 +1,6 @@
 package com.dk.dento.care.entity.clinic;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 /**

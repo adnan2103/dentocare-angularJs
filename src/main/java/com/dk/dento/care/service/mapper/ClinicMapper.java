@@ -1,7 +1,6 @@
 package com.dk.dento.care.service.mapper;
 
 import com.dk.dento.care.entity.clinic.ClinicEntity;
-import com.dk.dento.care.model.Appointment;
 import com.dk.dento.care.model.Clinic;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

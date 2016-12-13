@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Set;
 
 @Repository
 public interface UserDetailRepository extends PagingAndSortingRepository<UserDetailEntity, Long> {
