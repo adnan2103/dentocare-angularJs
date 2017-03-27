@@ -26,6 +26,7 @@ public class AppointmentController {
      * Logger instance.
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(AppointmentController.class);
+    
     @Autowired
     AppointmentService appointmentService;
 

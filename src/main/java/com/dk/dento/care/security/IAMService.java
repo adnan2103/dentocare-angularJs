@@ -36,16 +36,26 @@ public class IAMService {
 
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails loggedInUser = (UserDetails) authentication.getPrincipal();
-
-        return userCredentialsRepository.findByLoginId(loggedInUser.getUsername());
+        System.out.println("loggedInUser:: "+loggedInUser.getUsername());
+        return userCredentialsRepository.findByEmailId(loggedInUser.getUsername());
     }
 
     public AuthenticationToken getUserAuthenticationToken() {
 
-        Long  userId = this.getAuthenticatedUser().getId();
+    	UserCredentialsEntity  user = this.getAuthenticatedUser();
+    	Long userId = user.getId();
+        Long  roleId = user.getRoleId();
+        
+        System.out.println("==================Login User Id : ========= "+userId);
 
-        String userName = userDetailService.getPatientDetails(userId).getName();
-        String role = roleRepository.findOne(userId).getRole();
+        //@TODO getPatientDetails method name is not correct as per context here, as we are just getting user detail.
+        
+       	String userName = userDetailService.getPatientDetails(userId).getName();
+        if(userName.equals("") || userName.equals(null)) {
+        	userName = "Please update your name under profile.";
+        }
+       	
+        String role = roleRepository.findOne(roleId).getRole();
 
         Map<String, Boolean> modules = clinicService.getUserModules(userId, role);
 

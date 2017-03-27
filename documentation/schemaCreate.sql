@@ -1,5 +1,5 @@
 
--- Table: user_credentials
+-- Table: role
 
 CREATE TABLE IF NOT EXISTS role
 (
@@ -10,15 +10,41 @@ CONSTRAINT role_pkey PRIMARY KEY (role_id)
 ALTER TABLE role
   OWNER TO dentocaa;
 
+-- Table: user_detail
 
-CREATE TABLE IF NOT EXISTS user_credentials
+
+CREATE TABLE IF NOT EXISTS user_detail
 (
   user_id SERIAL NOT NULL,
-  login_id character varying(30),
+  name character varying(100) NOT NULL,
+  gender character varying(6) NOT NULL,
+  age smallint,
+  CONSTRAINT user_detail_pkey PRIMARY KEY (user_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE user_detail
+  OWNER TO dentocaa;
+
+  -- Table: user_credentials
+  
+CREATE TABLE IF NOT EXISTS user_credentials
+(
+  user_id integer NOT NULL,
+  email_id character varying(50),
+  mobile_number character varying(10),
+  account_creation_mode character varying(15),
+  social_identifier character varying(30),
+  last_login_date timestamp,
+  is_mobile_verified boolean,
+  is_email_verified boolean,
   login_enabled boolean,
   password character varying(100),
   role_id INTEGER NOT NULL ,
-  CONSTRAINT user_credentials_pkey PRIMARY KEY (user_id),
+  CONSTRAINT user_credentials_user_fkey FOREIGN KEY (user_id)
+      REFERENCES user_detail (user_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT user_credentials_role_fkey FOREIGN KEY (role_id)
       REFERENCES role (role_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
@@ -27,26 +53,6 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE user_credentials
-  OWNER TO dentocaa;
-
--- Table: user_detail
-
-
-CREATE TABLE IF NOT EXISTS user_detail
-(
-  user_id integer NOT NULL,
-  name character varying(100) NOT NULL,
-  gender character varying(6) NOT NULL,
-  age smallint,
-  CONSTRAINT user_detail_pkey PRIMARY KEY (user_id),
-  CONSTRAINT user_detail_user_fkey FOREIGN KEY (user_id)
-      REFERENCES user_credentials (user_id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE user_detail
   OWNER TO dentocaa;
 
 -- Table: contact_detail
@@ -237,7 +243,7 @@ ALTER TABLE module
 
 CREATE TABLE IF NOT EXISTS clinic
 (
-  clinic_id integer NOT NULL,
+  clinic_id SERIAL NOT NULL,
   name character varying(100) NOT NULL,
   CONSTRAINT clinic_pkey PRIMARY KEY (clinic_id)
 )

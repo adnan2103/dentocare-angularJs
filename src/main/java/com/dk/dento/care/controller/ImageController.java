@@ -33,7 +33,7 @@ public class ImageController {
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageController.class);
 
     @Autowired
-    String home;
+    String homeDirectory;
 
     @Autowired
     ImageService imageService;
@@ -67,7 +67,7 @@ public class ImageController {
         }
 
         try {
-            String path =  home + "/images/patients/";
+            String path =  homeDirectory + "/images/patients/";
             String imageName = "Patient_" + patientId + ".png";
 
             imageService.uploadImage(patientImage, path, imageName);
@@ -98,7 +98,7 @@ public class ImageController {
     public ResponseEntity getPatientImage(@PathVariable final String patientId) {
 
         try {
-            String path =  home + "/images/patients/";
+            String path =  homeDirectory + "/images/patients/";
             String imageName = "Patient_" + patientId + ".png";
 
             byte[] data = imageService.getImage(path, imageName);
@@ -131,7 +131,7 @@ public class ImageController {
                                                  @PathVariable final String type) {
 
         try {
-            String path =  home + "/images/treatments/";
+            String path =  homeDirectory + "/images/treatments/";
             String imageName = type+ "Treatment_" + id + "_"+sequence + ".png";
 
             byte[] data = imageService.getImage(path, imageName);
@@ -182,7 +182,7 @@ public class ImageController {
         }
 
         try {
-            String path =  home + "/images/treatments/";
+            String path =  homeDirectory + "/images/treatments/";
             String imageName = type+ "Treatment_" + id + "_"+sequence + ".png";
 
             imageService.uploadImage(treatmentImage, path, imageName);

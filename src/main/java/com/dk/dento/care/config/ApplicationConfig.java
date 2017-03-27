@@ -12,12 +12,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 @PropertySources(value = {@PropertySource("classpath:application.properties")})
 public class ApplicationConfig {
 
-
-    /**
-     * Home directory configuration.
-     */
-    @Value("${home.dir}")
-    private String home;
+    @Value("${home.directory}")
+    private String homeDirectory;
 
 
     @Bean
@@ -30,8 +26,8 @@ public class ApplicationConfig {
         return new CommonsMultipartResolver();
     }
 
-    @Bean(name = "home")
-    public String getHome() {
-        return home;
+    @Bean(name = "homeDirectory")
+    public String getHomeDirectory() {
+        return homeDirectory;
     }
 }

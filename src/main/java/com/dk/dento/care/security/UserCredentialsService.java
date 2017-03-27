@@ -16,8 +16,8 @@ public class UserCredentialsService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public UserCredentials getPrincipal(final String loginId) {
-        UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByLoginId(loginId);
+    public UserCredentials getPrincipal(final String emailId) {
+        UserCredentialsEntity userCredentialsEntity = userCredentialsRepository.findByEmailId(emailId);
         return this.userCredentialsEntityToUserCredentials(userCredentialsEntity);
     }
 

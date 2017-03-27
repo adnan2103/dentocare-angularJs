@@ -9,7 +9,7 @@ public class UserCredentials implements Serializable {
     private Long id;
 
     @NotEmpty(message = "LoginId is required.")
-    private String loginId;
+    private String emailId;
 
     private String password;
 
@@ -24,7 +24,7 @@ public class UserCredentials implements Serializable {
     public UserCredentials(UserCredentials userCredentials) {
 
         this.id = userCredentials.id;
-        this.loginId = userCredentials.loginId;
+        this.emailId = userCredentials.emailId;
         this.password = userCredentials.password;
         this.role = userCredentials.role;
         this.loginEnable = userCredentials.loginEnable;
@@ -38,12 +38,12 @@ public class UserCredentials implements Serializable {
         this.id = id;
     }
 
-    public String getLoginId() {
-        return loginId;
+    public String getEmailId() {
+        return emailId;
     }
 
-    public void setLoginId(String loginId) {
-        this.loginId = loginId;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
     public String getPassword() {

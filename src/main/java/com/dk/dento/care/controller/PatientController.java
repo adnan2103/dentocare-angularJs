@@ -40,6 +40,7 @@ public class PatientController {
             value = "/patient/{id}",
             method = RequestMethod.GET
     )
+    //@TODO make end point consistence i.e. /patients/{id}
     @ResponseBody
     public ResponseEntity getPatientDetails(@PathVariable final Long id) {
         try {

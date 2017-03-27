@@ -2,6 +2,7 @@ package com.dk.dento.care.security;
 
 
 import com.dk.dento.care.model.UserCredentials;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -54,7 +55,7 @@ public class PatientRepositoryUserDetailsService implements UserDetailsService {
         }
 
         public String getUsername() {
-            return getLoginId();
+            return getEmailId();
         }
 
         public boolean isAccountNonExpired() {

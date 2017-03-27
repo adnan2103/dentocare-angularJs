@@ -105,6 +105,7 @@ public class UserDetailService {
     }
 
     public Patient getPatientDetails(Long patientId) {
+    	//@TODO while fetching patient it should make sure, asking user(doctor) has proper access.
         UserDetailEntity userDetailEntity = userDetailRepository.findOne(patientId);
 
         return userDetailMapper.userDetailEntityToPatient(userDetailEntity);
@@ -113,18 +114,10 @@ public class UserDetailService {
     @Transactional(propagation = Propagation.REQUIRED)
     public Patient savePatient(Patient patient) throws ParseException {
         UserDetailEntity patientEntity = userDetailMapper.patientToUserDetailEntity(patient);
-
+        patientEntity = userDetailRepository.save(patientEntity);
+        
         if (patientEntity.getId() != null) {
-            patientEntity = userDetailRepository.save(patientEntity);
-        } else {
-            UserCredentialsEntity userCredentialsEntity = new UserCredentialsEntity();
-            userCredentialsEntity.setRoleId(roleRepository.findByRole("PATIENT").getId());
-            userCredentialsEntity = userCredentialsRepository.save(userCredentialsEntity);
-
-            patientEntity.setId(userCredentialsEntity.getId());
-            patientEntity = userDetailRepository.save(patientEntity);
-
-            UserDetailEntity doctor = userDetailRepository.findOne(iamService.getAuthenticatedUser().getId());
+        	UserDetailEntity doctor = userDetailRepository.findOne(iamService.getAuthenticatedUser().getId());
             DoctorPatientMappingId doctorPatientMappingId = new DoctorPatientMappingId(doctor.getId(), patientEntity.getId());
             DoctorPatientMappingEntity doctorPatientMappingEntity = new DoctorPatientMappingEntity(doctorPatientMappingId);
 

@@ -12,19 +12,37 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "user_credentials")
 public class UserCredentialsEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+    @Column(name = "user_id", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "login_id")
-    private String loginId;
+    @Column(name = "email_id")
+    private String emailId;
 
+    @Column(name = "mobile_number")
+    private String mobileNumber;
+    
+    @Column(name = "account_creation_mode")
+    private String accountCreationMode;
+    
+    @Column(name = "social_identifier")
+    private String socialIdentifier;
+    
+    @Column(name = "last_login_date")
+    private Date lastLoginDate;
+    
+    @Column(name = "is_email_verified")
+    private boolean isEmailVerified;
+    
+    @Column(name = "is_mobile_verified")
+    private boolean  isMobileVerified;
+    
     @Column(name = "login_enabled")
     private boolean loginEnable;
 
@@ -66,14 +84,6 @@ public class UserCredentialsEntity implements Serializable {
         this.id = id;
     }
 
-    public String getLoginId() {
-        return loginId;
-    }
-
-    public void setLoginId(String loginId) {
-        this.loginId = loginId;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -97,4 +107,60 @@ public class UserCredentialsEntity implements Serializable {
     public void setRoleEntity(RoleEntity roleEntity) {
         this.roleEntity = roleEntity;
     }
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+	public String getAccountCreationMode() {
+		return accountCreationMode;
+	}
+
+	public void setAccountCreationMode(String accountCreationMode) {
+		this.accountCreationMode = accountCreationMode;
+	}
+
+	public String getSocialIdentifier() {
+		return socialIdentifier;
+	}
+
+	public void setSocialIdentifier(String socialIdentifier) {
+		this.socialIdentifier = socialIdentifier;
+	}
+
+	public Date getLastLoginDate() {
+		return lastLoginDate;
+	}
+
+	public void setLastLoginDate(Date lastLoginDate) {
+		this.lastLoginDate = lastLoginDate;
+	}
+
+	public boolean isEmailVerified() {
+		return isEmailVerified;
+	}
+
+	public void setEmailVerified(boolean isEmailVerified) {
+		this.isEmailVerified = isEmailVerified;
+	}
+
+	public boolean isMobileVerified() {
+		return isMobileVerified;
+	}
+
+	public void setMobileVerified(boolean isMobileVerified) {
+		this.isMobileVerified = isMobileVerified;
+	}
 }

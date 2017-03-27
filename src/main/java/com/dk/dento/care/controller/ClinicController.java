@@ -50,17 +50,13 @@ public class ClinicController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
     @RequestMapping(
             value = "/clinic/{id}/modules",
             method = RequestMethod.GET

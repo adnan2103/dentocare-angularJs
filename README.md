@@ -1,3 +1,4 @@
+## save individual treatment,
 
 #############################################Dento care application#################################
 ## Automated Build : Commit to Test it again.
@@ -36,7 +37,7 @@ Dentocare_Admin :
 ## Fix bug in new appointment.
 ## Touch is not working in appointment.
 ## Accordian for treatment page,
-## save individual treatment,
+
 
 ##Back buttons : (Use "angular-ui-router" instead route provider.)
 
