@@ -4,4 +4,4 @@ env:
   - secure: KE6mIb83fRxyNRXbWyIJq34St6/HAfkoA8pI66ads+fBcGSUwHFhmii+Hpnx+ZaDNZ0pjXmxn6HCAKsZyz5P6RXWjz/yVBEyEglSfG9yQ+bToEpduBpCc4bPLo3KXNOLcRo+QXxTieEATijOVGFMe+WHtBzDepdwtfMGaEjierc=
   - secure: gYAUPEstuWljPX5R1c2sLnng+4zSxcmtwvBY4In4AmqHj53/1uNhg0fjlddQ3g7j6TZfiA2mcGp7nCuiDxAdtdG6hmJhOn6Zm4jwXqu3+32MDXIsjbl4gvI/gp+i6htOxyFs6L5yYSjBcE/gSGLwLUzZOoV4Ti/JdE/JHagRv04=
 after_success:
- "curl -T ./target/ROOT.war -u $FTP_USER:$FTP_PASSWORD ftp://ftp.dento-care.com/"
+ "curl -T ./target/ROOT.war -u Adnan2103@dento-care.com:test@123 ftp://ftp.dento-care.com/"
